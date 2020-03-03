@@ -1,4 +1,3 @@
-# HI-TECH-Z80-C
 HI-TECH Z80 C Compiler for CP/M
 ===============================
 
@@ -28,6 +27,7 @@ using DEHUFF.COM.
 
 The *doc* folder contains the documentation in ASCII text as HTCZ80.TXT.
 
+
 Release v3.09
 -------------
 
@@ -36,6 +36,30 @@ and the main compiler front-end (C.COM) has been patched to reflect
 this name change.  This was done to avoid a name clash with the Digital
 Research supplied CP/M linker.  The original version is kept as C-ORIG.COM
 
-I've edited the documentation to remove ASCII underlining by over-printing
-and fixed some layout issues and typos.
+I've edited the documentation to remove the underlining and bolding of
+text by over-printing and fixed some layout issues and typos.
 
+
+Release v3.09-1
+---------------
+
+As supplied in v3.09, the LIBF.LIB produces inaccurate floating point
+trigonometry results - as reported by "Ed" in his posting to the
+comp.os.cpm USENET Newsgroup.
+
+```
+Since we're on the topic of Hitech-C for CP/M, below is a problem I
+discovered with the freeware release.
+
+LIBF.LIB supplied with the freeware Hitech-C 3.09 produces inaccurate trig
+results.  I found that by simply recompiling the library with the existing
+source files from FLOAT.HUF, it fixed the problem.  Absolutely no changes
+to the sources were required.
+```
+
+The re-compiled LIBF.LIB from the FLOAT.HUF library sources in *float*
+has been copied to the distribution files in *dist*.  A SUBmit file to
+rebuild LIBF.LIB has been added to *float*.
+
+A *test* folder has been created.  In it is a TRIG.C program for testing
+this release.

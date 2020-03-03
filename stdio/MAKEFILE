@@ -1,0 +1,52 @@
+.SUFFIXES:	.c .obj .as
+BIN	= /usr/hitech/bin
+LIB	= ../../lib
+AR	= $(BIN)/libr r
+C	= $(BIN)/zc
+CFLAGS	= -O -x
+LD	= $(BIN)/link
+AS	= $(BIN)/zas
+ASFLAGS	= -x
+ENHUFF	= $(BIN)/enhuff
+
+.c.obj:
+	$(C) $(CFLAGS) -c $<
+.as.obj:
+	$(AS) $(ASFLAGS) $<
+
+OBJS	= getargs.obj assert.obj printf.obj fprintf.obj sprintf.obj doprnt.obj \
+	  gets.obj puts.obj fwrite.obj getw.obj putw.obj getenv.obj \
+	  putchar.obj perror.obj fputc.obj flsbuf.obj \
+	  fopen.obj freopen.obj fseek.obj fread.obj rewind.obj remove.obj \
+	  setbuf.obj fscanf.obj ctime.obj cgets.obj cputs.obj \
+	  sscanf.obj scanf.obj doscan.obj ungetc.obj \
+	  fgetc.obj filbuf.obj stdclean.obj fclose.obj fflush.obj \
+	  buf.obj exit.obj fakeclean.obj
+
+SRCS	= fgetc.as fputc.as assert.c buf.c cgets.c stdclean.c \
+	  cputs.c ctime.c doprnt.c doscan.c exit.c fakeclean.c \
+	  fclose.c fflush.c filbuf.c flsbuf.c fopen.c fprintf.c \
+	  fread.c freopen.c fscanf.c fseek.c fwrite.c getargs.c \
+	  getenv.c gets.c getw.c perror.c printf.c putchar.c \
+	  puts.c putw.c remove.c rewind.c scanf.c setbuf.c \
+	  setup.c sprintf.c sscanf.c stdio.h stdio.i ungetc.c
+
+zlibstdio.lib:	$(OBJS)
+	$(AR) zlibstdio.lib $(OBJS)
+
+install:	$(LIB)/zlibstdio.lib
+
+$(LIB)/zlibstdio.lib:	zlibstdio.lib
+	cp zlibstdio.lib $(LIB)/zlibstdio.lib
+	chmod og+r $(LIB)/zlibstdio.lib
+
+fgetc.obj:	fgetc.as
+clean:
+	-rm -f zlibstdio.lib *.obj
+
+huff:
+	-rm -f stdio.huf
+	$(ENHUFF) -a stdio.huf Makefile $(SRCS)
+
+print:
+	print Makefile *.h *.c *.i *.as

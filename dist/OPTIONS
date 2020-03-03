@@ -1,0 +1,17 @@
+Z80 CP/M C compiler options:
+
+-A	Generate a self-relocating .COM program
+-R	Link in command line wild card expansion code
+-V	Be verbose during compilation
+-S	Generate assembler code in a .AS file; don't assemble or link
+-C	Generate object code only; don't link.
+-O	Invoke the peephole optimizer
+-I	Specify an include directory, e.g. -I1:B:
+-U	Undefine a predefined symbol, e.g. -UDEBUG
+-D	Define a symbol, e.g. -DDEBUG=1
+-L	Scan a library, e.g. -LF scans the floating point library
+-F	Generate a symbol file suitable for use with debug.com, e.g.
+		-Ffile.sym; default file name is L.SYM.
+-W	Set warning level, e.g. -w5 or -w-2
+-X	Suppress local symbols in symbol tables
+-M	Generate a map file, e.g. -Mfile.map

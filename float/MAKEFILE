@@ -1,0 +1,60 @@
+.SUFFIXES:	.c .obj .as
+BIN	= /usr/hitech/bin
+PACK	= ../../pack
+LIB	= ../../lib
+AR	= $(BIN)/libr r
+C	= $(BIN)/zc
+CFLAGS	= -O -x
+ASFLAGS	= -x
+LD	= $(BIN)/link
+AS	= $(BIN)/zas
+PACKUP	= $(BIN)/packup
+ENHUFF	= $(BIN)/enhuff
+
+.c.obj:
+	$(C) $(CFLAGS) -c $<
+.as.obj:
+	$(AS) $(ASFLAGS) $<
+
+SRCS	= printf.c fprintf.c sprintf.c scanf.c fscanf.c sscanf.c \
+	  atof.c doprnt.c doscan.c ltof.as ftol.as asfloat.as finc.as \
+	  fbcd.as fnum.c frndint.as tan.c acos.c asin.c \
+	  atan2.c atan.c cos.c sin.c sinh.c cosh.c tanh.c exp.c \
+	  log.c evalpoly.c sqrt.c frexp.as fabs.c ceil.c floor.c float.as
+
+OBJS	= printf.obj fprintf.obj sprintf.obj scanf.obj fscanf.obj \
+	  sscanf.obj doprnt.obj doscan.obj atof.obj fnum.obj \
+	  fbcd.obj tan.obj acos.obj asin.obj \
+	  atan2.obj atan.obj cos.obj sin.obj sinh.obj \
+	  cosh.obj tanh.obj exp.obj log.obj evalpoly.obj \
+	  sqrt.obj frexp.obj fabs.obj ceil.obj floor.obj finc.obj asfloat.obj \
+	  frndint.obj ftol.obj ltof.obj float.obj
+
+zlibf.lib:	$(OBJS)
+		$(AR) zlibf.lib $?
+
+install:	$(LIB)/zlibf.lib
+
+$(LIB)/zlibf.lib:	zlibf.lib
+	cp zlibf.lib $(LIB)/zlibf.lib
+	chmod og+r $(LIB)/zlibf.lib
+
+float-m.huf:	$(SRCS)
+	-rm *.obj
+	$(C) -M -O -c -x $(SRCS)
+	-rm float-m.huf
+	$(ENHUFF) float-m.huf *.obj
+	-rm *.obj
+
+clean:
+	-rm -f zlibf.lib *.obj
+
+pack:
+	$(PACKUP) $(SRCS) >float.pak
+
+huff:
+	-rm float.huf
+	$(ENHUFF) -a float.huf Makefile $(SRCS)
+
+print:
+	print Makefile *.h *.c *.i *.as

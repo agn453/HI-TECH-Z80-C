@@ -1,0 +1,59 @@
+.SUFFIXES:	.c .obj .as .lib
+
+BIN	= /usr/hitech/bin
+LIB	= ../lib
+PACK	= ../pack
+LIBR	= $(BIN)/libr
+AS	= $(BIN)/zas
+CC	= $(BIN)/zc
+LINK	= $(BIN)/link
+OBJHEX	= $(BIN)/objtohex
+ENHUFF	= ../bin/enhuff
+CFLAGS	= -O -x $(DEFS) -Uunix
+ASFLAGS	= -j
+
+.c.obj:	;	$(CC) $(CFLAGS) -c $*.c
+.as.obj: ;	$(AS) $(ASFLAGS) $*.as
+
+OBJS	= start1.obj start2.obj open.obj read.obj write.obj chmod.obj seek.obj \
+	  fcbname.obj rename.obj creat.obj time.obj convtime.obj timezone.obj \
+	  stat.obj isatty.obj cleanup.obj close.obj unlink.obj dup.obj getfcb.obj \
+	  srand1.obj getch.obj signal.obj getuid.obj \
+	  abort.obj execl.obj bdos.obj bdoshl.obj \
+	  bios.obj _exit.obj exit.obj fakeclean.obj fakecpcln.obj sys_err.obj
+
+all:	zcrtcpm.obj zdrtcpm.obj zrrtcpm.obj  zlibcpm.lib c.com
+
+install:	all
+	cp zcrtcpm.obj zdrtcpm.obj zrrtcpm.obj  zlibcpm.lib $(LIB)
+	chmod og+r $(LIB)/zcrtcpm.obj $(LIB)/zdrtcpm.obj $(LIB)/zrrtcpm.obj \
+		 $(LIB)/zlibcpm.lib
+	touch install
+
+zlibcpm.lib:	$(OBJS)
+	$(LIBR) r zlibcpm.lib $(OBJS)
+
+c.com:	c.obj
+	zc -mmap -f c.obj
+
+exec.com:	exec.obj
+	$(LINK) -l -ptext=0,bss exec.obj
+	$(OBJHEX) -R -B100H l.obj exec.com
+	-rm l.obj
+
+clean:
+	-rm -f zlibcpm.lib *.obj
+
+huff:
+	-rm cpm.huf
+	$(ENHUFF) -a cpm.huf Makefile \
+	cleanup.c close.c convtime.c creat.c dup.c getch.c \
+	fcbname.c getfcb.c isatty.c open.c stat.c chmod.c \
+	read.c rename.c seek.c signal.c srand1.c sys_err.c \
+	time.c timezone.c unlink.c write.c _exit.as bdos.as bdoshl.as \
+	bios.as csv.as exec.as exit.as fakeclean.as getuid.as srand.as \
+	start1.as start2.as zcrtcpm.as zdrtcpm.as zrrtcpm.as execl.as \
+	abort.c c.c fakecpcln.as
+
+print:
+	print Makefile *.h *.c *.as

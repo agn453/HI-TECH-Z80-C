@@ -105,7 +105,7 @@ entry	equ	5		; CP/M entry point
 arg	equ	8		;argument to call
 func	equ	6		;desired function
 
-	global	_bdos, _bdoshl, _errno
+	global	_bdos, _errno
 
 	cond	PWDREC
 	global	__passwd, __dpass
@@ -199,7 +199,6 @@ __dpass:
 	endc
 
 _bdos:
-_bdoshl:
 	call	csv		; Establish pointer to parameters
 retry:
 	ld	e,(ix+arg)

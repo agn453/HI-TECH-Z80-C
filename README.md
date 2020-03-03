@@ -5,12 +5,12 @@ In this repository I intend to apply updates and enhancements to
 the HITECH C Compiler for Z80 running natively under CP/M.  Each
 release will be a milestone with various updates and patches applied.
 
-The first release is a slightly modified (see below) V3.09.
+The first release is a slightly modified (see below) v3.09.
 
 Background
 ----------
 
-The HI-TECH Z80 CP/M C compiler V3.09 is provided free of charge for any
+The HI-TECH Z80 CP/M C compiler v3.09 is provided free of charge for any
 use, private or commercial, strictly as-is. No warranty or product
 support is offered or implied.
 
@@ -51,7 +51,7 @@ comp.os.cpm USENET Newsgroup.
 Since we're on the topic of Hitech-C for CP/M, below is a problem I
 discovered with the freeware release.
 
-LIBF.LIB supplied with the freeware Hitech-C 3.09 produces inaccurate trig
+LIBF.LIB supplied with the freeware Hitech-C v3.09 produces inaccurate trig
 results.  I found that by simply recompiling the library with the existing
 source files from FLOAT.HUF, it fixed the problem.  Absolutely no changes
 to the sources were required.
@@ -61,7 +61,7 @@ The re-compiled LIBF.LIB from the FLOAT.HUF library sources in *float*
 has been copied to the distribution files in *dist*.  A SUBmit file to
 rebuild LIBF.LIB has been added to *float*.
 
-A *test* folder has been created.  In it is a TRIG.C program for testing
+A *test* folder has been created.  In it is a TESTTRIG.C program for testing
 this release.
 
 
@@ -70,12 +70,18 @@ Release v3.09-2
 
 The late Jon Saxton (former SYSOP of the Australian Tesseract RCPM)
 collected together a number of patches and updates - See Tesseract
-volume 091. These include contributions from John Elliot via
+volume 091.
+
+These include contributions from John Elliot via
 http://www.seasip.info/Cpm/software/index.html - in particular
 for PIPEMGR which is a CP/M Plus RSX that implements piping and redirection.
-John's contributions will be implemented in a later release.  For now,
+
+John's contributions will be implemented in a later release.
+
 This release includes updates to memset(), bios() and bdos() library
-routines.
+routines.  In addition the stat(), close() and sys_err() routines
+are updated to remove references to bdoshl() and to include CP/M Plus
+error messages.
 
 ```
 memset()

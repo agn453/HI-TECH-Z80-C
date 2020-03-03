@@ -1,12 +1,12 @@
 /*
- * TRIG.C
+ * TESTTRIG.C
  *
  * Test to verify release v3.09-1 has fixed floating point
  * Trigonometry routines.
  *
  * Compile using
  *
- * 	c -lf -v -o trig.c
+ * 	c -o -lf testtrig.c
  *
  * From a USENET newsgroup post to comp.os.cpm on 2013-09-02 by "Ed"
  *

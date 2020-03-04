@@ -3,24 +3,18 @@
 	global	_getuid, _setuid, csv, cret
 
 	entry	equ	5		;CP/M system call entry
-	sguid	equ	20h		;set/get uid call value
+	sguid	equ	32		;set/get user number
 	arg	equ	6		;offset of 1st arg
 
 	psect	text
 _getuid:
 	call	csv
-	ld	c,sguid			;get/set uid code
 	ld	e,0FFh			;to get rather than set
-	push	ix
-	call	entry
-	pop	ix
-	ld	l,a
-	ld	h,0
-	jp	cret
-
+	jr	4f			;Go to common code
 _setuid:
 	call	csv
 	ld	e,(ix+arg)		;get argument
+4:
 	ld	c,sguid
 	push	ix
 	call	entry

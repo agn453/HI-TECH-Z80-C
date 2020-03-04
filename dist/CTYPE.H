@@ -20,6 +20,16 @@ extern	unsigned char	_ctype_[];	/* in libc.lib */
 #define isgraph(c)	((_ctype_+1)[c]&(_P|_U|_L|_N))
 #define iscntrl(c)	((_ctype_+1)[c]&_C)
 #define isascii(c)	(!((c)&0xFF80))
-#define toupper(c)	((c)-'a'+'A')
-#define tolower(c)	((c)-'A'+'a')
+/*--------------------------------------*\
+ |    Changed  2014-07-04 (Jon Saxton)	|
+ |--------------------------------------|
+ |	Original macro definitions	|
+ | #define toupper(c)	((c)-'a'+'A')	|
+ | #define tolower(c)	((c)-'A'+'a')	|
+ |--------------------------------------|
+ |	  Use functions instead		|
+\*--------------------------------------*/
+extern int toupper(int);	/* in LIBC.LIB */
+extern int tolower(int);	/* in LIBC.LIB */
+
 #define toascii(c)	((c)&0x7F)

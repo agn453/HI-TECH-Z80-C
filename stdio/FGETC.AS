@@ -17,7 +17,12 @@
 ;			return EOF;
 ;		}
 ;	loop:
-;		if(f->_cnt > 0) {
+;		if(f->_flag & _IODIRN) 
+;		{
+;			c=_filbuf(f);
+;			f->_flag &= !_IODIRN;
+;		}
+;		else if(f->_cnt > 0) {
 ;			c = (unsigned)*f->_ptr++;
 ;			f->_cnt--;
 ;		} else if(f->_flag & _IOSTRG)
@@ -50,6 +55,17 @@ _fgetc:
 	jr	z,reteof		;return EOF if not open for read
 	bit	_IOEOF_BIT,a		;Already seen EOF?
 	jr	nz,reteof		;yes, repeat ourselves
+
+	bit	1,(iy+flag+1)		;_IODIRN_BIT
+	jr	z,loop
+	res	1,(iy+flag+1)
+	push	iy
+	call	__filbuf
+	pop	bc
+	ld	a,l
+	bit	7,h			;EOF
+	jr	nz,reteof
+	jr	2f			;Got a byte
 
 loop:
 	ld	l,(iy+cnt)

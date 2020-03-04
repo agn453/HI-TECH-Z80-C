@@ -1,28 +1,6 @@
 #include	"cpm.h"
 
 long
-_fsize(fd)
-uchar	fd;
-{
-	register struct fcb *	fc;
-	long			tmp;
-	uchar			luid;
-
-	if(fd >= MAXFILE)
-		return -1;
-	fc = &_fcb[fd];
-	luid = getuid();
-	setuid(fc->uid);
-	bdos(CPMCFS, fc);
-	setuid(luid);
-	tmp = (long)fc->ranrec[0] + ((long)fc->ranrec[1] << 8) + ((long)fc->ranrec[2] << 16);
-	tmp *= SECSIZE;
-	if(tmp > fc->rwp)
-		return tmp;
-	return fc->rwp;
-}
-
-long
 lseek(fd, offs, whence)
 uchar	fd, whence;
 long	offs;
@@ -44,7 +22,9 @@ long	offs;
 		break;
 
 	case 2:
-		pos = offs + _fsize(fd);
+		if (fc->rwp > fc->fsize)
+			pos = fc->rwp   + offs;
+		else	pos = fc->fsize + offs;
 		break;
 	}
 	if(pos >= 0) {

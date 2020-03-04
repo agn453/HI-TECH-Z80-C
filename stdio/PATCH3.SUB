@@ -1,0 +1,14 @@
+; Apply v3.09-3 patch
+;
+; Rebuild LIBC.LIB with all the PIPEMGR updates
+;
+; Prerequisites
+;  Copy new CTYPE.H STDIO.H STDLIB.H STRING.H and SYS.H to A0:
+;  All files from the cpm gen & stdio are in the current directory
+;
+makelibc.sub
+;
+; The LIBC3.LIB has been created - ready to replace your LIBC.LIB
+; ZCRTCPM.OBJ is the new CRTCPM.OBJ for linking to .COM files.
+; Be sure to replace this on A0: (or else you'll get an undefined
+; _piped linking programs).

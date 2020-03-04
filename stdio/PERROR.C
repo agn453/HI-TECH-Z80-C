@@ -4,22 +4,19 @@ extern	int	errno;
 extern	char *	sys_err[];
 extern	int	sys_ner;
 
-static
-ps(s)
-char *	s;
+static void ps(char *s)
 {
-	while(*s)
-		putc(*s++, stderr);
+    while(*s)
+        putc(*s++, stderr);
 }
 
-perror(s)
-char *	s;
+void perror(char *s)
 {
-	ps(s);
-	putc(':', stderr);
-	if(errno < sys_ner)
-		ps(sys_err[errno]);
-	else
-		ps("Unknown erorr");
-	putc('\n', stderr);
+    ps(s);
+    putc(':', stderr);
+    if (errno < sys_ner)
+        ps(sys_err[errno]);
+    else
+        ps("Unknown error");
+    putc('\n', stderr);
 }

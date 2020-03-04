@@ -1,0 +1,6 @@
+c
+<-c -o start1.as open.c read.c write.c chmod.c seek.c \
+<fcbname.c rename.c creat.c time.c convtime.c timezone.c \
+<stat.c isatty.c cleanup.c close.c unlink.c dup.c getfcb.c \
+<srand1.c getch.c signal.c getuid.as abort.c execl.as bdos.as \
+<bios.as _exit.as exit.as fakeclea.as fakecpcl.as sys_err.c

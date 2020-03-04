@@ -1,0 +1,7 @@
+libr 
+<r libc.lib \
+<start1.obj open.obj read.obj write.obj chmod.obj seek.obj \
+<fcbname.obj rename.obj creat.obj time.obj convtime.obj timezone.obj \
+<stat.obj isatty.obj cleanup.obj close.obj unlink.obj dup.obj getfcb.obj \
+<srand1.obj getch.obj signal.obj getuid.obj <abort.obj execl.obj bdos.obj \
+<bios.obj _exit.obj exit.obj fakeclean.obj fakecpcln.obj sys_err.obj

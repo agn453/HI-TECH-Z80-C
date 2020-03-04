@@ -74,13 +74,13 @@ volume 091.
 
 These include contributions from John Elliot via
 http://www.seasip.info/Cpm/software/index.html - in particular
-for PIPEMGR which is a CP/M Plus RSX that implements piping and redirection.
+for PIPEMGR which is a CP/M 3 RSX that implements piping and redirection.
 
 John's contributions will be implemented in a later release.
 
 This release includes updates to memset(), bios() and bdos() library
 routines.  In addition the stat(), close() and sys_err() routines
-are updated to remove references to bdoshl() and to include CP/M Plus
+are updated to remove references to bdoshl() and to include CP/M 3
 error messages.
 
 ```
@@ -138,10 +138,230 @@ bdos()
 
         if ((bdos(fn, data) & 0xFF) == 255)     /* This always works */
 
-    Under CP/M Plus several functions return extended error information in
+    Under CP/M 3 several functions return extended error information in
     the upper 8 bits of the return value.  (Those functions also set the
     standard errno global item.)  Always use the third form when checking
     for an error result.  The compiler is quite clever and doesn't make your
     program work harder ... it just uses the L register.
 ```
 
+
+Release v3.09-3
+---------------
+
+These are the Job Saxton modified versions of John Elliots's patches.
+
+```
+Wildcard expansion
+
+    Programs compiled with this update get wildcard expansion of the CP/M
+    command line automatically.  There is no longer any need to call
+    _getargs() explicitly.
+
+    Enclosing an argument in quote marks (' or ") supresses expansion.
+    This can be useful for programs like grep which may use ? and/or * in
+    text search patterns or for program options containing a question mark:
+
+        grep 'a.*end' *.h 2d:*.c
+        grep "-?"
+
+    The -R option passed to the Hi-Tech C compiler is no longer useful.  (It
+    didn't work anyway.)
+
+    Implementing automatic argument expansion meant altering the order of
+    modules in LIBC.LIB.  That entailed rebuilding the entire library from
+    scratch.  A script to do that is supplied.
+
+Filename drive and user number prefixes
+
+    The format of file name prefixes indicating drive letter and/or user
+    number is now much more liberal.  If a file "sample.txt" is on drive
+    E: in user area 12 then depending on the current drive/user the file
+    may be accessed as:
+
+        sample.txt              if current DU: is E12:
+        12:sample.txt           if current disk is E:
+        e:sample.txt            if current user is 12
+        e12:sample.txt
+        12e:sample.txt
+        12:e:sample.txt         (Hi-Tech C format)
+
+    Note that any of these forms is acceptable for program arguments, even
+    those containng wildcard characters (?, *).
+
+Exact file sizes (CP/M 3 and DOS+ v2.5)
+
+    Exact file sizes are supported on CP/M 3.  Under CP/M 2.2 file sizes are
+    always a multiple of 128 bytes but some versions of CP/M allow setting
+    and reading a "last sector byte count" field in the FCB.  The concept was
+    carried forward from CP/M's ancestor, ISIS, but DRI did not document the
+    precise meaning of the count for CP/M so two distinct interpretations were
+    possible:
+
+    a.  LSBC represents the number of UNUSED bytes in the last sector;
+
+    b.  LSBC contains the number of USED bytes but 0 means 128.
+
+    Both usages have appeared in the small number of CP/M 3 utilities which
+    support exact file lengths.  My own tools use the first interpretation;
+    John Elliott's utilities use the second.
+
+    The first interpretation is slightly simpler to implement because it
+    avoids any special-case handling.  It is also historically correct.
+    Neither of these considerations is particularly significant but we do need
+    to have programs which work together and interpret the last sector byte
+    count the same way.  After a lifetime in software development I have
+    learned to avoid handling special cases as far as possible.  Accordingly
+    I have modified John Elliott's routines to interpret the last sector byte
+    count as the number of unused bytes in the last sector.
+
+    With this interpretation the formula for calculating the number of bytes
+    in a file is always (sectors * 128) - lsbc.
+
+    (When running on CP/M 2 lsbc is always zero.)
+
+strcasecmp()
+
+    The case-insensitive string comparison function strcasecmp() has been
+    implemented.  Its function prototype is in string.h.  It works just like
+    strcmp() except that upper- and lower-case letters are treated as 
+    identical.  There is also a strncasecmp() analogue of strncmp() which
+    allows one to limit the comparison to a certain number of cbaracters.
+
+toupper() and tolower()
+
+    The functions toupper() and tolower() were implemented as macros which
+    added a case-shift value to the character parameter without checking to
+    see if the parameter was a letter.  To use these routines correctly it was
+    necessary to do a range check, e.g.
+
+        if (isupper(c))
+            c = tolower(c);
+
+    These operations now invoke the correspondingly named routines in LIBC.LIB
+    and it is no longer necessary to pre-test the character.
+
+Support for read/write files
+
+    The stdio functions now allow files to be opened in modes "r+" and "w+" - 
+    ie, reading and writing are supported on the same file.
+    Remember to fflush() or fseek() between a read and a write.
+    This code is experimental.
+
+PIPEMGR support (CP/M 3)
+
+    Programs automatically check for PIPEMGR when they load, and if it
+    is present the C streams stdin, stdout and stderr are routed to their
+    PIPEMGR counterparts - no modification of the source is required.
+
+    The special device files (CON: LST: PUN: and RDR:) are joined by RSX: 
+    (PIPEMGR stdin/stdout streams) and ERR: (PIPEMGR stderr stream). If
+    PIPEMGR is not present, these files behave like CON:
+
+    The variable:
+
+        extern char _piped;
+
+    is nonzero if PIPEMGR is present.
+
+    The command 
+
+        FOO <CON:
+
+    will behave differently if PIPEMGR is present. If it is not present,
+    then you get line-based input from the Hi-Tech C library. If PIPEMGR
+    is present then you get character-based input from PIPEMGR.
+
+    The line-based input in the library will now return EOF if a control-Z
+    is typed on a line by itself. Previously it would never return EOF on 
+    line-based input.
+
+    Unfortunately if you're using Simeon Cran's replacement ZPM3 then it
+    does not allow control-Z to be typed on an input line.
+    I'm not yet sure how to get round this.
+  
+    Remember that when PIPEMGR has parsed the command line, you may have a 
+    number of blank (zero-length) arguments.
+
+CP/M 3 extended error support
+
+    To enable CP/M 3 extended error support, put the line
+
+        bdos(0x2D,0xFF);
+
+    near the beginning of your program. Then errors such as read-only files 
+    will not cause the program to terminate abruptly; instead the call which
+    caused the error will fail, and perror() will explain the reason. The 
+    variable:
+
+        extern int errno;
+
+    will contain (16+x) for CP/M 3 extended error x.
+
+File passwords (CP/M 3)
+
+    NB: This feature is disabled.  You will need to change the
+        PWDREC definition in the file BDOS.AS to true and rebuild
+        and replace the module in LIBC.LIB to enable it.
+
+    There is partial support for file passwords. To enable it, declare a 
+    function:
+
+        #include <cpm.h>
+
+        char *mypass(struct FCB *fcb)
+        {
+        /* For the file specified by "fcb", a password needs to be entered.
+           Return a pointer to it (8 characters, uppercase, packed with
+           spaces) 
+         */
+        }
+
+    and insert a line near the beginning of your program:
+
+        _passwd = mypass;
+
+    Then your routine ("mypass" in this example) will be called when
+    CP/M reports a password error; it will be called repeatedly until
+    the user enters the correct password or a it returns a NULL pointer
+    (ie, the user has given up).
+
+Checks for a ZCPR3 environment
+
+    The variable
+
+        extern void *_z3env;
+
+    is 0 if one is not present, or its address if one is. It also passes it
+    as a third parameter to main():
+
+        int main(int argc, char **argv, void *z3env);
+
+    The Z3 environment address must be passed to the program in HL.
+
+Graceful exits
+
+    Compiled programs exit gracefully if run on an 8080 or 8086 processor,
+    or if there is not enough memory for the program and its static data.
+    This is done in the CRTCPM.OBJ module.
+
+CP/M 3 compatible error system
+
+    exit(0) and _exit(0) set the CP/M 3 error code to 0.
+    exit(n) and _exit(n) for non-zero n set the error code to 0xFF00 | (n&0x7F).
+
+    The practical upshot is that exit(0) translates as "OK"; other values 
+    translate as "error". If the next command is preceded by a : character, it 
+    will be ignored:
+
+        CPROG 
+        :OTHER
+
+    will only execute OTHER if CPROG exited with the value 0.
+
+Extended getenv()
+
+    Under CP/M 3, getenv() uses the search path set by SETDEF to locate the
+    ENVIRON file. So if you like to keep ENVIRON on a drive that isn't A:, 
+    programs will still find it.
+```

@@ -12,6 +12,12 @@
 ;	{
 ;		if(!(f->_flag & _IOWRT))
 ;			return EOF;
+;		if(!(f->_flag & _IODIRN))
+;			{
+;			f->_cnt = BUFSIZ;
+;			f->_flag |= _IODIRN;
+;			}
+;               f->_flag |= _IOWROTE;
 ;		if((f->_flag & _IOBINARY) == 0 && c == '\n')
 ;			fputc('\r', f);
 ;		if(f->_cnt > 0) {
@@ -33,6 +39,12 @@ _fputc:
 	ex	(sp),iy			;save iy and get file pointer
 	bit	_IOWRT_BIT,(iy+flag)	;are we reading
 	jr	z,reteof
+	bit	1,(iy+flag+1)		;_IODIRN_BIT
+	jr	nz,4f	
+	set	1,(iy+flag+1)		;Set _IODIRN
+	ld	(iy+cnt),0
+	ld	(iy+cnt+1),2		;512
+4:	set	2,(iy+flag+1)		;_IOWROTE_BIT
 	bit	_IOBINARY_BIT,(iy+flag)	;binary mode?
 	jr	nz,2f			;yes, just return
 	ld	a,c			;is it a newline?
@@ -54,6 +66,8 @@ _fputc:
 	ld	a,l			;check count
 	or	h
 	jr	z,1f			;no room at the inn
+	bit	_IONBF_BIT,(iy+flag)	;Not buffered?
+	jr	nz,1f			;Then spit it straight out
 	dec	hl			;update count
 	ld	(iy+cnt),l
 	ld	(iy+cnt+1),h

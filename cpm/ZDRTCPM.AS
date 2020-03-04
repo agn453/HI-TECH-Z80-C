@@ -4,12 +4,12 @@
 
 	psect	text
 	defs	100h		;Base of CP/M's TPA
-	global	start,_main,_exit,__Hdata, __trap
+	global	start,_main,_exit,__Hdata, __trap, __piped
 start:	ld	hl,(6)		;base address of fdos
-	ld	sp,hl			;stack grows downwards
-	ld	de,__Hdata		;end of initialized data
+	ld	sp,hl		;stack grows downwards
+	ld	de,__Hdata	;end of initialized data
 	scf
-	sbc	hl,de			;size of uninitialized data area
+	sbc	hl,de		;size of uninitialized data area
 	ld	c,l
 	ld	b,h
 	dec	bc	
@@ -20,7 +20,7 @@ start:	ld	hl,(6)		;base address of fdos
 	ldir			;clear memory
 	ld	hl,-80h		;allow room for args
 	add	hl,sp
-	ld	sp,hl			;allow space for args
+	ld	sp,hl		;allow space for args
 	ld	bc,0		;flag end of args
 	push	bc
 	ld	hl,80h		;address of argument buffer
@@ -64,6 +64,8 @@ start:	ld	hl,(6)		;base address of fdos
 	jp	p,0
 
 	psect	data
+__piped:
+        defw    0
 nularg:	defm	'main'
 	defb	0
 	end	start

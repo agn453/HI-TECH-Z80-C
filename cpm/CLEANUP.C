@@ -4,26 +4,24 @@
 
 struct fcb	_fcb[MAXFILE] =
 {
-	{ FILL, U_CON },	/* stdin */
-	{ FILL, U_CON },	/* stdout */
-	{ FILL, U_CON },	/* stderr */
+    { FILL, U_RSX },	/* stdin */
+    { FILL, U_RSX },	/* stdout */
+    { FILL, U_ERR },	/* stderr */
 };
 
-_cpm_clean()
+void _cpm_clean()
 {
-	uchar	i;
+    uchar	i;
 
-	i = 0;
-	do
-		close(i);
-	while(++i < MAXFILE);
+    i = 0;
+    do
+        close(i);
+    while (++i < MAXFILE);
 }
 
-_putrno(where, rno)
-uchar *	where;
-long	rno;
+void _putrno(uchar *where, long rno)
 {
-	where[0] = rno & 0xFF;
-	where[1] = (rno >> 8) & 0xFF;
-	where[2] = (rno >> 16) & 0xFF;
+    where[0] = rno & 0xFF;
+    where[1] = (rno >> 8) & 0xFF;
+    where[2] = (rno >> 16) & 0xFF;
 }

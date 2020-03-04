@@ -4,7 +4,7 @@
 	cnt	equ	2		;number of bytes left
 	base	equ	4		;beginning of buffer
 	flag	equ	6		;flag bits
-	file	equ	7		;file number
+	file	equ	8		;file number
 
 ;	The bit numbers of the flags in flag
 	
@@ -24,3 +24,4 @@
 	RETURN	equ	015q		; carriage return 
 
 	EOF	equ	-1		; stdio EOF value
+

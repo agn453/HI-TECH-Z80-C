@@ -365,3 +365,14 @@ Extended getenv()
     ENVIRON file. So if you like to keep ENVIRON on a drive that isn't A:, 
     programs will still find it.
 ```
+
+
+Release v3.09-3b
+---------------
+
+Updated the previous release to adjust the ordering of modules in LIBC.LIB -
+programs should now link correctly.  Also added the missing documentation for
+the debugger in doc/DEBUGMAN.TXT (this was previously available from the
+now defunct hitech.com.au web site) and scanned PDFs of the 1989
+vintage documentation.
+

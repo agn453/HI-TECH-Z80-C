@@ -1,0 +1,10 @@
+libr 
+<r libc3.lib \
+<getargs.obj getenv.obj assert.obj printf.obj fprintf.obj sprintf.obj \
+<doprnt.obj gets.obj puts.obj fwrite.obj getw.obj putw.obj \
+<putchar.obj perror.obj fputc.obj flsbuf.obj \
+<fopen.obj freopen.obj fseek.obj fread.obj rewind.obj remove.obj \
+<setbuf.obj fscanf.obj ctime.obj cgets.obj cputs.obj \
+<sscanf.obj scanf.obj doscan.obj ungetc.obj \
+<fgetc.obj filbuf.obj stdclean.obj fclose.obj fflush.obj \
+<buf.obj exit.obj fakeclean.obj

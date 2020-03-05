@@ -1,0 +1,17 @@
+libr
+<r libc3.lib \
+<abs.obj allsh.obj alrsh.obj asallsh.obj asalrsh.obj asar.obj \
+<asdiv.obj asladd.obj asland.obj asll.obj asllrsh.obj \
+<aslmul.obj aslor.obj aslr.obj aslsub.obj aslxor.obj \
+<asmod.obj asmul.obj atoi.obj atol.obj bitfield.obj \
+<blkclr.obj blkcpy.obj bmove.obj brelop.obj calloc.obj csv.obj \
+<ctype.obj ctype_.obj frelop.obj getsp.obj idiv.obj imul.obj \
+<index.obj inout.obj iregset.obj isalpha.obj isdigit.obj \
+<islower.obj isspace.obj isupper.obj ladd.obj land.obj ldiv.obj \
+<linc.obj llrsh.obj lmul.obj longjmp.obj lor.obj lrelop.obj \
+<lsub.obj lxor.obj malloc.obj max.obj memcmp.obj <memcpy.obj \
+<memset.obj pnum.obj qsort.obj rand.obj rcsv.obj \
+<rindex.obj sbrk.obj shar.obj shll.obj shlr.obj strcat.obj \
+<strchr.obj strcmp.obj strcpy.obj strlen.obj strncat.obj \
+<strncmp.obj strncpy.obj strrchr.obj swap.obj tolower.obj \
+<toupper.obj wrelop.obj xtoi.obj

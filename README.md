@@ -481,3 +481,117 @@ strftime()
     buffer, not including the terminating NUL, or zero if more
     than maxs characters were produced.
 ```
+
+Release v3.09-4-Z280
+--------------------
+
+This is the first experimental release of the libraries that have been
+built for a Zilog Z280 MPU.  Most of this work was retrieved from a
+distribution of the UZI-280 operating system for the CPU280 system.
+It was written by Stefan Nitschke and Alexander Schmid.
+
+To use this on a system with a Zilog Z280 MPU, merge the files from the
+*dist* folder (i.e. the Z80 version) with those from the *z280dist*
+folder onto a drive in the search path (usually drive A in user area 0).
+On CP/M 3 the *.COM, *.H, CRTCPM.OBJ and the *.LIB files should be
+set with the system file attribute so they can be found from all user
+areas.
+
+The *z280dist* folder contains the following files -
+
+```
+C280.COM
+    The compiler front-end for driving the HI-TECH Z80 C compiler
+    for CP/M to produce code to run on a Zilog Z280 MPU.  It accepts
+    command lines similar to the C.COM front-end from the *dist*
+    folder - with one extra command-line switch to perform optimisation
+    of generated assembly language to use the enhanced Z280 instructions.
+
+        c280 -of2 ...
+
+    will cause the OPTIMH.COM pass to perform this optimisation.
+
+OPTIMH.COM and OPTIMH.C
+    This is the Z280 assembly language optimiser (with source-code).
+    The following instructions are optimised -
+
+        call amul        -> multw hl,de
+
+        call lmul        -> multuw hl,de
+
+        call csv         -> push iy, push ix, lda ix,(sp+0)  (+6 bytes)
+
+        ld  (hl),c
+        inc hl           -> ldw (hl),bc
+        ld  (hl),b       -> inc hl
+
+        ld  (hl),e
+        inc hl           -> ldw (hl),de
+        ld  (hl),d       -> inc hl
+
+        ld  c,(hl)
+        inc hl           -> ldw bc,(hl)
+        ld  b,(hl)       -> inc hl
+
+        ld  e,(hl)
+        inc hl           -> ldw de,(hl)
+        ld  d,(hl)       -> inc hl
+
+        ld  c,(ix+n)     or iy
+        ld  b,(ix+n+1)   -> ldw bc,(ix+n)    (2 byte)
+
+        ld  e,(ix+n)     or iy
+        ld  d,(ix+n+1)   -> ldw de,(ix+n)    (2 byte)
+
+        ld  l,(ix+n)     or iy
+        ld  h,(ix+n+1)   -> ldw hl,(ix+n)    (2 byte)
+
+        ld  (ix+n),b     or iy
+        ld  (ix+n+1),c   -> ldw (ix+n),bc    (2 byte)
+
+        ld  (ix+n),e     or iy
+        ld  (ix+n+1),d   -> ldw (ix+n),de    (2 byte)
+
+        ld  (ix+n),h     or iy
+        ld  (ix+n+1),l   -> ldw (ix+n),hl    (2 byte)
+
+        or  a
+        sbc hl,bc        -> subw hl,bc       (1 byte)
+
+        or  a
+        sbc hl,de        -> subw hl,de       (1 byte)
+
+        push  ix
+        pop   de
+        ld    hl,nn
+        add   hl,de      -> lda hl,(ix+nn)   (3 byte)
+
+        push  ix         -> ld  e,ixl
+        pop   de         -> ld  d,ixh
+
+        push  ix
+        pop   hl         -> lda hl,(ix+0)
+
+    In addition memory addressing with large offset -
+
+        push  ix
+        pop   de
+        ld    hl,nn
+        add   hl,de      -> lda hl,(ix+nn)   (3 byte)
+
+        push	iy
+        pop	de
+        ld	hl,nn
+        add	hl,de	-> lda	hl,(iy+nn)  (3 byte)
+
+LIB280C.LIB and LIB280F.LIB
+    These are the library modules for the Z280 C run-time library
+    and floating point library that contain optimised Z280 routines.
+    These will only execute on a Z280 MPU - and not on a Z80!
+    They have been built from sources of the v3.09-4 release.
+
+LIB280C#.LIB and LIB280F#.LIB
+    These are the original library files obtained from the UZI280 v1.12
+    distribution files.
+
+```

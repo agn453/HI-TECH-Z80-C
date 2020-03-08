@@ -1,0 +1,80 @@
+;----------  M282LIBF.SUB  ----------
+; Assumes DEHUFF -X FLOAT.HUF has extracted
+; all sources to the default drive
+;------------------------------------
+era m280libf.log
+put console output to file m280libf.log [system]
+c280 -c -of2 PRINTF.C
+c280 -c -of2 FPRINTF.C
+c280 -c -of2 SPRINTF.C
+c280 -c -of2 SCANF.C
+c280 -c -of2 FSCANF.C
+c280 -c -of2 SSCANF.C
+c280 -c -of2 DOPRNT.C
+c280 -c -of2 DOSCAN.C
+c280 -c -of2 ATOF.C
+c280 -c -of2 FNUM.C
+ZAS FBCD.AS
+c280 -c -of2 TAN.C
+c280 -c -of2 ACOS.C
+c280 -c -of2 ASIN.C
+c280 -c -of2 ATAN2.C
+c280 -c -of2 ATAN.C
+c280 -c -of2 COS.C
+c280 -c -of2 SIN.C
+c280 -c -of2 SINH.C
+c280 -c -of2 COSH.C
+c280 -c -of2 TANH.C
+c280 -c -of2 EXP.C
+c280 -c -of2 LOG.C
+c280 -c -of2 EVALPOLY.C
+c280 -c -of2 SQRT.C
+ZAS FREXP.AS
+c280 -c -of2 FABS.C
+c280 -c -of2 CEIL.C
+c280 -c -of2 FLOOR.C
+ZAS FINC.AS
+ZAS ASFLOAT.AS
+ZAS FRNDINT.AS
+ZAS FTOL.AS
+ZAS LTOF.AS
+ZAS FLOAT.AS
+pip m:lib280f.lib=a:lib280f.lib[g0r]
+LIBR R m:lib280f.LIB PRINTF.OBJ
+LIBR R m:lib280f.LIB FPRINTF.OBJ
+LIBR R m:lib280f.LIB SPRINTF.OBJ
+LIBR R m:lib280f.LIB SCANF.OBJ
+LIBR R m:lib280f.LIB FSCANF.OBJ
+LIBR R m:lib280f.LIB SSCANF.OBJ
+LIBR R m:lib280f.LIB DOPRNT.OBJ
+LIBR R m:lib280f.LIB DOSCAN.OBJ
+LIBR R m:lib280f.LIB ATOF.OBJ
+LIBR R m:lib280f.LIB FNUM.OBJ
+LIBR R m:lib280f.LIB FBCD.OBJ
+LIBR R m:lib280f.LIB TAN.OBJ
+LIBR R m:lib280f.LIB ACOS.OBJ
+LIBR R m:lib280f.LIB ASIN.OBJ
+LIBR R m:lib280f.LIB ATAN2.OBJ
+LIBR R m:lib280f.LIB ATAN.OBJ
+LIBR R m:lib280f.LIB COS.OBJ
+LIBR R m:lib280f.LIB SIN.OBJ
+LIBR R m:lib280f.LIB SINH.OBJ
+LIBR R m:lib280f.LIB COSH.OBJ
+LIBR R m:lib280f.LIB TANH.OBJ
+LIBR R m:lib280f.LIB EXP.OBJ
+LIBR R m:lib280f.LIB LOG.OBJ
+LIBR R m:lib280f.LIB EVALPOLY.OBJ
+LIBR R m:lib280f.LIB SQRT.OBJ
+LIBR R m:lib280f.LIB FREXP.OBJ
+LIBR R m:lib280f.LIB FABS.OBJ
+LIBR R m:lib280f.LIB CEIL.OBJ
+LIBR R m:lib280f.LIB FLOOR.OBJ
+LIBR R m:lib280f.LIB FINC.OBJ
+LIBR R m:lib280f.LIB ASFLOAT.OBJ
+LIBR R m:lib280f.LIB FRNDINT.OBJ
+LIBR R m:lib280f.LIB FTOL.OBJ
+LIBR R m:lib280f.LIB LTOF.OBJ
+LIBR R m:lib280f.LIB FLOAT.OBJ
+;----------  done  ---------- 
+put console to console
+

@@ -1,0 +1,521 @@
+
+10E>; Compile all LIBC4.LIB modules from sources for Z280
+10E>c280
+A:C280     COM  (User 0)
+HI-TECH C COMPILER (CP/M-80) V3.09
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Special version for the Zilog Z280 MPU
+
+c> -of2 -c abort.c \
+c> abs.as \
+c> allsh.as \
+c> alrsh.as \
+c> asallsh.as \
+c> asalrsh.as \
+c> asar.as \
+c> asdiv.as \
+c> asladd.as \
+c> asland.as \
+c> asll.as \
+c> asllrsh.as \
+c> aslmul.as \
+c> aslor.as \
+c> aslr.as \
+c> aslsub.as \
+c> aslxor.as \
+c> asmod.as \
+c> asmul.as \
+c> assert.c \
+c> atoi.as \
+c> atol.c \
+c> bdos.as \
+c> bios.as \
+c> bitfield.as \
+c> blkclr.as \
+c> blkcpy.c \
+c> bmove.as \
+c> brelop.as \
+c> buf.c \
+c> calloc.c \
+c> cgets.c \
+c> chmod.c \
+c> cleanup.c \
+c> close.c \
+c> convtime.c \
+c> cputs.c \
+c> creat.c \
+c> csv.as \
+c> ctime.c \
+c> ctype_.c \
+c> ctype.c \
+c> doprnt.c \
+c> doscan.c \
+c> dup.c \
+c> exec.as \
+c> execl.as \
+c> _exit.as \
+c> exit.as \
+c> exit.c \
+c> fakeclea.as \
+c> fakeclea.c \
+c> fakecpcl.as \
+c> fcbname.c \
+c> fclose.c \
+c> fflush.c \
+c> fgetc.as \
+c> filbuf.c \
+c> flsbuf.c \
+c> fopen.c \
+c> fprintf.c \
+c> fputc.as \
+c> fread.c \
+c> frelop.as \
+c> freopen.c \
+c> fscanf.c \
+c> fseek.c \
+c> fwrite.c \
+c> getargs.c \
+c> getch.c \
+c> getenv.c \
+c> getfcb.c \
+c> gets.c \
+c> getsp.as \
+c> getuid.as \
+c> getw.c \
+c> idiv.as \
+c> imul.as \
+c> index.as \
+c> inout.as \
+c> iregset.as \
+c> isalpha.as \
+c> isatty.c \
+c> isdigit.as
+ABORT.C
+ 0 bytes optimized away
+ 0 bytes replaced
+ABS.AS
+ALLSH.AS
+ALRSH.AS
+ASALLSH.AS
+ASALRSH.AS
+ASAR.AS
+ASDIV.AS
+ASLADD.AS
+ASLAND.AS
+ASLL.AS
+ASLLRSH.AS
+ASLMUL.AS
+ASLOR.AS
+ASLR.AS
+ASLSUB.AS
+ASLXOR.AS
+ASMOD.AS
+ASMUL.AS
+ASSERT.C
+ 6 bytes optimized away
+ 12 bytes replaced
+ATOI.AS
+ATOL.C
+ 15 bytes optimized away
+ 30 bytes replaced
+BDOS.AS
+BIOS.AS
+BITFIELD.AS
+BLKCLR.AS
+BLKCPY.C
+ 10 bytes optimized away
+ 20 bytes replaced
+BMOVE.AS
+BRELOP.AS
+BUF.C
+ 4 bytes optimized away
+ 20 bytes replaced
+CALLOC.C
+ 9 bytes optimized away
+ 26 bytes replaced
+CGETS.C
+ 21 bytes optimized away
+ 42 bytes replaced
+CHMOD.C
+ 16 bytes optimized away
+ 24 bytes replaced
+CLEANUP.C
+ 12 bytes optimized away
+ 24 bytes replaced
+CLOSE.C
+ 6 bytes optimized away
+ 12 bytes replaced
+CONVTIME.C
+ 11 bytes optimized away
+ 60 bytes replaced
+CPUTS.C
+ 2 bytes optimized away
+ 4 bytes replaced
+CREAT.C
+ 6 bytes optimized away
+ 18 bytes replaced
+CSV.AS
+CTIME.C
+ 161 bytes optimized away
+ 320 bytes replaced
+CTYPE_.C
+ 0 bytes optimized away
+ 0 bytes replaced
+CTYPE.C
+ 4 bytes optimized away
+ 8 bytes replaced
+DOPRNT.C
+ 28 bytes optimized away
+ 74 bytes replaced
+DOSCAN.C
+ 127 bytes optimized away
+ 274 bytes replaced
+DUP.C
+ 1 bytes optimized away
+ 14 bytes replaced
+EXEC.AS
+EXECL.AS
+_EXIT.AS
+EXIT.AS
+EXIT.C
+ 2 bytes optimized away
+ 4 bytes replaced
+FAKECLEA.AS
+FAKECLEA.C
+ 0 bytes optimized away
+ 0 bytes replaced
+FAKECPCL.AS
+FCBNAME.C
+ 57 bytes optimized away
+ 108 bytes replaced
+FCLOSE.C
+ 7 bytes optimized away
+ 14 bytes replaced
+FFLUSH.C
+ 18 bytes optimized away
+ 36 bytes replaced
+FGETC.AS
+FILBUF.C
+ 18 bytes optimized away
+ 42 bytes replaced
+FLSBUF.C
+ 13 bytes optimized away
+ 22 bytes replaced
+FOPEN.C
+ 4 bytes optimized away
+ 20 bytes replaced
+FPRINTF.C
+ 7 bytes optimized away
+ 10 bytes replaced
+FPUTC.AS
+FREAD.C
+ 33 bytes optimized away
+ 66 bytes replaced
+FRELOP.AS
+FREOPEN.C
+ 29 bytes optimized away
+ 64 bytes replaced
+FSCANF.C
+ 7 bytes optimized away
+ 10 bytes replaced
+FSEEK.C
+ 84 bytes optimized away
+ 164 bytes replaced
+FWRITE.C
+ 31 bytes optimized away
+ 62 bytes replaced
+GETARGS.C
+ 188 bytes optimized away
+ 424 bytes replaced
+GETCH.C
+ 10 bytes optimized away
+ 20 bytes replaced
+GETENV.C
+ 115 bytes optimized away
+ 242 bytes replaced
+GETFCB.C
+ 138 bytes optimized away
+ 280 bytes replaced
+GETS.C
+ 32 bytes optimized away
+ 64 bytes replaced
+GETSP.AS
+GETUID.AS
+GETW.C
+ 10 bytes optimized away
+ 20 bytes replaced
+IDIV.AS
+IMUL.AS
+INDEX.AS
+INOUT.AS
+IREGSET.AS
+ISALPHA.AS
+ISATTY.C
+ 1 bytes optimized away
+ 2 bytes replaced
+ISDIGIT.AS
+
+10E>c280
+A:C280     COM  (User 0)
+HI-TECH C COMPILER (CP/M-80) V3.09
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Special version for the Zilog Z280 MPU
+
+c> -of2 -c islower.as \
+c> isspace.as \
+c> isupper.as \
+c> ladd.as \
+c> land.as \
+c> ldiv.as \
+c> linc.as \
+c> llrsh.as \
+c> lmul.as \
+c> longjmp.as \
+c> lor.as \
+c> lrelop.as \
+c> lsub.as \
+c> lxor.as \
+c> malloc.c \
+c> max.as \
+c> memcmp.c \
+c> memcpy.c \
+c> memset.c \
+c> mods.txt \
+c> open.c \
+c> perror.c \
+c> pnum.c \
+c> printf.c \
+c> putchar.c
+ISLOWER.AS
+ISSPACE.AS
+ISUPPER.AS
+LADD.AS
+LAND.AS
+LDIV.AS
+LINC.AS
+LLRSH.AS
+LMUL.AS
+LONGJMP.AS
+LOR.AS
+LRELOP.AS
+LSUB.AS
+LXOR.AS
+MALLOC.C
+ 99 bytes optimized away
+ 262 bytes replaced
+MAX.AS
+MEMCMP.C
+ 13 bytes optimized away
+ 26 bytes replaced
+MEMCPY.C
+ 10 bytes optimized away
+ 20 bytes replaced
+MEMSET.C
+ 14 bytes optimized away
+ 28 bytes replaced
+OPEN.C
+ 29 bytes optimized away
+ 78 bytes replaced
+PERROR.C
+ 8 bytes optimized away
+ 18 bytes replaced
+PNUM.C
+ 28 bytes optimized away
+ 50 bytes replaced
+PRINTF.C
+ 5 bytes optimized away
+ 6 bytes replaced
+PUTCHAR.C
+ 2 bytes optimized away
+ 4 bytes replaced
+
+10E>c280
+A:C280     COM  (User 0)
+HI-TECH C COMPILER (CP/M-80) V3.09
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Special version for the Zilog Z280 MPU
+
+c> -of2 -c puts.c \
+c> putw.c \
+c> qsort.c \
+c> rand.c \
+c> rcsv.as \
+c> read.c \
+c> remove.c \
+c> rename.c \
+c> rewind.c \
+c> rindex.as \
+c> sbrk.as \
+c> scanf.c \
+c> seek.c \
+c> setbuf.c \
+c> setup.c \
+c> shar.as \
+c> shll.as \
+c> shlr.as \
+c> signal.c \
+c> sprintf.c \
+c> srand1.c \
+c> srand.as \
+c> sscanf.c \
+c> start1.as \
+c> start2.as \
+c> stat.c \
+c> stdclean.c \
+c> strcat.as \
+c> strchr.as \
+c> strcmp.as \
+c> strcpy.as \
+c> strdup.c \
+c> strftime.c \
+c> stricmp.as \
+c> stristr.c \
+c> strlen.as \
+c> strncat.as \
+c> strncmp.as \
+c> strncpy.as \
+c> strnicmp.as \
+c> strnistr.c \
+c> strnstr.c \
+c> strrchr.as \
+c> strstr.c \
+c> strtok.c \
+c> swap.as \
+c> sys_err.c \
+c> time.c \
+c> timezone.c \
+c> tolower.as \
+c> toupper.as \
+c> ungetc.c \
+c> unlink.c \
+c> wrelop.as \
+c> write.c \
+c> xtoi.as \
+c> zcrtcpm.as \
+c> zdrtcpm.as \
+c> zrrtcpm.as
+PUTS.C
+ 10 bytes optimized away
+ 20 bytes replaced
+PUTW.C
+ 8 bytes optimized away
+ 16 bytes replaced
+QSORT.C
+ 142 bytes optimized away
+ 346 bytes replaced
+RAND.C
+ 2 bytes optimized away
+ 4 bytes replaced
+RCSV.AS
+READ.C
+ 120 bytes optimized away
+ 220 bytes replaced
+REMOVE.C
+ 2 bytes optimized away
+ 4 bytes replaced
+RENAME.C
+ 15 bytes optimized away
+ 18 bytes replaced
+REWIND.C
+ 2 bytes optimized away
+ 4 bytes replaced
+RINDEX.AS
+SBRK.AS
+SCANF.C
+ 5 bytes optimized away
+ 6 bytes replaced
+SEEK.C
+ 49 bytes optimized away
+ 98 bytes replaced
+SETBUF.C
+ 12 bytes optimized away
+ 24 bytes replaced
+SETUP.C
+ 0 bytes optimized away
+ 0 bytes replaced
+SHAR.AS
+SHLL.AS
+SHLR.AS
+SIGNAL.C
+ 10 bytes optimized away
+ 20 bytes replaced
+SPRINTF.C
+ 10 bytes optimized away
+ 16 bytes replaced
+SRAND1.C
+ 10 bytes optimized away
+ 20 bytes replaced
+SRAND.AS
+SSCANF.C
+ 16 bytes optimized away
+ 24 bytes replaced
+START1.AS
+START2.AS
+STAT.C
+ 68 bytes optimized away
+ 144 bytes replaced
+STDCLEAN.C
+ 0 bytes optimized away
+ 0 bytes replaced
+STRCAT.AS
+STRCHR.AS
+STRCMP.AS
+STRCPY.AS
+STRDUP.C
+ 10 bytes optimized away
+ 20 bytes replaced
+STRFTIME.C
+ 185 bytes optimized away
+ 428 bytes replaced
+STRICMP.AS
+STRISTR.C
+ 25 bytes optimized away
+ 50 bytes replaced
+STRLEN.AS
+STRNCAT.AS
+STRNCMP.AS
+STRNCPY.AS
+STRNICMP.AS
+STRNISTR.C
+ 45 bytes optimized away
+ 90 bytes replaced
+STRNSTR.C
+ 44 bytes optimized away
+ 88 bytes replaced
+STRRCHR.AS
+STRSTR.C
+ 22 bytes optimized away
+ 44 bytes replaced
+STRTOK.C
+ 38 bytes optimized away
+ 76 bytes replaced
+SWAP.AS
+SYS_ERR.C
+ 0 bytes optimized away
+ 0 bytes replaced
+TIME.C
+ 18 bytes optimized away
+ 32 bytes replaced
+TIMEZONE.C
+ 0 bytes optimized away
+ 0 bytes replaced
+TOLOWER.AS
+TOUPPER.AS
+UNGETC.C
+ 25 bytes optimized away
+ 50 bytes replaced
+UNLINK.C
+ 14 bytes optimized away
+ 20 bytes replaced
+WRELOP.AS
+WRITE.C
+ 94 bytes optimized away
+ 166 bytes replaced
+XTOI.AS
+ZCRTCPM.AS
+ZDRTCPM.AS
+ZRRTCPM.AS
+
+10E>; All modules compiled.
+10E>put console to console
+A:PUT      COM  (User 0)

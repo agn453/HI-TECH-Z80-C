@@ -1,4 +1,4 @@
-; Compile all LIBC4.LIB modules from sources
+; Compile all LIBC3.LIB modules from sources
 c
 <-o -c abort.c \
 <abs.as \
@@ -142,20 +142,11 @@ c
 <strchr.as \
 <strcmp.as \
 <strcpy.as \
-<strdup.c \
-<strftime.c \
-<stricmp.as \
-<stristr.c \
 <strlen.as \
 <strncat.as \
 <strncmp.as \
 <strncpy.as \
-<strnicmp.as \
-<strnistr.c \
-<strnstr.c \
 <strrchr.as \
-<strstr.c \
-<strtok.c \
 <swap.as \
 <sys_err.c \
 <time.c \

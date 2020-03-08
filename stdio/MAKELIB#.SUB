@@ -1,7 +1,7 @@
-; Use librarian to replace all modules in LIBC4.LIB
+; Use librarian to replace all modules in LIBC3.LIB
 ; NB: the ordering is important for resolving dependencies at link time
 libr
-<r LIBC4.lib \
+<r libc3.lib \
 <start1.obj     \
 <getargs.obj    \
 <assert.obj     \
@@ -145,18 +145,9 @@ libr
 <strncat.obj    \
 <strncmp.obj    \
 <strncpy.obj    \
-<strstr.obj   \
-<strnstr.obj  \
-<strdup.obj   \
-<stricmp.obj  \
-<stristr.obj  \
-<strnicmp.obj \
-<strnistr.obj \
-<strtok.obj   \
-<strftime.obj \
 <csv.obj        \
 <rcsv.obj       \
 <tolower.obj    \
 <toupper.obj    \
 <xtoi.obj
-; Library LIBC4.LIB created
+; Library LIBC3.LIB created

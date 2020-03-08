@@ -1,10 +1,18 @@
+; strrchr(char *s, int c)
+; version that can find the closing \0 by Arnold M
+
 	psect	text
-	global	rcsv, cret, _strrchr
+	global	rcsv, cret, _strrchr	; also equivalent to _rindex
 
 _strrchr:
-	call	rcsv
+	pop	bc
+	pop	hl
+	pop	de
+	push	de
+	push	hl
+	push	bc
 
-	ld	bc,0
+	ld	bc,1 ; the closing nul is considered part of the string here
 	jr	5f
 6:
 	inc	hl
@@ -14,15 +22,10 @@ _strrchr:
 	or	a
 	jr	nz,6b
 1:
-	dec	hl
-	ld	a,c
-	or	b
-	jr	z,2f
-	dec	bc
-	ld	a,(hl)
-	cp	e
-	jr	nz,1b
-4:	jp	cret
-
-2:	ld	hl,0
-	jp	4b
+	ld 	a,e
+	cpdr
+	inc	hl
+	ret	z
+	ld	l,c
+	ld	h,b
+	ret

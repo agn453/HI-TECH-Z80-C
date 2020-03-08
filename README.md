@@ -368,7 +368,7 @@ Extended getenv()
 
 
 Release v3.09-3b
----------------
+----------------
 
 Updated the previous release to adjust the ordering of modules in LIBC.LIB -
 programs should now link correctly.  Also added the missing documentation for
@@ -376,3 +376,108 @@ the debugger in doc/DEBUGMAN.TXT (this was previously available from the
 now defunct hitech.com.au web site) and scanned PDFs of the 1989
 vintage documentation.
 
+
+Release v3.09-4
+---------------
+
+Some of the string related function prototypes in STRING.H are missing from
+the LIBC.LIB library.  Most of these are from an update to the MSX flavour
+of HI-TECH C by Arnold Metsalaar.  I've cherry-picked the following routines
+which are applicable to generic CP/M as well as MSX.
+
+```
+STRING.H
+    The header file has been changed to reflect the available
+    functions in LIBC.LIB.  There are still missing routines -
+    namely strcoll() strcspn() strpbrk() and strspn() and these
+    have been commented out for now.
+
+strchr() and strrchr()
+        char *strchr(char *s, int c)
+        char *strrchr(char *s, int c)
+    These functions - as well as index() and rindex() (which are identical)
+    previously returned a NULL for no match.  The functions now return
+    a pointer to the character string's ending NUL character.
+
+stricmp() and strnicmp()
+        char stricmp(char *s1, char *s2)
+        char strnicmp(char *s1, char *s2, size_t n)
+    Case-insensitive versions of strcmp() and strncmp() comparison routines.
+    Can also be referenced as strcasecmp() and strncasecmp().
+
+strstr(), strnstr(), stristr() and strnistr()
+        char *strstr(char *t, char *s)
+        char *strnstr(char *t, char *s, unsigned int n)
+        char *strcasestr(char *t, char *s)
+        char *strncasestr(char *t, char *s, unsigned int n)
+    These extra functions locate the first occurrence of string s in
+    string t.  The functions strnstr() and strcasestr() read at most
+    n characters from the string t.  The functions strcasestr() and
+    casencasestr() use case insensitive comparisons.
+    All these functions return a pointer to the first character of
+    the first occurence ofstring s in string t if found, and NULL
+    otherwise.
+
+strdup()
+        char *strdup(char *s)
+    Allocates a new buffer for and copies the string pointed to
+    by s to it.  Returns a pointer to the copy of the string or NULL
+    if the memory allocation failed. The memory block can be released
+    using free().
+
+strtok()
+        char *strtok(char *s, char *tok, size_t toklen, char *brk)
+    Copies charactersfrom s to tok until it encounters one of the
+    characters in brk or until toklen-1 characters have been copied
+    (whichever comes first).  It then adds a NUL character to the
+    end of the string.  This is a non-conforming POSIX function.
+
+TIME.H
+    Now includes a prototype for strftime() - see below.
+
+strftime()
+        size_t strftime(char *s, size_t maxs, char *f, struct tm *t)
+    Converts a time value t to a string using the format string f
+    into the string s of size maxs (including a terminating NUL).
+    It acts as a sprintf() function for date/time values. The
+    following are valid in the format string -
+
+             %A      full weekday name (Monday)
+             %a      abbreviated weekday name (Mon)
+             %B      full month name (January)
+             %b      abbreviated month name (Jan)
+             %c      standard date and time representation
+             %d      day-of-month (01-31)
+             %H      hour (24 hour clock) (00-23)
+             %I      hour (12 hour clock) (01-12)
+             %j      day-of-year (001-366)
+             %M      minute (00-59)
+             %m      month (01-12)
+             %p      local equivalent of AM or PM
+             %S      second (00-59)
+             %U      week-of-year, first day sunday (00-53)
+             %W      week-of-year, first day monday (00-53)
+             %w      weekday (0-6, sunday is 0)
+             %X      standard time representation
+             %x      standard date representation
+             %Y      year with century
+             %y      year without century (00-99)
+             %Z      timezone name
+             %%      percent sign
+
+    the standard date string is equivalent to:
+
+        %a %b %d %Y
+
+    the standard time string is equivalent to:
+
+        %H:%M:%S
+
+    the standard date and time string is equivalent to:
+
+        %a %b %d %H:%M:%S %Y
+
+    strftime() returns the number of characters placed in the
+    buffer, not including the terminating NUL, or zero if more
+    than maxs characters were produced.
+```

@@ -413,7 +413,7 @@ strstr(), strnstr(), stristr() and strnistr()
     These extra functions locate the first occurrence of string s in
     string t.  The functions strnstr() and strcasestr() read at most
     n characters from the string t.  The functions strcasestr() and
-    casencasestr() use case insensitive comparisons.
+    strncasestr() use case insensitive comparisons.
     All these functions return a pointer to the first character of
     the first occurence ofstring s in string t if found, and NULL
     otherwise.
@@ -427,7 +427,7 @@ strdup()
 
 strtok()
         char *strtok(char *s, char *tok, size_t toklen, char *brk)
-    Copies charactersfrom s to tok until it encounters one of the
+    Copies characters from s to tok until it encounters one of the
     characters in brk or until toklen-1 characters have been copied
     (whichever comes first).  It then adds a NUL character to the
     end of the string.  This is a non-conforming POSIX function.

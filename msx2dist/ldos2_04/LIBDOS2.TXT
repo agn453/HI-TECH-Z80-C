@@ -1,0 +1,113 @@
+LIBDOS2 - IO-library for MSX-DOS2 and HiTech-C
+----------------------------------------------
+
+HiTech-C comes with a standard library (libc.lib) that does not
+support subdirectories and environment items under MSX-DOS2.
+
+This library (libdos2.lib) is specificly written  for  MSX-DOS2
+and fully supports subdirectories and environment items. 
+
+	Obtaining LIBDOS2
+
+Download libdos2.pma from http://banzai.msx.nu and unpack using
+lhext.com. The distribution contains the library (libdos2.lib),
+the sources (*.as, *.c) and some documentation (this file).
+
+	Using LIBDOS2
+
+To use libdos2  you  must  first  place  libdos2.lib  in  the
+directory as libc.lib and then invoke the C-compiler with the
+"-ldos2" option. If you want  to  link  in  the  support  for
+floating point numbers as well you must make sure libf.lib is
+scanned before libdos2.lib ("-lf -ldos2"). 
+Note that libdos2.lib is not a complete C-library,  you  will
+still need some functions from libc.lib, this is not normally
+a  concern  because  the  compiler   driver   (e.g.   cc.com)
+automatically instructs the linker to scan libc.lib.
+Programs linked with libdos2 will only  run  under  MSX-DOS2.
+Many functions could be rewritten to work under both DOS1 and
+DOS2, but the DOS2-only versions are more compact. Of  course
+you can easily make two versions of your program.
+
+	Documentation
+
+Most functions are described in the documentation that  comes
+with HiTech-C.  A  possibly  incomplete  list  of  differences
+between how libdos2 does and what the  documentation  says  it
+does is below.
+
+In functions taking a filename as argument, you can use '/' as
+a path-separator; libdos2 will perform a  substitution  before
+passing a filename to  MSX-DOS2.  This  substitution  is  also
+available to applications directly as 
+
+	int _flip(char *d, char *s, unsigned int n);
+
+	Copy at most n characters from s to d, 
+	any occurence of '/' will be replaced by '\\'.
+
+The functions _getargs() and _glob() are intended for wildcard
+expansion  in  the  command-line  (-R  option),  but  may   be
+used directly as well, see glob.as and getargs.c for details.
+
+The function  open()  takes  the  same  values  for  the  mode
+argument as the original in  libc.lib.  Additionally  you  may
+take a bitwise or with O_INHER to make the handle  inheritable
+for child processes created with the DOS2 call  _FORK  (0x60).
+The  macro  O_INHER  is  defined  in  unixio.h  together  with
+O_RDONLY, O_WRONLY and O_RDWR.
+
+The  header  file  dirent.h  contains  declarations  for  some
+funtions to read directories. These functions comply with  the
+POSIX standard.
+
+	DIR * opendir (char * name);
+	
+	Open the directory with the given  name  for  reading,
+        returns NULL and sets errno if  the  operation  fails,
+        use malloc() to allocate memory.
+
+	struct dirent * readdir (DIR * dir);
+
+        Read one entry from directory dir,  struct  dirent  is
+        actually a  file  information  block  and  defined  in
+        dirent.h, but if you want to write a portable program,
+        you should only use char d_name[],  a  zero-terminated
+        string with at most  NAME_MAX  characters  before  the
+        zero.
+        The result of readdir() will  be  overwritten  by  the
+        next call to readdir() for the same directory.
+
+	int closedir (DIR * dir);
+
+        Close directory dir and release the associated storage
+        with free().
+
+	void rewinddir (DIR * dir);
+
+        Reset the pointer in directory dir, the next  call  to
+        readdir() for this directory  will  return  the  first
+        directory entry.
+
+Other functions  operating  on  directories  are  declared  in
+sys.h: 
+
+	int chdir (char * name);
+	int mkdir (char * name);
+	int getcwd (int drive);
+	int rmdir (char * name);
+
+        These functions follow the HiTech-C documentation. The
+        functions  mkdir()  and  getcwd()  have  a   different
+        calling convention than their POSIX counterparts.
+
+The  getenv()  function  returns  a  pointer  to   a   freshly
+malloc()'ed string rather than a pointer to static storage. It
+is possible to free()  the  pointer,  but  this  will  not  be
+portable to other systems. 
+Libdos2 does not provide a char ** environ.
+
+Please send bug reports, comments, suggestions for improvement
+etc. to Arnold Metselaar<arnold.metselaar@planet.nl>.
+
+

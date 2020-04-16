@@ -1,0 +1,178 @@
+# makefile for fixes in HiTech-C's libraries
+	
+# Directory where the libraries are installed:
+# Backslashes must be doubled twice here because make will process them twice
+DIR = a:\\\\hitech
+# Command to move a library file,
+# change to copy if the library files are on a different drive or partition:
+MV = move
+
+# Name for distribution package:
+DIST = libfix01.lzh
+
+# Options to pass to the C compiler:
+# -o : optimise, *strongly recommended*,
+# -v : be verbose, lets you follow the progress.
+#
+CFLAGS = -o -v
+
+# if you want another tiomezone than central european time, 
+# you can define TZNAME and recompile strftime.c. For example:
+#
+# CFLAGS += '-DTZNAME="GMT"'
+
+help :
+	type $$m.t <<EOF
+	The following targets are available:
+	update : build object files and replace them in .\\libc.libc, and .\\libf.lib.
+	reorder : put object files in libc.lib in the right order, 
+	          not needed for libf.lib. 
+	install : copy libraries and updated header files to $(DIR). 
+	distribution : make a new distribution package in $(DIST).
+	clean : delete the objectfiles extracted from libc.lib by 'make reorder'.
+	veryclean : delete the extracted objectfiles and also those made from sources.
+	
+	Change DIR in the makefile if you do not have HiTech-C in $(DIR).
+	EOF
+
+# source files
+#
+LC_C = sleep.c time.c convtime.c strftime.c doprnt.c
+LC_C += strdup.c strstr.c stristr.c strnstr.c strnistr.c strtok.c 
+LF_C = fdoprnt.c
+LC_AS1 = msxtime.as memcmp.as memcpy.as memmove.as memset.as memchr.as getch.as
+LC_AS2 = frelop.as strnicmp.as stricmp.as strchr.as strrchr.as inout.as
+LC_AS2 += peekpoke.as signal.as rcsv.as
+SRC  = $(LC_C) $(LF_C) $(LC_AS1) $(LC_AS2)
+
+# all object files for libc.lib, order is important:
+#
+LIBC_ALL  = getargs.obj start1.obj start2.obj assert.obj printf.obj fprintf.obj
+LIBC_ALL += fcbname.obj sprintf.obj doprnt.obj getenv.obj gets.obj puts.obj
+LIBC_ALL += fwrite.obj getw.obj putw.obj srand1.obj putchar.obj perror.obj
+LIBC_ALL += fputc.obj flsbuf.obj fopen.obj freopen.obj rewind.obj fseek.obj
+LIBC_ALL += fread.obj remove.obj fscanf.obj sscanf.obj scanf.obj doscan.obj
+LIBC_ALL += fgetc.obj filbuf.obj stdclean.obj fclose.obj fflush.obj open.obj
+LIBC_ALL += read.obj write.obj seek.obj stat.obj chmod.obj rename.obj creat.obj
+LIBC_ALL += isatty.obj close.obj unlink.obj dup.obj execl.obj getfcb.obj
+LIBC_ALL += cleanup.obj setbuf.obj ctime.obj cgets.obj cputs.obj ungetc.obj
+LIBC_ALL += buf.obj abort.obj signal.obj exit.obj sleep.obj time.obj
+LIBC_ALL += convtime.obj timezone.obj getch.obj getuid.obj bdos.obj bdoshl.obj
+LIBC_ALL += bios.obj _exit.obj fakeclean.obj fakecpcln.obj sys_err.obj
+LIBC_ALL += memcpy.obj memcmp.obj memset.obj abs.obj asallsh.obj allsh.obj
+LIBC_ALL += asalrsh.obj asar.obj asdiv.obj asladd.obj asland.obj asll.obj
+LIBC_ALL += asllrsh.obj aslmul.obj aslor.obj aslsub.obj aslxor.obj strftime.obj
+LIBC_ALL += asmod.obj atoi.obj atol.obj blkclr.obj blkcpy.obj calloc.obj
+LIBC_ALL += asmul.obj bitfield.obj ctype_.obj getsp.obj strchr.obj inout.obj
+LIBC_ALL += peekpoke.obj iregset.obj isalpha.obj isdigit.obj
+LIBC_ALL += islower.obj isspace.obj isupper.obj ladd.obj land.obj linc.obj
+LIBC_ALL += llrsh.obj longjmp.obj lor.obj pnum.obj brelop.obj qsort.obj
+LIBC_ALL += strdup.obj malloc.obj strtok.obj wrelop.obj lrelop.obj frelop.obj
+LIBC_ALL += lsub.obj lxor.obj max.obj idiv.obj ldiv.obj swap.obj aslr.obj
+LIBC_ALL += bmove.obj imul.obj rand.obj alrsh.obj lmul.obj strrchr.obj sbrk.obj
+LIBC_ALL += shar.obj shll.obj shlr.obj strcat.obj strcmp.obj strcpy.obj
+LIBC_ALL += strlen.obj strncat.obj strncmp.obj strncpy.obj tolower.obj
+LIBC_ALL += toupper.obj xtoi.obj memmove.obj memchr.obj strstr.obj stristr.obj
+LIBC_ALL += strnstr.obj strnistr.obj msxtime.obj strnicmp.obj stricmp.obj
+LIBC_ALL += rcsv.obj csv.obj
+
+# object files that will be replaced
+#
+COBJ = $(LC_C:.c=.obj) $(LF_C:.c=.obj) 
+OBJC = $(LC_AS1:.as=.obj) $(LC_AS2:.as=.obj)
+LIBC_NEW = $(LC_C:.c=.obj) $(OBJC)
+LIBF_NEW = fbcd.obj $(LF_C:.c=.obj) 
+
+# We keep the rest
+#
+TMP  = $(LIBC_ALL)
+TMP -= $(LIBC_NEW)
+LIBC_KEPT = $(TMP)
+TMP =
+TMP =
+
+update : libc.lib $(DIR)/libf.lib
+
+libc.lib : $(LIBC_NEW)
+	libr <<EOF
+	r libc.lib \\
+	$(LC_C:.c=.obj) \\
+	$(OBJC)
+	EOF
+
+libf.lib : $(LIBF_NEW)
+	libr r libf.lib $(LIBF_NEW)
+
+reorder : extract $(LIBC_NEW)
+	:del $$tmp.lib
+	libr <<EOF
+	r $$tmp.lib $(LIBC_ALL:.obj=.obj\\\n)
+	EOF
+	copy $$tmp.lib libc.lib
+	:del $$tmp.lib
+
+extract :
+	make -v -f - <<EOF
+	L = $(LIBC_KEPT:.obj=.obj\\\nL += )
+	..all : $$(L)
+	% : L : LIBC.LIB
+		libr x libc.lib %
+	EOF
+	
+# Install the changes
+#
+install : $(DIR)/libc.lib $(DIR)/string.h $(DIR)/time.h $(DIR)/libf.lib
+
+$(DIR)/string.h : string.h
+	copy string.h $(DIR)\\*.*
+$(DIR)/time.h : time.h
+	copy time.h $(DIR)\\*.*
+$(DIR)/libc.lib : libc.lib
+	copy libc.lib $(DIR)\\*.*
+$(DIR)/libf.lib : libf.lib
+	copy libf.lib $(DIR)\\*.*
+
+# standard rules to make object files
+#
+%.obj  : OBJC : %.as
+	zas -n -o%.obj %.as
+
+%.obj  : COBJ : %.c
+	cc -c $(CFLAGS) -O%.obj %.c
+
+# clean up
+#
+clean :
+	copy $$m.t $$clean.bat <<EOF
+	del $(LIBC_KEPT:.obj=.obj\ndel) >nul
+	EOF
+	:$$clean.bat
+	del $$clean.bat
+
+cleanmore :
+	copy $$m.t $$clean.bat <<EOF
+	del $(LIBC_NEW:.obj=.obj\ndel) $(LF_C:.c=.obj)
+	EOF
+	:$$clean.bat
+	del $$clean.bat
+
+veryclean : clean cleanmore
+
+# make a package for distribution
+#
+EXTRA = fixes.txt makefile string.h time.h fbcd.obj libc.lib libf.lib
+
+distribution : $(DIST)
+
+$(DIST) : $(EXTRA) $(SRC)
+	:del pack.bat
+	copy $$m.t pack.bat <<EOF
+	del $(DIST)
+	lhpack $(DIST) $(EXTRA) $(LF_C)
+	lhpack $(DIST) $(LC_C)
+	lhpack $(DIST) $(LC_AS1)
+	lhpack $(DIST) $(LC_AS2)
+	EOF
+	echo Lhpack cannot be run from make, please run pack.bat from the command line.
+
+

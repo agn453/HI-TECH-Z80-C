@@ -1,0 +1,44 @@
+The original version of this make program was written by Landon Dryer.
+Pierre Gielen has adapted it to msx-dos, and later Arnold Metselaar 
+adapted it further for msx-dos2 and made some important improvements
+
+The contents of Readme file that came with the old msx-dos version is below.
+
+
+Last month I wrote a version of the Unix(tm) utility MAKE.  It runs under
+VAX/VMS and MSDOS 2.0.  I am placing it in the public domain, and it is yours
+for the asking.  You may copy it, or give it away.  You can make any changes
+you like to it.  All I ask is that you DO NOT TRY TO SELL IT.
+
+Anyway, there is now a MAKE for MSXDOS.  It is free, and it works pretty well.
+I'm giving it away because it might do the world some good.  Who knows?
+
+Caveat: this version of MAKE is NOT compatible with the Unix(tm) version.
+Some differences are explained in the documentation.  Most of the problem stems
+from the fact that I've never had a chance to use the original version of MAKE,
+and the documentation I've seen on it has been poor.  My idea of what a make
+program should do is almost certainly different from what you Unix(tm) hackers
+are used to.  Well, hell -- the software is worth what you paid for it.  Have
+fun.
+
+In order to get MAKE running on your system, you need to:
+
+	1.  Read the documentation file MAKE.MAN.  (Yes, read the
+	    directions.)
+
+	2.  Edit the file MAKE.H to represent your system
+
+	3.  Recompile the source code
+
+	4.  Test out MAKE by running it on itself.  (Make a backup
+	    first!)
+
+
+
+			Good luck,
+
+			Landon Dyer (G.DYER @ SU-SCORE)
+
+
+
+

@@ -1,0 +1,172 @@
+Fixes for the libraries provided with HiTech-C.
+
+  HiTech has given kind permission to  use  its  C-compiler  for
+cp/m without paying a fee. hiTech has also released as  freeware
+some libraries for cp/m and the sources thereof.
+
+  Pierre Gielen has made adaptations and extensions for  msxdos2
+and has released as public domain in 1993. I have  bundled  some
+of these changes with some fixes, improvements and  additions  I
+have written myself.
+
+  I have deliberately left out the things that work  only  under
+msx-dos2 to keep it  easy  to  make  programs  that  work  under
+msxdos1; there is libdos2 for those who want to  use  the  extra
+possibilities of msx-dos2.
+
+  To use these patches you can copy the header and library files
+in this package to the directory where you  keep  your  copy  of
+HiTech-C or type 'make install'. You are free to use, modify and
+redistribute this package. Please send bug-reports,  suggestions
+etc. to me.
+
+Arnold Metselaar <arnold.metselaar@planet.nl>
+
+
+  The following files are present in this package:
+
+fixes.txt 
+	this file
+
+makefile
+        Use with a recent version of make.com to create object  files
+        and update library files. Run make without  arguments  for  a
+        list of possibilities.
+
+libc.lib
+libf.lib
+	Replacements for the equally named libraries that  come  with
+        HiTech-C. 
+
+string.h
+	Changed header file that reflects which string  functions  are
+        actually available in libc.lib.
+
+time.h
+	Changed header file declaring some extra functions.
+
+	SOURCEFILES:
+
+memchr.as	void * memchr (void * s, int c, size_t n)
+memmove.as	void * memmove (void * dest, void * src, size_t n) 
+	Missing in the original libc.lib.
+
+memcmp.as	int memcmp (void * s1, void * s2, size_t n)
+memcpy.as	void * memcpy (void * dest, void * src, size_t n) 
+	More  efficient  implementations  of  these   functions,   the
+        original implementations are in C. 
+
+memset.as	void * memset (void * s, int c, size_t n)
+        The original function written in C has the c and n arguments
+        interchanged, this one follows the standard ordering.
+
+strchr.as	char * strchr(char * s, int c)
+		char * index (char * s, int c)
+strrchr.as	char * strrchr(char * s, int c)
+		char * rindex (char * s, int c)
+        When c==0 the original functions would return NULL, and these
+        functions  will  return  the  address  of  the  closing   NUL
+        character.
+
+stricmp.as	int strcasecmp(char *s1, char *s2)
+strnicmp.as	int strncasecmp(char *s1, char *s2, size_t n)
+        These extra functions  are  similar  to  strcmp  and  strncmp
+        respectively, but letters are converted to lower case  before
+        comparison, which leads to a case insensitive comparison.
+
+strstr.c	char * strstr (char *t, char *s) 
+strnstr.c	char * strnstr (char *t, char *s, unsigned int n) 
+stristr.c	char * strcasestr (char *t, char *s) 
+strnistr.c	char * strncasestr (char *t, char *s, unsigned int n) 
+        These extra functions locate the first occurence of string  s
+        in string t. The functions strnstr  and  strcasestr  read  at
+        most n characters from string t. The functions strcasestr and
+        strncasestr use case insensitive comparisons.
+        All these functions return a pointer to the  first  character
+        of the first occurence of string s in string t if found,  and
+        NULL otherwise.
+
+strdup.c	char * strdup (char * s)
+	This function allocates a  new  buffer  for  and  copies  the
+        string pointed to by s to it. It returns  a  pointer  to  the
+        copy of the string or NULL if memory allocation  failed.  The
+        memory block can be release with free().
+
+strtok.c	char *strtok(char *s, char *tok, size_t toklen, char *brk)
+        This function copies  characters  from  s  to  tok  until  it
+        encounters one of the characters in  brk  or  until  toklen-1
+        characters have been copied, whichever comes first.  It  then
+        adds a terminating zero.
+	This function does not conform to the posix standard. 
+
+time.c		time_t time (time_t * tp)
+		time_t timerset (time_t t)
+		int timeup (time_t t)
+msxtime.as	time_t msxtime ()
+	The function time gives the time in seconds  since  00:00:00,
+        Jan  1st,  1970  (unix  style),  timerset  and   timeup   are
+        convenience functions that can be used  to  check  a  certain
+        time interval has passed. The actual conversion  is  done  in
+        msxtime.
+
+getch.as	char getch(void);    /* get character */
+		char getche(void);   /* get/echo character */
+		void putch(int);     /* output character to console*/
+		void ungetch(int);   /* unget character */
+		int kbhit(void);     /* true if keyboard hit */
+		void cursor(char onoff)
+	Accelerated versions of these functions declared in conio.h.
+
+inout.as	byte in(byte io-address)
+		byte out(byte io-address,byte value)
+		void di();
+		void ei();
+        The functions in() and out() can be used  to  access  the  IO
+        ports of the CPU directly. Interrupts  can  be  disabled  and
+        enabled with di()  and  ei()  respectively.  These  functions
+        disable and enable the generation of interrupts  by  the  VDP
+        rather than the servicing by the  CPU,  since  many  MSX-bios
+        routines enable interrupts even when  they  are  called  with
+        interrupts disabled.
+
+peekpoke.as	void poke(word address, byte value)
+		byte peek(word address)
+        These  functions  are  equivalent  to  the   more   efficient
+        (*((byte*)address))   =   value    and    (*((byte*)address))
+        respectively. Programmers with experience in basic will  find
+        them more familiar.
+
+sleep.c		void sleep (unsigned int seconds)
+	This function does nothing until the given number of  seconds
+        has passed.
+
+strftime.c	size_t strftime(char *s, size_t maxs, char *f, struct tm *t)
+        This function takes a broken down time (*t) and  converts  it
+        to a string, in the way specified by the format string (f).
+
+convtime.c	long convtime(unsigned int dostime, unsigned int dosdate)
+        This routine converts the date and time in MS(X)DOS format to
+        Unix style date and time - seconds since 00:00:00 Jan 1 1970.
+
+fdoprnt.c	doprnt(FILE* fp, char* format, ...)
+doprnt.c	doprnt(FILE* fp, char* format, ...)
+        Routines used by printf and similar functions to format data,
+        fdoprnt contains the variant that can also handle floats. The
+        original versions use 8 bit variables to hold string lengths,
+        which fails on strings larger than 255 characters. If you  do
+        not use such very long strings, you may  prefer  to  use  the
+        original functions, that are somewhat smaller and faster.
+
+fbcd.obj
+	Internal  routine,  used  to  print  floating  point  numbers,
+        strangely enough the source provided by HiTech is correct, but
+        the object file in libc.lib was not.
+
+frelop.as
+	Internal routine, correction for  a  bug  that  caused  wrong
+        results when comparing negative numbers that  have  the  same
+        exponent.
+
+rcsv.as
+	Internal routine, marginal improvement in size@and speed. 
+

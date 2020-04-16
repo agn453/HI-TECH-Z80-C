@@ -1,0 +1,49 @@
+# makefile for a:\hitech
+
+DIST = cc_01.lzh
+SRC = cc.c vshrt.as redir.as makefile
+BIN = cc.com vsh1.o vsh2.o vsh3.o redir.obj
+XTRA = cc.txt vsh.txt libdos2.lib
+
+..all : cc.com vsh1.o vsh2.o vsh3.o redir.obj
+
+cc_new.com : cc.o vsh2.o libdos2.lib
+	cc -Occ_new.com -R -Mcc.map -N vsh2.o cc.o libdos2.lib
+
+cc.o : cc.c
+	cc -c -o -v cc
+
+vsh1.o : vshrt.as
+	echo mypages equ 1 > mypages.as
+	zas -N -Ovsh1.o vshrt.as
+	:del mypages.as
+
+vsh2.o : vshrt.as
+	echo mypages equ 2 > mypages.as
+	zas -N -Ovsh2.o vshrt.as
+	:del mypages.as
+
+vsh3.o : vshrt.as
+	echo mypages equ 3 > mypages.as
+	zas -N -Ovsh3.o vshrt.as
+	:del mypages.as
+
+redir.obj : redir.as
+	zas -N -Oredir.obj redir.as
+
+distribution : $(DIST)
+
+$(DIST) : $(SRC) $(BIN) $(XTRA)
+	echo del $(DIST) > pack.bat
+	xargs >>pack.bat <<EOF  -b lhpack $(DIST)
+	$(SRC)
+	$(BIN)
+	$(XTRA)
+	EOF
+	echo lhpack can not be run from make,
+	echo please run pack.bat from the command prompt
+
+cc.com : cc_new.com
+	echo new version of cc.com left in cc_new.com, check before copying.
+
+

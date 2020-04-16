@@ -226,7 +226,7 @@ strcasecmp()
     implemented.  Its function prototype is in string.h.  It works just like
     strcmp() except that upper- and lower-case letters are treated as 
     identical.  There is also a strncasecmp() analogue of strncmp() which
-    allows one to limit the comparison to a certain number of cbaracters.
+    allows one to limit the comparison to a certain number of characters.
 
 toupper() and tolower()
 
@@ -415,7 +415,7 @@ strstr(), strnstr(), stristr() and strnistr()
     n characters from the string t.  The functions strcasestr() and
     strncasestr() use case insensitive comparisons.
     All these functions return a pointer to the first character of
-    the first occurence ofstring s in string t if found, and NULL
+    the first occurence of string s in string t if found, and NULL
     otherwise.
 
 strdup()
@@ -595,3 +595,25 @@ LIB280C#.LIB and LIB280F#.LIB
     distribution files.
 
 ```
+
+Not actually a release - but including MSX-DOS 2 distribution
+-------------------------------------------------------------
+
+I'm making available the raw updates for MSX-DOS 2 for those interested in
+the last known updates to run HI-TECH C for Z80 under MSX2.  You'll
+find the individual files in the msx2dist folder and its sub-folders.
+
+These were extracted from files produced by Arnold Metselaar in 2013 and
+distributed as LZH archives on the MSX Banzai web site at
+http://msxbanzai.tni.nl/dev/software.html
+
+One of these archive files is known to be damaged - the one containing the
+I/O library for MSX-DOS 2 (LDOS2_04.LZH) and I have replaced the source
+code for only one of the modules with that from an earlier version obtained
+from the Wayback machine at archive.org.  There's still 
+a missing (_UTIME.AS) that I'll try to re-assemble from the binary
+in the cc_01/LIBDOS2.LIB library. 
+
+The msx2dist/original folder contains the as-downloaded .LZH archives
+(including the previous versions from archive.org).
+

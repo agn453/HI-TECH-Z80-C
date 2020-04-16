@@ -1,0 +1,48 @@
+2013-08-10  Arnold Metselaar (arnold.metselaar@planet.nl)
+	* Include makefile in package.
+	* rename.c: set C register before calling bDos
+	* stat.c: new file
+	* perror.c: slight changes so that we can ...
+	* makefile (stat.c, perror.c, rename.c): ... use optim
+        * stat.h: new file
+	* dirent.h: declare rmdir and mkdir
+	*@utime.c, _utime.as: new files
+
+2006-08-29  Arnold Metselaar (arnold.metselaar@planet.nl)
+	* unixio.h: Added to distribution, define O_INHER and
+	friends.
+	* libdos2.txt: explain constants for open().
+
+2006-04-15  Arnold Metselaar (arnold.metselaar@planet.nl)
+	* readdir.as: Fully support "." as a shorthand for the current 
+	directory, allow to open root directories.
+
+2006-04-15  Arnold Metselaar (arnold.metselaar@planet.nl)
+	* flip.c: Removed and replaced by ...
+	* flip.as: new file.
+	* rmdir.c: New file. 
+	* mkdir.c: New file.
+	* dirent.h: New file.
+	* opendir.as: New file.
+	* readdir.as: New file.
+        * closedir.as: New file.
+	* rewnddir.as: New file.
+	* lib.cmd: Removed.
+	* makefile (libdos2.lib): Use a here-document with smart substitutions
+	instead of lib.cmd. 
+	* makefile (unlink.obj): enable optimiser.
+	* makefile: Added new files, some reordering.
+	* libdos2.txt: Added documentation for new functions.
+
+2006-04-14  Arnold Metselaar (arnold.metselaar@planet.nl) 
+	* libdos2.txt: added a remark about libc.lib still being needed.
+
+2006-01-29  Arnold Metselaar (arnold.metselaar@planet.nl)
+	* doprnt.c(ival, doprnt): Use unsigned int for string lengths, this
+	fixes errors when printing long strings (make.com)
+	* time.c, ctime.c: No longer in libdos2; both work under msxdos1 and
+	are still available as part of the patched libc.lib.
+	* lib.cmd: time.obj and ctime.obj removed. 
+	* makefile: Simplified using new features in make.
+	* pack.bat: Removed from the package, generated on demand by make.
+

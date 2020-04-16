@@ -1,0 +1,71 @@
+# standard IO for MSX-DOS2
+
+..all : libdos2.lib
+DIST = ldos2_04
+HFILES = dirent.h unixio.h stat.h
+XFILES = libdos2.txt libdos2.lib changes makefile
+distribution : $(DIST).lzh
+
+# All object files. Ordering does matter
+
+ALLOBJ = getargs.obj start1.obj start2.obj assert.obj printf.obj fprintf.obj
+ALLOBJ += sprintf.obj doprnt.obj puts.obj gets.obj fwrite.obj getw.obj 
+ALLOBJ += putchar.obj perror.obj fputc.obj flsbuf.obj fopen.obj freopen.obj
+ALLOBJ += rewind.obj fseek.obj fread.obj remove.obj setbuf.obj fscanf.obj
+ALLOBJ += cgets.obj cputs.obj scanf.obj sscanf.obj doscan.obj ungetc.obj
+ALLOBJ += fgetc.obj filbuf.obj stdclean.obj fclose.obj chdir.obj unlink.obj
+ALLOBJ += rmdir.obj fflush.obj buf.obj open.obj chmod.obj creat.obj mkdir.obj
+ALLOBJ += utime.obj read.obj write.obj seek.obj rename.obj isatty.obj close.obj
+ALLOBJ += dup.obj opendir.obj readdir.obj stat.obj act_file.obj flip.obj
+ALLOBJ += _utime.obj errno.obj getenv.obj setenv.obj exit.obj getcwd.obj
+ALLOBJ += closedir.obj rewnddir.obj fakecpcl.obj glob.obj bdos.obj
+
+# sourcefiles in C that cannot, or need not, be optimised with OPTIM
+# mostly due #asm - constructions : 
+CXSRC  = read.c write.c seek.c isatty.c close.c dup.c errno.c 
+
+CXOBJ = $(CXSRC:.c=.obj)
+
+# assembly sourcefiles
+ASSRC = getenv.as setenv.as exit.as start1.as start2.as getcwd.as
+ASSRC += opendir.as readdir.as closedir.as rewnddir.as act_file.as
+ASSRC += fakecpcl.as fgetc.as glob.as flip.as _utime.as bdos.as fputc.as
+
+ASOBJ = $(ASSRC:.as=.obj)
+
+# The rest are optimizable C sources
+COBJ = $(ALLOBJ)
+COBJ -= $(ASOBJ) $(CXOBJ)
+
+CSRC = $(COBJ:.obj=.c)
+..obj : $(ASOBJ)
+
+libdos2.lib : makefile $(ALLOBJ)
+	:del libdos2.lib
+	libr <<EOF
+	r libdos2.lib \\
+	$(ALLOBJ:.obj=.obj \\\n)
+	 
+	EOF
+
+
+$(DIST).lzh : $(XFILES) $(ASSRC) $(CSRC) $(CXSRC)
+	echo del $(DIST).lzh > pack.bat	
+	xargs -b >> pack.bat <<EOF  lhpack $(DIST)
+	$(XFILES) $(HFILES)
+	$(CSRC)
+	$(CXSRC)
+	$(ASSRC)
+	EOF
+	echo lhpack can not be run from make, please run pack.bat from the prompt 
+
+%.obj : ASOBJ : %.as
+	zas -O%.obj %.as
+
+%.obj : COBJ : %.c
+	cc -c -o -o%.obj %.c
+
+%.obj : CXOBJ : %.c
+	cc -c -o%.obj %.c
+
+

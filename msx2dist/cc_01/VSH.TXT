@@ -1,0 +1,83 @@
+*** VSH - use video memory as stack for executing sub-programs
+
+The file vshrt.as contains code to start a sub-program and continue
+the original program afterwards. It  is  assembled  to  3  variants
+vshN.o, with N in {1,2,3}. These object files are  intended  to  be
+used in stead of the standard crt.o, use CCs -N option to  suppress
+linking of crt.o, and mention vsh[123].o as the first file  on  the
+command line. 
+
+Note that vshN.o sets the highest address that can be used  by  the
+program to N*0x4000, make  sure  this  is  large  enough  for  your
+program; no checks are done during linking or startup.
+
+Another program can be called from the C-program with the function:
+
+int _mspawn(char * subprogram, char * args)
+
+Where subprogram is the full name of the program file, which should
+normally end in ".COM". This program will arrange for the state  of
+the calling program to be stored in the N highest  available  block
+of video memory, where extended memory is  considered  higher  than
+normal memory. The file named subprogram will be executed as if  it
+were run from the command prompt  with  arguments  args.  When  the
+subprogram finishes, the state of the calling program  is  restored
+and _mspawn returns the exit code from subprogram. 
+The exit code can be given with the DOS2 function _TERM (0x62),  or
+by storing at address 0x80. The value at 0x80 is only  used  if  it
+has been changed by the subprogram and DOS2  reports  a  zero  exit
+code. 
+If starting the subprogram fails, _spawn will return -1, and  errno
+will be set. 
+
+Note that _spawn changes  the  environment  variables  PROGRAM  and
+PARAMETERS, you may want to store them before calling _spawn().
+
+Care should be taken when running large subprograms as they may  be
+loaded only partially.
+
+* How things work
+
+Before doing anything else a program linked with  vshN.o  uses  the
+DOS2 mapper support routines to complete a piece of code to restore
+the settings in the slotselect and mapper registers, for which  the
+stack must be in page 3, then it sets the stackpointer to N*0x4000.
+
+When _spawn is called it first searches the file subprogram and its
+full path is stored in the environment variable PROGRAM and args is
+copied to 0x81 and the environment variable PARAMETERS. 
+Next it checks whether the launch/restore code is already installed
+at the top of the TPA and installs it, if it is  not.  This  allows
+nesting of _spawn()s. The launch/restore code costs  256  bytes  of
+TPA. 
+When  the  launch/restore  code  is  installed  vsh  looks  at   the
+environment item VSHTOP, If set, VSHTOP specifies the first page  of
+video memory that will not be used or probed by VSH. Pages 0..7  are
+ordinary video memory, pages 8..11 are the  extended  video  memory.
+Legal values are 2..12, default is 12.  Other  values  are  silently
+ignored. You can use this to protect data in higher pages. Emulators
+need vshtop=8 at present.
+
+Finally _spawn forks a subprocess and opens the file subprogram. It
+calls the launch-code with the file handle the number of  pages  to
+store and a pointer to 'stage-2' of the restore code.
+The launch code checks whether  there  is  enough  space  left  and
+updates an internal 'pointer' to the lowest video  memory  page  in
+use. It stores 256 bytes of 'stage-2' restore code followed by  the
+contents of the area 100h--(#pages*4000h)-1 into the video memory.
+Finally it reads the program into memory and passes control to it.
+
+The warm boot entry is deflected to 'stage 1' of the  restore  code
+at the top of the TPA. Stage-1 copies 256 bytes from  video  memory
+to the area just below  itself  and  then  passes  control  to  the
+'stage-2' just read from video memory. 
+Stage-2 restores the mapper and slotselect settings  saved  at  the
+start of the program and  and  continues  with  copying  the  video
+memory to the start of the TPA.
+Finally the parent process is joined and _spawn() returns the  exit
+code of the subprogram as described above.
+
+Screen display is turned off during transfers between  normal  and
+video memory, to enhance reliability. The flickering this produces
+should not be cause for alarm. 
+

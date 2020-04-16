@@ -1,0 +1,64 @@
+#
+# MSXDOS2 Make utility
+# Compile with HI-TECH C. 
+# Needs: 
+#	- vsh3.o, which belongs to cc.com
+# 	- libdos2.lib 
+# 	- strcasecmp(), addition to libc.lib (get the fixes for HiTech libs)
+# 	- strcasestr(), idem
+
+# Directory where the libraries and vsh3.o are stored
+CDIR = A:/HITECH
+ 
+LIBS = $(CDIR)/libdos2.lib $(CDIR)/libc.lib
+COBJ = make.o utils.o macro.o token.o parsedir.o file.o mspawn.o path.o
+XOBJ = xargs.o token.o path.o
+
+H = make.h
+FILES = $H $(COBJ:.o=.c)
+FILES -= $(XOBJ:.o=.c)
+FILES += $(XOBJ:.o=.c)
+DIST = make_004.lzh
+DOCUMENTATION = readme make.man makefile
+
+#
+# update make.com
+#
+
+make.com : $(COBJ) $(CDIR)/VSH3.O $(LIBS)
+	CC -V -OMAKE.COM -MMAKE.MAP -R -N VSH3.O $(COBJ) -lDOS2 
+
+#
+# update xargs.com
+#
+
+xargs.com : $(XOBJ) $(CDIR)/VSH2.O $(LIBS)
+	CC -V -OXARGS.COM -MXARGS.MAP -R -N VSH2.O $(XOBJ) -lDOS2
+
+#
+# update object files
+#
+
+%.O : COBJ : %.C $H
+	CC -c -o -v %.C
+
+xargs.o : xargs.c
+	CC -c -o -v xargs.c
+
+#
+# update distribution archive
+#
+	
+distribution : $(DIST)
+
+$(DIST) : MAKE.COM xargs.com $(FILES) $(DOCUMENTATION)
+	echo del $(DIST) > pack.bat
+	xargs -b <<EOF lhpack $(DIST) >> pack.bat 
+	make.com xargs.com $(DOCUMENTATION)
+	$(FILES)
+	EOF
+	echo lhpack can not be run from make, please run pack.bat from the command prompt 
+
+#
+# end of makefile
+

@@ -1,0 +1,393 @@
+ MAKE(I)                         3/10/84                                 MAKE(I)
+
+
+
+NAME
+	MAKE - maintain multiple source files
+
+
+SYNOPSIS
+	MAKE [-N] [-A] [-V] [-D] [-K] [-F makefile] [name ...]
+
+
+DESCRIPTION
+
+        MAKE is a utility inspired by the Unix(tm) command of the same name.
+        MAKE helps maintain programs that are constructed from  many  files.
+        MAKE processes a "makefile", a file which describes how to  build  a
+        program from its  source  files,  and  executes  the  the  steps  in
+        sub-processes. MAKE uses 48 KiB video memory to store its own state.
+
+	Be careful: this MAKE is NOT compatible with Unix(tm) MAKE!
+
+        The 'N' option causes MAKE to print out the steps it would follow in
+        order to rebuild the program. The 'A' option tells  MAKE  to  assume
+        that  all  files  are  obsolete,  and  that  everything  should   be
+        recompiled. The 'V' options causes MAKE to print  out  the  commands
+        before executing them. The  'D'  tells  make  print  out  even  more
+        information. MAKE normally stops after the first error (nonzero exit
+        status), the 'K' option instructs MAKE to keep going with other that
+        files that do not depend on a file that caused  an  error.  The  'F'
+        option, followed by a filename, can be used to  specify  a  makefile
+        other than the default one.
+
+        If no names are specified in the commandline, the  first  dependency
+        in the makefile is examined. Otherwise, the specified root names are
+        brought up to date. Filenames are not case sensitive. 
+
+        It is possible to use wildcards in the command line to  rebuild  all
+        all files matching a pattern:
+
+	MAKE *.o
+
+        Instructs Make to rebuild all _existing_ object files in the current
+        directory.
+
+	The default makefiles are:
+
+				MAKEFILE
+				MAKEFILE.2
+				MAKEFILE.1
+
+        If the first makefile cannot be found, MAKE attempts to use the next
+        one. This way a  program  can  be  distributed  with  makefiles  for
+        different compilers or different MSXDOS versions. If no makefile  is
+        ever found, MAKE prints a diagnostic and aborts.
+
+
+THE MAKEFILE
+
+        Comments begin with '#' and extend to the end of the line. A '#' (or
+        almost any other character) may be escaped with the escape character
+        slash backward (\). An escape character may be typed by doubling  it
+        (\\). The standard Unix escape codes are recognized (\n, \r, \t, \b,
+        \f).
+        Subdirectories are supported by MAKE through the use of LIBDOS2, but
+        may not be fully supported by the programs used  to  actually  build
+        your program. Use the slash forward (/) as a path separator, like in
+        Unix(tm).
+        A makefile is a list of dependencies. A  dependency  consists  of  a
+        root name, a colon, and zero or more names of dependent files.  (The
+        colon MUST be surrounded by whitespace.) For instance, in:
+
+		make.com : make.o utils.o parsedir.o file.o macro.o
+
+        the file 'make.com' depends on five other files. A root name with an
+        empty dependency, as in:
+
+		print :
+
+	is assumed NEVER up to date, and will always be recompiled.
+
+	The dependency list may be continued on successive lines:
+
+		bigfile.com : one.o two.o three.o four.o
+		five.o six.o gronk.o freeple.o scuzzy.lnk
+		frog.txt greeble.out
+
+        Any number of 'method' lines may follow a dependency.  Method  lines
+        begin with an ascii tab. When a  file  is  to  be  recompiled,  MAKE
+        interprets these lines (minus the tab) as commands.
+        Set commands, which change  the  environment  are  handled  by  MAKE
+        itself, and changes to the environment are reverted when MAKE  stops
+        processing a method.
+        It  searches  for  a  .com-file  in  the  directories  in  the  PATH
+        environment variable. if that fails,  MAKE  loads  the  the  program
+        pointed to by the SHELL environment variable to interpret the line.
+        If a method line starts with a colon (:) the colon then the colon is
+        not treated as a part of the command and  the  exit  status  of  the
+        command is ignored.
+
+	For example, in:
+
+		make.com : make.o parsedir.o file.o macro.o mk.h
+			link make, parsedir, file, macro
+			:del scratch
+			echo "Just another version of MAKE ..."
+
+        the three lines following the dependency  make  up  the  method  for
+        recompiling (or in this case, re-linking) the  file  'make.com'.  If
+        there is no file named scratch the  error  code  from  del  will  be
+        ignored because of the colon.
+	
+        If the macro "~INIT" is defined, its text will  be  executed  before
+        any other method. If the macro "~DEINIT" is defined, its  text  will
+        executed just before MAKE exits.
+
+		~INIT = mode 80\ntl msxcalc\n
+		~DEINIT = $(~DEINIT)tk "JvdM MSXCALC"\ncls
+
+	will expand to:
+
+		mode 80
+		tl msxcalc
+		.
+		.
+		tk "JvdM MSXCALC"
+		cls
+
+        When a root's method is defined, the value of the macro "~BEFORE" is
+        prefixed to the method, and the  value  of  the  macro  "~AFTER"  is
+        appended to it.
+
+        Frequently one wants to maintain more than one program with a single
+        makefile. In this case, a "master dependency" can  appear  first  in
+        the file:
+
+		allOfMyToolsAndHorribleHacks : cat peek poke.com grunge
+		cat : cat.com
+		cat.com : ....
+			(stuff for CAT.COM)
+		peek : peek.com
+		peek.com : (stuff for PEEK.COM)
+		poke.com : (stuff for POKE.COM)
+		grunge : grunge.com
+		grunge.com : (stuff for grunge)
+
+        In other words, make will  bring  everything  up  to  date  that  is
+        somehow connected to the first  dependency  (its  assumed  that  the
+        incredibly lengthy filename specified in this example won't actually
+        exist).
+
+
+MACROS
+        A macro is defined by a line of the form (the '=' MUST be surrounded
+        by whitespace):
+
+		<macro-name> = <macro-body>
+
+        A macro may be deleted by assigning an empty value to it. Macros may
+        be redefined, but  old  definitions  stay  around.  If  a  macro  is
+        redefined,  and  the  redefinition  is  later  deleted,  the   first
+        definition will take effect:
+
+        A way to change a macro is to use the operator +=, which  must  also
+        be surrounded by whitespace:
+
+		<macro-name> += <addendum>
+
+        In this case the old definition does not stay around. It  is  useful
+        for building long macro values.
+
+	One can also remove items from a list using the -=  operator,  which
+        must also be surrounded by whitespace:
+
+		<macro-name> -= <delendum>
+
+	In this case both the macro value and the delendum is treated  as  a
+        list of tokens, so it is not possible to delete parts of words.  The
+        old macro value stay around like in  the  case  of  a  normal  macro
+        definition.
+
+		MAC = first			! MAC = "first"
+		MAC = second			! MAC = "second"
+		MAC = $(MAC) third		! MAC = "second third"
+		MAC += fourth			! MAC = "second third fourth"
+		MAC -= third			! MAC = "second fourth"
+		MAC =				! MAC = "second third fourth"
+		MAC =				! MAC = "second"
+		MAC =				! MAC = "first"
+		MAC =				! MAC has no definition
+
+	A macro may be referenced in two ways:
+
+			$<char>   or	$(macro-name)
+
+        The first way only works if the macro's name is a single  character.
+        If the macro's name  is  longer  than  one  character,  it  must  be
+        enclosed in parenthesis. ['$' may be escaped by doubling it ("$$".)]
+	For example, in:
+
+		G = mk.h mk1.h
+		OBJS = make.o file.o parsedir.o macro.o
+		BOTH = $(OBJS) $G
+	
+		make.com : $(OBJS) $G
+		make.com : $(BOTH)
+		make.com : mk.h mk1.h make.o file.o parsedir.o macro.o
+			echo "This is a dollar sign --> $$"
+
+        after macro expansion, the three dependencies will appear  identical
+        and the two '$'s in the last line will turn into one '$'.
+
+SUBSITUTION REFERENCES
+	Make can substitute suffices when it expands  a  macro.  Sustitution
+        references   have    the    same    form    as    in    GNU    make;
+        $(MACRONAME:pattern=relpacement). Note  that  there  are  no  spaces
+        around the ':' and the '=' here.  Each  occurence  of  pattern  that
+        immediately precedes whitespace or the end of the  macro  value,  is
+        replaced with the replacement.
+	For example in:
+		OBJ = bar.o foo.o
+		SRC = $(OBJ:o=c)
+	the value of SRC will be 'bar.c foo.c'	
+
+
+%-RULES
+        Often many files are build in the same way. %-Rules can be  used  to
+        describe the build method of several files in one rule.
+        A %-rules consists of a pattern starting with '%', a colon (:),  the
+        name of macro, another colon optionally followed by dependencies and
+        methods.
+        For each  filename  in  the  value  of  the  macro  a  new  rule  is
+        constructed from the %-rule as follows.
+        The stem is what must be substituted  for  '%'  in  the  pattern  to
+        obtain the filename. The macro name and one colon are  removed  from
+        the %-rules and all occurences of '%' are replaced by the stem.
+
+	For example:
+
+	H = PROG.H
+	OBJS = PROG.O PART2.O
+	%.O : OBJS : %.C $H
+		CC -c -o -v %.C
+	PART2.O : EXTRA.H
+
+	is equivalent to
+
+	PROG.O : PROG.C PROG.H
+		CC -c -o -v PROG.C
+	PART2.O : PART2.C PROG.H EXTRA.H
+		CC -c -o -v PART2.C
+
+REDIRECTIONING
+	Make supports redirectioning of the standard input stream with  "<",
+        of standard output with ">" and ">>" and of standard error with "2>"
+        and "2>>". This is done by replacing handles 0,1,2 with  the  "close
+        file handle" and the "duplicate file handle" msxdos2 bdos  calls  as
+        appropriate.
+
+HERE-DOCUMENTS
+        If a line contains "<<" directly followed by a word,  the  following
+        lines until a line starting with the word are copied to '$M.T'.  The
+        characters "<<" and the word are removed from the line and "$M.T" is
+        opened for input and provided as standard input. This is  useful  in
+        combination with HiTech-C when one wants to link more  object  files
+        than would fit on a command line.
+	For example:
+	bigprog.com : $(COBJ) $(ASOBJ) $(LIBS)
+		cc <<EOF
+		-Obigprog.com -Mbigprog.map@-R
+		 $(COBJ:.o=.o \\\n)
+		 $(ASOBJ)
+		 $(LIBS)
+		EOF
+
+        Note the substitution trick to prevent overly long  lines,  this  is
+        needed for programs that use the 'buffered input' bdos  call  (0x0a)
+        to read standard input.
+        
+
+UNIX(tm) MAKE AND THIS ONE
+        They are NOT the same. Do not expect Unix  makefiles  to  work  with
+        this MAKE, even if you change the pathnames. There  are  some  major
+        differences between this version and the standard Unix(tm) MAKE:
+
+        1. Multiple root names are not allowed. Unix(tm) MAKE accepts  lines
+           of the form:
+
+		name1 name2 : depend1 depend2
+
+	   but this one doesn't.
+
+	2. There is no equivalent of double-colon ("::".)
+
+	3. Suffix rules must be rewritten as %-rules.
+
+
+SAMPLE MAKEFILE
+	#
+	# MSXDOS2 Make utility
+	# (compile with HI-TECH C, link with libdos2 by Arnold Metselaar)
+
+	# where HiTech-C and the special vsh3.o can be found:
+
+	CDIR = A:/HITECH
+
+	LIBS = $(CDIR)/libdos2.lib $(CDIR)/libc.lib
+	COBJ = make.o utils.o macro.o token.o parsedir.o file.o mspawn.o
+	H = make.h
+	FILES = $H $(COBJ:.o=.c)
+	DIST = make_003.lzh
+	DOCUMENTATION = readme make.man makefile
+
+	#
+	# update make.com
+	#
+
+	MAKE.COM : $(COBJ) $(CDIR)/VSH3.O $(LIBS)
+		CC -V -OMAKE.COM -MMAKE.MAP -R -N VSH3.O $(COBJ) -lDOS2 
+
+	#
+	# update object files
+	#
+
+	%.O : COBJ : %.C $H
+		CC -c -o -v %.C
+
+	#
+	# update distribution archive
+	#
+
+	distribution : $(DIST)
+
+	$(DIST) : MAKE.COM $(FILES) $(DOCUMENTATION)
+		:del $(DIST)
+		echo lhpack $(DIST) MAKE.COM $(DOCUMENTATION) > pack.bat
+		echo lhpack $(DIST) $(FILES) >> pack.bat
+		echo lhpack can not be run from make, please run pack.bat from the command prompt 
+
+	#
+	# end of makefile
+
+
+ENVIRONMENT ITEMS
+    VSHTOP
+
+        If set, VSHTOP specifies the first page of video  memory  that  will
+        not be used or probed by MAKE. Pages 0..7 are ordinary video memory,
+        pages 8..11 are the extended video memory. Legal values  are  2..12,
+        default is 12. Other values are silently ignored. If VSHTOP is 2  or
+        3, MAKE will not work. You can use this to protect  data  in  higher
+        pages. Some emulators may need VSHTOP=8.
+
+    PATH
+
+        The PATH environment specifies a  search  path  for  .com-files,  it
+        should be a semicolon(;)-separated list  of  directories,  like  for
+        COMMAND2.COM
+
+	It is possible to set environment items with "set" as a  part  of  a
+        targets method. Environment items changed this way will be  restored
+        by make when it stops executing the methos of the target.
+
+KNOWN BUGS
+        MAKE uses video memory to store its internal state when executing  a
+        subprocess. MAKE allocates 48 KiB from the top  of  the  video  ram.
+        MAKE and CC recognise the video memory in use by  MAKE.  Some  other
+        programs, like lhpack, overwrite the video memory used by MAKE. Such
+        programs must be run directly from the  command  prompt  or  from  a
+        batch file.
+
+        MAKE probes for extended video memory and may not run properly on on
+        emulators that do not emulate extended memory correctly.  If  that's
+        the case try "set VSHTOP=8".
+
+        The screen flashes when MAKE reads/writes its  state  from/to  video
+        memory. This is to improve reliability of video memory access.
+
+	
+AUTHORS
+	Landon Dyer			G.DYER@SU-SCORE.ARPA
+	175 Calvert Dr. #F-211		BASHFL::DYER (Atari Coinop)
+	Cupertino, CA 95014             - original version
+
+	Pierre Gielen - adaptations for MSX-DOS2
+
+	Arnold Metselaar	<arnold.metselaar@planet.nl>
+		- code for executing subprocesses and continuing
+		- %-rules
+		- here-documents
+		- additional macro functionality
+		- redirectioning
+

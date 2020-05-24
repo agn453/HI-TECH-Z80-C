@@ -57,7 +57,8 @@ char *	s;
                             if (drive & 0x20) break; /* End of chain */ 
                             else 
                             {
-			        if (!drive) drive=bdos(CPMIDRV);
+				/* if default, get current drive 0..15 */
+			        if (!drive) drive=bdos(CPMIDRV)+1; /**AGN fix*/
 			        envname[2]=drive+'@';
 			        if (loadenv(envname+2,avec,abuf,&i,av,ab)) break;
                                 if (loadenv(envname,avec,abuf,&i,av,ab)) break;

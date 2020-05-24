@@ -617,3 +617,21 @@ in the cc_01/LIBDOS2.LIB library.
 The msx2dist/original folder contains the as-downloaded .LZH archives
 (including the previous versions from archive.org).
 
+Release V3.09-4B - Fix to getenv()
+----------------------------------
+
+The getenv() function was not correctly looking up the location of
+the environment file under CP/M 3 for the "default" entry in the drive
+search chain.  It will now locate the ENVIRON file if you have set-up
+the default search chain with a default entry. For example
+
+```
+; Set search chain to current drive, RAMdisk, C: then A:
+setdef * m: c: a:
+```
+
+in your CP/M 3 PROFILE.SUB file (or manually entered on the command line).
+
+Updated dist/LIBC.LIB and z280dist/LIBC280.LIB too.
+
+

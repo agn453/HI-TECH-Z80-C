@@ -149,7 +149,7 @@ bdos()
 Release v3.09-3
 ---------------
 
-These are the Job Saxton modified versions of John Elliots's patches.
+These are the Jon Saxton modified versions of John Elliots's patches.
 
 ```
 Wildcard expansion
@@ -351,8 +351,9 @@ CP/M 3 compatible error system
     exit(n) and _exit(n) for non-zero n set the error code to 0xFF00 | (n&0x7F).
 
     The practical upshot is that exit(0) translates as "OK"; other values 
-    translate as "error". If the next command is preceded by a : character, it 
-    will be ignored:
+    translate as "error". You can use this in conjunction with CP/M 3's
+    SUBMIT featores.  If the next command in a .SUB file is preceded by
+    a : character, it will be ignored:
 
         CPROG 
         :OTHER

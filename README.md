@@ -352,7 +352,7 @@ CP/M 3 compatible error system
 
     The practical upshot is that exit(0) translates as "OK"; other values 
     translate as "error". You can use this in conjunction with CP/M 3's
-    SUBMIT featores.  If the next command in a .SUB file is preceded by
+    SUBMIT features.  If the next command in a .SUB file is preceded by
     a : character, it will be ignored:
 
         CPROG 
@@ -618,7 +618,7 @@ in the cc_01/LIBDOS2.LIB library.
 The msx2dist/original folder contains the as-downloaded .LZH archives
 (including the previous versions from archive.org).
 
-Release V3.09-4B - Fix to getenv()
+Release V3.09-4b - Fix to getenv()
 ----------------------------------
 
 The getenv() function was not correctly looking up the location of

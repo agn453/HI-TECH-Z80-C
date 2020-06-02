@@ -1,17 +1,14 @@
 #include	"cpm.h"
 #include	<signal.h>
 
-static void (*	where)();
+static signal_t where;
 
-void (*
-signal(sig, action))()
-int	sig;
-void (*	action)(int);
+signal_t signal(int sig, signal_t action) 
 {
-	void (*	prev)();
+	signal_t prev;
 
 	if(sig != SIGINT)
-		return (void (*)())-1;
+		return (signal_t)-1;
 	prev = where;
 	where = action;
 	return prev;
@@ -28,6 +25,6 @@ _sigchk()
 	if(c != CPMRBT)
 		return;
 	if(where == SIG_DFL)
-		exit();
-	(*where)();
+		exit(0);
+	(*where)(0);
 }

@@ -10,7 +10,7 @@ getch()
 		pushback = 0;
 		return c;
 	}
-	while(!(c = bdos(0x06, 0xFF)))
+	while(!(c = bdos(CPMDCIO, 0xFF)))
 		continue;
 	return c;
 }
@@ -24,7 +24,7 @@ getche()
 		pushback = 0;
 		return c;
 	}
-	return bdos(0x01) & 0xFF;
+	return bdos(CPMRCON) & 0xFF;
 }
 
 ungetch(c)
@@ -37,11 +37,11 @@ putch(c)
 unsigned char	c;
 {
 	if(c == '\n')
-		bdos(0x02, '\r');
-	bdos(0x02, c);
+		bdos(CPMWCON, '\r');
+	bdos(CPMWCON, c);
 }
 
 kbhit()
 {
-	return (bdos(0x0B) & 0xFF) != 0;
+	return (bdos(CPMICON) & 0xFF) != 0;
 }

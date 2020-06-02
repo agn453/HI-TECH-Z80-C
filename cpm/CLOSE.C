@@ -1,4 +1,4 @@
-#include    "cpm.h"
+#include    <cpm.h>
 
 int close(uchar fd)
 {
@@ -16,7 +16,7 @@ int close(uchar fd)
     fc->nr = (-fc->fsize & 0x7f);  /* Set exact file size */
     fc->name[5] |= 0x80;
     if (fc->use == U_WRITE || fc->use == U_RDWR)
-        bdos(30, fc);
+        bdos(CPMSATT, fc);
     fc->use = 0;
     setuid(luid);
     return 0;

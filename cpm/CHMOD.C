@@ -1,4 +1,4 @@
-#include	"cpm.h"
+#include	<cpm.h>
 #include	<stat.h>
 
 chmod(name, mode)
@@ -16,7 +16,7 @@ register char *	name;
 			fc.ft[1] |= 0x80;
 		if(mode & S_ARCHIVE)
 			fc.ft[2] |= 0x80;
-		mode = bdos(30, &fc);
+		mode = bdos(CPMSATT, &fc);
 		setuid(luid);
 		return mode;
 	}

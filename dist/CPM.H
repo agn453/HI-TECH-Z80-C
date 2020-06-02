@@ -1,3 +1,6 @@
+#ifndef _HTC_CPM_H
+#define _HTC_CPM_H
+
 /* Header file for CP/M routines for Z-80 C */
 
 /* get basic definitions */
@@ -42,15 +45,18 @@ extern struct	fcb
 }  _fcb[MAXFILE];
 
 extern short	   bdos(int, ...);
-extern struct fcb *getfcb(void);
 #define bdoshl	   bdos
 #define bdose	   bdos
+extern struct fcb* getfcb(void);
+extern char *      fcbname(short i);
 extern short	   getuid(void);
 extern short	   setuid(short);
 extern uchar	   setfcb(struct fcb *, char *);
-extern char	  *(*_passwd)(struct fcb *);
+extern char	*  (*_passwd)(struct fcb *);
 extern short	   bios(short fn, ...);
 #define bios3 bios
+
+/*   flag values in fcb use */
 
 #define	U_READ	1		/* file open for reading */
 #define	U_WRITE	2		/* file open for writing */
@@ -68,6 +74,7 @@ extern short	   bios(short fn, ...);
 #define	CPMRBT	003		/* ctrl-C, reboot CPM */
 
 /*	operating systems	*/
+
 #define	MPM	0x100		/* bit to test for MP/M */
 #define	CCPM	0x400		/* bit to test for CCP/M */
 
@@ -87,6 +94,7 @@ extern short	   bios(short fn, ...);
 #define	CPMDCIO   6		/* direct console I/O */
 #define	CPMGIOB   7		/* get I/O byte */
 #define	CPMSIOB   8		/* set I/O byte */
+#define	CPMWCOB	  9		/* write console buffered */
 #define	CPMRCOB  10		/* read console buffered */
 #define	CPMICON	 11		/* interrogate console ready */
 #define	CPMVERS  12		/* return version number */
@@ -111,14 +119,17 @@ extern short	   bios(short fn, ...);
 #define	CPMWRAN	 34		/* write random record */
 #define	CPMCFS	 35		/* compute file size */
 #define CPMERRM  45		/* CP/M+ set error mode */
-#define CPMSCB	 49		/* Access CP/M+ System Control Block */
+#define CPMSCB	 49		/* access CP/M+ system control block */
 #define	CPMDSEG	 51		/* set DMA segment */
-#define CPMRSX	 60		/* Call RSX */
-#define CPMTRNC  99		/* Truncate file */
-#define CPMDLD  101		/* Get directory label data */
-#define CPMGFTS 102		/* Get file timestamp and password mode */
-#define CPMSDAT 104		/* Set date and time */
-#define CPMGDAT 105		/* Get date and time */
+#define CPMRSX	 60		/* call RSX */
+#define CPMTRNC  99		/* truncate file */
+#define CPMDLD  101		/* get directory label data */
+#define CPMGFTS 102		/* get file timestamp and password mode */
+#define CPMSDAT 104		/* set date and time */
+#define CPMGDAT 105		/* get date and time */
+#define CPMRCOD 108     /* get/set return code */
+#define CPMCMOD 109     /* get/set console mode */
+
 
 /* CP/M BIOS functions.  Numbers above 16 pertain to CP/M 3 only.  */
 
@@ -164,3 +175,4 @@ enum BIOSfns
     _USERF	= 30
 };
 
+#endif

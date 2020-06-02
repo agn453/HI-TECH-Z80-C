@@ -1,6 +1,9 @@
+#ifndef _HTC_TIME_H
+#define _HTC_TIME_H
+
 /* time.h for HI-TECH C Z80 v3.09-4*/
 
-#ifndef	_TIME
+#ifndef	_HTC_TIME_T
 
 typedef	long	time_t;		/* for representing times in seconds */
 struct tm {
@@ -14,8 +17,8 @@ struct tm {
 	int	tm_yday;
 	int	tm_isdst;
 };
-#define	_TIME
-#endif	_TIME
+#define	_HTC_TIME_T
+#endif	_HTC_TIME_T
 
 #ifndef _STDDEF
 typedef int	ptrdiff_t;	/* result type of pointer difference */
@@ -35,3 +38,5 @@ extern char *	ctime();	/* current local time in ascii form */
 extern struct tm *	gmtime();	/* Universal time */
 extern struct tm *	localtime();	/* local time */
 extern size_t strftime(char *s, size_t maxs, char *f, struct tm *t);
+
+#endif

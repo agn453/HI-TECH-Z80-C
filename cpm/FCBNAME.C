@@ -1,4 +1,4 @@
-#include    "cpm.h"
+#include    <cpm.h>
 #include    <string.h>
 
 /*
@@ -51,6 +51,11 @@ char *fcbname(short i)
             *cp++ = (*xp++) & 0x7F;
         *cp = 0;
         return abuf;
+
+	case U_RSX:
+		return "RSX:";
+	case U_ERR:
+		return "ERR:";
 
     default:
         return (char *)0;

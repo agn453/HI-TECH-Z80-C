@@ -13,7 +13,6 @@ struct tod
     char    secs;
 };
 
-#define T_GET   0x69
 extern time_t   convtime();
 
 time_t time(time_t *tp)
@@ -22,7 +21,7 @@ time_t time(time_t *tp)
     time_t      t;
 
     tod.hours = tod.mins = tod.secs = tod.days = 0;
-    tod.secs = bdos(T_GET, &tod);
+    tod.secs = bdos(CPMGDAT, &tod);
     t = convtime(&tod);
     if (tp)
         *tp = t;

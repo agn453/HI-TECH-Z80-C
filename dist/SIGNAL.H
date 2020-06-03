@@ -1,9 +1,11 @@
+#ifndef _HTC_SIGNAL_H
+#define _HTC_SIGNAL_H
+
 /*
  *	Signal definitions for CP/M
  */
 #ifdef	unix
 #define NSIG 17
-
 #define	SIGHUP	1	/* hangup    (not used by terminal driver) */
 #define	SIGINT	2	/* interrupt (^C or BREAK) */
 #define	SIGQUIT	3	/* quit      (^\) */
@@ -19,11 +21,15 @@
 #define	SIGPIPE	13	/* write on a pipe with no one to read it */
 #define	SIGALRM	14	/* alarm clock */
 #define	SIGTERM	15	/* software termination signal from kill */
-#else	unix
+#else
+#define NSIG 1
 #define	SIGINT	1		/* control-C */
-#endif	unix
+#endif
 
-#define	SIG_DFL	((void (*)(int))0)	/* default action is to exit */
-#define	SIG_IGN	((void (*)(int))1)	/* ignore them */
+typedef void (*signal_t) (int);
+#define	SIG_DFL	((signal_t)0)	/* default action is to exit */
+#define	SIG_IGN	((signal_t)1)	/* ignore them */
 
-extern void (*	signal(int, void (*)(int)))(int);
+signal_t signal(int sig, signal_t action);
+
+#endif

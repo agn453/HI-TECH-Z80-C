@@ -645,3 +645,10 @@ miscellaneous fixes - mainly to the CP/M BDOS definitions in CPM.H
 and to fix an incompatibility with conflicting _TIME macros in both
 TIME.H and CPM.H
 
+
+Release V3.09-5
+---------------
+
+Rebuilt libraries LIBC.LIB and LIBF.LIB (as well as LIB280C.LIB and
+LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
+

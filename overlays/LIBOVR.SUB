@@ -1,0 +1,3 @@
+libr 
+<r libovr.lib \
+<ovrload.obj ovrbgn.obj

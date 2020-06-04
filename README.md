@@ -635,4 +635,20 @@ in your CP/M 3 PROFILE.SUB file (or manually entered on the command line).
 
 Updated dist/LIBC.LIB and z280dist/LIBC280.LIB too.
 
+General tidy-up and Overlay capability
+--------------------------------------
+
+Updates merged from @tsupplis
+
+Ron Murray's overlay capabilities have been added, along with some
+miscellaneous fixes - mainly to the CP/M BDOS definitions in CPM.H
+and to fix an incompatibility with conflicting _TIME macros in both
+TIME.H and CPM.H
+
+
+Release V3.09-5
+---------------
+
+Rebuilt libraries LIBC.LIB and LIBF.LIB (as well as LIB280C.LIB and
+LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
 

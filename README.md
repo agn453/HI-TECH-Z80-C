@@ -654,7 +654,7 @@ LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
 
 
 Fix CRTCPM.OBJ start-up module
-=-----------------------------
+------------------------------
 
 The CP/M start-up module CRTCPM.OBJ was not checking the CP/M version
 prior to checking for the existence of the PIPEMGR RSX.  This caused

@@ -652,3 +652,14 @@ Release V3.09-5
 Rebuilt libraries LIBC.LIB and LIBF.LIB (as well as LIB280C.LIB and
 LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
 
+
+Fix CRTCPM.OBJ start-up module
+=-----------------------------
+
+The CP/M start-up module CRTCPM.OBJ was not checking the CP/M version
+prior to checking for the existence of the PIPEMGR RSX.  This caused
+compiled programs under CP/M 2.2 to fail to initialise correctly.
+
+A new version of CRTCPM.OBJ is available (and the source-code in
+ZCRTCPM.AS has been updated to correct this.
+

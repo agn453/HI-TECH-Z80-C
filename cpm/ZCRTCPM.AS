@@ -77,16 +77,23 @@ yesz3:	ld	(__z3env),hl
 	rst	0
 
 memok:	
+	ld	c,12
+	call	5		;Check CP/M version
+	ld	a,l
+	cp	30h
+	jr	nc,iscpm3
+	xor	a		; CP/M 2.2 has no RSX
+	jr	norsx
 
 ;If the PIPEMGR RSX is loaded, initialise it.
 
-	ld	c,60		; RSX call
+iscpm3:	ld	c,60		; RSX call
 	ld	de,rsxpb	; RSX data
 	call	5
 	ld	a,h
 	inc	l		;HL=00FFh if no PIPEMGR present.
 	or	l
-	ld	(__piped),a
+norsx:	ld	(__piped),a
         pop	hl		;base address of fdos
 	ld	sp,hl		;stack grows downwards
 	ld	de,__Lbss	;Start of BSS segment

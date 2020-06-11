@@ -661,5 +661,5 @@ prior to checking for the existence of the PIPEMGR RSX.  This caused
 compiled programs under CP/M 2.2 to fail to initialise correctly.
 
 A new version of CRTCPM.OBJ is available (and the source-code in
-ZCRTCPM.AS has been updated to correct this.
+ZCRTCPM.AS has been updated to correct this).
 

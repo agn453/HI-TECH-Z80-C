@@ -1,3 +1,6 @@
+#ifndef _HTC_FLOAT_H
+#define _HTC_FLOAT_H
+
 /*	Characteristics of floating types */
 
 #define	DBL_RADIX	2		/* radix of exponent for a double */
@@ -65,3 +68,5 @@
 #define	LDBL_MAX_EXP	DBL_MAX_EXP
 #define	LDBL_MAX	DBL_MAX
 #define	LDBL_MAX_10_EXP	DBL_MAX_10_EXP
+
+#endif

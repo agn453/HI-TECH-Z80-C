@@ -1,3 +1,6 @@
+#ifndef _HTC_STDIO_H
+#define _HTC_STDIO_H
+
 /*
  * STDIO.H	Modified version from Tesseract vol 91
  */
@@ -76,7 +79,8 @@ extern	struct	_iobuf
 #define	clrerr(p)	p->_flag &= ~_IOERR
 #define	clreof(p)	p->_flag &= ~_IOEOF
 
-#define	L_tmpnam	34		/* max length of temporary names */
+#define	L_tmpnam	34		        /* max length of temporary names */
+#define	L_TMPNAM	(L_tmpnam)		/* max length of temporary names */
 
 extern int	 fclose(FILE *);
 extern int	 fflush(FILE *);
@@ -106,3 +110,5 @@ extern FILE	*fdopen(int, char *);
 extern long	 ftell(FILE *);
 extern char	*fgets(char *, int, FILE *);
 extern char	*_bufallo(void);
+
+#endif

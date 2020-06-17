@@ -1,3 +1,6 @@
+#ifndef _HTC_CTYPE_H
+#define _HTC_CTYPE_H
+
 #define	_U	0x01
 #define	_L	0x02
 #define	_N	0x04
@@ -33,3 +36,5 @@ extern int toupper(int);	/* in LIBC.LIB */
 extern int tolower(int);	/* in LIBC.LIB */
 
 #define toascii(c)	((c)&0x7F)
+
+#endif

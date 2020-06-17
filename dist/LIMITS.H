@@ -1,3 +1,6 @@
+#ifndef _HTC_LIMITS_H
+#define _HTC_LIMITS_H
+
 /*	Characteristics of integral types */
 
 #define	CHAR_BIT	8		/* bits per char */
@@ -15,3 +18,5 @@
 #define	LONG_MAX	2147483647	/* max value of long */
 #define	LONG_MIN	-2147483648	/* min value */
 #define	ULONG_MAX	4294967295	/* unsigned long */
+
+#endif

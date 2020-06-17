@@ -1,3 +1,6 @@
+#ifndef _HTC_SYS_H
+#define _HTC_SYS_H
+
 /*
  *	System-dependent functions.
  */
@@ -31,3 +34,5 @@ extern char   **_getargs(char *, char *);
 extern int	_argc_;
 extern int	inp(int);
 extern void	outp(int, int);
+
+#endif

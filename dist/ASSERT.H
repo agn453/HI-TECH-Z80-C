@@ -1,3 +1,6 @@
+#ifndef _HTC_ASSERT_H
+#define _HTC_ASSERT_H
+
 /*
  *	Assertion - use liberally for debugging. Defining NDEBUG
  *	turns assertions off.
@@ -14,4 +17,6 @@ extern void	_fassert(int, char *, char *);
 #define	assert(exp)	if(!(exp)) {_fassert(__LINE__, __FILE__, "exp");}
 #else
 #define	assert(exp)
+#endif
+
 #endif

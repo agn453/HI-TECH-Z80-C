@@ -1,3 +1,6 @@
+#ifndef _HTC_HITECH_H
+#define _HTC_HITECH_H
+
 /*	Standard types for HI-TECH Software code
 	These types may need to be tuned for different
 	machines/compilers. Notes with each one indicate assumptions
@@ -66,3 +69,5 @@
 #define	REG2	register
 #define	REG3	register
 #endif	i8096 || m68k
+
+#endif

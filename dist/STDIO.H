@@ -79,7 +79,8 @@ extern	struct	_iobuf
 #define	clrerr(p)	p->_flag &= ~_IOERR
 #define	clreof(p)	p->_flag &= ~_IOEOF
 
-#define	L_tmpnam	34		/* max length of temporary names */
+#define	L_tmpnam	34		        /* max length of temporary names */
+#define	L_TMPNAM	(L_tmpnam)		/* max length of temporary names */
 
 extern int	 fclose(FILE *);
 extern int	 fflush(FILE *);

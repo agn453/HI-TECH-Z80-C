@@ -1,3 +1,6 @@
+#ifndef _HTC_STDLIB_H
+#define _HTC_STDLIB_H
+
 /*	Standard utility functions */
 
 #ifndef	_STDDEF
@@ -33,3 +36,5 @@ extern int	 system(char *);
 extern void	 qsort(void *, size_t, size_t, int (*)(void *, void *));
 extern int	 abs(int);
 extern long	 labs(long);
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _HTC_STDIO_H
+#define _HTC_STDIO_H
+
 /*
  * STDIO.H	Modified version from Tesseract vol 91
  */
@@ -106,3 +109,5 @@ extern FILE	*fdopen(int, char *);
 extern long	 ftell(FILE *);
 extern char	*fgets(char *, int, FILE *);
 extern char	*_bufallo(void);
+
+#endif

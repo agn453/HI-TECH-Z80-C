@@ -1,3 +1,6 @@
+#ifndef _HTC_STRING_H
+#define _HTC_STRING_H
+
 /*	String functions v3.09-4 */
 
 #ifndef	_STDDEF
@@ -45,3 +48,5 @@ extern char	*strcasestr(char *, char *);
 #define stristr	strcasestr
 extern char	*strncasestr(char *, char *, size_t);
 #define	strnistr strncasestr
+
+#endif

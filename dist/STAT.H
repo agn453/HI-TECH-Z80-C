@@ -1,3 +1,6 @@
+#ifndef _HTC_STAT_H
+#define _HTC_STAT_H
+
 struct stat
 {
 	short	st_mode;	/* flags */
@@ -20,3 +23,5 @@ struct stat
 
 
 extern int	stat(char *, struct stat *);
+
+#endif

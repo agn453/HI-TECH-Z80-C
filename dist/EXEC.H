@@ -1,3 +1,6 @@
+#ifndef _HTC_EXEC_H
+#define _HTC_EXEC_H
+
 /*
  *	Definitions of the EXEC format
  */
@@ -14,3 +17,5 @@
 #define	PRINT	0x89
 #define	RM_FILE	0x8A
 #define	RM_EXIT	0x8B
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _HTC_CONIO_H
+#define _HTC_CONIO_H
+
 /*
  *	Low-level console I/O functions
  */
@@ -22,3 +25,5 @@ extern void	ungetch(int);
 extern int	kbhit(void);
 extern char *	cgets(char *);
 extern void	cputs(char *);
+
+#endif

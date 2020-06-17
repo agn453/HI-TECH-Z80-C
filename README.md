@@ -1,9 +1,20 @@
 HI-TECH Z80 C Compiler for CP/M
 ===============================
 
-In this repository I intend to apply updates and enhancements to
-the HITECH C Compiler for Z80 running natively under CP/M.  Each
-release will be a milestone with various updates and patches applied.
+In this repository I intend to supply updates and enhancements to
+the HITECH C Compiler for Z80 running natively under CP/M or under
+emulation using RunZ80, SIMH or ZXCC.
+
+Each release is a consolidated milestone with various updates and
+patches applied.
+
+I welcome bug reports/fixes and additional commentry and discussion.
+
+You can raise an issue here on GitHub or contact me directly via e-mail
+at <agn453@gmail.com> or by posting to the USENET newsgroup
+forum at comp.os.cpm in the "Consolidating Updates for HI-TECH C for
+Z80 CP/M v3.09" discussion thread - (accessible via Google Groups at
+https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak ).
 
 The first release is a slightly modified (see below) v3.09.
 
@@ -17,13 +28,14 @@ support is offered or implied.
 You may use this software for whatever you like, providing you acknowledge
 that the copyright to this software remains with HI-TECH Software.
 
-The *dist* folder contains the entire compiler including the library
-source code in Huffman-encoded archive files (CPM.HUF, GEN.HUF,
-FLOAT.HUF and STDIO.HUF).
+The *dist* folder contains the entire compiler including the original
+distributed library source code in Huffman-encoded archive files (CPM.HUF,
+GEN.HUF, FLOAT.HUF and STDIO.HUF). NB: I have not rebuilt the .HUF files -
+so please use updated run-time library source files in the following folders.
 
 The *cpm*, *gen*, *float* and *stdio* folders contain the library
 source code that has been extracted from the .HUF archive files
-using DEHUFF.COM.
+using DEHUFF.COMi and the updated/modified files.
 
 The *doc* folder contains the documentation in ASCII text as HTCZ80.TXT.
 
@@ -651,4 +663,15 @@ Release V3.09-5
 
 Rebuilt libraries LIBC.LIB and LIBF.LIB (as well as LIB280C.LIB and
 LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
+
+
+Fix CRTCPM.OBJ start-up module
+------------------------------
+
+The CP/M start-up module CRTCPM.OBJ was not checking the CP/M version
+prior to checking for the existence of the PIPEMGR RSX.  This caused
+compiled programs under CP/M 2.2 to fail to initialise correctly.
+
+A new version of CRTCPM.OBJ is available (and the source-code in
+ZCRTCPM.AS has been updated to correct this).
 

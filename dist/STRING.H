@@ -25,6 +25,7 @@ extern char	*strncat(char *, char *, size_t);
 extern int	 memcmp(void *, void *, size_t);
 extern int	 strcmp(char *, char *);
 extern int	 strcasecmp(char *, char *);
+#define stricmp strcasecmp
 extern int	 strncmp(char *, char *, size_t);
 extern int	 strncasecmp(char *, char *, size_t);
 #define strnicmp strncasecmp

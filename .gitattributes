@@ -12,6 +12,7 @@ MAKEFILE text eol=crlf
 *.LIB binary
 *.LOG text eol=crlf
 *.LZH binary
+*.MAN text eol=crlf
 *.OBJ binary
 *.SUB text eol=crlf
 *.TXT text eol=crlf

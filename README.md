@@ -1,5 +1,4 @@
-HI-TECH Z80 C Compiler for CP/M
-===============================
+# HI-TECH Z80 C Compiler for CP/M
 
 In this repository I intend to supply updates and enhancements to
 the HITECH C Compiler for Z80 running natively under CP/M or under
@@ -7,6 +6,8 @@ emulation using RunZ80, SIMH or ZXCC.
 
 Each release is a consolidated milestone with various updates and
 patches applied.
+
+The latest release is V3.09-5 (see Modification History below).
 
 I welcome bug reports/fixes and additional commentry and discussion.
 
@@ -35,13 +36,17 @@ so please use updated run-time library source files in the following folders.
 
 The *cpm*, *gen*, *float* and *stdio* folders contain the library
 source code that has been extracted from the .HUF archive files
-using DEHUFF.COMi and the updated/modified files.
+using DEHUFF.COM and the updated/modified files.
 
 The *doc* folder contains the documentation in ASCII text as HTCZ80.TXT.
 
 
-Release v3.09
--------------
+## Modification History
+
+In chronological order - so be sure to check the latest updates at the
+end of this README file.
+
+### Release v3.09
 
 The original HITECH C linker (LINK.COM) has been renamed as LINQ.COM
 and the main compiler front-end (C.COM) has been patched to reflect
@@ -52,8 +57,7 @@ I've edited the documentation to remove the underlining and bolding of
 text by over-printing and fixed some layout issues and typos.
 
 
-Release v3.09-1
----------------
+### Release v3.09-1
 
 As supplied in v3.09, the LIBF.LIB produces inaccurate floating point
 trigonometry results - as reported by "Ed" in his posting to the
@@ -77,8 +81,7 @@ A *test* folder has been created.  In it is a TESTTRIG.C program for testing
 this release.
 
 
-Release v3.09-2
----------------
+### Release v3.09-2
 
 The late Jon Saxton (former SYSOP of the Australian Tesseract RCPM)
 collected together a number of patches and updates - See Tesseract
@@ -158,8 +161,7 @@ bdos()
 ```
 
 
-Release v3.09-3
----------------
+### Release v3.09-3
 
 These are the Jon Saxton modified versions of John Elliots's patches.
 
@@ -380,8 +382,7 @@ Extended getenv()
 ```
 
 
-Release v3.09-3b
-----------------
+### Release v3.09-3b
 
 Updated the previous release to adjust the ordering of modules in LIBC.LIB -
 programs should now link correctly.  Also added the missing documentation for
@@ -390,8 +391,7 @@ now defunct hitech.com.au web site) and scanned PDFs of the 1989
 vintage documentation.
 
 
-Release v3.09-4
----------------
+### Release v3.09-4
 
 Some of the string related function prototypes in STRING.H are missing from
 the LIBC.LIB library.  Most of these are from an update to the MSX flavour
@@ -495,8 +495,7 @@ strftime()
     than maxs characters were produced.
 ```
 
-Release v3.09-4-Z280
---------------------
+### Release v3.09-4-Z280
 
 This is the first experimental release of the libraries that have been
 built for a Zilog Z280 MPU.  Most of this work was retrieved from a
@@ -609,8 +608,7 @@ LIB280C#.LIB and LIB280F#.LIB
 
 ```
 
-Not actually a release - but including MSX-DOS 2 distribution
--------------------------------------------------------------
+### Not actually a release - but including MSX-DOS 2 distribution
 
 I'm making available the raw updates for MSX-DOS 2 for those interested in
 the last known updates to run HI-TECH C for Z80 under MSX2.  You'll
@@ -630,8 +628,7 @@ in the cc_01/LIBDOS2.LIB library.
 The msx2dist/original folder contains the as-downloaded .LZH archives
 (including the previous versions from archive.org).
 
-Release V3.09-4b - Fix to getenv()
-----------------------------------
+### Release V3.09-4b - Fix to getenv()
 
 The getenv() function was not correctly looking up the location of
 the environment file under CP/M 3 for the "default" entry in the drive
@@ -647,8 +644,7 @@ in your CP/M 3 PROFILE.SUB file (or manually entered on the command line).
 
 Updated dist/LIBC.LIB and z280dist/LIBC280.LIB too.
 
-General tidy-up and Overlay capability
---------------------------------------
+### General tidy-up and Overlay capability
 
 Updates merged from @tsupplis
 
@@ -658,15 +654,13 @@ and to fix an incompatibility with conflicting _TIME macros in both
 TIME.H and CPM.H
 
 
-Release V3.09-5
----------------
+### Release V3.09-5
 
 Rebuilt libraries LIBC.LIB and LIBF.LIB (as well as LIB280C.LIB and
 LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
 
 
-Fix CRTCPM.OBJ start-up module
-------------------------------
+### Fix CRTCPM.OBJ start-up module
 
 The CP/M start-up module CRTCPM.OBJ was not checking the CP/M version
 prior to checking for the existence of the PIPEMGR RSX.  This caused
@@ -675,3 +669,15 @@ compiled programs under CP/M 2.2 to fail to initialise correctly.
 A new version of CRTCPM.OBJ is available (and the source-code in
 ZCRTCPM.AS has been updated to correct this).
 
+### Tidy up README and "#" in filenames
+
+Up until now, I've kept various replaced files in this repository
+by renaming them to include a hash (or octothorpe) "#" character
+in their names.  You do not need these when you set-up your HI-TECH
+Z80 C system under CP/M.  In a future release these files will be
+removed to avoid confusion.  GitHub is already tracking changes
+for us - and comparing releases will show them!
+
+
+Tony Nicholson
+13-Nov-2020

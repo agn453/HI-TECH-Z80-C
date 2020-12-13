@@ -669,6 +669,7 @@ compiled programs under CP/M 2.2 to fail to initialise correctly.
 A new version of CRTCPM.OBJ is available (and the source-code in
 ZCRTCPM.AS has been updated to correct this).
 
+
 ### Tidy up README and "#" in filenames
 
 Up until now, I've kept various replaced files in this repository
@@ -679,5 +680,28 @@ removed to avoid confusion.  GitHub is already tracking changes
 for us - and comparing releases will show them!
 
 
+### Add source for dehuff and enhuff
+
+Andrey Nikitin has contributed the sources for the DEHUFF and ENHUFF
+programs that were used by HI-TECH Software to distribute the library
+source files.  I've placed the extracted source files and the resulting
+binary produced by the latest compiler in the *huff* folder. Also,
+the Huffman-encoded archive containing these sources has been placed
+in the *dist* folder as HUFF.HUF.  There's also an original version
+that produces some diagnostic errors in HUFF#.HUF.
+
+These sources may be built using the HI-TECH C compiler or using the
+gcc compiler under Linux or macOS.  I built them natively under CP/M
+using -
+
+```
+c -O -v enhuff.c encode.c misc.c
+c -O -v dehuff.c decode.c misc.c
+era *.obj
+```
+
+(If you're using a Z280 use '''c280 -of2 -v ...''')
+
+
 Tony Nicholson
-13-Nov-2020
+13-Dec-2020

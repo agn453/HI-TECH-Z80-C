@@ -1,0 +1,20 @@
+.PHONY: clean
+
+all: dehuff enhuff
+
+dehuff:	dehuff.o decode.o misc.o
+		cc -O -Dunix -o dehuff dehuff.o decode.o misc.o
+enhuff:	enhuff.o encode.o misc.o
+		cc -O -Dunix -o enhuff enhuff.o encode.o misc.o
+
+dehuff.o:	dehuff.c huff.h
+		cc -c dehuff.c
+decode.o:	decode.c huff.h
+		cc -c decode.c
+misc.o:		misc.c
+		cc -c misc.c
+
+clean:
+	rm dehuff enhuff *.o
+compress:
+	enhuff -a HUFF.HUF dehuff.c decode.c enhuff.c encode.c misc.c huff.h Makefile

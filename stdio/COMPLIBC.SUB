@@ -1,4 +1,4 @@
-; Compile all LIBC4.LIB modules from sources
+; Compile all LIBC6.LIB modules from sources
 c
 <-o -c abort.c \
 <abs.as \

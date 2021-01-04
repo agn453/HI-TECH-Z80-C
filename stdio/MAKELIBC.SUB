@@ -1,7 +1,7 @@
-; Use librarian to replace all modules in LIBC4.LIB
+; Use librarian to replace all modules in LIBC6.LIB
 ; NB: the ordering is important for resolving dependencies at link time
 libr
-<r LIBC4.lib \
+<r LIBC6.lib \
 <start1.obj     \
 <getargs.obj    \
 <assert.obj     \
@@ -88,7 +88,6 @@ libr
 <aslor.obj      \
 <aslsub.obj     \
 <aslxor.obj     \
-<asmod.obj      \
 <atoi.obj       \
 <atol.obj       \
 <blkclr.obj     \
@@ -158,5 +157,6 @@ libr
 <rcsv.obj       \
 <tolower.obj    \
 <toupper.obj    \
+<asmod.obj      \
 <xtoi.obj
-; Library LIBC4.LIB created
+; Library LIBC6.LIB created

@@ -697,11 +697,19 @@ using -
 ```
 c -O -v enhuff.c encode.c misc.c
 c -O -v dehuff.c decode.c misc.c
-era *.obj
 ```
 
-(If you're using a Z280 use '''c280 -of2 -v ...''')
+(If you're using a Z280 use 'c280 -of2 -v ...')
 
 
+### Change supported string length in printf() routine
+
+Merged a minor change into DOPRNT.C from @tupplis so that various
+printf() routines can now output strings greater than 255 characters.
+
+Updated the dist/LIBC.LIB and z280dist/LIB280C.LIB libraries too
+and created a new v3.09-6 release to consolidate the recent updates.
+
+--
 Tony Nicholson
-13-Dec-2020
+05-Jan-2021

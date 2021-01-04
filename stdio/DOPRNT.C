@@ -38,9 +38,9 @@ int *		a;
 {
 	char	c;
 	uchar	fill, left;
-	unsigned int	i;
-	unsigned char	base, width, prec, sign;
-	unsigned int    len;
+	unsigned	i;
+	uchar	base, width, prec, sign;
+	unsigned	len;
 
 	ffile = file;
 	while(c = *f++)

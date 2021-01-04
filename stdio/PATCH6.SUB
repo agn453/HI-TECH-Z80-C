@@ -1,0 +1,13 @@
+; Build LIBC6.LIB for v3.09-6 release
+;
+;  Extend printf() support for > 255 character strings
+;
+; Prerequisites
+;
+;  All files from the cpm gen & stdio are in the current directory
+;
+era libc6.lib
+complibc.sub
+makelibc.sub
+;
+; The LIBC6.LIB has been created - ready to replace your LIBC.LIB

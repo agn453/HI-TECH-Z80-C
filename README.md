@@ -710,6 +710,18 @@ printf() routines can now output strings greater than 255 characters.
 Updated the dist/LIBC.LIB and z280dist/LIB280C.LIB libraries too
 and created a new v3.09-6 release to consolidate the recent updates.
 
+
+### Updated version string in compiler driver
+
+Updated the cpm/C.C source to include the V3.09-6 identifier and
+supply a pre-compiled version in dist/C309-6.COM that can be copied
+to the CP/M system path (usually drive A in user area 0) as C.COM
+
+Also included a version of the start-up code for the Z280 under CP/M
+as z280dist/CRTCPM.OBJ 
+(with source code in z280dist/Z280CPM.AS).  This checks whether
+the compiled binary is running on a Z280 MPU.
+
 --
 Tony Nicholson
-05-Jan-2021
+06-Jan-2021

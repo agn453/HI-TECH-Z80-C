@@ -1,0 +1,5 @@
+z80asm pipemgr/m
+:link pipemgr[op nr]
+:erase pipemgr.rel
+:erase pipemgr.rsx
+rename pipemgr.rsx=pipemgr.prl

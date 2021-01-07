@@ -7,7 +7,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-5 (see Modification History below).
+The latest release is V3.09-6 (see Modification History below).
 
 I welcome bug reports/fixes and additional commentry and discussion.
 
@@ -628,7 +628,14 @@ in the cc_01/LIBDOS2.LIB library.
 The msx2dist/original folder contains the as-downloaded .LZH archives
 (including the previous versions from archive.org).
 
-### Release V3.09-4b - Fix to getenv()
+Also note that Yeongman Seo is currently working on a toolchain for developing
+MSX-DOS/DOS 2 applications using the HI-TECH Z80 C compiler under a
+Windows Win32 environment.  This is available on GitHub at
+
+https://github.com/sharksym/CPMEMU_HI-TECH_C
+
+
+### Fix to getenv()
 
 The getenv() function was not correctly looking up the location of
 the environment file under CP/M 3 for the "default" entry in the drive
@@ -643,6 +650,7 @@ setdef * m: c: a:
 in your CP/M 3 PROFILE.SUB file (or manually entered on the command line).
 
 Updated dist/LIBC.LIB and z280dist/LIBC280.LIB too.
+
 
 ### General tidy-up and Overlay capability
 
@@ -680,7 +688,7 @@ removed to avoid confusion.  GitHub is already tracking changes
 for us - and comparing releases will show them!
 
 
-### Add source for dehuff and enhuff
+### Add source for DEHUFF and ENHUFF
 
 Andrey Nikitin has contributed the sources for the DEHUFF and ENHUFF
 programs that were used by HI-TECH Software to distribute the library
@@ -704,14 +712,14 @@ c -O -v dehuff.c decode.c misc.c
 
 ### Change supported string length in printf() routine
 
-Merged a minor change into DOPRNT.C from @tupplis so that various
+Merged a minor change into stdio/DOPRNT.C from @tupplis so that various
 printf() routines can now output strings greater than 255 characters.
 
 Updated the dist/LIBC.LIB and z280dist/LIB280C.LIB libraries too
 and created a new v3.09-6 release to consolidate the recent updates.
 
 
-### Updated version string in compiler driver
+### Release V3.09-6
 
 Updated the cpm/C.C source to include the V3.09-6 identifier and
 supply a pre-compiled version in dist/C309-6.COM that can be copied
@@ -722,6 +730,32 @@ as z280dist/CRTCPM.OBJ
 (with source code in z280dist/Z280CPM.AS).  This checks whether
 the compiled binary is running on a Z280 MPU.
 
+
+### PIPEMGR sources
+
+I've included Jon Saxton's version of the PIPEMGR RSX for handling
+pipes under CP/M 3.
+
+This is a modified version of the original by John Elliot that's
+detected and used by each of the releases of HI-TECH C available
+from this repository.
+
+You'll find the original PIPEMGR.ARC distribution from Tesseract
+volume 089, a PIPEMGR.LBR containing the same files and individual
+extracted files in the *pipemgr* folder.
+
+Also included is the source and executable for TEE which has the
+PIPEMGR RSX attached and behaves like its namesake in the Unix world,
+along with missing files from the original Van Nuys tools
+(PIPEMGR.H and PIPEMGR.C).
+
+The rest of the Van Nuys tools are available from John Elliot's
+original PIPEMGR page at
+
+http://www.seasip.info/Cpm/software/Pipemgr/index.html
+
+
+
 --
 Tony Nicholson
-06-Jan-2021
+08-Jan-2021

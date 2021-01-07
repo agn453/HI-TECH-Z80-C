@@ -5,6 +5,7 @@ README.md text eol=crlf
 MAKEFILE text eol=crlf
 *.DOC text eof=crlf
 *.AS text eol=crlf linguist-language=Assembly
+*.Z80 text eol=crlf linguist-language=Assembly
 *.C text eol=crlf linguist-language=C
 *.COM binary
 *.H text eol=crlf linguist-language=C
@@ -17,5 +18,8 @@ MAKEFILE text eol=crlf
 *.SUB text eol=crlf
 *.TXT text eol=crlf
 *.lbr binary
+*.LBR binary
+*.ARC binary
+*.RSX binary
 *.pdf binary
 

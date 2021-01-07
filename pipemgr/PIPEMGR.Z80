@@ -1,0 +1,1515 @@
+;------------------------------------------------------------------------------
+;	PIPEMGR - piping and redirection for CP/M Plus and Z80 CPU.
+;
+; Copying policy: GNU Library GPL, version 2.
+;------------------------------------------------------------------------------
+; Original code by John Elliott
+;	http://www.seasip.demon.co.uk/Cpm/software/Pipemgr/index.html
+;
+; Source comments, BDOS call names, RSX call names and FCB field names added
+; by Jon Saxton, May 2014.  In general, comments with a space after the semi-
+; colon are mine while those without a space are John Elliott's originals.
+;------------------------------------------------------------------------------
+; 2014-04-03	jrs
+;
+; Added one instruction and deleted four to change the sense of the "last
+; sector byte count" to mean the number of UNUSED bytes in the last sector.
+;------------------------------------------------------------------------------
+; 2014-05-20	jrs
+;
+; Found a long-standing bug in the > redirection operator.  If the target file
+; does not have a drive specifier then the temporary file is created on the
+; currently logged-in drive.  If the host program logs onto a different drive
+; then the RSX loses connection to the temporary and target files.
+;
+; The solution was simple.  A drive number was added to the FCB.
+;------------------------------------------------------------------------------
+; 2014-05-21	jrs
+;
+; Altered > and >> redirection operators to write directly to the output file
+; rather than writing to a temporary file and subsequently renaming it.  This
+; fixed a bug in the >> operator which would never append to a file.
+;------------------------------------------------------------------------------
+	.z80
+
+CR	  equ	13
+LF	  equ	10
+
+rename	equ	 0		; -1 to have > operator write to a temporary
+				;    file and then rename that file on exit;
+				;  0 to have > operator write to the named
+				;    file directly
+
+; BDOS calls
+; ==========
+CONIN	  equ	  1		; 01 - Input from console (keyboard)
+CONOUT	  equ	  2		; 02 - Output to console
+AUXIN	  equ	  3		; 03 - Input from auxiliary device
+AUXOUT	  equ	  4		; 04 - Output to auxiliary device
+LSTOUT	  equ	  5		; 05 - Output to list device (printer)
+DCONIO	  equ	  6		; 06 - Direct console I/O
+COSTR	  equ	  9		; 09 - Console output of string
+RDCONBUF  equ	 10		; 0A - Read console buffer
+CONSTAT	  equ	 11		; 0B - Get console status
+SELDRV	  equ	 14		; 0E - Select drive
+OPENF	  equ	 15		; 0F - Open file
+CLOSEF	  equ	 16		; 10 - Close file
+DELETEF	  equ	 19		; 13 - Delete file
+CURDRV	  equ	 25		; 19 - Get current drive
+SETDMA	  equ	 26		; 1A - Set DMA address
+READSEQ	  equ	 20		; 14 - Sequential read
+WRITESEQ  equ	 21		; 15 - Sequential write
+CREATEF	  equ	 22		; 16 - Create file
+RENAMEF	  equ	 23		; 17 - Rename file
+SETATTR	  equ	 30		; 1E - Set file attributes (& length)
+GSUSER	  equ	 32		; 20 - Get/set user number
+READRAN	  equ	 33		; 21 - Random read
+WRITERAN  equ	 34		; 22 - Random write
+SIZEF	  equ	 35		; 23 - Compute file size
+ERRMODE	  equ	 45		; 2D - Set error mode
+CHAIN	  equ	 47		; 2F - Chain to program
+ACCSCB	  equ	 49		; 31 - Access SCB (System Control Block)
+CALLRSX	  equ	 60		; 3C - Call RSX
+CONMODE	  equ	109		; 6D - Get/set console mode
+PARSEFN	  equ	152		; 98 - Parse file name
+
+; PIPEMGR functions
+; =================
+PMSTAT	  equ	118		; 76 - Get PIPEMGR status
+PMINIT	  equ	121		; 79 - Initialise
+PMSTERR	  equ	122		; 7A - Write byte to stderr
+PMVER	  equ	123		; 7B - Get PIPEMGR version
+PMSTINP   equ	124		; 7C - Read byte from stdin
+PMSTOUT	  equ	125		; 7D - Write byte to stdout
+PMTERM1	  equ	126		; 7E - Emergency termination
+PMTERM2	  equ	127		; 7F - Emergency termination
+
+;------------------------------------------------------------------------------
+;				FCB layout
+;
+; Note that fields beyond .rr are not part of the standard CP/M file control
+; block.  Furthermore, the treatment of those fields in this RSX is different
+; from that defined in cpm.h and used Hi-Tech C programs.
+;------------------------------------------------------------------------------
+;	      offset    length	description
+;		--	  --	----------------------------------------
+.dr	equ	 0	;  1	Drive code
+.fn	equ	 1	;  8	File name
+.ft	equ	 9	;  3	File type
+.ex	equ	12	;  1	Extent
+.s1	equ	13	;  1	System use.  May hold user number (ZPM3)
+.s2	equ	14	;  1	System use.  May hold drive number (ZPM3)
+.rc	equ	15	;  1	Number of records in current extent (.ex)
+.dm	equ	16	; 16	Disk map (filled in by CP/M)
+.cr	equ	32	;  1	Current record for sequential read or write
+.rr	equ	33	;  3	Random record number (24 bit no.)
+.r0	equ	33	;  1	Individual offsets for random record
+.r1	equ	34	;  1	 /
+.r2	equ	35	;  1	/
+; RSX usage
+.??	equ	36	;  1	Not used in the original code
+.ud	equ	37	;  1	User number or device code
+;------------------------------------------------------------------------------
+	cseg
+;------------------------------------------------------------------------------
+;			      RSX prefix
+;------------------------------------------------------------------------------
+	defs	6		;CP/M version
+jump:	jp	init		;First call is a special case
+fdos:	jp	6		;FDOS (overwritten by loader)w
+Prev:	defw	7		;Previous RSX
+delete:	defb	0ffh		;Delete this RSX?
+banked:	defb	0		;Banked system flag
+rname:	defb	'PIPEMGR '
+	defb	0,0,0
+
+;------------------------------------------------------------------------------
+;		Initial entry.  This code is only exectued once.
+;------------------------------------------------------------------------------
+init:	push	bc
+	push	de
+	sub	a
+	jp	pe,bypass	;Can't run on an 8080.
+	ld	c,CALLRSX
+	ld	de,verchk
+	call	fdos
+	inc	a
+	jr	z,nomgr		;No duplicate PIPEMGR loaded	
+bypass:	ld	hl,fdos
+	ld	(jump+1),hl	;Bypass PIPEMGR	
+	pop	de
+	pop	bc
+	jr	fdos
+
+nomgr:	ld	hl,catch
+	ld	(jump+1),hl
+	pop	de
+	pop	bc
+;------------------------------------------------------------------------------
+;		Subsequent entry to this RSX is redirected here
+;------------------------------------------------------------------------------
+
+catch:
+	ld	a,c
+	cp	CONMODE		;Set console mode
+	jr	nz,catch0
+	ld	a,h
+	and	3
+	ld	(cpol),a
+	ld	a,c
+catch0:
+	cp	SETDMA
+	jr	nz,catch1
+	ld	(dma),de
+catch1:
+	ld	a,(PipedI)
+	or	a
+	jr	z,catch2
+	ld	a,(awake)
+	or	a
+	jr	nz,catch2
+
+;RSX asleep, but input is piped.
+
+	ld	a,(cpol)
+	cp	3
+	jr	z,catch2	;Is keyboard redirection disabled?
+	ld	a,c
+	cp	CONSTAT
+	jp	z,con11	
+	xor	a
+	ld	(ckey),a	;Last call was not for console status
+	ld	a,c
+	cp	CONIN
+	jp	z,con1
+	cp	DCONIO
+	jp	z,con6
+	cp	RDCONBUF
+	jp	z,con10
+catch2:	ld	a,c
+	cp	CALLRSX
+	jp	nz,fdos
+	ld	a,(de)		;Sub-function number
+	cp	PMVER
+	jp	z,chkver
+	cp	PMINIT
+	jr	z,initrsx
+	ld	a,(awake)
+	or	a		;0 if RSX asleep
+	jp	z,fdos
+	ld	a,(de)
+	cp	PMSTERR
+	jp	z,PipeErr
+	cp	PMSTOUT
+	jp	z,PipeOut
+	cp	PMSTINP
+	jp	z,PipeIn
+	call	idrsx
+	jr	nz,jfdos
+	ld	a,(de)
+	cp	PMTERM2		;Kill RSX
+	jp	z,killrsx
+	cp	PMTERM1		;Kill RSX
+	jp	z,killrsx
+	cp	PMSTAT
+	jr	z,rxstat
+jfdos:	jp	fdos
+
+rxstat:	ld	a,(inflg)	;Return bitmapped flags
+	and	1
+	ld	h,a
+	ld	a,(outflg)	;Output via PIPEMGR?
+	and	2
+	or	h
+	ld	h,a
+	ld	a,(errflg)
+	and	4
+	or	h
+	ld	h,a
+	ld	a,(PipedI)
+	and	8
+	or	h
+	ld	h,a
+	ld	a,(PipedO)
+	and	16
+	or	h
+	ld	h,a
+	ld	b,a
+	xor	a
+	ld	l,a
+	ret
+
+initrsx:
+	call	idrsx
+	jr	nz,jfdos
+
+;Initialise PIPEMGR. 
+
+	ld	a,0ffh		;RSX has been awakened
+	ld	(awake),a
+	xor	a
+	ld	(pclosed),a	;Pipe file does not need opening
+	ld	a,(PipedI)
+	or	a
+	jr	z,initr0
+	ld	a,-1
+	ld	(inflg),a
+initr0:
+	ld	de,80h
+	ld	a,(de)
+	inc	de
+	ld	l,a
+	ld	h,0
+	add	hl,de
+	ld	(hl),0
+ckpipe1:
+	ld	a,(de)
+	ld	(pstrt),de
+	cp	'<'
+	jr	z,parsein
+	cp	'>'
+	jr	z,parseout
+	cp	'|'
+	jr	z,parsepi
+	cp	'\'
+	jr	z,parsebk
+	or	a
+	jr	z,endcall
+	inc	de
+	jr	ckpipe1	
+
+parsebk:
+	inc	de
+	ld	a,(de)
+	or	a
+	jr	z,endcall
+	jr	ckpipe1	
+
+parsein:	
+	ld	hl,infcb
+	call	fparse
+	jr	ckpipe1
+
+parseout:
+	inc	de
+	ld	a,(de)
+	cp	'&'
+	jr	z,parso1
+	cp	'>'
+	jr	z,parsa1
+	dec	de
+	jr	parso2
+
+parsa1:
+	inc	de
+	ld	a,1
+	ld	(oapp),a
+	ld	a,(de)
+	cp	'&'
+	jr	z,parso1
+	dec	de
+	jr	parso2
+
+parso1:
+	ld	a,-1
+	ld	(errflg),a
+parso2:
+	ld	hl,outfcb	; [2014-05-21 jrs]
+	call	fparse
+	jr	ckpipe1
+
+parsepi:
+	inc	de
+	ld	a,(de)
+	cp	'&'
+	jr	z,parsp1
+	dec	de
+	push	de
+	jr	parsp2
+
+parsp1:
+	ld	a,-1
+	ld	(errflg),a
+	push	de
+parsp2:
+	; +++ Note to myself ...
+	;
+	; This may need to have a drive plugged in to prevent issues when
+	; the host program logs onto a different drive.  However, check
+	; the usage of the CP/M temporary drive setting a few instructions
+	; further on.
+	;
+	; On the next instruction, why the -1 ???
+
+	ld	de,pipeo$-1
+	ld	hl,outfcb
+	call	fparse
+	call	tempdrv
+	ld	(outfcb+.dr),a
+	pop	hl		;Command after the '|'
+	ld	(hl),0		;End it
+	inc	hl
+	ld	de,pipenxt
+	ld	bc,80h
+	ldir
+	ld	a,-1
+	ld	(PipedO),a
+endcall:
+
+;[20-11-1998] File names parsed.
+;
+; [jrs 2014-05-18]
+;
+; The original code wrote redirected output to a temporary file $PIPEMGR.$$$
+; and, on exit, renamed that file to the one specified on the command line as
+; the redirection target.
+;
+; That presented a problem with the append operator (>>) because the output
+; really needed to be written to the target file and not to a temporary one.
+;
+; For the simple redirect operator (>) there seems little point in writing to
+; a temporary file and then renaming it.  It has the advantage of preserving
+; the original output file in the event that something gets screwed up but the
+; use of the > operator suggests that the user is prepared to have the file
+; overwritten anyway.
+
+;------------------------------------------------------------------------------
+; [2014-04-20 jrs] Ensure that a drive number is included in the FCB in case
+; the host program switches to a different drive.
+
+	ld	a,(outfcb)
+	or	a		; Is a drive specified on the command line?
+	jr	nz,ec0		; Skip if so
+	ld	c,CURDRV	; Get current drive
+	call	fdos
+	inc	a		; 0-15 -> 1-16
+	ld	(outfcb+.dr),a
+ec0:
+;------------------------------------------------------------------------------
+	ld	a,(inflg)
+	or	a
+	call	nz,openin
+	call	obuf1A
+	ld	de,outfcb
+creat:
+	push	iy
+	push	de
+	pop	iy
+	ld	a,(iy-1)
+	or	a
+	jp	z,fcreat	;No creation required
+	ld	a,(iy+.ud)
+	cp	20h
+	jr	nc,dcreat	;Character device
+	call	clrflds
+	ld	a,(oapp)
+	or	a
+	jp	nz,append
+rcreat:
+	ld	c,DELETEF
+	call	fcbdos
+	call	clrflds
+	xor	a
+	ld	(outptr),a
+	ld	(iy+.??),a
+	ld	c,CREATEF
+	call	fcbdos
+	inc	a
+	jp	z,ecreat
+dcreat:
+	call	hookwb
+	xor	a
+	ld	(delete),a
+	jp	fcreat
+clrflds:
+	xor	a
+	ld	(iy+.ex),a
+	ld	(iy+.s1),a
+	ld	(iy+.s2),a
+	ld	(iy+.cr),a
+	ld	(iy+.rc),a
+	ret
+append:
+	; The original code for appending to an existing output file read the
+	; entire file from the beginning and scanned for a text file EOF marker
+	; (1Ah).  The PIPEMGR documentation says that the redirector should
+	; work for binary files and so it is not clear that looking for a text
+	; EOF marker is a valid exercise.
+	;
+	; Assuming that scanning is valid (despite the documentation) then it
+	; should only be done if the length of the file is a multiple of 128
+	; bytes.  For such a file the scan only needs to be done in the last
+	; sector of the file.
+	;
+	; I am not sure that scanning is ever necessary.  Files created by the
+	; redirector have their exact lengths set and that information can be
+	; used to position the file for writing.
+	;
+	; Scanning might be useful if it should be desirable to append re-
+	; directed output to a file created by some other program.
+	;
+	; [jrs 2014-05-22]
+
+	ld	(iy+.cr),255	; Prepare to fetch last sector byte count
+	ld	c,OPENF		; Try to open the file
+	call	fcbdos
+	inc	a
+	jp	z,rcreat	; If the file doesn't exist then create it
+
+	; Repurpose the unused byte in John Elliott's FCB extension to hold
+	; the last sector byte count.
+	ld	a,(iy+.cr)	; Get LSBC
+	ld	(iy+.??),a	; Store it for later use
+	ld	(iy+.cr),0	; Clear CR field for sequential I/O
+	ld	de,outbuf	; Establish data address for read
+	call	set_dma
+
+	; The FCB address is in IY
+
+	ld	c,SIZEF		; Compute file size
+	call	fcbdos
+
+	ld	a,(iy+.r0)	; Check for zero-length file
+	or	a,(iy+.r1)
+	or	a,(iy+.r2)
+	jp	z,fcreat
+
+	dec	(iy+.r0)	; Step back to previous record
+	jr	nc,at_prev
+	dec	(iy+.r1)
+	jr	nc,at_prev
+	dec	(iy+.r2)
+at_prev:
+	ld	c,READRAN	; Read last record of file
+	call	fcbdos
+	or	a		; Success?
+	jp	nz,rcreat	; Delete and recreate on any error
+
+	ld	a,(iy+.??)	; Get last record byte count
+	and	a		; Done if not zero
+	jr	nz,hooky
+	ld	hl,outbuf	; Scan for EOF marker
+	ld	a,1Ah
+	ld	bc,128
+	cpir
+	inc	c
+	ld	a,c
+hooky:
+	neg			; Convert unused bytes to used bytes
+	and	7Fh
+	ld	(outptr),a	; Ready for the next byte.
+	call	hookwb
+	xor	a
+	ld	(delete),a
+	jp	fcreat
+
+fcbdos:
+	ld	a,(iy+.ud)	; fcb[37] holds user+1 if user number specified
+	or	a
+	jr	nz,fcbd1	; Skip if user specified
+	push	bc		; Save BDOS function number
+	ld	e,0FFh
+	ld	c,GSUSER
+	call	yfdos		;Get user
+	ld	(ousr),a	; Save original user number
+	inc	a		; Store user+1 at fcb[37]
+	ld	(iy+.ud),a
+	jr	fcbd2
+
+fcbd1:
+	cp	32		; If user < 32 then we have a file, otherwise
+	jr	c,fcbd1a	; we have a device in which case we simply
+	xor	a		; return 0 (success) and don't do BDOS call!
+	ret
+
+fcbd1a:
+	push	bc		; Save BDOS function
+	ld	e,0FFh		;Get user
+	ld	c,GSUSER
+	call	yfdos
+	ld	(ousr),a	; Save original user
+fcbd2:
+	ld	e,(iy+.ud)	; Get user+1 from fcb[37]
+	dec	e		; Normalise
+	ld	c,GSUSER
+	call	yfdos		;Set user
+	pop	bc		; Recover BDOS function
+	push	iy		; Copy FCB address to DE
+	pop	de
+	call	yfdos
+	push	af		; Save BDOS results
+	push	hl
+	ld	a,(ousr)	; Get original user number
+	ld	e,a
+	ld	c,GSUSER	;Restore old user
+	call	yfdos
+	pop	hl		; Recover BDOS results
+	pop	af
+	ret
+
+yfdos:
+	push	iy
+	call	fdos
+	pop	iy
+	ret
+
+ecreat:
+	ld	de,warn1	;"Error creating output"
+	call	print
+	ld	de,warn2a
+	call	print
+	pop	iy
+	ld	(iy-1),0
+	defb	21h		;Swallow the POP IY
+				; (Converts it to LD HL,xxxx)
+fcreat:
+	pop	iy
+	ld	de,(dma)
+	call	set_dma		;Restore user DMA
+	xor	a
+	ld	b,a
+	ld	h,a
+	ld	l,a
+	ret
+
+udconv:
+	ld	b,4		;Generate uppercase version of DEV: spec.
+	push	ix
+	ld	de,infcb+32	;Workspace
+udc0:
+	ld	a,(ix+0)	; Translate to upper case (is this necessary?)
+	cp	'a'
+	jr	c,udc1
+	cp	'z'
+	jr	nc,udc1
+	sub	20h
+udc1:
+	ld	(de),a
+	inc	de
+	inc	ix
+	djnz	udc0
+	pop	ix
+	ld	c,4		; Look through the device names for a match
+	ld	hl,cpcon
+udc2:
+	ld	de,infcb+32
+	ld	b,4
+	call	cp$
+	jr	z,udc3
+	dec	c
+	jr	nz,udc2	
+	jr	uconv		;No match.	
+
+udc3:				; +++ Here is where device gets into FCB
+	ld	a,24h
+	sub	c		;A = DEV: id
+	ld	hl,(pfcb+2)
+	dec	hl
+	ld	(hl),-1		;FCB active, piping.
+	ld	de,38
+	add	hl,de
+	ld	(hl),a		;Set DEV: in FCB.
+	ld	hl,(pfcb)
+	ld	de,4
+	add	hl,de		;HL = return value
+	ld	a,(hl)
+	or	a
+	jr	nz,dozap0
+	ld	hl,0		;EOL
+dozap0:
+	pop	ix
+	jp	dozap1		;Cover up the redirector.
+
+uconv:				; IX points at input string.  On completion ...
+	ld	hl,0		;L=User number, H=drive letter
+	ld	b,2		;B=1 if user number supplied
+uconv1:
+	ld	a,(ix+0)
+	cp	'0'		; Check for a decimal digit
+	jp	c,fpendi
+	cp	':'		; '9'+1 = ':' (How convenient!)
+	jr	c,numeri
+	jr	z,ucend
+	ld	h,a		; Not a digit.  Perhaps a letter?
+	inc	ix
+	jr	uconv1
+
+numeri:
+	and	0Fh		;A=digit, 0-9
+	ld	c,a
+	ld	a,l		;L=running total
+	add	a,a		;*2
+	add	a,a		;*4
+	add	a,l		;*5
+	add	a,a		;*10
+	add	a,c		;*10+c
+	ld	l,a
+	inc	ix
+	ld	b,1		;user number supplied
+	jr	uconv1
+
+ucend:
+	djnz	ucend0		;If B=1, no user number supplied.
+	ld	a,l
+	inc	a		; Store user+1 (to disambiguate 0)
+	push	iy
+	ld	iy,(pfcb+2)	; Get FCB pointer
+	ld	(iy+.ud),a	; Store user number in FCB
+	pop	iy	
+ucend0:
+	ld	a,h
+	or	a
+	jr	z,nodrv		;u:filename
+	ld	(ix-1),H
+	ld	ix,(pfcb)
+ucend1:
+	ld	a,(ix+1)
+	cp	':'
+	jr	z,restq
+	ld	(ix+0),' '
+	inc	ix
+	jr	ucend1		
+
+nodrv:
+	inc	ix		;IX -> filename proper
+	ld	hl,(pfcb)
+nodrv1:
+	ld	a,(hl)
+	ld	(hl),' '
+	inc	hl
+	cp	':'
+	jr	nz,nodrv1
+restq:
+	ld	(pfcb),ix	
+	jr	restt
+
+fparse:
+	inc	de
+	ld	a,(de)		;[19-11-1998] skip spaces betweeen operator & 
+	cp	' '		;argument.
+	jr	z,fparse
+
+	ld	(pfcb),de	; Input string
+	ld	(pfcb+2),hl	; FCB
+	push	ix
+	push	hl		; Copy FCB address to IX
+	pop	ix
+	ld	(ix+.ud),0	;No user number
+	ld	ix,(pfcb)	; IX := pointer to input string
+	ld	a,(ix+1)	; Get 2nd character
+	cp	':'		; If 2nd or 3rd character is a colon then
+	jp	z,uconv		;  look for a user number
+	ld	a,(ix+2)
+	cp	':'
+	jp	z,uconv
+	ld	a,(ix+3)	; If 4th character is a colon then scan
+	cp	':'		;  for user and/or drive device name
+	jp	z,udconv
+restt:				; All parsed, or not specified
+	pop	ix
+	ld	de,pfcb
+	ld	c,PARSEFN
+	call	fdos
+dozap1:
+	ld	a,h
+	and	l
+	inc	a
+	jr	z,fpend
+	ld	a,h
+	or	l
+	jr	z,eoln
+	push	hl		;HL->next character in line.
+	ld	de,(pstrt)
+	and	a
+	sbc	hl,de		;L=length of redirector
+	ex	de,hl		;E=length of redirector	
+zaprd:
+	ld	(hl),' '
+	inc	hl
+	dec	e
+	jr	nz,zaprd
+	pop	de		;DE=next character in line
+	ld	hl,(pfcb+2)
+	dec	hl
+	ld	(hl),-1		;Flag, must be 0 or -1
+	inc	hl
+	ret
+
+eoln:
+	ld	hl,(pstrt)
+	ld	(hl),0		;Chop redirection off
+	ld	a,l
+	and	7Fh
+	dec	a
+	ld	(80h),a		;Command line ends here.
+	ld	de,pfcb
+	ld	hl,0
+	ld	(pfcb),hl
+	ld	hl,(pfcb+2)
+	dec	hl
+	ld	(hl),-1		;Pipe active
+	inc	hl
+	ret
+
+fpendi:
+	pop	ix
+fpend:
+	ld	de,(pfcb)
+	ld	hl,(pfcb+2)
+	ret
+
+	dseg
+pfcb:				; Parse Filename Control Block
+	defw	0		; Address of input string
+	defw	0		; Address of FCB (output)
+	cseg
+
+chkver:
+	call	idrsx
+	jp	nz,fdos
+	ld	hl,0102h	;PIPEMGR 1.02
+	ret
+
+con1:
+	call	pbytin
+	ld	a,h
+	or	a
+	jr	nz,bahl
+	ld	l,1Ah
+bahl:
+	ld	b,h
+	ld	a,l
+	ret
+
+con6:	ld	a,e
+	cp	0fdh
+	jp	c,fdos
+	jr	z,con1
+	cp	0feh
+	jr	z,con11
+	call	pbytin
+	jr	con1
+
+	dseg
+	defs	20
+gsp:	defw	0
+	cseg
+
+con11:
+	ld	a,(cpol)
+			;Get console mode, including policy for function 0Bh
+	cp	1	;True
+	jr	z,RetTrue
+	cp	2
+	jr	z,RetFalse
+
+;Return conditional value. Two consecutive calls are necessary to signal a
+;keypress - the first always returns 0.
+
+	ld	a,(ckey)	;Was last FDOS call 0Bh?
+	or	a
+	jr	nz,RetTrue	;No. Return False.
+	dec	a
+	ld	(ckey),a	;Signal that the last BDOS call was 0Bh.
+RetFalse:
+	xor	a
+	ret
+
+RetTrue:
+	xor	a
+	ld	(ckey),a
+	dec	a
+	ret
+
+con10:
+	ex	de,hl		;HL->buffer
+	ld	a,h
+	or	l
+	ld	c,0
+	jr	nz,con10a
+	ld	hl,(dma)
+	inc	hl
+	ld	c,(hl)
+	dec	hl
+con10a:
+	ld	a,(hl)		;HL->buf[0]
+	sub	c
+	ld	b,a		;B=maximum length
+	ret	c
+	inc	hl		;HL->buf[1]
+	push	hl
+	inc	hl
+	push	bc		;HL->space for input
+	ld	b,0
+	add	hl,bc
+	pop	bc
+con10b:
+	push	hl
+	push	bc
+	call	qbytin
+	pop	bc
+	ld	a,h	
+	or	a
+	jr	z,con10c
+	ld	a,l
+	cp	CR
+	jr	z,con10c
+	cp	LF
+	jr	z,con10c
+	pop	hl
+	ld	(hl),a
+	inc	hl
+	inc	c
+	djnz	con10b
+	defb	3Eh		;Swallow the POP HL  ;;; jr	con10d
+				; Converts POP HL to LD A,xx
+con10c:
+	pop	hl
+con10d:
+	pop	hl
+	ld	(hl),c
+	ret
+
+PipeIn:
+	ld	a,(inflg)
+	or	a
+	jr	nz,pipei1
+	ld	a,(crbuf)
+	or	a
+	jr	z,nolf
+	cp	LF
+	jr	z,donelf
+	ld	c,CONOUT
+	ld	e,LF
+	call	fdos
+donelf:
+	xor	a
+	ld	(crbuf),a
+	ld	hl,010ah
+	jp	bahl
+
+	dseg
+crbuf:	defb	0
+	cseg
+
+crlf:
+	ld	(crbuf),a
+	ld	c,CONOUT
+	ld	e,CR
+	call	fdos
+	ld	hl,010dh
+	jp	bahl
+
+nolf:
+	ld	c,CONIN
+	call	fdos
+	cp	CR
+	jr	z,crlf
+	cp	LF
+	jr	z,crlf
+	ld	l,a
+	cp	1Ah
+	ld	h,0
+	jp	z,bahl
+	inc	h
+	jp	bahl
+
+pipei1:
+	call	bytin
+	jp	bahl
+
+PipeOut:
+	inc	de		; Step to the output character
+	inc	de
+	ld	a,(de)
+	ld	e,a
+	ld	a,(outflg)	;Output via PIPEMGR?
+	ld	c,2
+	or	a
+	jp	z,fdos
+bytout:
+	ld	a,(outfcb+.ud)	;E=character
+	cp	20h		;CON:
+	jr	c,bytoz1
+	ld	c,2
+	jp	z,fdos
+	cp	21h		;AUX:
+	ld	c,4
+	jp	z,fdos
+	cp	22h		;LST:
+	ld	c,5
+	jp	z,fdos		;NUL:
+	ret
+
+bytoz1:
+	ld	a,(outptr)
+	push	de
+	cp	80h
+	call	nc,wrobuf
+	pop	de
+	ld	l,a
+	ld	h,0
+	ld	bc,outbuf
+	add	hl,bc
+	ld	(hl),e
+	inc	a
+	ld	(outptr),a
+	ret
+
+PipeErr:
+	inc	de
+	inc	de
+	ld	a,(de)
+	ld	e,a
+	ld	a,(errflg)
+	ld	c,2
+	or	a
+	jp	z,fdos
+	jr	bytout
+
+ret1a:
+	ld	hl,1Ah
+	ret
+
+qbytin:
+	call	pbytin
+	ld	a,(lastin)
+	ld	c,a
+	ld	a,l
+	ld	(lastin),a
+	cp	LF
+	ret	nz
+	ld	a,c
+	cp	CR		;CR,LF -> CR
+	ret	nz
+
+;Fall through to...
+
+pbytin:
+	ld	a,(pclosed)
+	or	a
+	jr	z,bytin
+	call	openin
+	xor	a
+	ld	(pclosed),a
+	ld	(awake),a	;openin wakes up the RSX.
+bytin:
+	ld	a,(ineof)
+	or	a
+	jr	nz,ret1a
+	ld	a,(infcb+.ud)	;Input from a device?
+	cp	20h
+	jr	c,bytiz1	;CON:
+	ld	c,CONIN
+	jr	z,hlba
+	cp	21h		;AUX:
+	ld	c,AUXIN
+	jr	z,hlba
+	ld	hl,001Ah	;LST: / NUL:
+	ret
+	
+hlba:
+	call	fdos
+	ld	l,a
+	xor	1Ah		;H=0 if EOF
+	ld	h,a
+	ret
+
+bytiz1:
+	ld	hl,(inlen)	
+	ld	de,(inlen+2)	; DEHL has input length
+	ld	a,h
+	or	l
+	or	d
+	or	e
+	jr	z,ret1a		; DEHL = 0; send a CP/M text EOF
+	dec	hl		; Decrement DEHL
+	ld	(inlen),hl
+	ld	a,h
+	and	l
+	inc	a
+	jr	nz,byti01
+	dec	de
+	ld	(inlen+2),de
+byti01:
+	ld	a,(inptr)
+	cp	80h
+	call	nc,rdibuf
+	ld	l,a
+	inc	a
+	ld	(inptr),a
+	ld	h,0
+	ld	de,inbuf
+	add	hl,de
+	ld	l,(hl)
+	ld	h,1
+	ret
+
+rdibuf:
+	ld	de,inbuf
+	call	set_dma
+	push	iy
+	ld	iy,infcb
+	ld	c,READSEQ
+	call	fcbdos
+	pop	iy
+	ld	de,(dma)
+	call	set_dma
+	or	a
+	jr	z,rdib1
+	ld	(ineof),a
+	call	ibuf1A
+rdib1:
+	xor	a
+	ld	(inptr),a
+	ret
+
+wrobuf:
+	ld	de,outbuf
+	call	set_dma
+	push	iy
+	ld	iy,outfcb
+	ld	c,WRITESEQ
+	call	fcbdos
+
+	ld	de,(dma)
+	call	set_dma
+	pop	iy
+	call	obuf1A
+	ld	de,(dma)
+	call	set_dma
+	xor	a
+	ld	(outptr),a
+	ret
+
+CloseIn:
+	ld	a,80h
+	ld	(inptr),a
+	ld	a,(inflg)
+	or	a
+	ret	z
+	xor	a
+	ld	(inflg),a
+	ld	iy,infcb
+	ld	c,CLOSEF
+	call	fcbdos
+	ld	a,(PipedI)	;Was input piped?
+	or	a
+	ret	z
+	ld	iy,infcb
+	ld	hl,0
+	ld	(infcb+14),hl
+	ld	(infcb+12),hl
+	ld	c,DELETEF
+	call	fcbdos		;Delete the input pipe
+	ret
+
+CloseOut:
+	ld	a,(outflg)	;Output via PIPEMGR?
+	or	a
+	ret	z
+	ld	a,(outptr)
+	or	a
+	push	af
+	call	nz,wrobuf
+	ld	iy,outfcb
+	ld	c,CLOSEF
+	call	fcbdos
+	pop	af
+
+; Next instruction added to change meaning of last sector byte count from
+; USED bytes to UNUSED bytes.  [jrs 03-04-2014]
+	neg
+
+	and	7fh
+
+;;	ld	(outfcb+.cr),a
+;;	ld	a,(outfcb+6)
+;;	set	7,a
+;;	ld	(outfcb+6),a
+
+	ld	(iy+.cr),a	; Taking advantage of the fact that IY
+	set	7,(iy+6)	; holds address of outfcb!
+	
+	ld	c,SETATTR
+;;	ld	iy,outfcb
+	call	fcbdos
+
+;[20-11-1998] Generate a temp file and rename it when closing.
+
+;	ld	iy,Xoutfcb
+;	ld	c,DELETEF
+;	call	fcbdos
+;	ld	hl,Xoutfcb
+;	ld	de,outfcb+16
+;	ld	bc,16
+;	ldir
+;
+;	ld	c,RENAMEF	;Rename temp file.
+;	ld	iy,outfcb
+;	call	fcbdos
+;
+;	xor	a
+;	ld	(outflg),a
+;	ld	(Xoutflg),a	;JCE 1-1-2000 keep these flags in sync
+
+	ret
+
+myboot:
+
+;Called when program terminates
+
+	ld	sp,inbuf+7fh
+	call	uhookwb
+	xor	a		;RSX is asleep
+	ld	(awake),a
+	ld	c,ERRMODE	;Can't afford recursive RST 0's
+	ld	e,0FFh
+	call	fdos
+	call	CloseIn		;Close STDIN, STDOUT & STDERR.
+	call	CloseOut
+	xor	a
+	ld	(PipedI),a
+	ld	a,(PipedO)	;Was there a pipe?
+	or	a
+	jr	nz,xferpipe
+	dec	a
+	ld	(delete),a	;Set to delete RSX
+	rst	0		;RSX vanishes...
+
+xferpipe:
+	xor	a
+	ld	(PipedO),a
+	dec	a
+	ld	(PipedI),a
+	ld	(inflg),a
+;	ld	hl,Xoutfcb	;JCE 1-1-2000 1.01: Use Xoutfcb not outfcb
+				; JRS 2014-06-17: No.  outfcb is correct.
+	ld	hl,outfcb
+
+	ld	de,renfcb	;so the right rename is done
+	ld	bc,38
+	push	hl
+	ldir
+	pop	hl	
+	ld	de,renfcb+10h
+	ld	bc,10h
+	ldir
+	ld	hl,0
+	ld	(renfcb+12),hl
+	ld	(renfcb+14),hl
+	ld	(renfcb+28),hl
+	ld	(renfcb+30),hl
+	ld	(renfcb+32),hl	;Zap the rename fcb
+	ld	hl,'NI'		;"PIPEIN"
+	ld	(renfcb+21),hl
+	ld	hl,'  '
+	ld	(renfcb+23),hl
+	ld	iy,renfcb
+	ld	c,RENAMEF
+	call	fcbdos		;Rename "PIPEOUT" to "PIPEIN"
+
+	ld	hl,renfcb+16
+	ld	de,infcb	;Make input file FCB.
+	ld	bc,12
+	ldir
+	ld	a,(renfcb+.ud)
+	ld	(infcb+.ud),a	;Transfer uid as well.
+
+	xor	a
+	ld	(delete),a	;Return control to CP/M. RSX stays loaded
+				;but asleep.
+	ld	(awake),a
+	ld	hl,pipenxt
+	ld	de,80h
+	ld	b,d
+	ld	c,e
+	ldir
+	call	hookwb		;We will need this because the pipe is running
+	ld	hl,(1)
+	inc	hl
+	ld	de,splboot
+	ld	(hl),e
+	inc	hl
+	ld	(hl),d
+	xor	a
+	ld	(cpol),a	;Console input policy
+	inc	a
+	ld	(pclosed),a
+	ld	c,CHAIN
+	ld	e,0
+	call	fdos		;Chain to command given in pipe
+	jp	oboot
+
+splboot:
+	ld	hl,(1)
+	inc	hl
+	ld	de,myboot
+	ld	(hl),e
+	inc	hl
+	ld	(hl),d
+	jp	oboot
+
+hookwb:	ld	a,(wbflag)		; Is warm boot hooked already?
+	or	a
+	ret	nz			; If so then nothing to do
+	ld	hl,(1)			; Get target of JP at address 0
+	ld	a,(hl)			; Get instruction that is there
+	ld	(hl),0C3h		; Store a JP
+	inc	hl			; Step to address
+	ld	bc,myboot		; Load address of local routine
+	ld	e,(hl)			; Save current warm boot vector and
+	ld	(hl),c			; plug in the address of the local
+	inc	hl			; routine.
+	ld	d,(hl)
+	ld	(hl),b
+	ld	(oboot),a		; Store the original vector
+	ld	(oboot+1),de
+	ld	a,1			; Flag that the warm boot hook is
+	ld	(wbflag),a		; in place.
+	ret
+
+uhookwb:
+	ld	a,(wbflag)
+	or	a
+	ret	z
+	ld	de,(1)
+	ld	hl,oboot
+	ld	bc,3
+	ldir
+	xor	a
+	ld	(wbflag),a
+	ret
+
+idrsx:
+	push	de
+	ex	de,hl
+	inc	hl
+	inc	hl
+	ld	e,(hl)
+	inc	hl
+	ld	d,(hl)
+	ld	hl,rname
+	ld	b,8
+	call	cp$
+	pop	de
+	ret
+
+cp$:
+	ld	a,(de)		; Compares strings at HL and DE for length B.
+	cp	(hl)		; Leaves HL=HL+B and DE = DE+B regardless of
+	jr	nz,cp$1		; the result.  Z flag is set and A=0 if the
+	inc	de		; strings are identical, otherwise Z flag is
+	inc	hl		; reset and A<>0
+	djnz	cp$
+	xor	a
+	ret
+
+cp$1:
+	inc	hl
+	inc	de
+	djnz	cp$1
+	xor	a
+	dec	a
+	ret	
+
+tempdrv:
+	ld	(gsp),sp
+	ld	sp,gsp
+	push	bc
+	push	de
+	push	hl
+	ld	de,scb1
+	ld	c,ACCSCB
+	call	fdos
+	pop	hl
+	pop	de
+	pop	bc
+	ld	sp,(gsp)
+	ret
+
+killrsx:
+	xor	a
+	dec	a
+	ld	(delete),a
+	ld	hl,fdos
+	ld	(fdos-2),hl
+	push	bc
+	push	de
+	call	uhookwb
+	pop	de
+	pop	bc
+	jp	fdos
+
+openin:
+	push	iy
+	ld	hl,0
+	ld	(inlen),hl
+	ld	(inlen+2),hl
+
+	ld	c,SIZEF		;Compute size of input file
+	ld	iy,infcb
+	call	fcbdos
+	inc	a
+	jp	z,noinp
+	ld	de,(infcb+.r1)	; Load file size (sectors) from .rr field
+	ld	a,(infcb+21h)
+	ld	h,a
+	ld	l,0		; Convert sectors to bytes
+	srl	d
+	rr	e
+	rr	h
+	rr	l		;DEHL = size of file, bytes
+	ld	(inlen),hl
+	ld	(inlen+2),de
+	ld	hl,0
+	ld	(infcb+12),hl
+	ld	(infcb+14),hl
+	ld	a,l
+	dec	a
+	ld	(infcb+.cr),a
+	ld	c,OPENF
+	ld	iy,infcb
+	call	fcbdos
+	inc	a
+	jp	z,noinp
+	ld	a,(infcb+.cr)
+	and	7fh
+;------------------------------------------------------------------------
+; This original code assumed byte count at FCB[32] represents the number
+; of USED bytes in the last sector.  However this program now interprets
+; FCB[32] as the number of UNUSED bytes in the last sector.  We don't
+; need to test for zero.  Instead, we unconditionally subtract the last
+; sector byte count from the calculated file length.
+;;	jr	z,nomsb		;No adjustment necessary
+;;	ld	b,a
+;;	ld	a,80h
+;;	sub	b		;A=no. unused bytes
+;------------------------------------------------------------------------
+	ld	c,a
+	ld	b,0
+	ld	hl,(inlen)
+	and	a
+	sbc	hl,bc
+	ld	(inlen),hl
+	jr	nc,nomsb
+	ld	hl,(inlen+2)
+	ld	a,h
+	or	l
+	jr	z,nomsb
+	dec	hl
+	ld	(inlen+2),hl
+nomsb:
+	call	hookwb
+	xor	a
+	ld	(infcb+.cr),a
+	ld	(delete),a	;Pipemgr is running
+	ld	(pclosed),a
+	ld	(ineof),a
+	ld	(lastin),a
+	ld	(ckey),a
+	dec	a
+	ld	(inflg),a	;Input is redirected.
+	ld	(awake),a	;RSX is awake
+	pop	iy
+	ret
+
+	dseg
+warn1:	defb	13,10,"PIPEMGR: Can't open $"
+warn1a:	defb	'input.',13,10,'$'
+warn2a:	defb	'output.',13,10,'$'
+	cseg
+
+set_dma:
+	ld	(gsp),sp
+	ld	sp,gsp
+	push	hl
+	push	de
+	push	bc
+	push	af
+	push	iy
+	ld	c,SETDMA
+	call	fdos
+	pop	iy
+	pop	af
+	pop	bc
+	pop	de
+	pop	hl
+	ld	sp,(gsp)
+	ret
+
+noinp:
+	xor	a		;Failed to open input
+	ld	(inflg),a
+	inc	a
+	ld	(ineof),a
+	ld	de,warn1
+	call	print
+	ld	de,warn1a
+	call	print
+	pop	iy
+	ret
+
+print:
+	ld	c,COSTR
+	jp	fdos
+
+ibuf1A:
+	ld	hl,inbuf
+	jr	fill1A
+obuf1A:
+	ld	hl,outbuf
+fill1A:
+	ld	d,h
+	ld	e,l
+	inc	de
+	ld	bc,127
+	ld	(hl),1Ah
+	ldir
+	ret
+
+	dseg
+cpcon:	defb	'CON:AUX:LST:NUL:'
+PipedI:	defb	0		;MUST be either 0 or -1
+PipedO:	defb	0		;MUST be either 0 or -1
+inflg:	defb	0		;MUST be either 0 or -1
+infcb:	defs	38
+outflg:	defb	0		;MUST be either 0 or -1
+outfcb:	defb	0,'$PIPEMGR$$$'
+	defs	26
+
+;Xoutflg:defb	0
+;Xoutfcb:defs	38
+errflg:	defb	0		;MUST be either 0 or -1
+
+pipenxt:
+	defs	80h
+
+inbuf:	defs	80h
+inptr:	defb	80h
+outbuf:	defs	80h
+outptr:	defb	0
+
+renfcb:	defs	38
+
+inlen:	defw	0,0		;Bytes in input file.
+pclosed:
+	defb	0		;Pipe needs opening?
+awake:	defb	0
+oapp:	defb	0
+ineof:	defb	0		;EOF latch
+wbflag:	defb	0		;WBOOT vector hooked?
+oboot:	defs	3		;Original boot routine
+verchk:	defb	PMVER,1
+	defw	rname
+pipeo$:	defb	'0:PIPEOUT.$$$',0	
+dma:	defw	80h
+scb1:	defw	50h
+pstrt:	defw	0
+lastin:	defb	0
+ckey:	defb	0
+cpol:	defb	0
+ousr:	defb	0
+	cseg
+
+	end

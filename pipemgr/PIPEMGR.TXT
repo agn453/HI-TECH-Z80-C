@@ -1,0 +1,13 @@
+This is a somewhat modified version of PIPEMGR.RSX by John Elliott.
+
+PIPEMGR is an RSX which when attached to suitable programs provides input and
+output redirection capability.  One possible use is to capture the output of
+a program to a text file.  The DISKINFO tool supplied on Tesseract volume 89
+is such a program.  So are pograms compiled with the updated Hi-Tech C from
+Tesseract tvolume 91.
+
+The archive contains TEE.COM which has the pipe manager RSX attached and so
+behaves like its namesake in the UNIX world.
+
+Jon Saxton
+June 2014

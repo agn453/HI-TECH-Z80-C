@@ -770,17 +770,21 @@ To build a self-relocating image, use the -A compile option.
 * Declaration for rename() missing from dist/UNIXIO.H
 
 * Make CPU check in the start-up modules consistent.  Output
+message for Z80 (or Z280 MPU) if the incorrect processor is not
+detected. For example -
 ```
 This CP/M program requires a Z80 CPU.
 ```
-(or Z280 MPU) if the incorrect processor is not detected.
 
 * Include the modified floating-point version of float/DOPRNT.AS
 to support outputting strings greater than 255 characters by the
 various printf() routines.
 
-Updated both dist/LIBC.LIB and dist/LIBF.LIB object libraries.
+* Updated both dist/LIBC.LIB and dist/LIBF.LIB object libraries
+and the Z280 ones in z280dist/LIB280C.LIB and z280dist/LIB280F.LIB.
 
+Still working on resolving issue #9 and support for the compiler
+front end to build relocatable and programs with overlays.
 
 --
 Tony Nicholson

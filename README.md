@@ -770,7 +770,7 @@ To build a self-relocating image, use the -A compile option.
 * Declaration for rename() missing from dist/UNIXIO.H
 
 * Make CPU check in the start-up modules consistent.  Output
-message for Z80 (or Z280 MPU) if the incorrect processor is not
+message for Z80 (or Z280 MPU) if the incorrect processor is
 detected. For example -
 ```
 This CP/M program requires a Z80 CPU.

@@ -50,9 +50,7 @@ c280
 <exec.as \
 <execl.as \
 <_exit.as \
-<exit.as \
 <exit.c \
-<fakeclea.as \
 <fakeclea.c \
 <fakecpcl.as \
 <fcbname.c \
@@ -169,6 +167,7 @@ c280
 <wrelop.as \
 <write.c \
 <xtoi.as \
+<z280cpm.as \
 <zcrtcpm.as \
 <zdrtcpm.as \
 <zrrtcpm.as

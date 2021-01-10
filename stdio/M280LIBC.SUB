@@ -1,5 +1,6 @@
-; Use librarian to replace all modules in m:lib280c.lib
+; Use librarian to place all modules in m:lib280c.lib
 ; NB: the ordering is important for resolving dependencies at link time
+era m:lib280c.lib
 libr
 <r m:lib280c.lib \
 <start1.obj     \
@@ -160,3 +161,4 @@ libr
 <asmod.obj      \
 <xtoi.obj
 ; Library m:lib280c.lib created
+; Remember to copy it to current directory and A0:

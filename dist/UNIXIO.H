@@ -1,6 +1,3 @@
-#ifndef _HTC_UNIXIO_H
-#define _HTC_UNIXIO_H
-
 /*
  *	Declarations for Unix style low-level I/O functions.
  */
@@ -24,9 +21,8 @@ extern int	creat(char *, int);
 extern int	dup(int);
 extern long	lseek(int, long, int);
 extern int	read(int, void *, int);
+extern int	rename(char *, char *);
 extern int	unlink(char *);
 extern int	write(int, void *, int);
 extern int	isatty(int);
 extern int	chmod(char *, int);
-
-#endif

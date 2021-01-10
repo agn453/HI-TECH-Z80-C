@@ -1,7 +1,8 @@
-; Use librarian to replace all modules in LIBC6.LIB
+; Use librarian to place all modules in LIBC7.LIB
 ; NB: the ordering is important for resolving dependencies at link time
+era LIBC7.lib
 libr
-<r LIBC6.lib \
+<r LIBC7.lib \
 <start1.obj     \
 <getargs.obj    \
 <assert.obj     \
@@ -159,4 +160,4 @@ libr
 <toupper.obj    \
 <asmod.obj      \
 <xtoi.obj
-; Library LIBC6.LIB created
+; Library LIBC7.LIB created

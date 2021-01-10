@@ -11,39 +11,8 @@
 
 	psect	cpm
 	defs	100h		;Base of CP/M's TPA
-	global	start,_main,_exit,__Lbss,__Hstack, __z3env, __piped
-
-reloc:	defb	0ebh,04h	;DOS protection... JMPS LABE
-	ex	de,hl
-	jp	begin
-
-	defb	0b4h,09h	;DOS protection... MOV AH,9
-	defb	0bah
-	defw	bvmes		;DOS protection... MOV DX,OFFSET BVMES
-	defb	0cdh,021h	;DOS protection... INT 21h.
-	defb	0cdh,020h	;DOS protection... INT 20h.
-
-	defb	13
-	defm	'Compiled with Hi-Tech C [Relocatable]'
-	defb	13,10,26
-
-	psect	data
-z3ecst:	defm	'Z3ENV'
-bvmes:	defm	'This program requires a CP/M on Z80.'
-	defb	13,10,'$'
-memmes:	defm	'Not enough memory to run.'
-	defb	13,10,'$'
-	psect	cpm
-
-begin:	sub	a		;Stop 8080 processors running this.
-	jp	po,okver
-;
-	ld	de,bvmes
-	ld	c,9		;Print error message
-	jp	5
-
-okver:	
-    push	hl		;HL holds possible Z3ENV address
+	global	start,_main,_exit,__Lbss,__Hstack
+reloc:
 	ld	hl,(6)		;get base of fdos
 	ld	de,__Hstack
 	or	a
@@ -104,59 +73,11 @@ where:	defs	2		;temp storage
 	or	b
 	jr	z,3f
 	lddr			;move it
-	pop	hl
 3:
 	jp	start		;go to it
 
 	psect	text
-start:	ld	l,0		;Start of the page
-	ld	a,(hl)
-	cp	0c3h		;Must start with a jump
-	jr	nz,noz3
-	ld	l,1bh
-	ld	a,(hl)		;Must refer to itself
-	or	a
-	jr	nz,noz3
-	inc	hl
-	ld	a,(hl)
-	cp	h
-	jr	nz,noz3
-	ld	l,3		;Must contain the string "Z3ENV"
-	ld	de,z3ecst
-	ld	b,5		;Check 5 characters
-z3ecmp:	ld	a,(de)
-	cp	(hl)
-	jr	nz,noz3
-	inc	hl
-	inc	de
-	djnz	z3ecmp
-	ld	l,0
-	defb	3eh		;Swallow the LD HL
-noz3:	ld	hl,0
-yesz3:	ld	(__z3env),hl
-;
-memok:	
- 
-    ld	c,12
- 	call    5		;Check CP/M version
- 	ld	a,l
- 	cp	30h
- 	jr	nc,iscpm3
- 	xor	a		; CP/M 2.2 has no RSX
- 	jr	norsx
-
-    ;If the PIPEMGR RSX is loaded, initialise it.
-iscpm3:
-	ld	c,3Ch
-	ld	de,rsxpb
-	call	5
-	ld	a,h
-	inc	l	;HL=00FFh if no PIPEMGR present.
-	or	l
-norsx:
-	ld	(__piped),a
-	ld	hl,(6)			;base address of fdos
-
+start:	ld	hl,(6)		;base address of fdos
 	ld	sp,hl			;stack grows downwards
 	ld	de,__Lbss		;end of initialized data
 	scf
@@ -215,13 +136,4 @@ norsx:
 	psect	data
 nularg:	defm	'main'
 	defb	0
-__z3env:
-	defw	0
-__piped:
-        defw    0
-rsxpb:	defb	79h,1
-	defw	pipesgn
-pipesgn:
-	defm	'PIPEMGR '
-
 	end	reloc

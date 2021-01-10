@@ -755,6 +755,16 @@ original PIPEMGR page at
 http://www.seasip.info/Cpm/software/Pipemgr/index.html
 
 
+### Self-relocating .COM program PIPEMGR integration
+
+@tsupplis provided updates to the self-relocating image start-up module
+to support the improvements from the standard CP/M start-up (in CRTCPM.OBJ).
+The source changes are in cpm/ZRRTCPM.AS and the compiled object replaces
+dist/RRTCPM.OBJ
+
+To generated a self-relocating image, use the -A compile option.
+
+
 
 --
 Tony Nicholson

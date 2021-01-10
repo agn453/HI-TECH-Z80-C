@@ -26,7 +26,7 @@
 #define	SIGINT	1		/* control-C */
 #endif
 
-typedef void (*signal_t) (int);
+typedef void* signal_t;
 #define	SIG_DFL	((signal_t)0)	/* default action is to exit */
 #define	SIG_IGN	((signal_t)1)	/* ignore them */
 

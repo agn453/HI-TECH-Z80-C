@@ -26,5 +26,5 @@ _sigchk()
 		return;
 	if(where == SIG_DFL)
 		exit(0);
-	(*where)(0);
+	((int(*)())where)(0);
 }

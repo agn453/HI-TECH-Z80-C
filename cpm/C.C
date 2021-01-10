@@ -26,6 +26,7 @@
 #include    <cpm.h>
 #include    <exec.h>
 #include    <stat.h>
+#include    <signal.h>
 
 /*
  *  C command
@@ -169,12 +170,15 @@ int main(int argc, char **argv)
 {
     register char *cp, *xp;
     short       i;
+    signal_t prev_sig;
 
+    prev_sig=signal(SIGINT,SIG_IGN);
     fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-7\n");
     fprintf(stderr, "Copyright (C) 1984-87 HI-TECH SOFTWARE\n");
 #if EDUC
     fprintf(stderr, "Licensed for Educational purposes only\n");
 #endif  EDUC
+    signal(SIGINT,prev_sig);
     if (argc == 1)
         argv = _getargs((char *)0, PROMPT);
     setup();

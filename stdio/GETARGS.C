@@ -52,6 +52,7 @@
 #include    <ctype.h>
 #include    <string.h>
 #include    <sys.h>
+#include    <signal.h>
 
 #define MAXARGS 200         /* max number of arguments */
 #define MAXLEN  100         /* max length of an argument */
@@ -209,8 +210,11 @@ static char nxtch()
     {
         if (!bp)
             bp = alloc(256);
-        if (isatty(fileno(stdin)))
+        if (isatty(fileno(stdin))) {
+            signal_t prev=signal(SIGINT,SIG_IGN);
             fprintf(stderr, "%s> ", name);
+            signal(SIGINT,prev);
+        }
         gets(bp);
         str = bp;
     }

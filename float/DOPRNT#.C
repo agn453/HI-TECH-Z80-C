@@ -36,8 +36,8 @@ int *		a;
 {
 	char	c, prec;
 	uchar	fill, left;
-	unsigned int i, len;
-	uchar	base, width, sign;
+	uchar	i;
+	uchar	base, width, sign, len;
 	uchar	ftype;
 	extern	short _pnum(), _fnum();
 

@@ -767,8 +767,21 @@ To build a self-relocating image, use the -A compile option.
 
 ### Minor issues
 
-Declaration for rename() missing from dist/UNIXIO.H
+* Declaration for rename() missing from dist/UNIXIO.H
+
+* Make CPU check in the start-up modules consistent.  Output
+```
+This CP/M program requires a Z80 CPU.
+```
+(or Z280 MPU) if the incorrect processor is not detected.
+
+* Include the modified floating-point version of float/DOPRNT.AS
+to support outputting strings greater than 255 characters by the
+various printf() routines.
+
+Updated both dist/LIBC.LIB and dist/LIBF.LIB object libraries.
+
 
 --
 Tony Nicholson
-08-Jan-2021
+10-Jan-2021

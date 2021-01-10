@@ -29,7 +29,7 @@ reloc:	defb	0ebh,04h	;DOS protection... JMPS LABE
 
 	psect	data
 z3ecst:	defm	'Z3ENV'
-bvmes:	defm	'This program requires a CP/M on Z80.'
+bvmes:	defm	'This CP/M program requires a Z80 CPU.'
 	defb	13,10,'$'
 memmes:	defm	'Not enough memory to run.'
 	defb	13,10,'$'

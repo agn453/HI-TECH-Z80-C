@@ -48,9 +48,7 @@ c
 <exec.as \
 <execl.as \
 <_exit.as \
-<exit.as \
 <exit.c \
-<fakeclea.as \
 <fakeclea.c \
 <fakecpcl.as \
 <fcbname.c \

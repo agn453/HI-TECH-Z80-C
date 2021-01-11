@@ -8,17 +8,31 @@
 	global	start,_main,_exit,__Hbss, __Lbss, __argc_, __z3env, startup
         global  __piped
 
-start:	defb	0EBh,04h	;DOS protection... JMPS LABE
-	ex	de,hl
-	jp	begin
+start:		; DOS Protection	8080/Z80	x86
+				;	---------  --------------------
+	defb	0EBh,04h	;	EX DE,HL   JMPS LABE
+				;	INC B
 
-	defb	0B4h,09h	;DOS protection... MOV AH,9
-	defb	0BAh
-	defw	bvmes		;DOS protection... MOV DX,OFFSET BVMES
-	defb	0CDh,021h	;DOS protection... INT 21h.
-	defb	0CDh,020h	;DOS protection... INT 20h.
+	ex	de,hl		;	EX DE,HL
+	defb	0C3h		;	JP BEGIN
+	defw	begin		; (We don't want the assembler optimising
+				;  this to a relative branch)
 
-	defb	13
+labe:	defb	0B8h,0,09h	;		   MOV AX,9 ; print string
+
+	defb	0BAh		;		   MOV DX,OFFSET BVMES
+	defw	bvmes
+
+	defb	0CDh,021h	;		   INT 21h  ; call DOS
+
+	defb	0B8h,01h,4Ch	;		   MOV AX,4C01h ; terminate
+				;		   ; with CTRL-BREAK code (1)
+
+	defb	0CDh,021h	;		   INT 21h  ; call DOS
+						   ; we never return here
+
+	; Some text for viewing if typed
+
 	defm	'Compiled with Hi-Tech C'
 	defb	13,10,26
 

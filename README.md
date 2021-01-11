@@ -780,12 +780,24 @@ This CP/M program requires a Z80 CPU.
 to support outputting strings greater than 255 characters by the
 various printf() routines.
 
+* With @tsupplis provided fix for the compiler front-end dist/C309-7.COM
+now handles input correctly from submit files - resolving issue #9.
+Updated dist/SIGNAL.Hi, cpm/SIGNAL.C, cpm/C.C and stdio/GETARGS.C
+(a mix of input from and output to the console device stream was
+previously discarding input). 
+
+* The start-up modules have been corrected to work properly
+report an error when run under MS-DOS. (Previously the assembly language
+routine was incorrectly being optimised - where absolute jumps were
+changed to relative branches).
+
 * Updated both dist/LIBC.LIB and dist/LIBF.LIB object libraries
 and the Z280 ones in z280dist/LIB280C.LIB and z280dist/LIB280F.LIB.
 
-Still working on resolving issue #9 and support for the compiler
-front end to build relocatable and programs with overlays.
+Still working on revising the front end to build both relocatable and
+programs with overlays via command-line switches.  As soon as this is done
+I'll push an updated release.
 
 --
 Tony Nicholson
-10-Jan-2021
+11-Jan-2021

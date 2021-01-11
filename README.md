@@ -786,10 +786,10 @@ Updated dist/SIGNAL.Hi, cpm/SIGNAL.C, cpm/C.C and stdio/GETARGS.C
 (a mix of input from and output to the console device stream was
 previously discarding input). 
 
-* The start-up modules have been corrected to work properly
+* The start-up modules have been corrected to properly
 report an error when run under MS-DOS. (Previously the assembly language
-routine was incorrectly being optimised - where absolute jumps were
-changed to relative branches).
+routine was incorrectly being optimised - and an absolute jump was
+changed to a relative branch).
 
 * Updated both dist/LIBC.LIB and dist/LIBF.LIB object libraries
 and the Z280 ones in z280dist/LIB280C.LIB and z280dist/LIB280F.LIB.

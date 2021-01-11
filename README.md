@@ -782,9 +782,9 @@ various printf() routines.
 
 * With @tsupplis provided fix for the compiler front-end dist/C309-7.COM
 now handles input correctly from submit files - resolving issue #9.
-Updated dist/SIGNAL.Hi, cpm/SIGNAL.C, cpm/C.C and stdio/GETARGS.C
+Updated dist/SIGNAL.H, cpm/SIGNAL.C, cpm/C.C and stdio/GETARGS.C
 (a mix of input from and output to the console device stream was
-previously discarding input). 
+previously discarding input from CP/M 3 submit files). 
 
 * The start-up modules have been corrected to properly
 report an error when run under MS-DOS. (Previously the assembly language

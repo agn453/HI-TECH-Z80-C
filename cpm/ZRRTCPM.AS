@@ -13,15 +13,28 @@
 	defs	100h		;Base of CP/M's TPA
 	global	start,_main,_exit,__Lbss,__Hstack, __z3env, __piped
 
-reloc:	defb	0ebh,04h	;DOS protection... JMPS LABE
-	ex	de,hl
-	jp	begin
+reloc:		; DOS Protection	8080/Z80	x86
+				;	---------  --------------------
+	defb	0EBh,04h	;	EX DE,HL   JMPS LABE
+				;	INC B
 
-	defb	0b4h,09h	;DOS protection... MOV AH,9
-	defb	0bah
-	defw	bvmes		;DOS protection... MOV DX,OFFSET BVMES
-	defb	0cdh,021h	;DOS protection... INT 21h.
-	defb	0cdh,020h	;DOS protection... INT 20h.
+	ex	de,hl		;	EX DE,HL
+	defb	0C3h		;	JP BEGIN
+	defw	begin		; (We don't want the assembler optimising
+				;  this to a relative branch)
+
+labe:	defb	0B8h,0,09h	;		   MOV AX,9 ; print string
+
+	defb	0BAh		;		   MOV DX,OFFSET BVMES
+	defw	bvmes
+
+	defb	0CDh,021h	;		   INT 21h  ; call DOS
+
+	defb	0B8h,01h,4Ch	;		   MOV AX,4C01h ; terminate
+				;		   ; with CTRL-BREAK code (1)
+
+	defb	0CDh,021h	;		   INT 21h  ; call DOS
+						   ; we never return here
 
 	defb	13
 	defm	'Compiled with Hi-Tech C [Relocatable]'
@@ -43,7 +56,7 @@ begin:	sub	a		;Stop 8080 processors running this.
 	jp	5
 
 okver:	
-    push	hl		;HL holds possible Z3ENV address
+	push	hl		;HL holds possible Z3ENV address
 	ld	hl,(6)		;get base of fdos
 	ld	de,__Hstack
 	or	a
@@ -137,7 +150,7 @@ yesz3:	ld	(__z3env),hl
 ;
 memok:	
  
-    ld	c,12
+	ld	c,12
  	call    5		;Check CP/M version
  	ld	a,l
  	cp	30h

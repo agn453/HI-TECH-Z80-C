@@ -794,10 +794,14 @@ changed to a relative branch).
 * Updated both dist/LIBC.LIB and dist/LIBF.LIB object libraries
 and the Z280 ones in z280dist/LIB280C.LIB and z280dist/LIB280F.LIB.
 
+* Include dist/STDINT.H for some standard type definitions (and referenced
+by the overlay support routine).
+
+
 Still working on revising the front end to build both relocatable and
 programs with overlays via command-line switches.  As soon as this is done
 I'll push an updated release.
 
 --
 Tony Nicholson
-11-Jan-2021
+12-Jan-2021

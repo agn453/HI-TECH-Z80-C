@@ -1,7 +1,9 @@
 # HI-TECH Z80 C Compiler for CP/M
 
+## Introduction
+
 In this repository I intend to supply updates and enhancements to
-the HITECH C Compiler for Z80 running natively under CP/M or under
+the HI-TECH C Compiler for Z80 v3.09 running natively under CP/M or under
 emulation using RunZ80, SIMH or ZXCC.
 
 Each release is a consolidated milestone with various updates and
@@ -19,8 +21,7 @@ https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak ).
 
 The first release is a slightly modified (see below) v3.09.
 
-Background
-----------
+## Background
 
 The HI-TECH Z80 CP/M C compiler v3.09 is provided free of charge for any
 use, private or commercial, strictly as-is. No warranty or product
@@ -48,7 +49,7 @@ end of this README file.
 
 ### Release v3.09
 
-The original HITECH C linker (LINK.COM) has been renamed as LINQ.COM
+The original HI-TECH C linker (LINK.COM) has been renamed as LINQ.COM
 and the main compiler front-end (C.COM) has been patched to reflect
 this name change.  This was done to avoid a name clash with the Digital
 Research supplied CP/M linker.  The original version is kept as C-ORIG.COM
@@ -797,10 +798,19 @@ and the Z280 ones in z280dist/LIB280C.LIB and z280dist/LIB280F.LIB.
 * Include dist/STDINT.H for some standard type definitions (and referenced
 by the overlay support routine).
 
-
 Still working on revising the front end to build both relocatable and
 programs with overlays via command-line switches.  As soon as this is done
 I'll push an updated release.
+
+## MS-DOS cross-compiler available
+
+Recently Microchip Technology Inc. (the current owners of the HI-TECH
+intellectual property) also released the MS-DOS version of the HI-TECH
+C Compiler v4.11 - a cross-compiler for building CP/M and ROM-able
+programs for the Z80 using MS-DOS.  I've uploaded this version to
+GitHub at
+
+https://github.com/agn453/HI-TECH-Z80-C-Cross-Compiler
 
 --
 Tony Nicholson

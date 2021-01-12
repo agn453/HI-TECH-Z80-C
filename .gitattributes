@@ -2,6 +2,7 @@
 text=auto
 
 README.md text eol=crlf
+LICENSE text eol=crlf
 MAKEFILE text eol=crlf
 *.DOC text eof=crlf
 *.AS text eol=crlf linguist-language=Assembly

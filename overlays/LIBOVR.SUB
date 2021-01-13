@@ -1,3 +1,4 @@
+era libovr.lib
 libr 
 <r libovr.lib \
 <ovrload.obj ovrbgn.obj

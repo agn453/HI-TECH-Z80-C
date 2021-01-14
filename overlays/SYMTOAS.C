@@ -30,7 +30,6 @@ int main(int argc, char ** argv) {
         return -1;
     }
     if(argc==2) {
-        fprintf(stderr,"Yop");
         rc=sym2as(argv[1],0);
     } else {
         rc=sym2as(argv[1],argv[2]);

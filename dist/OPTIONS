@@ -4,6 +4,7 @@ HI-TECH Z80 CP/M C compiler options:
 -C	Generate object code only; don't link.
 -CR     Produce a cross-reference listing e.g. -CRfile.crf
 -D	Define a symbol, e.g. -DDEBUG=1
+-E	Specify executable output filename, e.g. -Efile.com
 -F	Generate a symbol file suitable for use with debug.com,
 		e.g. -Ffile.sym; default file name is L.SYM.
 -H      Output help (the OPTIONS file) and exit.

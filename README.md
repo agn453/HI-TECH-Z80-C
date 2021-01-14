@@ -912,6 +912,20 @@ copied from the dist folder to the system directory (usually drive A:
 in user are 0, and marked with the SYS and RO attributes).
 
 
+### Minor updates
+
+Addressing some minor changes from issue #18 -
+
+* A description of the -E option was missing from the dist/OPTIONS help
+message file.
+
+* For CP/M emulators the options emitted by the compiler front-end have
+been adjusted to be consistently in uppercase.
+
+* Report an error if the OPTIONS file can't be found (for the -H help text).
+
+I've re-issued the v3.09-7 release too.
+
 --
 Tony Nicholson
-14-Jan-2021
+15-Jan-2021

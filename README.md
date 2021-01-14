@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-7 (see Modification History below).
+The latest release is V3.09-7b (see Modification History below).
 
 I welcome bug reports/fixes and additional commentry and discussion.
 
@@ -912,6 +912,20 @@ copied from the dist folder to the system directory (usually drive A:
 in user are 0, and marked with the SYS and RO attributes).
 
 
+### Minor updates
+
+Addressing some minor changes from issue #18 -
+
+* A description of the -E option was missing from the dist/OPTIONS help
+message file.
+
+* For CP/M emulators the options emitted by the compiler front-end have
+been adjusted to be consistently in uppercase.
+
+* Report an error if the OPTIONS file can't be found (for the -H help text).
+
+I've re-issued this as a revised v3.09-7b release too.
+
 --
 Tony Nicholson
-14-Jan-2021
+15-Jan-2021

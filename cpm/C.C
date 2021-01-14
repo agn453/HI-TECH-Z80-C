@@ -301,7 +301,7 @@ int main(int argc, char **argv)
                 exit(0); /* Ignore all other options for HELP */
 
             default:
-                error("Unknown flag %s - use -H for HELP\n", argv[0]);
+                error("Unknown flag %s - use -H for HELP", argv[0]);
             }
             continue;
         }
@@ -446,7 +446,7 @@ void doit()
             exit(-1);
         }
         if (reloc)
-            flgs[flg_idx++] = strcat(strcpy(xalloc(strlen(l_dot_obj)+3), "-o"),
+            flgs[flg_idx++] = strcat(strcpy(xalloc(strlen(l_dot_obj)+3), "-O"),
                                      l_dot_obj);
         else
         {
@@ -490,7 +490,7 @@ void doit()
         if (xrname)
         {
             flgs[0] = xrname;
-            strcat(strcpy(tmpbuf, "-h"), outfile);
+            strcat(strcpy(tmpbuf, "-H"), outfile);
             if(cp = rindex(tmpbuf, '.'))
                 strcpy(cp, ".CRF");
             else
@@ -753,7 +753,7 @@ void compile(char *s)
     if (keepas && !optimize)
         vec[i++] = "-S";
     if (xref)
-        vec[i++] = strcat(strcpy(cbuf, "-c"), crtmp);
+        vec[i++] = strcat(strcpy(cbuf, "-C"), crtmp);
     if (ebuf[0])     /* error redirection */
         vec[i++] = ebuf;
     vec[i++] = tmpf1;
@@ -794,7 +794,7 @@ void compile(char *s)
     if (optimize && !speed)
         vec[i++] = "-J";
     vec[i++] = "-N";
-    vec[i++] = strcat(strcat(strcpy(tmpbuf, "-o"), s), ".OBJ");
+    vec[i++] = strcat(strcat(strcpy(tmpbuf, "-O"), s), ".OBJ");
     vec[i++] = cp;
     vec[i] = (char *)0;
     doexec(assem, vec);
@@ -864,7 +864,8 @@ void viewfile(char *fn)
     FILE  *f;
     char  *bp, buf[200];
 
-    f = fopen(fn, "r");
+    if (!(f = fopen(fn, "r")))
+        error("Unable to open help file %s", fn);
     while (bp=fgets(buf, 200, f))
         printf("%s", bp);
     fclose(f);

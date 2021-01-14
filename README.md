@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-6 (see Modification History below).
+The latest release is V3.09-7 (see Modification History below).
 
 I welcome bug reports/fixes and additional commentry and discussion.
 

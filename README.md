@@ -1,13 +1,15 @@
 # HI-TECH Z80 C Compiler for CP/M
 
+## Introduction
+
 In this repository I intend to supply updates and enhancements to
-the HITECH C Compiler for Z80 running natively under CP/M or under
+the HI-TECH C Compiler for Z80 v3.09 running natively under CP/M or under
 emulation using RunZ80, SIMH or ZXCC.
 
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-6 (see Modification History below).
+The latest release is V3.09-7 (see Modification History below).
 
 I welcome bug reports/fixes and additional commentry and discussion.
 
@@ -19,8 +21,7 @@ https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak ).
 
 The first release is a slightly modified (see below) v3.09.
 
-Background
-----------
+## Background
 
 The HI-TECH Z80 CP/M C compiler v3.09 is provided free of charge for any
 use, private or commercial, strictly as-is. No warranty or product
@@ -48,7 +49,7 @@ end of this README file.
 
 ### Release v3.09
 
-The original HITECH C linker (LINK.COM) has been renamed as LINQ.COM
+The original HI-TECH C linker (LINK.COM) has been renamed as LINQ.COM
 and the main compiler front-end (C.COM) has been patched to reflect
 this name change.  This was done to avoid a name clash with the Digital
 Research supplied CP/M linker.  The original version is kept as C-ORIG.COM
@@ -794,10 +795,123 @@ changed to a relative branch).
 * Updated both dist/LIBC.LIB and dist/LIBF.LIB object libraries
 and the Z280 ones in z280dist/LIB280C.LIB and z280dist/LIB280F.LIB.
 
-Still working on revising the front end to build both relocatable and
-programs with overlays via command-line switches.  As soon as this is done
-I'll push an updated release.
+* Include dist/STDINT.H for some standard type definitions (and referenced
+by the overlay support routine).
+
+
+## MS-DOS cross-compiler available
+
+Recently Microchip Technology Inc. (the current owners of the HI-TECH
+intellectual property) also released the MS-DOS version of the HI-TECH
+C Compiler v4.11 - a cross-compiler for building CP/M and ROM-able
+programs for the Z80 using MS-DOS.  I've uploaded this version to
+GitHub at
+
+https://github.com/agn453/HI-TECH-Z80-C-Cross-Compiler
+
+
+## Release v3.09-7
+
+Thanks to @tsupplis, the following enhancements are now available
+in the latest release v3.09-7.
+
+* The compiler front end now supports building CP/M programs using overlays.
+Just copy the dist/C309-7.COM to your system directory as C.COM, along
+with the symbol table builder dist/SYMTOAS.COM and overlay support library
+dist/LIBOVR.LIB.
+
+To build a program with overlays, specify the -F option when compiling
+the resident part of the main program (which writes a symbol file) and -Lovr
+to use the ovrload() routine; and for each of the overlay segments compile
+using the -Y option and specify the symbol file on the
+command line.  For example (these files are in the *test* folder too) --
+
+```
+Firstly the simple main program
+
+A>type TESTOVR.C
+#include <cpm.h>
+#include <stdio.h>
+#include <overlay.h>
+
+int main(int argc, char ** argv)
+{
+    intptr_t i;
+    printf("overlay test\n");
+    i=ovrload("testovr1",0);
+    printf("overlay return is %d\n",i);
+    i=ovrload("testovr1",0);
+    printf("overlay return is %d\n",i);
+    i=ovrload("testovr2",0);
+    printf("overlay return is %d\n",i);
+    i=ovrload("testovr1",0);
+    printf("overlay return is %d\n",i);
+    return 0;
+}
+
+A>type testovr1.c
+void * yop(void *a) {
+    printf("hello from overlay 01\n");
+    return 0;
+}
+
+A>type testovr2.c
+void * yop(void *a) {
+    printf("hello from overlay 02\n");
+    return 0;
+}
+
+A>c -ftestovrx.sym -o testovr.c -lovr                                         
+A:C        COM  (User 0)                                                        
+Hi-Tech C Compiler (CP/M-80) V3.09-7                                            
+Copyright (C) 1984-87 HI-TECH SOFTWARE                                          
+Updated from https://github.com/agn453/HI-TECH-Z80-C                            
+                                                                                
+A>c -y -o testovr1.c testovrx.sym                                             
+A:C        COM  (User 0)                                                        
+Hi-Tech C Compiler (CP/M-80) V3.09-7                                            
+Copyright (C) 1984-87 HI-TECH SOFTWARE                                          
+Updated from https://github.com/agn453/HI-TECH-Z80-C                            
+TESTOVR1.C                                                                      
+TESTOVRX.SYM
+
+A>>c -y -o testovr2.c testovrx.sym                                             
+A:C        COM  (User 0)                                                        
+Hi-Tech C Compiler (CP/M-80) V3.09-7                                            
+Copyright (C) 1984-87 HI-TECH SOFTWARE                                          
+Updated from https://github.com/agn453/HI-TECH-Z80-C                            
+TESTOVR2.C                                                                      
+TESTOVRX.SYM                                                                    
+                                                                                
+A>testovr                                                                     
+A:TESTOVR  COM                                                                  
+overlay test                                                                    
+hello from overlay 01                                                           
+overlay return is 0                                                             
+hello from overlay 01                                                           
+overlay return is 0                                                             
+hello from overlay 02                                                           
+overlay return is 0                                                             
+hello from overlay 01                                                           
+overlay return is 0                                                             
+                                                                                
+A>
+```
+
+* There are additional testing programs added to the *test* folder along
+with the output of a testing run in test/TEST.LOG that was generated on
+a CP/M 3 system.
+
+* Since wildcard expansion using _getargs() has been supported since
+v3.09-3, it is no longer necessary to use the -R option.  This is now
+deprecated and ignored if you use it on the command line.
+
+* A new -H option may be specified to obtain help with the command-line
+options.  It types out the system's OPTIONS file - so be sure this is
+copied from the dist folder to the system directory (usually drive A:
+in user are 0, and marked with the SYS and RO attributes).
+
 
 --
 Tony Nicholson
-11-Jan-2021
+14-Jan-2021

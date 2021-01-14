@@ -2,6 +2,7 @@
 text=auto
 
 README.md text eol=crlf
+LICENSE text eol=crlf
 MAKEFILE text eol=crlf
 *.DOC text eof=crlf
 *.AS text eol=crlf linguist-language=Assembly
@@ -22,4 +23,4 @@ MAKEFILE text eol=crlf
 *.ARC binary
 *.RSX binary
 *.pdf binary
-
+OPTIONS* text eol=crlf

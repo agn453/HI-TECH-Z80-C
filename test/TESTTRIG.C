@@ -75,7 +75,7 @@
 float a,b,c,d,e,f,g;
 int i;
 
-main() {
+int main() {
   a = 1.0;
   printf("\n  n  LN             EXP            SIN            COS            ATAN");
   for(i=1;i<20;i++)
@@ -95,4 +95,6 @@ main() {
 
   a=a+1.0;
   }
+  printf("\n");
+  return 0;
 }

@@ -1,4 +1,4 @@
-HI-TECH Z80 CP/M C compiler options:
+HI-TECH Z280 CP/M C compiler options:
 
 -A	Generate a self-relocating .COM program.
 -C	Generate object code only; don't link.
@@ -12,6 +12,7 @@ HI-TECH Z80 CP/M C compiler options:
 -M	Generate a map file, e.g. -Mfile.map
 -O	Invoke the peephole optimizer (reduced code-size)
 -OF	Invoke the optimizer for speed (Fast)
+-OF2	Invoke the Z280 optimizer to generate code for the Z280 MPU.
 -R	Link in command line wild card expansion code.
 -S	Generate assembler code in a .AS file; don't assemble or link.
 -U	Undefine a predefined symbol, e.g. -UDEBUG

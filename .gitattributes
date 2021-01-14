@@ -23,4 +23,4 @@ MAKEFILE text eol=crlf
 *.ARC binary
 *.RSX binary
 *.pdf binary
-
+OPTIONS* text eol=crlf

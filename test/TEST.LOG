@@ -1,0 +1,584 @@
+
+10E>date
+A:DATE     COM  (User 0)
+Thu 14/01/2021 14:50:14
+10E>; Compile all tests
+10E>c -v -o testver.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVER.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTVER.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTVER.COM 0:A:CRTCPM.OBJ TESTVER.OBJ 0:A:LIBC.LIB
+ERA TESTVER.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testio.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTIO.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTIO.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTIO.COM 0:A:CRTCPM.OBJ TESTIO.OBJ 0:A:LIBC.LIB
+ERA TESTIO.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testuid.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTUID.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTUID.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTUID.COM 0:A:CRTCPM.OBJ TESTUID.OBJ 0:A:LIBC.LIB
+ERA TESTUID.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o teststr.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTSTR.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTSTR.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTSTR.COM 0:A:CRTCPM.OBJ TESTSTR.OBJ 0:A:LIBC.LIB
+ERA TESTSTR.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testbios.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTBIOS.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBIOS.COM 0:A:CRTCPM.OBJ TESTBIOS.OBJ 0:A:LIBC.LIB
+ERA TESTBIOS.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testbdos.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTBDOS.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBDOS.COM 0:A:CRTCPM.OBJ TESTBDOS.OBJ 0:A:LIBC.LIB
+ERA TESTBDOS.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testtrig.c -lf
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTTRIG.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTTRIG.COM 0:A:CRTCPM.OBJ TESTTRIG.OBJ 0:A:LIBF.LIB 0:A:LIBC.LIB
+ERA TESTTRIG.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testftim.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTFTIM.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTFTIM.COM 0:A:CRTCPM.OBJ TESTFTIM.OBJ 0:A:LIBC.LIB
+ERA TESTFTIM.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testfile.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFILE.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTFILE.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTFILE.COM 0:A:CRTCPM.OBJ TESTFILE.OBJ 0:A:LIBC.LIB
+ERA TESTFILE.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testaes.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTAES.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTAES.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTAES.COM 0:A:CRTCPM.OBJ TESTAES.OBJ 0:A:LIBC.LIB
+ERA TESTAES.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testrc.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTRC.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTRC.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTRC.COM 0:A:CRTCPM.OBJ TESTRC.OBJ 0:A:LIBC.LIB
+ERA TESTRC.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testview.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTVIEW.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTVIEW.COM 0:A:CRTCPM.OBJ TESTVIEW.OBJ 0:A:LIBC.LIB
+ERA TESTVIEW.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -v -o testwild.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTWILD.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTWILD.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTWILD.COM 0:A:CRTCPM.OBJ TESTWILD.OBJ 0:A:LIBC.LIB
+ERA TESTWILD.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -ftestovrx.sym -v -o testovr.c -lovr
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTOVR.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -DTESTOVRX.SYM -Ptext=0,data,bss -C100H -OTESTOVR.COM 0:A:CRTCPM.OBJ TESTOVR.OBJ 0:A:LIBOVR.LIB 0:A:LIBC.LIB
+ERA TESTOVR.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -y -o -v testovr2.c testovrx.sym
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+TESTOVR2.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR2.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTOVR2.OBJ M:$CTMP2.$$$
+0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
+SYM2AS V1.00
+M:$CTMP5.$$$ 31663166
+TESTOVRX.SYM
+0:A:ZAS -J -OTESTOVRX.OBJ M:$CTMP5.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=033A9h,data -C33A9H -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -y -o -v testovr1.c testovrx.sym
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+TESTOVR1.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR1.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTOVR1.OBJ M:$CTMP2.$$$
+0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
+SYM2AS V1.00
+M:$CTMP5.$$$ 31663166
+TESTOVRX.SYM
+0:A:ZAS -J -OTESTOVRX.OBJ M:$CTMP5.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=033A9h,data -C33A9H -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
+ERA M:$$EXEC.$$$
+
+10E>c -a -v -o testhell.c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-7
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTHELL.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -oTESTHELL.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -L -Ptext=0100h,data,bss -oM:$L.OBJ 0:A:RRTCPM.OBJ TESTHELL.OBJ 0:A:LIBC.LIB
+0:A:OBJTOHEX -R -B100H M:$L.OBJ TESTHELL.COM
+ERA M:$L.OBJ
+ERA TESTHELL.OBJ
+ERA M:$$EXEC.$$$
+
+10E>testver
+E:TESTVER  COM
+CP/M BDOS Version (3.1)
+Machine (MCS80/Z80)
+BDOS Address (0xE500)
+BIOS Address (0xF800)
+TPA Size (57.0K)
+
+10E>era testio.sta
+No File
+10E>era testio.out
+No File
+10E>era testio.err
+No File
+10E>testovr
+E:TESTOVR  COM
+overlay test
+hello from overlay 01
+overlay return is 0
+hello from overlay 01
+overlay return is 0
+hello from overlay 02
+overlay return is 0
+hello from overlay 01
+overlay return is 0
+
+10E>testio
+E:TESTIO   COM
+hexa,22
+CP/M BDOS 3.1
+
+10E>testuid
+E:TESTUID  COM
+getuid=10
+setuid=0
+getuid=3
+getuid=3
+
+10E>teststr
+E:TESTSTR  COM
+strcmp test:
+- test<>Test=1
+- test<>test=0
+- test1<>test=1
+- test<>test1=-1
+- rest<>test=-1
+stricmp test:
+- test<>Test=0
+- test<>test=0
+- test1<>test=1
+- test<>test1=-1
+- rest<>test=-1
+strnicmp test:
+- test<>test1=0
+- test1<>test=0
+- Test1<>test=0
+
+10E>testbios
+E:TESTBIOS COM
+Z3ENV is not established.  (This is not an error.)
+Press a key: rc = 007A, character = z
+The next message should say "Did this work?"
+Did this work?
+
+10E>testbdos
+E:TESTBDOS COM
+First some perror() tests ...
+
+ 0:Unknown error
+ 1:Reading empty space
+ 2:Disc is full
+ 3:Can't close extent
+ 4:Unwritten extent
+ 5:Directory full
+ 6:File pointer out of range
+ 7:File not found
+ 8:Unknown error
+ 9:Invalid FCB
+10:Disc has been changed
+11:Unknown error
+12:Unknown error
+13:Unknown error
+14:Unknown error
+15:Unknown error
+16:Unknown error
+17:Disc I/O error
+18:Disc is read-only
+19:File is read-only
+20:Invalid drive
+21:File already open
+22:Unknown error
+23:Password error
+24:File exists
+25:Ambiguous filename
+26:File is wheel protected
+27:Unknown error
+
+
+10E>testtrig
+E:TESTTRIG COM
+
+  n  LN             EXP            SIN            COS            ATAN
+ 01  0.000000e+00   2.718280e+00   8.414706e-01   5.403037e-01   7.853970e-01 
+ 02  6.931469e-01   7.389050e+00   9.092973e-01  -4.161461e-01   1.107148e+00 
+ 03  1.098612e+00   2.008552e+01   1.411217e-01  -9.899922e-01   1.249045e+00 
+ 04  1.386294e+00   5.459808e+01  -7.568023e-01  -6.536445e-01   1.325817e+00 
+ 05  1.609438e+00   1.484130e+02  -9.589242e-01   2.836605e-01   1.373400e+00 
+ 06  1.791759e+00   4.034281e+02  -2.794159e-01   9.601696e-01   1.405647e+00 
+ 07  1.945910e+00   1.096632e+03   6.569859e-01   7.539025e-01   1.428899e+00 
+ 08  2.079441e+00   2.980951e+03   9.893581e-01  -1.454975e-01   1.446441e+00 
+ 09  2.197224e+00   8.103068e+03   4.121197e-01  -9.111288e-01   1.460139e+00 
+ 10  2.302584e+00   2.202640e+04  -5.440195e-01  -8.390731e-01   1.471127e+00 
+ 11  2.397894e+00   5.987400e+04  -9.999901e-01   4.422163e-03   1.480136e+00 
+ 12  2.484906e+00   1.627543e+05  -5.365736e-01   8.438515e-01   1.487654e+00 
+ 13  2.564949e+00   4.424121e+05   4.201658e-01   9.074482e-01   1.494024e+00 
+ 14  2.639056e+00   1.202602e+06   9.906070e-01   1.367416e-01   1.499488e+00 
+ 15  2.708049e+00   3.269002e+06   6.502892e-01  -7.596840e-01   1.504228e+00 
+ 16  2.772588e+00   8.886073e+06  -2.879012e-01  -9.576598e-01   1.508377e+00 
+ 17  2.833213e+00   2.415486e+07  -9.613965e-01  -2.751657e-01   1.512040e+00 
+ 18  2.890371e+00   6.565973e+07  -7.509890e-01   6.603144e-01   1.515297e+00 
+ 19  2.944438e+00   1.784813e+08   1.498741e-01   9.887048e-01   1.518213e+00 
+
+10E>testftim
+E:TESTFTIM COM
+34: 03:01 PM
+Thu Jan 14 15:01:14 2021
+
+
+10E>testfile
+E:TESTFILE COM
+create file...
+rename file (0)
+delete file (0)
+delete file (255)
+create file...
+
+10E>testaes
+E:TESTAES  COM
+txt: 00 11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 
+key: 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10 11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 
+---
+enc: 8E A2 B7 CA 51 67 45 BF EA FC 49 90 4B 49 60 89 
+tst: 8e a2 b7 ca 51 67 45 bf ea fc 49 90 4b 49 60 89
+dec: 00 11 22 33 44 55 66 77 88 99 AA BB CC DD EE FF 
+
+10E>testrc
+E:TESTRC   COM
+
+10E>testview testh*.c testver.c
+E:TESTVIEW COM
+ 1: TESTHELL.C
+#include <stdio.h>
+#include <float.h>
+
+int main() {
+    printf("Hello\n");
+}
+ 2: TESTVER.C
+#include "stdio.h"
+#include "cpm.h"
+#include <stdio.h>
+
+int main(int argc, char ** argv)
+{
+    int i;
+    int minor=0;
+    int major=0;
+    int machine;
+    int system;
+    int* bdosaddr=(int*)6;
+    int* biosaddr=(int*)1;
+    unsigned int tpa;
+
+    i=bdos(CPMVERS,0);
+    switch(i) {
+    case 0x00:
+        major=1;
+        minor=0;
+        break;
+    default:
+        major=((i>>4)&0x0F);
+        minor=(i&0x0F);
+        break;
+    }
+    machine=(i>>12)&0x0F;
+    system=(i>>8)&0x0F;
+    printf("CP/M BDOS Version (%d.%d)\n",major,minor);
+    if(system!=0) {
+        printf("Network (%s%s%s)\n",system&0x01?"[MP/M]":"",system&0x02?"[CP/Net]":"",
+            system&0x04?"[Multi User]":"");
+    }
+    switch(machine) {
+    case 0:
+        printf("Machine (MCS80/Z80)\n",machine);
+        break;
+    case 1:
+        printf("Machine (MCS86)\n");
+        break;
+    case 2:
+        printf("Machine (68000/Z8000)\n");
+        break;
+    default:
+        printf("Machine (?)\n");
+        break;
+    }
+    printf("BDOS Address (0x%04x)\n",*bdosaddr-6);
+    printf("BIOS Address (0x%04x)\n",*biosaddr-3);
+    tpa=((*bdosaddr-6)-0x100);
+    fprintf(stdout,"TPA Size (%u.%uK)\n",tpa/1024,(tpa % 1024)/100);
+    return 0;
+}
+
+
+10E>testwild test*.c test*.com
+E:TESTWILD COM
+Program name: TESTWILD
+ 1: TESTAES.C
+ 2: TESTARGS.C
+ 3: TESTBDOS.C
+ 4: TESTBIOS.C
+ 5: TESTFILE.C
+ 6: TESTFSIZ.C
+ 7: TESTFTIM.C
+ 8: TESTHELL.C
+ 9: TESTIO.C
+10: TESTOVR.C
+11: TESTOVR1.C
+12: TESTOVR2.C
+13: TESTPWD.C
+14: TESTRC.C
+15: TESTREL.C
+16: TESTSTR.C
+17: TESTSUB.C
+18: TESTTRIG.C
+19: TESTUID.C
+20: TESTVER.C
+21: TESTVIEW.C
+22: TESTWILD.C
+23: TESTVER.COM
+24: TESTIO.COM
+25: TESTUID.COM
+26: TESTSTR.COM
+27: TESTBIOS.COM
+28: TESTBDOS.COM
+29: TESTTRIG.COM
+30: TESTFTIM.COM
+31: TESTFILE.COM
+32: TESTAES.COM
+33: TESTRC.COM
+34: TESTVIEW.COM
+35: TESTWILD.COM
+36: TESTOVR.COM
+37: TESTHELL.COM
+
+10E>testhell
+E:TESTHELL COM
+Hello
+
+10E>; All tests completed
+10E>put console to console
+A:PUT      COM  (User 0)

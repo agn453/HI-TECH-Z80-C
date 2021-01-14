@@ -1,0 +1,41 @@
+era test.log
+put console output to file test.log [system]
+date
+; Compile all tests
+c -v -o testver.c
+c -v -o testio.c
+c -v -o testuid.c
+c -v -o teststr.c
+c -v -o testbios.c
+c -v -o testbdos.c
+c -v -o testtrig.c -lf
+c -v -o testftim.c
+c -v -o testfile.c
+c -v -o testaes.c
+c -v -o testrc.c
+c -v -o testview.c
+c -v -o testwild.c
+c -ftestovrx.sym -v -o testovr.c -lovr
+c -y -o -v testovr2.c testovrx.sym
+c -y -o -v testovr1.c testovrx.sym
+c -a -v -o testhell.c
+testver
+era testio.sta
+era testio.out
+era testio.err
+testovr
+testio
+testuid
+teststr
+testbios
+testbdos
+testtrig
+testftim
+testfile
+testaes
+testrc
+testview testh*.c testver.c
+testwild test*.c test*.com
+testhell
+; All tests completed
+put console to console

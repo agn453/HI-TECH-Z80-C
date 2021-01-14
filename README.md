@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-7 (see Modification History below).
+The latest release is V3.09-7b (see Modification History below).
 
 I welcome bug reports/fixes and additional commentry and discussion.
 
@@ -924,7 +924,7 @@ been adjusted to be consistently in uppercase.
 
 * Report an error if the OPTIONS file can't be found (for the -H help text).
 
-I've re-issued the v3.09-7 release too.
+I've re-issued this as a revised v3.09-7b release too.
 
 --
 Tony Nicholson

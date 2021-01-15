@@ -946,6 +946,10 @@ the z280dist/LIB280*.LIB libraries to the system drive too.
 
 This is also a new release milestone at v3.09-8.
 
+### Minor fixes
+
+* Minor change to allow size optimization (-O2 switch) for Z280.
+
 
 --
 Tony Nicholson

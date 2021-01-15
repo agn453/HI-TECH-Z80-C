@@ -301,6 +301,10 @@ int main(int argc, char **argv)
                         z280optim = 1;
 #endif
                 }
+#ifdef Z280
+                else if( argv[0][2] == '2' )
+                    z280optim = 1;
+#endif
                 break;
 
             case 'I':

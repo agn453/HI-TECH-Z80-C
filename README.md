@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-7b (see Modification History below).
+The latest release is V3.09-8 (see Modification History below).
 
 I welcome bug reports/fixes and additional commentry and discussion.
 
@@ -925,6 +925,27 @@ been adjusted to be consistently in uppercase.
 * Report an error if the OPTIONS file can't be found (for the -H help text).
 
 I've re-issued this as a revised v3.09-7b release too.
+
+
+### Release v3.09-8 (support for Z280 MPU)
+
+The compiler front-end source in cpm/C.C has been updated so that it
+can be compiled to produce a Z280 MPU version.  Co-existence with the Z80
+version is now also possible due to the renaming of the various Z280 versions
+start-up modules to C280CPM.OBJ, D280CPM.OBJ and R280CPM.OBJ.
+
+The original source-code to the C280 front-end is lost (not included with the
+UZI-280 distribution files) - so now Z280 users (like me) have the updated
+version supporting overlays etc.
+
+You'll find updated Z280 files in the *z280dist* folder.  The
+z280dist/C280-8.COM is the new front-end and can be copied to the system
+drive as C280.COM.  It tests for, and will only run on a Z280 MPU.
+Be sure to copy the start-up object modules (?280CPM.OBJ files) and
+the z280dist/LIB280*.LIB libraries to the system drive too.
+
+This is also a new release milestone at v3.09-8.
+
 
 --
 Tony Nicholson

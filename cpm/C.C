@@ -26,6 +26,8 @@
  | Revised to better support building self-relocating .COM files and	|
  | overlays by automating the building of the resident and overlay	|
  | portions (new -Y compiler flag).					|
+ |									|
+ | For new features, re-implement Z280 version (original sources lost)	|
 \*----------------------------------------------------------------------*/
 
 #include    <stdio.h>
@@ -71,6 +73,9 @@ static char
     reloc,      /* auto-relocate program at run time */
     xref,       /* generate cross reference listing */
     nolocal,    /* strip local symbols */
+#ifdef Z280
+    z280optim,  /* Z280 code optimization */
+#endif
     overlay=0;  /* build with overlays */
 
 static char
@@ -95,13 +100,24 @@ static char *paths[] =
     "OPTIM",
     "CPP",
     "ZAS",
+#ifdef Z280
+    "LIB280",
+#else
     "LIB",
+#endif
     "P1",
+#ifdef Z280
+    "C280CPM.OBJ",
+#else
     "CRTCPM.OBJ",
+#endif
     "$EXEC",
     "CREF",
     "SYMTOAS",
     "OPTIONS",
+#ifdef Z280
+    "OPTIMH",
+#endif
 };
 
 #define linker  paths[0]
@@ -117,6 +133,9 @@ static char *paths[] =
 #define cref    paths[10]
 #define symtoas paths[11]
 #define options	paths[12]
+#ifdef Z280
+#define optimh  paths[13]
+#endif
 
 #define RELSTRT strtoff[plen]
 
@@ -146,7 +165,7 @@ static char *tempm[] =
 #define l_dot_obj   temps[4]
 #define execmd      temps[5]
 #define crtmp       temps[6]
-#define tmpas       temps[7]
+#define tmpf5       temps[7]
 
 #define osegs       tempm[0]
 #define nsegs       tempm[1]
@@ -154,7 +173,14 @@ static char *tempm[] =
 
 static int      cbase = 0x0100;
 
-static char    *cppdef[] = { "-DCPM", "-DHI_TECH_C", "-Dz80" };
+static char    *cppdef[] = {
+    "-DCPM",
+    "-DHI_TECH_C",
+    "-DZ80",
+#ifdef Z280
+    "-DZ280",
+#endif
+};
 static char    *cpppath = "-I";
 
 static char     tmpbuf[128];    /* gen. purpose buffer */
@@ -200,8 +226,11 @@ int main(int argc, char **argv)
     signal_t prev_sig;
     prev_sig=signal(SIGINT,SIG_IGN);
 
-    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-7\n");
-    fprintf(stderr, "Copyright (C) 1984-87 HI-TECH SOFTWARE\n");
+    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-8");
+#ifdef Z280
+    fprintf(stderr, " [Z280 MPU version]");
+#endif
+    fprintf(stderr, "\nCopyright (C) 1984-87 HI-TECH SOFTWARE\n");
     fprintf(stderr, "Updated from https://github.com/agn453/HI-TECH-Z80-C\n");
 #if EDUC
     fprintf(stderr, "Licensed for Educational purposes only\n");
@@ -265,7 +294,13 @@ int main(int argc, char **argv)
             case 'O':
                 optimize = 1;
                 if(argv[0][2] == 'F' || argv[0][2] == 'f')
+                {
                     speed = 1;
+#ifdef Z280
+                    if (argv[0][3] == '2')
+                        z280optim = 1;
+#endif
+                }
                 break;
 
             case 'I':
@@ -417,7 +452,7 @@ void doit()
     rm(RM_FILE, tmpf1);
     rm(RM_FILE, tmpf2);
     rm(RM_FILE, tmpf3);
-    rm(RM_FILE, tmpas);
+    rm(RM_FILE, tmpf5);
     if (!keep)
     {
         char * segopt = 0;
@@ -677,7 +712,7 @@ void assemble_sym(char *s)
     {
         cbase = sym2as(s);
         vec[0] = s;
-        vec[1] = tmpas;
+        vec[1] = tmpf5;
         vec[2] = 0;
         doexec(symtoas, vec);
         put_cmd(TRAP);
@@ -698,7 +733,7 @@ void assemble_sym(char *s)
         *rindex(buf, '.') = 0;
     strcat(buf, ".OBJ");
     vec[i++] = buf;
-    vec[i++] = tmpas;
+    vec[i++] = tmpf5;
     vec[i] = (char *)0;
     doexec(assem, vec);
 }
@@ -778,15 +813,33 @@ void compile(char *s)
         if (speed)
             vec[i++] = "-F";
         vec[i++] = tmpf1;
+#ifdef Z280
+        if (keepas && !z280optim)
+#else
         if (keepas)
+#endif
             vec[i++] = strcat(strcpy(tmpbuf, s), ".AS");
         else
             vec[i++] = tmpf2;
         vec[i] = (char *)0;
         doexec(optim, vec);
+        cp = tmpf2;
+#ifdef Z280
+        if (z280optim)
+        {
+            i = 0;
+            vec[i++] = cp;
+            if (keepas)
+                vec[i++] = strcat(strcpy(tmpbuf, s), ".AS");
+            else
+                vec[i++] = tmpf5;
+            vec[i] = (char *)0;
+            doexec(optimh, vec);
+            cp = tmpf5;
+        }
+#endif
         if (keepas)
             return;
-        cp = tmpf2;
     }
     i = 0;
     if (nolocal)

@@ -1,18 +1,18 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Thu 14/01/2021 14:50:14
+Fri 15/01/2021 12:37:20
 10E>; Compile all tests
 10E>c -v -o testver.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVER.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTVER.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTVER.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTVER.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -23,14 +23,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testio.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTIO.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTIO.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTIO.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTIO.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -41,14 +41,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testuid.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTUID.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTUID.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTUID.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTUID.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -59,14 +59,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o teststr.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTSTR.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTSTR.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTSTR.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTSTR.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -77,14 +77,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testbios.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTBIOS.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTBIOS.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -95,14 +95,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testbdos.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTBDOS.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTBDOS.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -113,14 +113,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testtrig.c -lf
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTTRIG.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTTRIG.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -131,14 +131,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testftim.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTFTIM.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTFTIM.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -149,14 +149,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testfile.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFILE.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTFILE.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTFILE.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTFILE.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -167,14 +167,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testaes.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTAES.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTAES.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTAES.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTAES.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -185,14 +185,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testrc.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTRC.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTRC.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTRC.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTRC.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -203,14 +203,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testview.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTVIEW.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTVIEW.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -221,14 +221,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testwild.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTWILD.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTWILD.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTWILD.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTWILD.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -239,14 +239,14 @@ ERA M:$$EXEC.$$$
 
 10E>c -ftestovrx.sym -v -o testovr.c -lovr
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTOVR.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTOVR.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTOVR.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
@@ -257,18 +257,16 @@ ERA M:$$EXEC.$$$
 
 10E>c -y -o -v testovr2.c testovrx.sym
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR2.C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR2.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTOVR2.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTOVR2.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTOVR2.OBJ M:$CTMP2.$$$
 0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
-SYM2AS V1.00
-M:$CTMP5.$$$ 31663166
 TESTOVRX.SYM
 0:A:ZAS -J -OTESTOVRX.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -280,18 +278,16 @@ ERA M:$$EXEC.$$$
 
 10E>c -y -o -v testovr1.c testovrx.sym
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR1.C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR1.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTOVR1.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTOVR1.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTOVR1.OBJ M:$CTMP2.$$$
 0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
-SYM2AS V1.00
-M:$CTMP5.$$$ 31663166
 TESTOVRX.SYM
 0:A:ZAS -J -OTESTOVRX.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -303,19 +299,19 @@ ERA M:$$EXEC.$$$
 
 10E>c -a -v -o testhell.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-7
+Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTHELL.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTHELL.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -oTESTHELL.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OTESTHELL.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -L -Ptext=0100h,data,bss -oM:$L.OBJ 0:A:RRTCPM.OBJ TESTHELL.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -L -Ptext=0100h,data,bss -OM:$L.OBJ 0:A:RRTCPM.OBJ TESTHELL.OBJ 0:A:LIBC.LIB
 0:A:OBJTOHEX -R -B100H M:$L.OBJ TESTHELL.COM
 ERA M:$L.OBJ
 ERA TESTHELL.OBJ
@@ -330,11 +326,9 @@ BIOS Address (0xF800)
 TPA Size (57.0K)
 
 10E>era testio.sta
-No File
 10E>era testio.out
 No File
 10E>era testio.err
-No File
 10E>testovr
 E:TESTOVR  COM
 overlay test
@@ -445,8 +439,8 @@ E:TESTTRIG COM
 
 10E>testftim
 E:TESTFTIM COM
-34: 03:01 PM
-Thu Jan 14 15:01:14 2021
+34: 12:48 PM
+Fri Jan 15 12:48:13 2021
 
 
 10E>testfile
@@ -559,20 +553,20 @@ Program name: TESTWILD
 20: TESTVER.C
 21: TESTVIEW.C
 22: TESTWILD.C
-23: TESTVER.COM
-24: TESTIO.COM
-25: TESTUID.COM
-26: TESTSTR.COM
-27: TESTBIOS.COM
-28: TESTBDOS.COM
-29: TESTTRIG.COM
-30: TESTFTIM.COM
-31: TESTFILE.COM
-32: TESTAES.COM
-33: TESTRC.COM
-34: TESTVIEW.COM
-35: TESTWILD.COM
-36: TESTOVR.COM
+23: TESTOVR.COM
+24: TESTVER.COM
+25: TESTIO.COM
+26: TESTUID.COM
+27: TESTSTR.COM
+28: TESTBIOS.COM
+29: TESTBDOS.COM
+30: TESTTRIG.COM
+31: TESTFTIM.COM
+32: TESTFILE.COM
+33: TESTAES.COM
+34: TESTRC.COM
+35: TESTVIEW.COM
+36: TESTWILD.COM
 37: TESTHELL.COM
 
 10E>testhell

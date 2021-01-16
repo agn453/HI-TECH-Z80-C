@@ -11,6 +11,11 @@ patches applied.
 
 The latest release is V3.09-8 (see Modification History below).
 
+If you only wish to download the latest binary distribution, download
+it from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
+
 I welcome bug reports/fixes and additional commentry and discussion.
 
 You can raise an issue here on GitHub or contact me directly via e-mail
@@ -946,11 +951,26 @@ the z280dist/LIB280*.LIB libraries to the system drive too.
 
 This is also a new release milestone at v3.09-8.
 
+
 ### Minor fixes
 
 * Minor change to allow size optimization (-O2 switch) for Z280.
 
 
+### Easy binary download
+
+Include an easy-download CP/M library file containing the binary
+distribution (all the files you need from the *dist* folder to get it
+running under CP/M).
+
+Download this from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
+
+and extract the files using one of the CP/M .LBR extraction tools (e.g.
+NULU.COM).
+
+
 --
 Tony Nicholson
-15-Jan-2021
+17-Jan-2021

@@ -971,6 +971,11 @@ and extract the files using one of the CP/M .LBR extraction tools (e.g.
 NULU.COM).
 
 
+### Revert a change defining a Z80 symbol back to the lowercase form "z80"
+in the main driver.  There are some insonsistencies with how this is used
+in the other compiler modules - and in the library sourcefiles.
+
+
 --
 Tony Nicholson
 17-Jan-2021

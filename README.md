@@ -971,9 +971,21 @@ and extract the files using one of the CP/M .LBR extraction tools (e.g.
 NULU.COM).
 
 
-### Revert a change defining "Z80" symbol back to the lowercase form "z80"
+### Minor update
+
+* Revert change defining "Z80" symbol back to the lowercase form "z80"
 in the main driver.  There are some inconsistencies with how this is used
 in the other compiler modules - and in the library sourcefiles.
+
+
+### Z280 optimizer speed/size
+
+* Modify z280/OPTIMH.C and the front-end driver to select between size
+and speed optimisations.  Previously some additional code was added to
+unroll calls to the csv() routine and jumps to cret() into inline-code.
+OPTIMH now accepts a -F option to include them (for faster code), else
+it omits them for reduced code-size.  This is selected by using the -OF2
+and -O2 option to the C280 front-end.
 
 
 --

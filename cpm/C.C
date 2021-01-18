@@ -832,6 +832,8 @@ void compile(char *s)
         if (z280optim)
         {
             i = 0;
+            if (speed)
+                vec[i++] = "-F";
             vec[i++] = cp;
             if (keepas)
                 vec[i++] = strcat(strcpy(tmpbuf, s), ".AS");

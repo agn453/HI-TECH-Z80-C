@@ -1,12 +1,11 @@
 
-10E>; Compile all LIBC4.LIB modules from sources for Z280
+10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>c280
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-8 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
-c> -of2 -c abort.c \
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+c> -o2 -c abort.c \
 c> abs.as \
 c> allsh.as \
 c> alrsh.as \
@@ -54,9 +53,7 @@ c> dup.c \
 c> exec.as \
 c> execl.as \
 c> _exit.as \
-c> exit.as \
 c> exit.c \
-c> fakeclea.as \
 c> fakeclea.c \
 c> fakecpcl.as \
 c> fcbname.c \
@@ -165,8 +162,8 @@ CTYPE.C
  4 bytes optimized away
  8 bytes replaced
 DOPRNT.C
- 28 bytes optimized away
- 74 bytes replaced
+ 45 bytes optimized away
+ 108 bytes replaced
 DOSCAN.C
  127 bytes optimized away
  274 bytes replaced
@@ -176,11 +173,9 @@ DUP.C
 EXEC.AS
 EXECL.AS
 _EXIT.AS
-EXIT.AS
 EXIT.C
  2 bytes optimized away
  4 bytes replaced
-FAKECLEA.AS
 FAKECLEA.C
  0 bytes optimized away
  0 bytes replaced
@@ -225,8 +220,8 @@ FWRITE.C
  31 bytes optimized away
  62 bytes replaced
 GETARGS.C
- 188 bytes optimized away
- 424 bytes replaced
+ 192 bytes optimized away
+ 432 bytes replaced
 GETCH.C
  10 bytes optimized away
  20 bytes replaced
@@ -257,11 +252,10 @@ ISDIGIT.AS
 
 10E>c280
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-8 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
-c> -of2 -c islower.as \
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+c> -o2 -c islower.as \
 c> isspace.as \
 c> isupper.as \
 c> ladd.as \
@@ -331,11 +325,10 @@ PUTCHAR.C
 
 10E>c280
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-8 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
-c> -of2 -c puts.c \
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+c> -o2 -c puts.c \
 c> putw.c \
 c> qsort.c \
 c> rand.c \
@@ -391,9 +384,10 @@ c> unlink.c \
 c> wrelop.as \
 c> write.c \
 c> xtoi.as \
-c> zcrtcpm.as \
-c> zdrtcpm.as \
-c> zrrtcpm.as
+c> zc280cpm.as \
+c> zd280cpm.as \
+c> zr280cpm.as \
+c> 
 PUTS.C
  10 bytes optimized away
  20 bytes replaced
@@ -512,9 +506,9 @@ WRITE.C
  94 bytes optimized away
  166 bytes replaced
 XTOI.AS
-ZCRTCPM.AS
-ZDRTCPM.AS
-ZRRTCPM.AS
+ZC280CPM.AS
+ZD280CPM.AS
+ZR280CPM.AS
 
 10E>; All modules compiled.
 10E>put console to console

@@ -1,14 +1,14 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Fri 15/01/2021 12:37:20
+Mon 18/01/2021 17:11:13
 10E>; Compile all tests
 10E>c -v -o testver.c
 A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTVER.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVER.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -26,7 +26,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTIO.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTIO.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -44,7 +44,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTUID.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTUID.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -62,7 +62,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTSTR.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTSTR.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -80,7 +80,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -98,7 +98,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -116,7 +116,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -134,7 +134,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -152,7 +152,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTFILE.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFILE.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -170,7 +170,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTAES.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTAES.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -188,7 +188,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTRC.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTRC.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -206,7 +206,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -224,7 +224,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTWILD.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTWILD.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -242,7 +242,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTOVR.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -261,7 +261,7 @@ Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR2.C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTOVR2.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR2.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -282,7 +282,7 @@ Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR1.C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTOVR1.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR1.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -302,7 +302,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: TESTHELL.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTHELL.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -439,8 +439,8 @@ E:TESTTRIG COM
 
 10E>testftim
 E:TESTFTIM COM
-34: 12:48 PM
-Fri Jan 15 12:48:13 2021
+34: 05:22 PM
+Mon Jan 18 17:22:00 2021
 
 
 10E>testfile
@@ -553,20 +553,20 @@ Program name: TESTWILD
 20: TESTVER.C
 21: TESTVIEW.C
 22: TESTWILD.C
-23: TESTOVR.COM
-24: TESTVER.COM
-25: TESTIO.COM
-26: TESTUID.COM
-27: TESTSTR.COM
-28: TESTBIOS.COM
-29: TESTBDOS.COM
-30: TESTTRIG.COM
-31: TESTFTIM.COM
-32: TESTFILE.COM
-33: TESTAES.COM
-34: TESTRC.COM
-35: TESTVIEW.COM
-36: TESTWILD.COM
+23: TESTVER.COM
+24: TESTIO.COM
+25: TESTUID.COM
+26: TESTSTR.COM
+27: TESTBIOS.COM
+28: TESTBDOS.COM
+29: TESTTRIG.COM
+30: TESTFTIM.COM
+31: TESTFILE.COM
+32: TESTAES.COM
+33: TESTRC.COM
+34: TESTVIEW.COM
+35: TESTWILD.COM
+36: TESTOVR.COM
 37: TESTHELL.COM
 
 10E>testhell

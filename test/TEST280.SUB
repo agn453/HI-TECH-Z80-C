@@ -1,0 +1,41 @@
+era test280.log
+put console output to file test280.log [system]
+date
+; Compile all test280
+c280 -v -o2 testver.c
+c280 -v -o2 testio.c
+c280 -v -o2 testuid.c
+c280 -v -o2 teststr.c
+c280 -v -o2 testbios.c
+c280 -v -o2 testbdos.c
+c280 -v -o2 testtrig.c -lf
+c280 -v -o2 testftim.c
+c280 -v -o2 testfile.c
+c280 -v -o2 testaes.c
+c280 -v -o2 testrc.c
+c280 -v -o2 testview.c
+c280 -v -o2 testwild.c
+c280 -ftestovrx.sym -v -o2 testovr.c -lovr
+c280 -y -o2 -v testovr2.c testovrx.sym
+c280 -y -o2 -v testovr1.c testovrx.sym
+c280 -a -v -o2 testhell.c
+testver
+era testio.sta
+era testio.out
+era testio.err
+testovr
+testio
+testuid
+teststr
+testbios
+testbdos
+testtrig
+testftim
+testfile
+testaes
+testrc
+testview testh*.c testver.c
+testwild test*.c test*.com
+testhell
+; All tests completed
+put console to console

@@ -35,6 +35,8 @@
 
       call	csv	-> push	iy, push ix, lda ix,(sp+0)  (+6 bytes)
 
+      jp cret		-> ld sp,ix pop ix pop iy ret (+6 bytes)
+
       ld  (hl),c
       inc hl           -> ldw (hl),bc
       ld  (hl),b       -> inc hl
@@ -124,6 +126,7 @@ FILE	*infile,*outfile;
 char	*inptr,inname[20],*outptr,outname[20];
 int	i,count,repl,lines,posit;
 char	found;
+char	speed;
 char	text[101];
 char	line[6][101];
 
@@ -154,7 +157,7 @@ void csv(char *str1,char *bytes) {
         fprintf(outfile,"push\tiy\npush\tix\n;-> lda ix,(sp+0)\ndefb\t%s\n",bytes);
         lines = 0;
         count -= 6;	/* 6 bytes mehr aber schneller */
-        repl += 2;
+        repl += 2;	/*	   more (but faster) */
         found = TRUE;
     }
 }
@@ -165,7 +168,7 @@ void cret(char *str1) {
         fprintf(outfile,"ld\tsp,ix\npop\tix\npop\tiy\nret\n");
         lines = 0;
         count -= 3;	/* 6 bytes mehr aber schneller */
-        repl += 2;
+        repl += 2;	/*	   more (but faster) */
         found = TRUE;
     }
 }
@@ -274,7 +277,7 @@ void pushix(void) {
     fprintf(outfile,"defb\t0ddh,5dh\n");
     found = TRUE;
     --count;  /* eine Byte MEHR, aber schneller ! */
-    repl += 4;
+    repl += 4; /* one more byte (but faster) */
 }
  
 void pushiy(void) {
@@ -284,7 +287,7 @@ void pushiy(void) {
     fprintf(outfile,"defb\t0fdh,5dh\n");
     found = TRUE;
     --count;  /* eine Byte MEHR, aber schneller ! */
-    repl += 4;
+    repl += 4; /* one more byte (but faster) */
 }
 
 void subwhl(char *str1, char *byte1) {
@@ -311,11 +314,14 @@ void check(void) {
        if(!found) mult("call\tlmul","multuw","0edh,0d3h"); /* multuw  hl,de   */
     }
 /******************************************************************************/
-    if(instr("csv",line[0])) {
-       if(!found) csv("call csv","0ddh,0edh,02h,0,0");  /* call csv   */
-    }
-    if(instr("cret",line[0])) {
-       if(!found) cret("jp\tcret");  /* jp cret   */
+    if(speed) {
+        /* both these increase speed at the expense of 6 extra bytes */
+        if(instr("csv",line[0])) {
+            if(!found) csv("call csv","0ddh,0edh,02h,0,0");  /* call csv   */
+        }
+        if(instr("cret",line[0])) {
+            if(!found) cret("jp\tcret");  /* jp cret   */
+        }
     }
 /******************************************************************************/
     if(instr("(hl),",line[0])) {
@@ -515,6 +521,16 @@ main(int argc,*argv[]) {
         strcpy(inname,(char*)argv[1]);
         strcpy(outname,(char*)argv[2]);
     }
+    else if(argc==4) {
+        if(stricmp((char *)argv[1],"-F")==0)
+            speed = 1;
+	else {
+	    printf("First arg can only be -F for speed (Fast) optimization\n");
+	    exit(1);
+	}
+        strcpy(inname,(char*)argv[2]);
+        strcpy(outname,(char*)argv[3]);
+    }
     if((infile = fopen(inname,"r"))==NULL) {
         printf("Can't open %s\n",inname);
         exit(1);
@@ -550,3 +566,4 @@ main(int argc,*argv[]) {
     fclose(outfile);
     exit(0);
 }  
+

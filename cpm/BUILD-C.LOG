@@ -2,7 +2,7 @@
 10E>;
 10E>date
 A:DATE     COM  (User 0)
-Sun 17/01/2021 12:01:20
+Mon 18/01/2021 15:53:55
 10E>;
 10E>; Build Z80 version
 10E>c -o -v c309-8.c
@@ -10,7 +10,7 @@ A:C        COM  (User 0)
 Hi-Tech C Compiler (CP/M-80) V3.09-8
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -DZ80 -I0:A: C309-8.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: C309-8.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
@@ -56,9 +56,9 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM -F M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 578 bytes optimized away
- 1456 bytes replaced
+0:A:OPTIMH -F M:$CTMP2.$$$ M:$CTMP5.$$$
+ 479 bytes optimized away
+ 1522 bytes replaced
 0:A:ZAS -N -OC309-8.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
@@ -66,6 +66,28 @@ ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
 0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280-8.COM 0:A:C280CPM.OBJ C309-8.OBJ 0:A:LIB280C.LIB
 ERA C309-8.OBJ
+ERA M:$$EXEC.$$$
+
+10E>;
+10E>c280-8 -o2 -v optimh.c
+E:C280-8   COM
+Hi-Tech C Compiler (CP/M-80) V3.09-8 [Z280 MPU version]
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: OPTIMH.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 217 bytes optimized away
+ 390 bytes replaced
+0:A:ZAS -J -N -OOPTIMH.OBJ M:$CTMP5.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OOPTIMH.COM 0:A:C280CPM.OBJ OPTIMH.OBJ 0:A:LIB280C.LIB
+ERA OPTIMH.OBJ
 ERA M:$$EXEC.$$$
 
 10E>;
@@ -81,12 +103,27 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-C280-8   COM    24k    191 Dir RW       None   17/01/21 12:10  17/01/21 12:10
-C280Z80  COM    28k    203 Dir RW       None   17/01/21 12:07  17/01/21 12:07
-C309-8   COM    28k    201 Dir RW       None   17/01/21 12:04  17/01/21 12:04
+C280-8   COM    24k    189 Dir RW       None   18/01/21 16:03  18/01/21 16:03
+C280Z80  COM    28k    204 Dir RW       None   18/01/21 16:00  18/01/21 16:00
+C309-8   COM    28k    201 Dir RW       None   18/01/21 15:56  18/01/21 15:56
 
-Total Bytes     =     80k  Total Records =     595  Files Found =    3
-Total 1k Blocks =     76   Used/Max Dir Entries For Drive E: 1032/2048
+Total Bytes     =     80k  Total Records =     594  Files Found =    3
+Total 1k Blocks =     76   Used/Max Dir Entries For Drive E: 1228/2048
+
+10E>dir optimh.com [fu
+A:DIR      COM  (User 0)
+
+Scanning Directory...
+
+Directory For Drive E:  User 10
+
+    Name     Bytes   Recs   Attributes   Prot      Update          Create    
+------------ ------ ------ ------------ ------ --------------  --------------
+
+OPTIMH   COM    20k    144 Dir RW       None   18/01/21 16:06  18/01/21 16:06
+
+Total Bytes     =     20k  Total Records =     144  Files Found =    1
+Total 1k Blocks =     18   Used/Max Dir Entries For Drive E: 1228/2048
 
 10E>;
 10E>; Done

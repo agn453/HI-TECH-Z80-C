@@ -2,7 +2,7 @@ era c280libc.log
 put console output to file c280libc.log [system]
 ; Compile all LIB280C.LIB modules from sources for Z280
 c280
-<-of2 -c abort.c \
+<-o2 -c abort.c \
 <abs.as \
 <allsh.as \
 <alrsh.as \
@@ -85,7 +85,7 @@ c280
 <isatty.c \
 <isdigit.as
 c280
-<-of2 -c islower.as \
+<-o2 -c islower.as \
 <isspace.as \
 <isupper.as \
 <ladd.as \
@@ -111,7 +111,7 @@ c280
 <printf.c \
 <putchar.c
 c280
-<-of2 -c puts.c \
+<-o2 -c puts.c \
 <putw.c \
 <qsort.c \
 <rand.c \
@@ -167,9 +167,8 @@ c280
 <wrelop.as \
 <write.c \
 <xtoi.as \
-<z280cpm.as \
-<zcrtcpm.as \
-<zdrtcpm.as \
-<zrrtcpm.as
+<zc280cpm.as \
+<zd280cpm.as \
+<zr280cpm.as
 ; All modules compiled.
 put console to console

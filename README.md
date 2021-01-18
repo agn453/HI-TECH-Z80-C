@@ -58,6 +58,7 @@ The original HI-TECH C linker (LINK.COM) has been renamed as LINQ.COM
 and the main compiler front-end (C.COM) has been patched to reflect
 this name change.  This was done to avoid a name clash with the Digital
 Research supplied CP/M linker.  The original version is kept as C-ORIG.COM
+and the patched version is dist/C309.COM
 
 I've edited the documentation to remove the underlining and bolding of
 text by over-printing and fixed some layout issues and typos.
@@ -80,7 +81,7 @@ to the sources were required.
 ```
 
 The re-compiled LIBF.LIB from the FLOAT.HUF library sources in *float*
-has been copied to the distribution files in *dist*.  A SUBmit file to
+has been copied to the distribution files in *dist*.  A CP/M submit file to
 rebuild LIBF.LIB has been added to *float*.
 
 A *test* folder has been created.  In it is a TESTTRIG.C program for testing
@@ -539,6 +540,8 @@ OPTIMH.COM and OPTIMH.C
 
         call csv         -> push iy, push ix, lda ix,(sp+0)  (+6 bytes)
 
+        jp cret          -> ld sp,ix pop ix pop iy ret (+6 bytes)
+
         ld  (hl),c
         inc hl           -> ldw (hl),bc
         ld  (hl),b       -> inc hl
@@ -607,10 +610,6 @@ LIB280C.LIB and LIB280F.LIB
     and floating point library that contain optimised Z280 routines.
     These will only execute on a Z280 MPU - and not on a Z80!
     They have been built from sources of the v3.09-4 release.
-
-LIB280C#.LIB and LIB280F#.LIB
-    These are the original library files obtained from the UZI280 v1.12
-    distribution files.
 
 ```
 
@@ -684,16 +683,6 @@ A new version of CRTCPM.OBJ is available (and the source-code in
 ZCRTCPM.AS has been updated to correct this).
 
 
-### Tidy up README and "#" in filenames
-
-Up until now, I've kept various replaced files in this repository
-by renaming them to include a hash (or octothorpe) "#" character
-in their names.  You do not need these when you set-up your HI-TECH
-Z80 C system under CP/M.  In a future release these files will be
-removed to avoid confusion.  GitHub is already tracking changes
-for us - and comparing releases will show them!
-
-
 ### Add source for DEHUFF and ENHUFF
 
 Andrey Nikitin has contributed the sources for the DEHUFF and ENHUFF
@@ -702,7 +691,7 @@ source files.  I've placed the extracted source files and the resulting
 binary produced by the latest compiler in the *huff* folder. Also,
 the Huffman-encoded archive containing these sources has been placed
 in the *dist* folder as HUFF.HUF.  There's also an original version
-that produces some diagnostic errors in HUFF#.HUF.
+that produces some diagnostic errors in HUFFORIG.HUF.
 
 These sources may be built using the HI-TECH C compiler or using the
 gcc compiler under Linux or macOS.  I built them natively under CP/M
@@ -941,7 +930,8 @@ start-up modules to C280CPM.OBJ, D280CPM.OBJ and R280CPM.OBJ.
 
 The original source-code to the C280 front-end is lost (not included with the
 UZI-280 distribution files) - so now Z280 users (like me) have the updated
-version supporting overlays etc.
+version supporting overlays etc.  The original binary from the UZI-280
+distribution is in the file z280dist/C280ORIG.COM
 
 You'll find updated Z280 files in the *z280dist* folder.  The
 z280dist/C280-8.COM is the new front-end and can be copied to the system
@@ -988,6 +978,16 @@ it omits them for reduced code-size.  This is selected by using the -OF2
 and -O2 option to the C280 front-end.
 
 
+### Old files removed
+
+Up until now, I've kept various replaced files in this repository
+by renaming them to include a hash (or octothorpe) "#" character
+in their names.  They have now been removed to avoid confusion.
+GitHub is already tracking changes for us - and comparing commits
+will show them from now on!  If you need to refer to them you can
+download one of the previous releases.
+
+
 --
 Tony Nicholson
-17-Jan-2021
+19-Jan-2021

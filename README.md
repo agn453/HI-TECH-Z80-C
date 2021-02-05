@@ -903,7 +903,7 @@ deprecated and ignored if you use it on the command line.
 * A new -H option may be specified to obtain help with the command-line
 options.  It types out the system's OPTIONS file - so be sure this is
 copied from the dist folder to the system directory (usually drive A:
-in user are 0, and marked with the SYS and RO attributes).
+in user area 0, and marked with the SYS and RO attributes).
 
 
 ### Minor updates
@@ -988,6 +988,17 @@ will show them from now on!  If you need to refer to them you can
 download one of the previous releases.
 
 
+### Decompilation of CGEN.COM
+
+Andrey Nikitin has made available a decompilation of the HI-TECH C V3.09
+code generation program CGEN.COM based on work by himself and
+a group of Russian enthusiasts.
+
+You'll find this at
+
+https://github.com/nikitinprior/dcgen
+
+
 --
 Tony Nicholson
-19-Jan-2021
+05-Feb-2021

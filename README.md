@@ -138,6 +138,16 @@ bios()
     always return an 8-bit result even though there are some functions which
     return 16-bit results.
 
+    Under CP/M 3 the calling of the BIOS SELMEM (function 27) is intercepted
+    by the BDOS (to prevent you selecting a memory bank that could change the
+    memory bank that you are executing from).  Also, if you're using the
+    Digital Research banked BDOS then when it invokes a direct BIOS call
+    (BDOS function 50) it makes a call to the BIOS MOVE routine to copy the
+    parameter block into common memory.  This means you cannot cascade a
+    bios() call to XMOVE (function 29) and MOVE (function 25) without
+    corrupting memory.  Simeon Cran's ZPM3 banked BDOS replacement does not
+    have this restriction.
+
 bdos()
 
     All versions of CP/M 80 return from BDOS calls with BA = HL regardless of
@@ -999,6 +1009,14 @@ You'll find this at
 https://github.com/nikitinprior/dcgen
 
 
+### bios() routine restrictions
+
+Issue #24 raised a limitation with calling the bios() function to perform
+inter-bank memory moves using the CP/M 3 BIOS XMOVE and MOVE routines
+(function 29 and 25).  I've updated the description for bios() above to
+document this and the SELMEM (function 27) restriction.
+
+
 --
 Tony Nicholson
-05-Feb-2021
+18-Mar-2021

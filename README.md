@@ -1017,6 +1017,13 @@ inter-bank memory moves using the CP/M 3 BIOS XMOVE and MOVE routines
 document this and the SELMEM (function 27) restriction.
 
 
+### Incomplete prototype definitions in TIME.H
+
+As per issue #25 - corrected the function prototype definitions in
+dist/TIME.H for ctime(), gmtime() and localtime().  Updated the
+htc-bin.lbr binary distribution library archive file too.
+
+
 --
 Tony Nicholson
-18-Mar-2021
+20-Mar-2021

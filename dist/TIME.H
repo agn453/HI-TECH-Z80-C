@@ -34,9 +34,9 @@ extern int	time_zone;	/* minutes WESTWARD of Greenwich */
 
 extern time_t	time(time_t *);	/* seconds since 00:00:00 Jan 1 1970 */
 extern char *	asctime(struct tm *);	/* converts struct tm to ascii time */
-extern char *	ctime();	/* current local time in ascii form */
-extern struct tm *	gmtime();	/* Universal time */
-extern struct tm *	localtime();	/* local time */
+extern char *	ctime(time_t *);	/* current local time in ascii form */
+extern struct tm *	gmtime(time_t *);	/* Universal time */
+extern struct tm *	localtime(time_t *);	/* local time */
 extern size_t strftime(char *s, size_t maxs, char *f, struct tm *t);
 
 #endif

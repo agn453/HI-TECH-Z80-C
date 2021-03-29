@@ -1024,7 +1024,7 @@ dist/TIME.H for ctime(), gmtime() and localtime().  Updated the
 htc-bin.lbr binary distribution library archive file too.
 
 
-### More work on decompiling the CPP.COM
+### More work on decompiling CPP.COM
 
 Andrea Nikitin has posted some more decompiled sourcecode for the
 C pre-processor (CPP.COM) and a revised pre-processor for the compiler

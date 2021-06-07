@@ -967,8 +967,8 @@ Download this from
 
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
 
-and extract the files using one of the CP/M .LBR extraction tools (e.g.
-NULU.COM).
+and extract the files using one of the CP/M .LBR extraction tools, e.g.
+[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM),
 
 
 ### Minor update
@@ -1034,7 +1034,24 @@ repository at
 https://github.com/nikitinprior/dcpp
 
 
+### Historical version 1.3 added
+
+I've added a CP/M library format file containing the HI-TECH C COMPILER V1.3
+for Z80 CP/M in the *historical* folder.  The files in
+[historical/HTC13.LBR](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/historical/HTC13.LBR)
+can be extracted using one of the CP/M library utilities like
+[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM),
+and are from the original
+eight-inch floppy disk distribution media that I purchased in 1984.
+
+Andrey Nikitin noticed that this version has an object file dump utility that
+can decode the HI-TECH C Z80 object file format.  He's done a disassembly
+and reconstruction of this utility that you can get from his GitHub
+repository at
+
+https://github.com/nikitinprior/ddump
+
 
 --
 Tony Nicholson
-29-Mar-2021
+07-Jun-2021

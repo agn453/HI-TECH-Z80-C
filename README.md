@@ -1052,6 +1052,14 @@ repository at
 https://github.com/nikitinprior/ddump
 
 
+### Object librarian source-code reconstructed
+
+Andrey Nikitin has managed to reconstruct the C language source for the
+object-code librarian program LIBR.COM by disassembling the program.  You'll
+find this in his repository at
+
+https://github.com/nikitinprior/dlibr
+
 --
 Tony Nicholson
-07-Jun-2021
+04-Aug-2021

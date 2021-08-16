@@ -1098,6 +1098,11 @@ mktime()
 ```
 
 
+### CPM.H header file update
+
+Added a few missing bdos() function constants for CP/M 3, MP/M, ZSDOS
+and ZPM3.
+
 --
 Tony Nicholson
 16-Aug-2021

@@ -112,24 +112,60 @@ extern short	   bios(short fn, ...);
 #define	CPMILOG	 24		/* get bit map of logged in disks */
 #define	CPMIDRV	 25		/* interrogate drive number */
 #define	CPMSDMA	 26		/* set DMA address for i/o */
+#define CPMGALL  27		/* get allocation vector address */
+#define CPMWPRD  28		/* write protect disk */
+#define CPMGROV  29		/* get read-only vector */
 #define CPMSATT  30		/* set file attributes */
 #define CPMDPB	 31		/* get disk parameter block */
 #define	CPMSUID	 32		/* set/get user id */
 #define	CPMRRAN	 33		/* read random record */
 #define	CPMWRAN	 34		/* write random record */
 #define	CPMCFS	 35		/* compute file size */
-#define CPMERRM  45		/* CP/M+ set error mode */
+#define CPMSRAN  36		/* set random record */
+#define CPMRDRV  37		/* reset drive */
+#define CPMACDV  38		/* MP/M access drive */
+#define CPMFRDV  39		/* MP/M free drive */
+#define CPMWRZF  40		/* write random with zero fill */
+#define CPMTWR   41		/* MP/M test and write record */
+#define CPMLOKR  42		/* MP/M lock record */
+#define CPMUNLR  43		/* MP/M unlock record */
+#define CPMSMSC  44		/* CP/M+ set multi-sector count */
+#define CPMERRM  45		/* CP/M+ set BDOS error mode */
+#define CPMDFS   46		/* CP/M+ get disk free space */
+#define CPMCHN   47		/* CP/M+ chain to program */
+#define CPMFLSH  48		/* CP/M+ flush buffers */
+#define CPMGZSD  48		/* ZSDOS get ZSDOS/ZDDOS version */
 #define CPMSCB	 49		/* access CP/M+ system control block */
+#define CPMBIOS  50		/* CP/M+ direct BIOS call */
 #define	CPMDSEG	 51		/* set DMA segment */
-#define CPMRSX	 60		/* call RSX */
-#define CPMTRNC  99		/* truncate file */
-#define CPMDLD  101		/* get directory label data */
-#define CPMGFTS 102		/* get file timestamp and password mode */
-#define CPMSDAT 104		/* set date and time */
-#define CPMGDAT 105		/* get date and time */
-#define CPMRCOD 108     /* get/set return code */
-#define CPMCMOD 109     /* get/set console mode */
-
+#define CPMGFTM  54		/* Z80DOS/ZPM3 get file time-stamp */
+#define CPMSFTM  55		/* Z80DOS/ZPM3 set file time-stamp */
+#define CPMLDOV  59		/* CP/M+ Load Overlay - requires LOADER RSX */
+#define CPMRSX	 60		/* CP/M+ call RSX */
+#define CPMLGI   64		/* CP/Net login */
+#define CPMLGO   65		/* CP/Net logout */
+#define CPMSMSG  66		/* CP/Net send message */
+#define CPMRMSG  67		/* CP/Net receive message */
+#define CPMNETS  68		/* CP/Net get network status */
+#define CPMGCFT  69		/* CP/Net get configuration table address */
+#define CPMSCAT  70		/* CP/Net set compatibility attributes */
+#define CPMGSVC  71		/* CP/Net get server configuration */
+#define CPMFRBL  98		/* CP/M+ free blocks */
+#define CPMTRNC  99		/* CP/M+ truncate file */
+#define CPMSLBL 100		/* CP/M+ set directory label */
+#define CPMDLD  101		/* CP/M+ get directory label data */
+#define CPMGFTS 102		/* CP/M+ get file timestamp and password mode */
+#define CPMWXFC 103		/* CP/M+ write file XFCB */
+#define CPMSDAT 104		/* CP/M+ set date and time */
+#define CPMGDAT 105		/* CP/M+ get date and time */
+#define CPMSPWD 106		/* CP/M+ set default password */
+#define CPMGSER 107		/* CP/M+ get serial number */
+#define CPMRCOD 108		/* CP/M+ get/set return code */
+#define CPMCMOD 109		/* CP/M+ get/set console mode */
+#define CPMODEL 110		/* CP/M+ get/set output delimiter */
+#define CPMPBLK 111		/* CP/M+ print block */
+#define CPMLBLK 112		/* CP/M+ list block */
+#define CPMPARS 152		/* CP/M+ parse filename */
 
 /* CP/M BIOS functions.  Numbers above 16 pertain to CP/M 3 only.  */
 

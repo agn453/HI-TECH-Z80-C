@@ -274,7 +274,7 @@ c> max.as \
 c> memcmp.c \
 c> memcpy.c \
 c> memset.c \
-c> mods.txt \
+c> mktime.c \
 c> open.c \
 c> perror.c \
 c> pnum.c \
@@ -307,6 +307,9 @@ MEMCPY.C
 MEMSET.C
  14 bytes optimized away
  28 bytes replaced
+MKTIME.C
+ 75 bytes optimized away
+ 140 bytes replaced
 OPEN.C
  29 bytes optimized away
  78 bytes replaced
@@ -386,8 +389,7 @@ c> write.c \
 c> xtoi.as \
 c> zc280cpm.as \
 c> zd280cpm.as \
-c> zr280cpm.as \
-c> 
+c> zr280cpm.as
 PUTS.C
  10 bytes optimized away
  20 bytes replaced

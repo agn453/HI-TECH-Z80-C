@@ -54,6 +54,7 @@ libr
 <time.obj       \
 <convtime.obj   \
 <timezone.obj   \
+<mktime.obj     \
 <isatty.obj     \
 <close.obj      \
 <unlink.obj     \

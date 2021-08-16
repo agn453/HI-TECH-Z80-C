@@ -1,8 +1,8 @@
-; Use librarian to place all modules in LIBC7.LIB
+; Use librarian to place all modules in LIBC9.LIB
 ; NB: the ordering is important for resolving dependencies at link time
-era LIBC7.lib
+era LIBC9.lib
 libr
-<r LIBC7.lib \
+<r LIBC9.lib \
 <start1.obj     \
 <getargs.obj    \
 <assert.obj     \
@@ -54,6 +54,7 @@ libr
 <time.obj       \
 <convtime.obj   \
 <timezone.obj   \
+<mktime.obj     \
 <isatty.obj     \
 <close.obj      \
 <unlink.obj     \
@@ -160,4 +161,4 @@ libr
 <toupper.obj    \
 <asmod.obj      \
 <xtoi.obj
-; Library LIBC7.LIB created
+; Library LIBC9.LIB created

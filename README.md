@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-8 (see Modification History below).
+The latest release is V3.09-9 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1060,6 +1060,44 @@ find this in his repository at
 
 https://github.com/nikitinprior/dlibr
 
+
+### v3.09-9 update release
+
+I've added a mktime() routine to the C library (LIBC.LIB and LIB280C.LIB)
+and consolidated the recent updates as a release v3.09-9.
+
+
+```
+mktime()
+
+        time_t mktime(struct tm *)
+
+    A routine to convert the broken out time (in the structure pointed
+    to by the parameter) into a time value representing the number
+    of seconds since the Unix epoch (since CP/M has no knowledge of the
+    local timezone - the time is assumed to be respresenting Universal
+    Coordinated Time or UTC).  The value returned is the number of
+    seconds since midnight 01-Jan-1970.
+
+    This can be used (for example) to manipulate a file's time-stamp
+    or for computing time differences.
+
+    External declarations, as well as the tm structure definition, are
+    contained in the TIME.H include file.  The tm structure includes
+    at least the following fields:
+
+           int tm_sec;     /* seconds (0 - 60) */
+           int tm_min;     /* minutes (0 - 59) */
+           int tm_hour;    /* hours (0 - 23) */
+           int tm_mday;    /* day of month (1 - 31) */
+           int tm_mon;     /* month of year (0 - 11) */
+           int tm_year;    /* year - 1900 */
+           int tm_wday;    /* day of week (Sunday = 0) */
+           int tm_yday;    /* day of year (0 - 365) */
+           int tm_isdst;   /* is summer time in effect? */
+```
+
+
 --
 Tony Nicholson
-04-Aug-2021
+16-Aug-2021

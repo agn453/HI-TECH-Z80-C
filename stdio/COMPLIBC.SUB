@@ -1,4 +1,4 @@
-; Compile all LIBC6.LIB modules from sources
+; Compile all LIBC9.LIB modules from sources
 c
 <-o -c abort.c \
 <abs.as \
@@ -102,7 +102,7 @@ c
 <memcmp.c \
 <memcpy.c \
 <memset.c \
-<mods.txt \
+<mktime.c \
 <open.c \
 <perror.c \
 <pnum.c \

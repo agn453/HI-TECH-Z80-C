@@ -226,7 +226,7 @@ int main(int argc, char **argv)
     signal_t prev_sig;
     prev_sig=signal(SIGINT,SIG_IGN);
 
-    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-8");
+    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-9");
 #ifdef Z280
     fprintf(stderr, " [Z280 MPU version]");
 #endif

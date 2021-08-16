@@ -104,7 +104,7 @@ c280
 <memcmp.c \
 <memcpy.c \
 <memset.c \
-<mods.txt \
+<mktime.c \
 <open.c \
 <perror.c \
 <pnum.c \

@@ -2,271 +2,316 @@
 10E>date
 A:DATE     COM  (User 0)
 
-Mon 16/08/2021 13:29:02
-10E>; Compile all tests
-10E>c -v -o testver.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+Mon 16/08/2021 13:16:44
+10E>; Compile all test280
+10E>c280 -v -o2 testver.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVER.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTVER.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTVER.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 34 bytes optimized away
+ 74 bytes replaced
+0:A:ZAS -J -N -OTESTVER.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTVER.COM 0:A:CRTCPM.OBJ TESTVER.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTVER.COM 0:A:C280CPM.OBJ TESTVER.OBJ 0:A:LIB280C.LIB
 ERA TESTVER.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testio.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testio.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTIO.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTIO.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTIO.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 32 bytes optimized away
+ 66 bytes replaced
+0:A:ZAS -J -N -OTESTIO.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTIO.COM 0:A:CRTCPM.OBJ TESTIO.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTIO.COM 0:A:C280CPM.OBJ TESTIO.OBJ 0:A:LIB280C.LIB
 ERA TESTIO.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testuid.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testuid.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTUID.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTUID.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTUID.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -N -OTESTUID.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTUID.COM 0:A:CRTCPM.OBJ TESTUID.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTUID.COM 0:A:C280CPM.OBJ TESTUID.OBJ 0:A:LIB280C.LIB
 ERA TESTUID.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o teststr.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 teststr.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTSTR.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTSTR.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTSTR.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 28 bytes optimized away
+ 72 bytes replaced
+0:A:ZAS -J -N -OTESTSTR.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTSTR.COM 0:A:CRTCPM.OBJ TESTSTR.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTSTR.COM 0:A:C280CPM.OBJ TESTSTR.OBJ 0:A:LIB280C.LIB
 ERA TESTSTR.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testbios.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testbios.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTBIOS.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTBIOS.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 20 bytes optimized away
+ 42 bytes replaced
+0:A:ZAS -J -N -OTESTBIOS.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBIOS.COM 0:A:CRTCPM.OBJ TESTBIOS.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBIOS.COM 0:A:C280CPM.OBJ TESTBIOS.OBJ 0:A:LIB280C.LIB
 ERA TESTBIOS.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testbdos.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testbdos.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTBDOS.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTBDOS.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 43 bytes optimized away
+ 66 bytes replaced
+0:A:ZAS -J -N -OTESTBDOS.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBDOS.COM 0:A:CRTCPM.OBJ TESTBDOS.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBDOS.COM 0:A:C280CPM.OBJ TESTBDOS.OBJ 0:A:LIB280C.LIB
 ERA TESTBDOS.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testtrig.c -lf
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testtrig.c -lf
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTTRIG.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTTRIG.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -N -OTESTTRIG.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTTRIG.COM 0:A:CRTCPM.OBJ TESTTRIG.OBJ 0:A:LIBF.LIB 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTTRIG.COM 0:A:C280CPM.OBJ TESTTRIG.OBJ 0:A:LIB280F.LIB 0:A:LIB280C.LIB
 ERA TESTTRIG.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testftim.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testftim.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTFTIM.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTFTIM.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 19 bytes optimized away
+ 30 bytes replaced
+0:A:ZAS -J -N -OTESTFTIM.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTFTIM.COM 0:A:CRTCPM.OBJ TESTFTIM.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTFTIM.COM 0:A:C280CPM.OBJ TESTFTIM.OBJ 0:A:LIB280C.LIB
 ERA TESTFTIM.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testfile.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testfile.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFILE.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTFILE.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTFILE.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 18 bytes optimized away
+ 36 bytes replaced
+0:A:ZAS -J -N -OTESTFILE.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTFILE.COM 0:A:CRTCPM.OBJ TESTFILE.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTFILE.COM 0:A:C280CPM.OBJ TESTFILE.OBJ 0:A:LIB280C.LIB
 ERA TESTFILE.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testaes.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testaes.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTAES.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTAES.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTAES.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 264 bytes optimized away
+ 552 bytes replaced
+0:A:ZAS -J -N -OTESTAES.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTAES.COM 0:A:CRTCPM.OBJ TESTAES.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTAES.COM 0:A:C280CPM.OBJ TESTAES.OBJ 0:A:LIB280C.LIB
 ERA TESTAES.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testrc.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testrc.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTRC.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTRC.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTRC.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -N -OTESTRC.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTRC.COM 0:A:CRTCPM.OBJ TESTRC.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTRC.COM 0:A:C280CPM.OBJ TESTRC.OBJ 0:A:LIB280C.LIB
 ERA TESTRC.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testview.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testview.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTVIEW.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTVIEW.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 33 bytes optimized away
+ 66 bytes replaced
+0:A:ZAS -J -N -OTESTVIEW.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTVIEW.COM 0:A:CRTCPM.OBJ TESTVIEW.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTVIEW.COM 0:A:C280CPM.OBJ TESTVIEW.OBJ 0:A:LIB280C.LIB
 ERA TESTVIEW.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testwild.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testwild.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTWILD.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTWILD.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTWILD.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 14 bytes optimized away
+ 32 bytes replaced
+0:A:ZAS -J -N -OTESTWILD.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTWILD.COM 0:A:CRTCPM.OBJ TESTWILD.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTWILD.COM 0:A:C280CPM.OBJ TESTWILD.OBJ 0:A:LIB280C.LIB
 ERA TESTWILD.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -ftestovrx.sym -v -o testovr.c -lovr
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -ftestovrx.sym -v -o2 testovr.c -lovr
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTOVR.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTOVR.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 8 bytes optimized away
+ 16 bytes replaced
+0:A:ZAS -J -N -OTESTOVR.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -DTESTOVRX.SYM -Ptext=0,data,bss -C100H -OTESTOVR.COM 0:A:CRTCPM.OBJ TESTOVR.OBJ 0:A:LIBOVR.LIB 0:A:LIBC.LIB
+0:A:LINQ -Z -DTESTOVRX.SYM -Ptext=0,data,bss -C100H -OTESTOVR.COM 0:A:C280CPM.OBJ TESTOVR.OBJ 0:A:LIB280OVR.LIB 0:A:LIB280C.LIB
 ERA TESTOVR.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -y -o -v testovr2.c testovrx.sym
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -y -o2 -v testovr2.c testovrx.sym
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR2.C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR2.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTOVR2.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTOVR2.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -N -OTESTOVR2.OBJ M:$CTMP5.$$$
 0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
 TESTOVRX.SYM
 0:A:ZAS -J -OTESTOVRX.OBJ M:$CTMP5.$$$
@@ -274,20 +319,23 @@ ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=033A9h,data -C33A9H -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=02F86h,data -C2F86H -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -y -o -v testovr1.c testovrx.sym
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -y -o2 -v testovr1.c testovrx.sym
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR1.C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR1.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTOVR1.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTOVR1.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -N -OTESTOVR1.OBJ M:$CTMP5.$$$
 0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
 TESTOVRX.SYM
 0:A:ZAS -J -OTESTOVRX.OBJ M:$CTMP5.$$$
@@ -295,44 +343,50 @@ ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=033A9h,data -C33A9H -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=02F86h,data -C2F86H -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -a -v -o testhell.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -a -v -o2 testhell.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTHELL.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTHELL.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTHELL.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -N -OTESTHELL.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -L -Ptext=0100h,data,bss -OM:$L.OBJ 0:A:RRTCPM.OBJ TESTHELL.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -L -Ptext=0100h,data,bss -OM:$L.OBJ 0:A:R280CPM.OBJ TESTHELL.OBJ 0:A:LIB280C.LIB
 0:A:OBJTOHEX -R -B100H M:$L.OBJ TESTHELL.COM
 ERA M:$L.OBJ
 ERA TESTHELL.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c -v -o testpr.c
-A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+10E>c280 -v -o2 testpr.c
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTPR.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTPR.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTPR.OBJ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -N -OTESTPR.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTPR.COM 0:A:CRTCPM.OBJ TESTPR.OBJ 0:A:LIBC.LIB
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTPR.COM 0:A:C280CPM.OBJ TESTPR.OBJ 0:A:LIB280C.LIB
 ERA TESTPR.OBJ
 ERA M:$$EXEC.$$$
 
@@ -458,8 +512,8 @@ E:TESTTRIG COM
 
 10E>testftim
 E:TESTFTIM COM
-34: 01:40 PM
-Mon Aug 16 13:40:22 2021
+34: 01:28 PM
+Mon Aug 16 13:28:32 2021
 
 
 10E>testfile

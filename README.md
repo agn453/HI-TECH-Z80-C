@@ -1105,7 +1105,8 @@ and ZPM3.
 
 * I forgot to include the testing logs (in the *test* folder)
 
+* Add -Y description to dist/OPTIONS file.
 
 --
 Tony Nicholson
-17-Aug-2021
+18-Aug-2021

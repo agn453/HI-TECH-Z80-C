@@ -5,7 +5,7 @@ HI-TECH Z80 CP/M C compiler options:
 -CR     Produce a cross-reference listing e.g. -CRfile.crf
 -D	Define a symbol, e.g. -DDEBUG=1
 -E	Specify executable output filename, e.g. -Efile.com
--F	Generate a symbol file suitable for use with debug.com,
+-F	Generate a symbol file for use with debug.com or overlay build.
 		e.g. -Ffile.sym; default file name is L.SYM.
 -H      Output help (the OPTIONS file) and exit.
 -I	Specify an include directory, e.g. -I1:B:
@@ -19,3 +19,4 @@ HI-TECH Z80 CP/M C compiler options:
 -V	Be verbose during compilation.
 -W	Set warning level, e.g. -w5 or -w-2
 -X	Suppress local symbols in symbol tables.
+-Y	Generate an overlay output file (.OVR file-type)

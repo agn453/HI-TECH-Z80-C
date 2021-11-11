@@ -94,7 +94,7 @@ The late Jon Saxton (former SYSOP of the Australian Tesseract RCPM)
 collected together a number of patches and updates - See Tesseract
 volume 091.
 
-These include contributions from John Elliot via
+These include contributions from John Elliott via
 http://www.seasip.info/Cpm/software/index.html - in particular
 for PIPEMGR which is a CP/M 3 RSX that implements piping and redirection.
 
@@ -111,7 +111,13 @@ memset()
      The Hi-Tech C implementation of memset() is seriously broken and is
      almost guaranteed to give trouble in any program which uses it.
 
-     The implementation simply does not agree with the function declaration.
+     The original implementation simply does not agree with the function
+     declaration.  It now does.
+
+         void memset(void s, char c, size_t n)
+
+     Sets n bytes of memory starting at the location pointed to by s with
+     the character c.
 
 bios()
 
@@ -180,7 +186,7 @@ bdos()
 
 ### Release v3.09-3
 
-These are the Jon Saxton modified versions of John Elliots's patches.
+These are the Jon Saxton modified versions of John Elliott's patches.
 
 ```
 Wildcard expansion
@@ -741,7 +747,7 @@ the compiled binary is running on a Z280 MPU.
 I've included Jon Saxton's version of the PIPEMGR RSX for handling
 pipes under CP/M 3.
 
-This is a modified version of the original by John Elliot that's
+This is a modified version of the original by John Elliott that's
 detected and used by each of the releases of HI-TECH C available
 from this repository.
 
@@ -754,7 +760,7 @@ PIPEMGR RSX attached and behaves like its namesake in the Unix world,
 along with missing files from the original Van Nuys tools
 (PIPEMGR.H and PIPEMGR.C).
 
-The rest of the Van Nuys tools are available from John Elliot's
+The rest of the Van Nuys tools are available from John Elliott's
 original PIPEMGR page at
 
 http://www.seasip.info/Cpm/software/Pipemgr/index.html
@@ -1107,6 +1113,15 @@ and ZPM3.
 
 * Add -Y description to dist/OPTIONS file.
 
+
+### Reconstructed source for OPTIM.COM
+
+Andrey Nikitin and Mark Ogden have been busy.  They've reconstructed the
+C source-code for the Z80 code optimiser.  You'll find it at
+
+https://github.com/nikitinprior/doptim
+
+
 --
 Tony Nicholson
-18-Aug-2021
+12-Nov-2021

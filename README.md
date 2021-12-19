@@ -1122,6 +1122,15 @@ C source-code for the Z80 code optimiser.  You'll find it at
 https://github.com/nikitinprior/doptim
 
 
+### Fix to fgets routine
+
+The fgets() library routine (in LIBC.LIB and LIB280C.LIB) has been
+updated to prevent a character string terminator (NULL) from being
+written to outside the buffer bounds.  You can update just the
+appropriate library file, or the update binary distribution from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
+
 --
 Tony Nicholson
-12-Nov-2021
+19-Dec-2021

@@ -1,11 +1,11 @@
 
-10E>; Compile all LIB280C.LIB modules from sources for Z280
-10E>c280
-A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
+10E>; Compile all LIBC9.LIB modules from sources
+10E>c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-c> -o2 -c abort.c \
+c> -o -c abort.c \
 c> abs.as \
 c> allsh.as \
 c> alrsh.as \
@@ -88,8 +88,6 @@ c> isalpha.as \
 c> isatty.c \
 c> isdigit.as
 ABORT.C
- 0 bytes optimized away
- 0 bytes replaced
 ABS.AS
 ALLSH.AS
 ALRSH.AS
@@ -109,136 +107,60 @@ ASLXOR.AS
 ASMOD.AS
 ASMUL.AS
 ASSERT.C
- 6 bytes optimized away
- 12 bytes replaced
 ATOI.AS
 ATOL.C
- 15 bytes optimized away
- 30 bytes replaced
 BDOS.AS
 BIOS.AS
 BITFIELD.AS
 BLKCLR.AS
 BLKCPY.C
- 10 bytes optimized away
- 20 bytes replaced
 BMOVE.AS
 BRELOP.AS
 BUF.C
- 4 bytes optimized away
- 20 bytes replaced
 CALLOC.C
- 9 bytes optimized away
- 26 bytes replaced
 CGETS.C
- 21 bytes optimized away
- 42 bytes replaced
 CHMOD.C
- 16 bytes optimized away
- 24 bytes replaced
 CLEANUP.C
- 12 bytes optimized away
- 24 bytes replaced
 CLOSE.C
- 6 bytes optimized away
- 12 bytes replaced
 CONVTIME.C
- 11 bytes optimized away
- 60 bytes replaced
 CPUTS.C
- 2 bytes optimized away
- 4 bytes replaced
 CREAT.C
- 6 bytes optimized away
- 18 bytes replaced
 CSV.AS
 CTIME.C
- 161 bytes optimized away
- 320 bytes replaced
 CTYPE_.C
- 0 bytes optimized away
- 0 bytes replaced
 CTYPE.C
- 4 bytes optimized away
- 8 bytes replaced
 DOPRNT.C
- 45 bytes optimized away
- 108 bytes replaced
 DOSCAN.C
- 127 bytes optimized away
- 274 bytes replaced
 DUP.C
- 1 bytes optimized away
- 14 bytes replaced
 EXEC.AS
 EXECL.AS
 _EXIT.AS
 EXIT.C
- 2 bytes optimized away
- 4 bytes replaced
 FAKECLEA.C
- 0 bytes optimized away
- 0 bytes replaced
 FAKECPCL.AS
 FCBNAME.C
- 57 bytes optimized away
- 108 bytes replaced
 FCLOSE.C
- 7 bytes optimized away
- 14 bytes replaced
 FFLUSH.C
- 18 bytes optimized away
- 36 bytes replaced
 FGETC.AS
 FILBUF.C
- 18 bytes optimized away
- 42 bytes replaced
 FLSBUF.C
- 13 bytes optimized away
- 22 bytes replaced
 FOPEN.C
- 4 bytes optimized away
- 20 bytes replaced
 FPRINTF.C
- 7 bytes optimized away
- 10 bytes replaced
 FPUTC.AS
 FREAD.C
- 33 bytes optimized away
- 66 bytes replaced
 FRELOP.AS
 FREOPEN.C
- 29 bytes optimized away
- 64 bytes replaced
 FSCANF.C
- 7 bytes optimized away
- 10 bytes replaced
 FSEEK.C
- 84 bytes optimized away
- 164 bytes replaced
 FWRITE.C
- 31 bytes optimized away
- 62 bytes replaced
 GETARGS.C
- 192 bytes optimized away
- 432 bytes replaced
 GETCH.C
- 10 bytes optimized away
- 20 bytes replaced
 GETENV.C
- 115 bytes optimized away
- 242 bytes replaced
 GETFCB.C
- 138 bytes optimized away
- 280 bytes replaced
 GETS.C
- 32 bytes optimized away
- 64 bytes replaced
 GETSP.AS
 GETUID.AS
 GETW.C
- 10 bytes optimized away
- 20 bytes replaced
 IDIV.AS
 IMUL.AS
 INDEX.AS
@@ -246,16 +168,14 @@ INOUT.AS
 IREGSET.AS
 ISALPHA.AS
 ISATTY.C
- 1 bytes optimized away
- 2 bytes replaced
 ISDIGIT.AS
 
-10E>c280
-A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
+10E>c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-c> -o2 -c islower.as \
+c> -o -c islower.as \
 c> isspace.as \
 c> isupper.as \
 c> ladd.as \
@@ -295,43 +215,23 @@ LRELOP.AS
 LSUB.AS
 LXOR.AS
 MALLOC.C
- 99 bytes optimized away
- 262 bytes replaced
 MAX.AS
 MEMCMP.C
- 13 bytes optimized away
- 26 bytes replaced
 MEMCPY.C
- 10 bytes optimized away
- 20 bytes replaced
 MEMSET.C
- 14 bytes optimized away
- 28 bytes replaced
 MKTIME.C
- 75 bytes optimized away
- 140 bytes replaced
 OPEN.C
- 29 bytes optimized away
- 78 bytes replaced
 PERROR.C
- 8 bytes optimized away
- 18 bytes replaced
 PNUM.C
- 28 bytes optimized away
- 50 bytes replaced
 PRINTF.C
- 5 bytes optimized away
- 6 bytes replaced
 PUTCHAR.C
- 2 bytes optimized away
- 4 bytes replaced
 
-10E>c280
-A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
+10E>c
+A:C        COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-9
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-c> -o2 -c puts.c \
+c> -o -c puts.c \
 c> putw.c \
 c> qsort.c \
 c> rand.c \
@@ -387,130 +287,68 @@ c> unlink.c \
 c> wrelop.as \
 c> write.c \
 c> xtoi.as \
-c> zc280cpm.as \
-c> zd280cpm.as \
-c> zr280cpm.as
+c> zcrtcpm.as \
+c> zdrtcpm.as \
+c> zrrtcpm.as
 PUTS.C
- 10 bytes optimized away
- 20 bytes replaced
 PUTW.C
- 8 bytes optimized away
- 16 bytes replaced
 QSORT.C
- 142 bytes optimized away
- 346 bytes replaced
 RAND.C
- 2 bytes optimized away
- 4 bytes replaced
 RCSV.AS
 READ.C
- 120 bytes optimized away
- 220 bytes replaced
 REMOVE.C
- 2 bytes optimized away
- 4 bytes replaced
 RENAME.C
- 15 bytes optimized away
- 18 bytes replaced
 REWIND.C
- 2 bytes optimized away
- 4 bytes replaced
 RINDEX.AS
 SBRK.AS
 SCANF.C
- 5 bytes optimized away
- 6 bytes replaced
 SEEK.C
- 49 bytes optimized away
- 98 bytes replaced
 SETBUF.C
- 12 bytes optimized away
- 24 bytes replaced
 SETUP.C
- 0 bytes optimized away
- 0 bytes replaced
 SHAR.AS
 SHLL.AS
 SHLR.AS
 SIGNAL.C
- 10 bytes optimized away
- 20 bytes replaced
 SPRINTF.C
- 10 bytes optimized away
- 16 bytes replaced
 SRAND1.C
- 10 bytes optimized away
- 20 bytes replaced
 SRAND.AS
 SSCANF.C
- 16 bytes optimized away
- 24 bytes replaced
 START1.AS
 START2.AS
 STAT.C
- 68 bytes optimized away
- 144 bytes replaced
 STDCLEAN.C
- 0 bytes optimized away
- 0 bytes replaced
 STRCAT.AS
 STRCHR.AS
 STRCMP.AS
 STRCPY.AS
 STRDUP.C
- 10 bytes optimized away
- 20 bytes replaced
 STRFTIME.C
- 185 bytes optimized away
- 428 bytes replaced
 STRICMP.AS
 STRISTR.C
- 25 bytes optimized away
- 50 bytes replaced
 STRLEN.AS
 STRNCAT.AS
 STRNCMP.AS
 STRNCPY.AS
 STRNICMP.AS
 STRNISTR.C
- 45 bytes optimized away
- 90 bytes replaced
 STRNSTR.C
- 44 bytes optimized away
- 88 bytes replaced
 STRRCHR.AS
 STRSTR.C
- 22 bytes optimized away
- 44 bytes replaced
 STRTOK.C
- 38 bytes optimized away
- 76 bytes replaced
 SWAP.AS
 SYS_ERR.C
- 0 bytes optimized away
- 0 bytes replaced
 TIME.C
- 18 bytes optimized away
- 32 bytes replaced
 TIMEZONE.C
- 0 bytes optimized away
- 0 bytes replaced
 TOLOWER.AS
 TOUPPER.AS
 UNGETC.C
- 25 bytes optimized away
- 50 bytes replaced
 UNLINK.C
- 14 bytes optimized away
- 20 bytes replaced
 WRELOP.AS
 WRITE.C
- 94 bytes optimized away
- 166 bytes replaced
 XTOI.AS
-ZC280CPM.AS
-ZD280CPM.AS
-ZR280CPM.AS
+ZCRTCPM.AS
+ZDRTCPM.AS
+ZRRTCPM.AS
 
 10E>; All modules compiled.
 10E>put console to console

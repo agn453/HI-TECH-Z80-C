@@ -1,5 +1,5 @@
 /*
- *  gets and fgets for Zios stdio
+ *  gets and fgets for HI-TECH C stdio
  */
 
 #include    <stdio.h>
@@ -10,7 +10,7 @@ char *fgets(char *s, int n, register FILE *f)
     char *s1 = s;
     int c;
 
-    while (n-- && (c = fgetc(f)) != EOF && (*s++ = c) != '\n')
+    while (--n && (c = fgetc(f)) != EOF && (*s++ = c) != '\n')
         /* VOID */;
     *s = 0;
     if (s == s1)

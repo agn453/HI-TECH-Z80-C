@@ -16,6 +16,10 @@ it from
 
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
 
+and optionally the Z280 binary distribution (if you need it) from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
 I welcome bug reports/fixes and additional commentry and discussion.
 
 You can raise an issue here on GitHub or contact me directly via e-mail
@@ -1133,6 +1137,18 @@ files from the updated binary distribution from
 
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
 
+
+### Bundle up the Z280 distribution
+
+I've added a binary Z280 distribution library file too.  Get it from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
+Just extract the contents to your system drive (A:) and set them
+with the SYS file attribute (so they are accessible from all user
+areas and via the CP/M 3 search path).
+
+
 --
 Tony Nicholson
-19-Dec-2021
+28-Dec-2021

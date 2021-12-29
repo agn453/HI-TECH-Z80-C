@@ -114,9 +114,11 @@ static char *paths[] =
     "$EXEC",
     "CREF",
     "SYMTOAS",
-    "OPTIONS",
 #ifdef Z280
+    "C280OPTS",
     "OPTIMH",
+#else
+    "OPTIONS",
 #endif
 };
 
@@ -226,7 +228,7 @@ int main(int argc, char **argv)
     signal_t prev_sig;
     prev_sig=signal(SIGINT,SIG_IGN);
 
-    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-9");
+    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-10");
 #ifdef Z280
     fprintf(stderr, " [Z280 MPU version]");
 #endif

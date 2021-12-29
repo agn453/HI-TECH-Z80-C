@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-9 (see Modification History below).
+The latest release is V3.09-10 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1149,6 +1149,18 @@ with the SYS file attribute (so they are accessible from all user
 areas and via the CP/M 3 search path).
 
 
+## C front-end fixes and new V3.09-10 update release
+
+Mark Ogden has supplied some fixes to the C front-end so that it can process
+long command lines (particularly when wildcard expanded filename are
+specified).  I've also added a minor change to the Z280 front-end to use
+the C280OPTS file when help (-H) is requested from the C280 command.
+
+The new release V3.09-10 consolidates all the changes since V3.09-9.  As
+usual, updated binary distribution libraries are available too.
+
+
+
 --
 Tony Nicholson
-28-Dec-2021
+30-Dec-2021

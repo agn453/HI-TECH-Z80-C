@@ -1170,6 +1170,21 @@ is available - and the source-code in cpm/C390-10.C has been
 updated.  Thanks to Andrey Nikitin for reporting this.
 
 
+## Inclusion of object-code and symbtol-table documentation
+
+On the Internet archive WayBackMachine, I found some documentation
+describing the HI-TECH object-code (.OBJ) and symbol-table (.SYM) file
+formats in the ZIP archive
+[symfiles.zip](https://web.archive.org/web/19980205193245fw_/http://www.hitech.com.au/software/tech_docs.html).
+
+I've extracted the old MS-Word format files and converted them to ASCII text
+in the
+[doc/OBJCODE.TXT](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/doc/OBJCODE.TXT)
+and
+[doc/SYMFILE.TXT](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/doc/SYMFILE.TXT)
+files.
+
+
 --
 Tony Nicholson
-03-Jan-2022
+04-Jan-2022

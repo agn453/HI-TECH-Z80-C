@@ -1,0 +1,318 @@
+
+HI-TECH Software
+Object Code Format
+
+1.  Introduction
+
+	This describes the format of the object code recognized by the 
+linker "link". Note that later versions of the object code have 
+identifying  version  numbers  in  IDENT  records. Early  version of the 
+object code did not have these version numbers. The presence of the 
+version number  can  be  determined  from the length of the ident record. 
+Certain features will be identified as being present in versions greater 
+than some value by the notation (>=m.n) where m is the major version 
+number and n is the minor version number, e.g. (>=2.1).
+
+2.  Object Code Structure
+
+	The object code (OCODE) is essentially binary, comprising a sequence 
+of records, each with an outer envelope thus:
+
+| Length (16 bits) | Record type (8 bits) | Data (Length*8 bits) |
+
+i.e. a 16 bit length, followed by an 8 bit type, then a sequence of 
+8 bit bytes.  The length is the number of bytes, exluding the length and 
+type.  In practice, the length of the data portion of any record will
+not exceed 512 bytes. This places an upper limit on the size of the
+buffer required to hold any record.
+
+2.1.  TEXT Record
+
+	The major record type is TEXT (== 1). Its format (i.e. the data 
+part of the basic record envelope) is thus:
+
+| Offset (32 bits) | Psect name (null term.) | data bytes |
+
+	The Offset is the offset (in bytes) within the named psect (i.e. 
+program section) at which the data bytes are to be placed.  The name, 
+like all names in this OCODE, is null terminated.  The number of data 
+bytes is found by subtracting the length of the name + 4 from the record 
+length in the outer envelope.
+
+2.2.  PSECT Record
+
+	The PSECT (== 2) record is used to define program sections. Each 
+PSECT record describes one psect.
+
+| Psect flags (16 bits) | psect name (null terminated) |
+
+	Note that as a consistency check, the null byte terminating the 
+name must be the last byte in the record. The flag bits are:
+
+GLOBAL  020	Psect is global
+PURE	040	Psect is to be read-only
+OVRLD	0100	Each modules data for this psect starts at
+		relative location 0. The default is concatenation. ABS
+	0200	This psect is to be loaded at absolute 0.
+BIGSEG  0400	Means the relocatibility of this psect is
+		multiplied by 65535
+BPAGE	01000	This is a base page psect - ignore overflows in
+		relocations
+
+2.3.  RELOC Record
+
+	The RELOC (== 3) type record contains relocation information 
+relating to the last TEXT record. It consists of a sequence of 
+offset/descriptor pairs, the offset being a 16 bit offset within the 
+last TEXT record, and the descriptor providing the relocation 
+information. The type of the relocation may be simple relocation 
+within a psect, relocation by the value of an external name, or whatever. 
+Complex relocations may also appear, which are a sequence of operators 
+and operands, to be evaluated by a stack machine. Each simple relocation 
+record will appear as:
+
+| Offset (16 bits) | Reloc. type (8 bits) | Psect or external name |
+
+	The name is, as usual, null terminated. The actual RELOC record
+consists of an arbitrary number of these entries.  The relocation type
+byte is interpreted as follows:
+
+bits		|7    4|3    0|
+		| type | size |
+
+The size is the size in bytes of the quantity to be relocated. The type 
+is one of:
+
+RABS	0	Absolute - no relocation (i.e. no change)
+RPSECT  1	Relocation within named psect
+RNAME	2	Relocation by value of name
+RRPSECT 5	Relocation within psect, less the current pc.
+		This is required for machines using relative addressing. 
+		val = val + psect.base - code.location
+RRNAME  6	As for RRPSECT, but relative to a symbol rather than a
+		psect.
+RSPSECT 9	Relocation by the segment value for the psect
+RSNAME  10	Relocation by the segment value for the symbol
+RCPLX	48	Complex relocation follows
+
+	A complex relocation entry has, in place of the name, a sequence of 
+operator bytes and operand bytes with further information. Where binary 
+operations are performed, the top stack entry is the left hand operand,
+and the next to top stack value is the right hand operand.  Both values
+are removed from the stack and the result pushed back on.  Unary operators
+act on the top stack value.  Operands like RC_VAL and RPSECT push their
+value onto the stack.  The possible type bytes are as follows:
+
+RC_END  0	End of complex relocations
+RC_LOW  1	And with 0xFF
+RC_HI	2	Right shift 8 bits, and with 0xFF
+RC_VAL  3	32 bit constant follows
+RC_ADD  4	Addition
+RC_SUB  5	Subtraction
+RC_MUL  6	Multiplication
+RC_DIV  7	Division
+RC_SHL  8	Shift left
+RC_SHR  9	Shift right
+RC_AND  10	Bitwise AND
+RC_OR	11	Bitwise OR
+RC_XOR  12	Bitwise XOR
+RC_CPL  13	Bitwise complement
+RC_NEG  14	Negate
+RC_BITF 15	Bitfield extract - operands are
+		value, bit offset, and length 
+RPSECT  16	Value of psect - null-terminated name follows
+RC_MOD  17	Modulus
+RNAME	32	Value of symbol - null-terminated name follows
+RSPSECT 144	Segment selector of psect
+RSNAME  160	Segment selector of symbol
+
+2.4.  SYM Record
+
+	The SYM (== 4) record defines external and internal names.  It 
+consists of a sequence of name definitions. Note that it is not essential 
+to mention an external name here if it is referenced in a RELOC record. 
+Each entry is as follows:
+
+| Value (32 bits) | flags (16 bits) | psect name | symbol name |
+
+Note that the psect name will be null if the symbol is not being 
+defined.  That is, the psect name will be a single null byte.  The 
+flag word contains the same flags as defined above for PSECT records. 
+In the low order 4 bits is one of the following values:
+
+NULL	0	The normal case when defining local or global symbols
+STACK	1	Symbol is a stack (auto variable) symbol
+COMM	2	Symbol is a common symbol - if it is defined elsewhere
+		then this is the same as EXTERN, otherwise the linker 
+		will allocate space in the psect named, of size equal to 
+		the maximum value of any instance of this symbol 
+		encountered.
+REGNAM  3	Symbol refers to a register
+LINENO  4	This is a line number in the source code
+FILNAM  5	This is the name of a source file
+EXTERN  6	This is a reference to an externally defined symbol
+		The psect name must be null.
+
+	STACK, REGNAM, FILNAM and LINENO symbols are purely for
+use by a debugger.  These symbols are not handled by the linker at  
+all (other than to correctly relocate their values) but will be 
+passed through to a symbol table unless suppressed with a -x option.
+
+2.5.  START Record
+
+	The START (== 5) record defines a start address.  Only one START 
+record may appear in a module.
+
+| offset (32 bits) | psect name (null term) |
+
+This defines the start address to be at the specified offset
+in the named psect.
+
+2.6.  END Record
+
+	The END (== 6) record is as follows:
+
+| flags (16 bits) |
+
+The flag value is currently unused.
+
+2.7.  IDENT Record
+
+	The IDENT (= 7) record identifies the target machine and 
+specifies the ordering of bytes in 32 and 16 bit quantities. This 
+affects both offset and symbol values as well as relocatable values in 
+TEXT records. The IDENT record is optional, and the default ordering 
+is strictly low byte first.  If the IDENT record is present, it must 
+be the first record in the file. The length field in every record's 
+outer envelope is always stored low byte first, irrespective of the 
+content of any IDENT record.
+
+| byte order (32 bits) | byte order (16 bits) | machine name | version 
+		number (16 bits) |
+
+	The byte order fields list the relative position of successively 
+more significant bytes within fields of 32 and 16 bits respectively. For 
+example, the ident record for a PDP11 would look like this:
+
+| 02 03 00 01 | 00 01 | PDP11  |
+
+	The machine name is null terminated. The ident record need not be 
+present, if more than one ident record is encountered, all records 
+must have identical byte ordering. The version number (>=2.0) 
+occupies 2 bytes after the machine name.  This is present only if the 
+record length is long enough to contain these extra 2 bytes. If 
+absent, the version number may be assumed to be 1.0.  If present, the 
+first byte is the major version number, and the second the minor 
+version number.
+
+2.8.  XPSECT Record
+
+The XPSECT (==8) record contains further information about a psect. 
+Some object files may not contain any XPSECT records. The layout is as 
+follows:
+
+| max size (32 bits) | relocatability (16 bits) | selector (16 bits) | 
+		reserved (24 bits) | type (8 bits) | psect name |
+
+	The max size field is a long integer specifying the maximum size of 
+this psect. The relocatability field, if non-zero, specifies a boundary
+ on which the psect must start, e.g. for the 8086 this field is usually
+16, since 8086 segment must start on a 16 byte boundary.
+
+	The reserved field should be all zeros. The psect name is the 
+null terminated name of the psect. The selector (>=2.0) is non-zero 
+if there is a segment selector to be associated with this psect. 
+This feature is normally only used with segmented architecture processors 
+like the 8086. In object code versions prior to 2.0 this field was 
+always
+zero.
+	The type field (>=2.1) allows the linker to verify that all 
+module's contributions to a given psect are of the same type. This field 
+must match in all modules for this psect. This is typically used by 
+the 8086 assembler to encode the state of the USE32 flag for a psect.
+
+2.9.  SEGMENT Record
+
+	The SEGMENT (== 9) record (>= 2.0) is present in fully linked 
+object files only, i.e. those produced by the linker. This defines a 
+segment, which is a contiguous set of psects. The record structure is as 
+follows:
+
+| size (32 bits) | base address (32 bits) | selector (16 bits) 
+	| reserved (16 bits) | origin (32 bits) | segment name |
+
+	The size field is the size of the segment in bytes. The base 
+address is the physical base address of the segment. This is not 
+necessarily the same as the origin, which is the addresse used when 
+references to this segment were relocated. These correspond to the 
+load and link addresses respectively of the psects comprising the 
+segment.
+	The selector is the segment selector value used in referring 
+to this segment. This is of relevance mainly for 8086 family processors. 
+The segment name is the name of the first psect comprising this segment.
+
+2.10.  XSYM Record
+
+	The XSYM (== 10) record (>= 2.1) is similar to the SYM record but 
+also defines a selector value for the symbol. The record layout is as 
+follows:
+
+| value (32 bits) | flags (16 bits) | selector (16 bits) | name |
+
+The selector value is the selector of the segment
+within which the symbol is located.
+
+2.11.  SIGNAT Record
+
+	The SIGNAT (== 11) record (>=2.1) defines a signature for a 
+symbol. At link time all signatures for a symbol are compared and must be 
+identical. If a signature is not the same, an error message is 
+issued. The record layout is as follows:
+
+| signature (16 bits) | symbol name |
+
+2.12.  FNINFO Record
+
+	The FNINFO (== 12) record (>= 2.3) provides information necessary 
+for call-graphing and local data allocation for non-reentrant 
+functions. Within a record are concatenated one or more instances 
+of the following layouts.  Each instance is variable length, depending 
+on name lengths.
+
+| FNCALL (1)  | caller name | callee name |
+| FNARG (2)   | caller name | callee name |
+| FNINDIR (3) | caller name | callee signature (16 bits) |
+| FNADDR (4)  | function name | signature (16 bits) |
+| FNSIZE (5)  | func name | local size (32 bits) | arg size (32 bits) |
+| FNROOT (6)  | func name |
+
+	The FNCALL instance specifies that one function directly 
+calls another.  The FNARG instance specifies that one function will have 
+arguments built while another is called. The FNINDIR instance 
+specifies that a function calls indirectly another (unknown) function, 
+whose signature is as specified.  The FNADDR instance specifies that the 
+function has its address taken (and is thus a candidate for being 
+called indirectly) and its signature.
+	The FNSIZE instance specifies the local variable block size and 
+the argument block size for a function. The FNROOT instance specifies 
+that this function is the root of a call graph (either the main function 
+or an interrupt function).
+
+2.13.  FNCONF Record
+
+	The FNCONF (== 13) record (>=2.3) provides environmental 
+information for call-graphing and local data allocation purposes. The 
+layout comprises three null-terminated strings as follows:
+| psect name | local data prefix | argument prefix |
+The psect name is the name of the psect in which local data and 
+argument blocks should be allocated by the linker. The local data and 
+argument prefixes are the strings which should be prepended to a 
+function name to derive the names for the local data and argument blocks 
+for a given function.
+
+3.  NOTES
+
+	No padding or fill bytes are stored in the object file, i.e. no 
+alignment of the records is done. Do not attempt to read or write 
+object files using structures,  i.e. all records must be built up 
+byte-by-byte in a char array.

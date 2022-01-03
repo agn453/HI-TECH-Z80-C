@@ -1160,7 +1160,16 @@ The new release V3.09-10 consolidates all the changes since V3.09-9.  As
 usual, updated binary distribution libraries are available too.
 
 
+## Fix to pre-processor assembly language output
+
+A long-standing bug with the generation of Z80 assembly
+language output containing the C source-code as comments
+(when using the -S command-line option without optimisation)
+has been fixed.  A replacement C309-10.COM (and C280-10.COM)
+is available - and the source-code in cpm/C390-10.C has been
+updated.  Thanks to Andrey Nikitin for reporting this.
+
 
 --
 Tony Nicholson
-30-Dec-2021
+03-Jan-2022

@@ -811,8 +811,11 @@ void compile(char *s)
     vec[i++] = (char *)0;
 
     /* vec[0] is junk.  Move everything down one slot.  */
+/*AGN - remove the following two lines*/
+/*
     for (i=0; vec[i]; ++i)
 	vec[i] = vec[i+1];
+ */
     doexec(pass1, vec);
     vec[0] = tmpf2;
     vec[1] = keepas && !optimize ? strcat(strcpy(tmpbuf, s), ".AS") : tmpf1;

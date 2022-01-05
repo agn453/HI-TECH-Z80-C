@@ -1198,7 +1198,7 @@ updated (along with the binary distribution libraries).
 
 Passing a pointer to a function parameter can give rise to a warning
 or compilation failure (with both ```operation: arguments redeclared```
-and ```argument list conflicts with prototype``` error messages.  One
+and ```argument list conflicts with prototype``` error messages).  One
 such example is the ```qsort()``` routine which needs a pointer to a
 comparison routine as one of its arguments.
 

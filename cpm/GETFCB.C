@@ -13,7 +13,6 @@
  *      10:b:READ-ME.doc
  */
 
-extern char _piped;	/* PIPEMGR loaded? */
 
 #define DNAMLEN 4   /* length of device names */
 
@@ -60,15 +59,12 @@ void putfcb(struct fcb *fc)
 
 uchar setfcb(struct fcb *fc, char *name)
 {
-    uchar           i,j,ndnam;
-
-    if (_piped) ndnam=NDNAMES	/* only do RSX: and ERR: if PIPEMGR loaded */
-    else ndnam=NDNAMES-2;
+    uchar           i,j;
 
     while (isspace(*name))
         ++name;
     /* Check device names */
-    for (i = 0 ; i < ndnam ; ++i)
+    for (i = 0 ; i < NDNAMES ; ++i)
         for (j = 0; ;)
             if (dnames[i][j] != upcase(name[j]))
                 break;

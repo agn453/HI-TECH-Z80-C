@@ -1185,15 +1185,6 @@ and
 files.
 
 
-## Update fcbname() and getfcb() to test for PIPEMGR RSX
-
-The CP/M file control block library routines fcbname() and getfcb() should
-not use PIPEMGR I/O redirection when the RSX is not detected.  Both
-routines in the standard C libraries (LIBC.LIB and LIB280C.LIB), and
-replacement compiler driver programs (C309-10.COM and C280-10.COM) have been
-updated (along with the binary distribution libraries).
-
-
 ## Work-around compiler bug
 
 Passing a pointer to a function parameter can give rise to a warning

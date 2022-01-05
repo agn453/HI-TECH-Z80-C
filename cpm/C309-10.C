@@ -803,8 +803,12 @@ void compile(char *s)
         vec[i++] = "-S";
     if (xref)
         vec[i++] = strcat(strcpy(cbuf, "-C"), crtmp);
-    if (ebuf[0])     /* error redirection */
+    /* error redirection */
+/*AGN - temporarily ignore error redirection*/
+/*
+    if (ebuf[0])
         vec[i++] = ebuf;
+ */
     vec[i++] = tmpf1;
     vec[i++] = tmpf2;
     vec[i++] = tmpf3;

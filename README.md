@@ -1198,6 +1198,16 @@ header library prototype for ```qsort()``` in STDLIB.H has been updated.
 Thanks to Andrey Nikitin for the heads up on this bug.
 
 
+## Redirection of error message output work-around
+
+The re-direction of error message output (from the C or C280 command)
+is currently broken.  This is a side-effect of the fix to the
+pre-processor assembly language output.  I've temporarily added
+a workaround to discard the error message redirect and only send
+error messages to the console device CON:.  This works under CP/M
+and ZXCC emulation until I find a fix.
+
+
 --
 Tony Nicholson
-05-Jan-2022
+06-Jan-2022

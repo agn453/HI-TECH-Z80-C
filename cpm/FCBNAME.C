@@ -1,6 +1,8 @@
 #include    <cpm.h>
 #include    <string.h>
 
+extern char _piped;	/* PIPEMGR loaded? */
+
 /*
  *  char *  fcbname(i);
  *  short   i;
@@ -52,10 +54,17 @@ char *fcbname(short i)
         *cp = 0;
         return abuf;
 
-	case U_RSX:
-		return "RSX:";
-	case U_ERR:
-		return "ERR:";
+    case U_RSX:
+	if (_piped)
+	    return "RSX:";
+	else
+	    return "CON:";
+
+    case U_ERR:
+	if (_piped)
+	    return "ERR:";
+	else
+	    return "CON:";
 
     default:
         return (char *)0;

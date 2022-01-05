@@ -1170,7 +1170,7 @@ is available - and the source-code in cpm/C390-10.C has been
 updated.  Thanks to Andrey Nikitin for reporting this.
 
 
-## Inclusion of object-code and symbtol-table documentation
+## Inclusion of object-code and symbol-table documentation
 
 On the Internet archive WayBackMachine, I found some documentation
 describing the HI-TECH object-code (.OBJ) and symbol-table (.SYM) file
@@ -1185,6 +1185,16 @@ and
 files.
 
 
+## Update fcbname() and getfcb() to test for PIPEMGR RSX
+
+The CP/M file control block library routines fcbname() and getfcb() should
+not use PIPEMGR I/O redirection when the RSX is not detected.  Both
+routines in the standard C libraries (LIBC.LIB and LIB280C.LIB), and
+replacement compiler driver programs (C309-10.COM and C280-10.COM) have been
+updated (along with the binary distribution libraries).
+
+
+
 --
 Tony Nicholson
-04-Jan-2022
+05-Jan-2022

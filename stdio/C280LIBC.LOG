@@ -2,7 +2,7 @@
 10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>c280
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
+Hi-Tech C Compiler (CP/M-80) V3.09-10 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o2 -c abort.c \
@@ -229,8 +229,9 @@ GETENV.C
  115 bytes optimized away
  242 bytes replaced
 GETFCB.C
- 138 bytes optimized away
- 280 bytes replaced
+GETFCB.C: setfcb()
+    66:	    else ndnam=6-2;
+	    ^ ; expected
 GETS.C
  32 bytes optimized away
  64 bytes replaced
@@ -252,7 +253,7 @@ ISDIGIT.AS
 
 10E>c280
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
+Hi-Tech C Compiler (CP/M-80) V3.09-10 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o2 -c islower.as \
@@ -328,7 +329,7 @@ PUTCHAR.C
 
 10E>c280
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9 [Z280 MPU version]
+Hi-Tech C Compiler (CP/M-80) V3.09-10 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o2 -c puts.c \

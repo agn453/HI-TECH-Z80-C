@@ -1,8 +1,8 @@
-; Use librarian to place all modules in LIBC9.LIB
+; Use librarian to place all modules in LIBC10.LIB
 ; NB: the ordering is important for resolving dependencies at link time
-era LIBC9.lib
+era LIBC10.lib
 libr
-<r LIBC9.lib \
+<r LIBC10.lib \
 <start1.obj     \
 <getargs.obj    \
 <assert.obj     \
@@ -161,4 +161,4 @@ libr
 <toupper.obj    \
 <asmod.obj      \
 <xtoi.obj
-; Library LIBC9.LIB created
+; Library LIBC10.LIB created

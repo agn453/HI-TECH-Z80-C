@@ -1194,6 +1194,18 @@ replacement compiler driver programs (C309-10.COM and C280-10.COM) have been
 updated (along with the binary distribution libraries).
 
 
+## Work-around compiler bug
+
+Passing a pointer to a function parameter can give rise to a warning
+or compilation failure (with both ```operation: arguments redeclared```
+and ```argument list conflicts with prototype``` error messages.  One
+such example is the ```qsort()``` routine which needs a pointer to a
+comparison routine as one of its arguments.
+
+The bug can be worked around by using a typedef'ed parameter.  The
+header library prototype for ```qsort()``` in STDLIB.H has been updated.
+Thanks to Andrey Nikitin for the heads up on this bug.
+
 
 --
 Tony Nicholson

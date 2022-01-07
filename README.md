@@ -1208,6 +1208,18 @@ error messages to the console device CON:.  This works under CP/M
 and ZXCC emulation until I find a fix.
 
 
+## Sourcecode reconstruction for the HI-TECH C linker
+
+Both Andrey Nikitin and Mark Ogden have reconstructed the source
+code to the HI-TECH object code linker.  You'll find it at
+
+https://github.com/nikitinprior/dlink
+
+and it can be compiled using gcc under Linux or CLANG under macOS
+to produce a executable that doesn't require Z80 emulation for
+cross-compilation.
+
+
 --
 Tony Nicholson
-06-Jan-2022
+08-Jan-2022

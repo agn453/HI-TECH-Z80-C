@@ -2,93 +2,93 @@
 10E>;
 10E>date
 A:DATE     COM  (User 0)
-Thu 30/12/2021 07:42:10
+Tue 11/01/2022 09:40:15
 10E>;
 10E>; Build Z80 version
-10E>c -o -v c309-10.c
+10E>c -o -v c309-11.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-9
+Hi-Tech C Compiler (CP/M-80) V3.09-11
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: C309-10.C $CTMP1.$$$
-0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:A:ZAS -J -N -OC309-10.OBJ $CTMP2.$$$
-ERA $CTMP1.$$$
-ERA $CTMP2.$$$
-ERA $CTMP3.$$$
-ERA $CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC309-10.COM 0:A:CRTCPM.OBJ C309-10.OBJ 0:A:LIBC.LIB
-ERA C309-10.OBJ
-ERA $$EXEC.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: C309-11.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -OC309-11.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC309-11.COM 0:A:CRTCPM.OBJ C309-11.OBJ 0:A:LIBC.LIB
+ERA C309-11.OBJ
+ERA M:$$EXEC.$$$
 
 10E>;
 10E>; Now build Z280 version
 10E>;
 10E>; First a Z280 version using the Z80 LIBC.C (runs on Z80)
-10E>c309-10 -o -v -ec280z80.com -dZ280 c309-10.c
-E:C309-10  COM
-Hi-Tech C Compiler (CP/M-80) V3.09-10
+10E>c309-11 -o -v -ec280z80.com -dZ280 c309-11.c
+E:C309-11  COM
+Hi-Tech C Compiler (CP/M-80) V3.09-11
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-10.C $CTMP1.$$$
-0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:A:ZAS -J -N -OC309-10.OBJ $CTMP2.$$$
-ERA $CTMP1.$$$
-ERA $CTMP2.$$$
-ERA $CTMP3.$$$
-ERA $CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280Z80.COM 0:A:CRTCPM.OBJ C309-10.OBJ 0:A:LIBC.LIB
-ERA C309-10.OBJ
-ERA $$EXEC.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-11.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -OC309-11.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280Z80.COM 0:A:CRTCPM.OBJ C309-11.OBJ 0:A:LIBC.LIB
+ERA C309-11.OBJ
+ERA M:$$EXEC.$$$
 
 10E>;
 10E>; and the Z280 optimized version from it (only runs on a Z280)
-10E>c280z80 -of2 -v -ec280-10.com c309-10.c
+10E>c280z80 -of2 -v -ec280-11.com c309-11.c
 E:C280Z80  COM
-Hi-Tech C Compiler (CP/M-80) V3.09-10 [Z280 MPU version]
+Hi-Tech C Compiler (CP/M-80) V3.09-11 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-10.C $CTMP1.$$$
-0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:A:OPTIM -F $CTMP1.$$$ $CTMP2.$$$
-0:A:OPTIMH -F $CTMP2.$$$ $CTMP5.$$$
- 481 bytes optimized away
- 1528 bytes replaced
-0:A:ZAS -N -OC309-10.OBJ $CTMP5.$$$
-ERA $CTMP1.$$$
-ERA $CTMP2.$$$
-ERA $CTMP3.$$$
-ERA $CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280-10.COM 0:A:C280CPM.OBJ C309-10.OBJ 0:A:LIB280C.LIB
-ERA C309-10.OBJ
-ERA $$EXEC.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-11.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM -F M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:OPTIMH -F M:$CTMP2.$$$ M:$CTMP5.$$$
+ 477 bytes optimized away
+ 1494 bytes replaced
+0:A:ZAS -N -OC309-11.OBJ M:$CTMP5.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280-11.COM 0:A:C280CPM.OBJ C309-11.OBJ 0:A:LIB280C.LIB
+ERA C309-11.OBJ
+ERA M:$$EXEC.$$$
 
 10E>;
-10E>c280-10 -o2 -v optimh.c
-E:C280-10  COM
-Hi-Tech C Compiler (CP/M-80) V3.09-10 [Z280 MPU version]
+10E>c280-11 -o2 -v optimh.c
+E:C280-11  COM
+Hi-Tech C Compiler (CP/M-80) V3.09-11 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: OPTIMH.C $CTMP1.$$$
-0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: OPTIMH.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
  217 bytes optimized away
  390 bytes replaced
-0:A:ZAS -J -N -OOPTIMH.OBJ $CTMP5.$$$
-ERA $CTMP1.$$$
-ERA $CTMP2.$$$
-ERA $CTMP3.$$$
-ERA $CTMP5.$$$
+0:A:ZAS -J -N -OOPTIMH.OBJ M:$CTMP5.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
 0:A:LINQ -Z -Ptext=0,data,bss -C100H -OOPTIMH.COM 0:A:C280CPM.OBJ OPTIMH.OBJ 0:A:LIB280C.LIB
 ERA OPTIMH.OBJ
-ERA $$EXEC.$$$
+ERA M:$$EXEC.$$$
 
 10E>;
 10E>dir c*.com [fu
@@ -103,14 +103,14 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-C280-10  COM    24k    189 Dir RW       None   30/12/21 07:52  30/12/21 07:52
-C280-9   COM    24k    189 Dir RW       None   18/08/21 15:51  18/08/21 15:51
-C280Z80  COM    28k    204 Dir RW       None   30/12/21 07:49  30/12/21 07:49
-C309-10  COM    28k    201 Dir RW       None   30/12/21 07:45  30/12/21 07:45
-C309-9   COM    28k    201 Dir RW       None   18/08/21 15:44  18/08/21 15:44
+C280-10  COM    24k    188 Dir RW       None   06/01/22 08:21  06/01/22 08:21
+C280-11  COM    24k    188 Dir RW       None   11/01/22 09:50  11/01/22 09:50
+C280Z80  COM    28k    203 Dir RW       None   11/01/22 09:46  11/01/22 09:46
+C309-10  COM    28k    200 Dir RW       None   10/01/22 10:48  10/01/22 10:48
+C309-11  COM    28k    201 Dir RW       None   11/01/22 09:43  11/01/22 09:43
 
-Total Bytes     =    132k  Total Records =     984  Files Found =    5
-Total 1k Blocks =    126   Used/Max Dir Entries For Drive E: 1073/2048
+Total Bytes     =    132k  Total Records =     980  Files Found =    5
+Total 1k Blocks =    125   Used/Max Dir Entries For Drive E: 1091/2048
 
 10E>dir optimh.com [fu
 A:DIR      COM  (User 0)
@@ -122,10 +122,10 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-OPTIMH   COM    20k    144 Dir RW       None   30/12/21 07:55  30/12/21 07:55
+OPTIMH   COM    20k    144 Dir RW       None   11/01/22 09:52  11/01/22 09:52
 
 Total Bytes     =     20k  Total Records =     144  Files Found =    1
-Total 1k Blocks =     18   Used/Max Dir Entries For Drive E: 1073/2048
+Total 1k Blocks =     18   Used/Max Dir Entries For Drive E: 1091/2048
 
 10E>;
 10E>; Done

@@ -8,7 +8,7 @@
 	defs	100h		;Base of CP/M's TPA
 
 	global	start,_main,_exit,__Hbss, __Lbss, __argc_, __z3env, startup
-        global  __piped
+        global  __piped,__initrsx
 
 ;	Start with MS-DOS x86 detection
 start:		; DOS Protection	8080/Z80	x86
@@ -116,6 +116,7 @@ iscpm3:	ld	c,60		; RSX call
 	inc	l		;HL=00FFh if no PIPEMGR present.
 	or	l
 norsx:	ld	(__piped),a
+	call	nz,__initrsx	;use PIPEMGR for stdin, stdout and stderr
         pop	hl		;base address of fdos
 	ld	sp,hl		;stack grows downwards
 	ld	de,__Lbss	;Start of BSS segment

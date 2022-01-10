@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-10 (see Modification History below).
+The latest release is V3.09-11 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1220,6 +1220,79 @@ to produce a executable that doesn't require Z80 emulation for
 cross-compilation.
 
 
+## Code-generation issue with casting char to long
+
+Mark Ogden supplied the following detail regarding an issue with
+code generation when casting a ```char```/```unsigned char``` to a
+```long```.  The current compiler emits incorrect Z80 instructions.
+
+The following snippet of code shows the problem and work-arounds.
+
+```
+void func(char *pia, unsigned char *pib) {
+    long a;
+    unsigned long b;
+ 
+    a = pia[1]; /* ok */
+    a = pib[1]; /* bad sets a = 0 */
+    b = pia[1]; /* bad sets b = 0 */
+    b = pib[1]; /* bad sets b = 0 */
+
+    /* work arounds */
+
+    /* for the simple assignment case use
+     * (int)pia[1], (unsigned)pia[1] or (unsigned)pib[1]
+     * dependent on whether you need sign extension
+     *
+     * for example -
+     */
+
+    a = (unsigned) pib[1];
+    b = (int) pia[1];
+    b = (unsigned) pib[1];
+
+    /* if used in an expression you may also need to add
+     * another cast to (long) or (unsigned long)
+     * e.g. (unsigned long)(unsigned)
+     */
+
+}
+```
+
+For the three failing cases, the code generated is
+```
+      ld    l,(hl)      ; picks up the char from the array
+      ld    hl,0
+      ld    d,l
+      ld    e,l
+```
+
+whereas the correct optimised code should be
+
+```
+      ld    e,(hl)
+      ld    hl,0
+      ld    d,l
+```
+
+
+## Fix I/O redirection start-up and V3.09-11 release
+
+When the PIPEMGR I/O redirection is not detected, the standard files
+for stdin, stdout and stderr now default to use the console ```CON:```
+device for compiler output.  With I/O redirection, these use the
+PIPEMGR pseudo device names ```RSX:``` and ```ERR:```.  This fixes the
+issue with the compiler front-end error message output - so the temporary
+work-around I made a few days ago has been removed.
+
+This fix has changed the start-up modules ```CRTCPM.OBJ``` and
+```RRTCPM.OBJ``` to use a new ```_initrsx()``` routine when PIPEMGR is
+detected (the source is in the cpm/CLEANUP.C module of LIBC).
+
+To indicate this fix is included, I've bumped the release to V3.09-11
+and updated the binary distribution library files.
+
+
 --
 Tony Nicholson
-08-Jan-2022
+11-Jan-2022

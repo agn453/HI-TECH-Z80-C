@@ -14,7 +14,8 @@
 
 	psect	cpm
 	defs	100h		;Base of CP/M's TPA
-	global	start,_main,_exit,__Lbss,__Hstack, __z3env, __piped
+	global	start,_main,_exit,__Lbss,__Hstack, __z3env
+	global	__piped,__initrsx
 
 reloc:		; DOS Protection	8080/Z80	x86
 				;	---------  --------------------
@@ -175,12 +176,13 @@ iscpm3:
 	or	l
 norsx:
 	ld	(__piped),a
-	ld	hl,(6)			;base address of fdos
+	call	nz,__initrsx	;use PIPEMGR for stdin, stdout and stderr
+	ld	hl,(6)		;base address of fdos
 
-	ld	sp,hl			;stack grows downwards
-	ld	de,__Lbss		;end of initialized data
+	ld	sp,hl		;stack grows downwards
+	ld	de,__Lbss	;end of initialized data
 	scf
-	sbc	hl,de			;size of uninitialized data area
+	sbc	hl,de		;size of uninitialized data area
 	ld	c,l
 	ld	b,h
 	dec	bc	
@@ -196,7 +198,7 @@ norsx:
 	scf			;one for the road
 	sbc	hl,bc		;negate it
 	add	hl,sp
-	ld	sp,hl			;allow space for args
+	ld	sp,hl		;allow space for args
 	ld	de,0		;flag end of args
 	push	de
 	ld	hl,80h		;address of argument buffer

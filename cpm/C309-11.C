@@ -228,7 +228,7 @@ int main(int argc, char **argv)
     signal_t prev_sig;
     prev_sig=signal(SIGINT,SIG_IGN);
 
-    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-10");
+    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-11");
 #ifdef Z280
     fprintf(stderr, " [Z280 MPU version]");
 #endif
@@ -795,6 +795,7 @@ void compile(char *s)
     vec[j++] = tmpf1;
     vec[j] = (char *)0;
     doexec(cpp, vec);
+
     if (cp = rindex(s, ':'))
         s = cp+1;
     *rindex(s, '.') = 0;
@@ -804,23 +805,14 @@ void compile(char *s)
     if (xref)
         vec[i++] = strcat(strcpy(cbuf, "-C"), crtmp);
     /* error redirection */
-/*AGN - temporarily ignore error redirection*/
-/*
     if (ebuf[0])
         vec[i++] = ebuf;
- */
     vec[i++] = tmpf1;
     vec[i++] = tmpf2;
     vec[i++] = tmpf3;
     vec[i++] = (char *)0;
-
-    /* vec[0] is junk.  Move everything down one slot.  */
-/*AGN - remove the following two lines*/
-/*
-    for (i=0; vec[i]; ++i)
-	vec[i] = vec[i+1];
- */
     doexec(pass1, vec);
+
     vec[0] = tmpf2;
     vec[1] = keepas && !optimize ? strcat(strcpy(tmpbuf, s), ".AS") : tmpf1;
     vec[2] = (char *)0;
@@ -844,6 +836,7 @@ void compile(char *s)
             vec[i++] = tmpf2;
         vec[i] = (char *)0;
         doexec(optim, vec);
+
         cp = tmpf2;
 #ifdef Z280
         if (z280optim)

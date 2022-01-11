@@ -1200,6 +1200,8 @@ Thanks to Andrey Nikitin for the heads up on this bug.
 
 ## Redirection of error message output work-around
 
+NB: This issue has been resolved with the V3.09-11 release (see below).
+
 The re-direction of error message output (from the C or C280 command)
 is currently broken.  This is a side-effect of the fix to the
 pre-processor assembly language output.  I've temporarily added
@@ -1295,4 +1297,4 @@ and updated the binary distribution library files.
 
 --
 Tony Nicholson
-11-Jan-2022
+12-Jan-2022

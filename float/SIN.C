@@ -8,7 +8,7 @@ double
 sin(f)
 double	f;
 {
-	const static double	coeff_a[] =
+	/* const */ static double	coeff_a[] =
 	{
 		 207823.68416961012,
 		-76586.415638846949,
@@ -16,7 +16,7 @@ double	f;
 		-237.85932457812158,
 		 2.8078274176220686
 	};
-	const static double	coeff_b[] =
+	/* const */ static double	coeff_b[] =
 	{
 		 132304.66650864931,
 		 5651.6867953169177,

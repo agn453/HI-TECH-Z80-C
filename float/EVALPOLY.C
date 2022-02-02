@@ -1,7 +1,7 @@
 double
 eval_poly(x, d, n)
 double	x;
-const double * d;
+/* const */ double * d;
 int	n;
 {
 	int	i;

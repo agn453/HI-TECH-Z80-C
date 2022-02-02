@@ -1306,14 +1306,42 @@ to prevent an ```undefined symbol:``` error during linking.
 
 Also added a new feature to the main front-end driver (C.COM) to accept
 an ```-N``` switch.  This causes the resulting CP/M program to be
-linked with a new start-up module ```NRTCPM.OBJ``` that does not
-provide the enhanced _getargs() feature.  This significantly reduces
+linked with a new start-up module ```NRTCPM.OBJ```.  This provides a
+minimal version of _getargs() instead of the standard enhanced default
+version of_getargs().  Using ```-N``` can significantly reduce
 the size of the generated CP/M binary .COM file at the expense of
 wild-card argument processing and command-line file redirection of
-stdout and stdin
-(using the ```>file```, ```>>file``` and ```<file``` modifiers).
+stdout and stdin (using the ```>file```, ```>>file``` and ```<file```
+modifiers).
+
+## Backport more-accurate floating point library routines
+
+Phillip Stevens has submited updates to the floating point library
+routines for ```acos()```, ```asin()```, ```atan()```, ```atan2()```,
+```cos()```, ```eval_poly()```, ```exp()```, ```float()```, ```log()```,
+```sin()``` and ```sinh()```.  These are from a backport of the
+routines from the HI-TECH Z80 cross compiler V7.80pl2 and fix
+
+* some typos in the ```atan()`` coefficients (affecting ```acos()```
+and ```asin()```,
+
+* improved accuracy of the polynomial estimation for ```asin()``` and
+```acos()``` by restricting the range of the polynomial in use,
+
+* correct the sign of ```atan2()``` to reflect the standard usage,
+
+* allow integer powers of negative bases, and
+
+* fixes to the intrinsic ```float.as``` floating point arithmetic
+functions.
+
+These changes seem to provide more accurate results.
+
+I've rebuilt the floating-point libraries (LIBF.LIB and LIB280F.LIB).
+
+Please let me know if you notice any issues.
 
 
 --
 Tony Nicholson
-02-Feb-2022
+03-Feb-2022

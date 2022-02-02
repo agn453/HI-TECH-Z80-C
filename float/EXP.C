@@ -8,7 +8,7 @@ double x;
 	int	exp;
 	char	sign;
 
-	const static double coeff[] =
+	/* const */ static double coeff[] =
 	{
 		1.0000000000e+00,
 		6.9314718056e-01,

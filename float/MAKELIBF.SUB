@@ -1,3 +1,6 @@
+era makelibf.log
+put console output to file makelibf.log [system]
+date
 ;----------  MAKELIBF.SUB  ----------
 ; Assumes DEHUFF -X FLOAT.HUF has extracted
 ; all sources to the default drive
@@ -37,6 +40,7 @@ ZAS FRNDINT.AS
 ZAS FTOL.AS
 ZAS LTOF.AS
 ZAS FLOAT.AS
+era libf.lib
 LIBR R LIBF.LIB PRINTF.OBJ
 LIBR R LIBF.LIB FPRINTF.OBJ
 LIBR R LIBF.LIB SPRINTF.OBJ
@@ -73,3 +77,4 @@ LIBR R LIBF.LIB FTOL.OBJ
 LIBR R LIBF.LIB LTOF.OBJ
 LIBR R LIBF.LIB FLOAT.OBJ
 ;----------  done  ---------- 
+put console to console

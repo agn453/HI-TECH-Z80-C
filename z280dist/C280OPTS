@@ -5,16 +5,15 @@ HI-TECH Z280 CP/M C compiler options:
 -CR     Produce a cross-reference listing e.g. -CRfile.crf
 -D	Define a symbol, e.g. -DDEBUG=1
 -E	Specify executable output filename, e.g. -Efile.com
--F	Generate a symbol file suitable for use with debug.com,
-		e.g. -Ffile.sym; default file name is L.SYM.
+-Ffile	Generate a symbol file for debug.com or overlay build (default L.SYM)
 -H      Output help (the OPTIONS file) and exit.
 -I	Specify an include directory, e.g. -I1:B:
 -L	Scan a library, e.g. -LF scans the floating point library.
 -M	Generate a map file, e.g. -Mfile.map
+-N	Use the N280CPM.OBJ start-up with minimal _getargs().
 -O	Invoke the peephole optimizer (reduced code-size)
--OF	Invoke the optimizer for speed (Fast)
--OF2	Invoke the Z280 optimizer to generate code for the Z280 MPU.
--R	Link in command line wild card expansion code.
+-O2	Invoke the Z280 optimizer for reduced code size.
+-OF2	Invoke the Z280 optimizer for faster Speed (slightly larger code-size).
 -S	Generate assembler code in a .AS file; don't assemble or link.
 -U	Undefine a predefined symbol, e.g. -UDEBUG
 -V	Be verbose during compilation.

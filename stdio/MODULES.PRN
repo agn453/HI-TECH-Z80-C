@@ -2,10 +2,10 @@ start1.obj      D __argc_       U __getargs     D startup
 getargs.obj     U __argc_       D __getargs     U __iob         U _bdos       
 		U _bmove        U _exit         U _fprintf      U _freopen    
 		U _gets         U _getuid       U _isatty       U _sbrk       
-		U _setfcb       U _setuid       U _sprintf      U _strchr     
-		U _strcpy       U _strlen       U adiv          U cret        
-		U csv           U indir         U ncsv          U shal        
-		U wrelop        
+		U _setfcb       U _setuid       U _signal       U _sprintf    
+		U _strchr       U _strcpy       U _strlen       U adiv        
+		U cret          U csv           U indir         U ncsv        
+		U shal          U wrelop        
 assert.obj      D __fassert     U __iob         U _abort        U _fprintf    
 		U cret          U csv           U indir         U ncsv        
 printf.obj      U __doprnt      U __iob         D _printf       U cret        
@@ -16,7 +16,7 @@ sprintf.obj     U __doprnt      D _sprintf      U cret          U csv
 		U indir         U ncsv          
 doprnt.obj      U __ctype_      D __doprnt      U __pnum        U _atoi       
 		U _fputc        U _strlen       U brelop        U cret        
-		U csv           U indir         U ncsv          
+		U csv           U indir         U ncsv          U wrelop      
 gets.obj        U __iob         U _fgetc        D _fgets        D _gets       
 		U _strlen       U cret          U csv           U indir       
 		U ncsv          
@@ -132,7 +132,13 @@ convtime.obj    D _convtime     D _frmbcd       U asaladd       U asalmul
 		U cret          U csv           U indir         U lmul        
 		U ncsv          
 timezone.obj    D _time_zone    
+mktime.obj      D _mktime       U _time_zone    U almul         U amod        
+		U asaladd       U cret          U indir         U ncsv        
+		U wrelop        
 isatty.obj      U __fcb         D _isatty       U amul          U cret        
+		U csv           U indir         U ncsv          
+cleanup.obj     D __cpm_clean   D __fcb         D __initrsx     D __putrno    
+		U _close        U alrsh         U brelop        U cret        
 		U csv           U indir         U ncsv          
 close.obj       U __fcb         U _bdos         D _close        U _getuid     
 		U _setuid       U amul          U brelop        U cret        
@@ -161,9 +167,6 @@ signal.obj      D __sigchk      U _bdos         U _exit         D _signal
 getuid.obj      D _getuid       D _setuid       U cret          U csv         
 bdos.obj        D _bdos         U _errno        U cret          U csv         
 bios.obj        D _bios         U cret          U csv           D exit22      
-cleanup.obj     D __cpm_clean   D __fcb         D __putrno      U _close      
-		U alrsh         U brelop        U cret          U csv         
-		U indir         U ncsv          
 _exit.obj       U __cpm_clean   D __exit        
 fakeclean.obj   D __cleanup     U cret          U indir         U ncsv        
 fakecpcln.obj   D __cpm_clean   
@@ -174,6 +177,9 @@ memcmp.obj      D _memcmp       U cret          U csv           U indir
 		U ncsv          
 memset.obj      D _memset       U cret          U csv           U indir       
 		U ncsv          
+strftime.obj    D _strftime     U adiv          U amod          U asamod      
+		U cret          U indir         U ncsv          U wrelop      
+asmod.obj       U amod          D asamod        D aslmod        U lmod        
 abs.obj         D _abs          
 asallsh.obj     U allsh         D asallsh       D aslllsh       U iregstore   
 allsh.obj       D allsh         D lllsh         
@@ -194,7 +200,6 @@ aslsub.obj      U alsub         D asalsub       D asllsub       U iregset
 		U iregstore     
 aslxor.obj      U alxor         D asalxor       D asllxor       U iregset     
 		U iregstore     
-asmod.obj       U amod          D asamod        D aslmod        U lmod        
 atoi.obj        D _atoi         
 atol.obj        U __ctype_      D _atol         U aladd         U almul       
 		U cret          U indir         U ncsv          
@@ -210,25 +215,6 @@ ctype_.obj      D __ctype_
 getsp.obj       D __getsp       
 index.obj       D _index        U cret          U rcsv          
 strchr.obj      D _strchr       U cret          U rcsv          
-inout.obj       D _in           D _inp          D _out          D _outp       
-iregset.obj     D iregset       D iregstore     
-isalpha.obj     D _isalpha      
-isdigit.obj     D _isdig        D _isdigit      
-islower.obj     D _islower      
-isspace.obj     D _isspace      
-isupper.obj     D _isupper      
-ladd.obj        D aladd         D lladd         
-land.obj        D aland         D lland         
-linc.obj        D ladec         D lainc         D lldec         D llinc       
-llrsh.obj       D llrsh         
-longjmp.obj     D _longjmp      D _setjmp       
-lor.obj         D alor          D llor          
-brelop.obj      D brelop        
-wrelop.obj      D wrelop        
-lrelop.obj      D arelop        D lrelop        
-frelop.obj      D frelop        
-lsub.obj        D alsub         D llsub         
-lxor.obj        D alxor         D llxor         
 qsort.obj       U __swap        U _bmove        U _free         U _malloc     
 		D _qsort        U adiv          U cret          U indir       
 		U lmul          U ncsv          U wrelop        
@@ -263,6 +249,38 @@ strlen.obj      D _strlen
 strncat.obj     D _strncat      U cret          U rcsv          
 strncmp.obj     D _strncmp      U cret          U rcsv          
 strncpy.obj     D _strncpy      U cret          U rcsv          
+strstr.obj      D _strstr       U cret          U csv           U indir       
+		U ncsv          
+strnstr.obj     D _strnstr      U cret          U indir         U ncsv        
+strdup.obj      U _malloc       U _strcpy       D _strdup       U _strlen     
+		U cret          U csv           U indir         U ncsv        
+stricmp.obj     D _strcasecmp   
+stristr.obj     D _strcasestr   U _toupper      U cret          U csv         
+		U indir         U ncsv          
+strnicmp.obj    D _strncasecmp  U cret          U rcsv          
+strnistr.obj    D _strncasestr  U _toupper      U cret          U indir       
+		U ncsv          
+strtok.obj      D _strtok       U cret          U csv           U indir       
+		U ncsv          U wrelop        
+inout.obj       D _in           D _inp          D _out          D _outp       
+iregset.obj     D iregset       D iregstore     
+isalpha.obj     D _isalpha      
+isdigit.obj     D _isdig        D _isdigit      
+islower.obj     D _islower      
+isspace.obj     D _isspace      
+isupper.obj     D _isupper      
+ladd.obj        D aladd         D lladd         
+land.obj        D aland         D lland         
+linc.obj        D ladec         D lainc         D lldec         D llinc       
+llrsh.obj       D llrsh         
+longjmp.obj     D _longjmp      D _setjmp       
+lor.obj         D alor          D llor          
+brelop.obj      D brelop        
+wrelop.obj      D wrelop        
+lrelop.obj      D arelop        D lrelop        
+frelop.obj      D frelop        
+lsub.obj        D alsub         D llsub         
+lxor.obj        D alxor         D llxor         
 csv.obj         D cret          D csv           D indir         D ncsv        
 rcsv.obj        D rcsv          
 tolower.obj     D _tolower      

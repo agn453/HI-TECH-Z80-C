@@ -1,250 +1,230 @@
 
-10D>c280 -c -of2 PRINTF.C
+10D>date
+A:DATE     COM  (User 0)
+Thu 03/02/2022 09:16:16
+10D>;----------  M280LIBF.SUB  ----------
+10D>; Assumes DEHUFF -X FLOAT.HUF has extracted
+10D>; all sources to the default drive
+10D>;------------------------------------
+10D>c280 -c -o2 PRINTF.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  5 bytes optimized away
  6 bytes replaced
 
-10D>c280 -c -of2 FPRINTF.C
+10D>c280 -c -o2 FPRINTF.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  7 bytes optimized away
  10 bytes replaced
 
-10D>c280 -c -of2 SPRINTF.C
+10D>c280 -c -o2 SPRINTF.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  10 bytes optimized away
  16 bytes replaced
 
-10D>c280 -c -of2 SCANF.C
+10D>c280 -c -o2 SCANF.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  5 bytes optimized away
  6 bytes replaced
 
-10D>c280 -c -of2 FSCANF.C
+10D>c280 -c -o2 FSCANF.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  7 bytes optimized away
  10 bytes replaced
 
-10D>c280 -c -of2 SSCANF.C
+10D>c280 -c -o2 SSCANF.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  16 bytes optimized away
  24 bytes replaced
 
-10D>c280 -c -of2 DOPRNT.C
+10D>c280 -c -o2 DOPRNT.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 51 bytes optimized away
+ 122 bytes replaced
 
- 34 bytes optimized away
- 88 bytes replaced
-
-10D>c280 -c -of2 DOSCAN.C
+10D>c280 -c -o2 DOSCAN.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  201 bytes optimized away
  410 bytes replaced
 
-10D>c280 -c -of2 ATOF.C
+10D>c280 -c -o2 ATOF.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  92 bytes optimized away
  184 bytes replaced
 
-10D>c280 -c -of2 FNUM.C
+10D>c280 -c -o2 FNUM.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  187 bytes optimized away
  420 bytes replaced
 
 10D>ZAS FBCD.AS
 A:ZAS      COM  (User 0)
 
-10D>c280 -c -of2 TAN.C
+10D>c280 -c -o2 TAN.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  8 bytes optimized away
  16 bytes replaced
 
-10D>c280 -c -of2 ACOS.C
+10D>c280 -c -o2 ACOS.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
- 16 bytes optimized away
- 32 bytes replaced
-
-10D>c280 -c -of2 ASIN.C
-A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
- 12 bytes optimized away
- 24 bytes replaced
-
-10D>c280 -c -of2 ATAN2.C
-A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
- 45 bytes optimized away
- 108 bytes replaced
-
-10D>c280 -c -of2 ATAN.C
-A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
- 55 bytes optimized away
- 106 bytes replaced
-
-10D>c280 -c -of2 COS.C
-A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  4 bytes optimized away
  8 bytes replaced
 
-10D>c280 -c -of2 SIN.C
+10D>c280 -c -o2 ASIN.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 40 bytes optimized away
+ 80 bytes replaced
 
- 80 bytes optimized away
- 148 bytes replaced
-
-10D>c280 -c -of2 SINH.C
+10D>c280 -c -o2 ATAN2.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 45 bytes optimized away
+ 108 bytes replaced
 
- 16 bytes optimized away
- 32 bytes replaced
-
-10D>c280 -c -of2 COSH.C
+10D>c280 -c -o2 ATAN.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 55 bytes optimized away
+ 106 bytes replaced
 
+10D>c280 -c -o2 COS.C
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  12 bytes optimized away
  24 bytes replaced
 
-10D>c280 -c -of2 TANH.C
+10D>c280 -c -o2 SIN.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 57 bytes optimized away
+ 102 bytes replaced
 
+10D>c280 -c -o2 SINH.C
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  16 bytes optimized away
  32 bytes replaced
 
-10D>c280 -c -of2 EXP.C
+10D>c280 -c -o2 COSH.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 12 bytes optimized away
+ 24 bytes replaced
 
- 54 bytes optimized away
- 100 bytes replaced
-
-10D>c280 -c -of2 LOG.C
+10D>c280 -c -o2 TANH.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 16 bytes optimized away
+ 32 bytes replaced
 
+10D>c280 -c -o2 EXP.C
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+ 70 bytes optimized away
+ 132 bytes replaced
+
+10D>c280 -c -o2 LOG.C
+A:C280     COM  (User 0)
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  27 bytes optimized away
  60 bytes replaced
 
-10D>c280 -c -of2 EVALPOLY.C
+10D>c280 -c -o2 EVALPOLY.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  32 bytes optimized away
  68 bytes replaced
 
-10D>c280 -c -of2 SQRT.C
+10D>c280 -c -o2 SQRT.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  95 bytes optimized away
  186 bytes replaced
 
 10D>ZAS FREXP.AS
 A:ZAS      COM  (User 0)
 
-10D>c280 -c -of2 FABS.C
+10D>c280 -c -o2 FABS.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  8 bytes optimized away
  16 bytes replaced
 
-10D>c280 -c -of2 CEIL.C
+10D>c280 -c -o2 CEIL.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  24 bytes optimized away
  48 bytes replaced
 
-10D>c280 -c -of2 FLOOR.C
+10D>c280 -c -o2 FLOOR.C
 A:C280     COM  (User 0)
-HI-TECH C COMPILER (CP/M-80) V3.09
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
-Special version for the Zilog Z280 MPU
-
+Updated from https://github.com/agn453/HI-TECH-Z80-C
  20 bytes optimized away
  40 bytes replaced
 
@@ -266,9 +246,7 @@ A:ZAS      COM  (User 0)
 10D>ZAS FLOAT.AS
 A:ZAS      COM  (User 0)
 
-10D>pip m:lib280f.lib=a:lib280f.lib[g0r]
-A:PIP      COM  (User 0)
-
+10D>;pip m:lib280f.lib=a:lib280f.lib[g0r]
 10D>LIBR R m:lib280f.LIB PRINTF.OBJ
 A:LIBR     COM  (User 0)
 
@@ -375,3 +353,5 @@ A:LIBR     COM  (User 0)
 A:LIBR     COM  (User 0)
 
 10D>;----------  done  ---------- 
+10D>put console to console
+A:PUT      COM  (User 0)

@@ -8,7 +8,7 @@ double
 atan(f)
 double	f;
 {
-	static const double	coeff_a[] =
+	static /* const */ double	coeff_a[] =
 	{
 		33.058618473989548,
 		58.655751569001961,
@@ -17,7 +17,7 @@ double	f;
 		0.19523741936234277,
 		-.0024346033004411264
 	};
-	static const double	coeff_b[] =
+	static /* const */ double	coeff_b[] =
 	{
 		33.058618473992416,
 		69.675291059524653,

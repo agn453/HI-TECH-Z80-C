@@ -5,12 +5,12 @@ HI-TECH Z80 CP/M C compiler options:
 -CR     Produce a cross-reference listing e.g. -CRfile.crf
 -D	Define a symbol, e.g. -DDEBUG=1
 -E	Specify executable output filename, e.g. -Efile.com
--F	Generate a symbol file for use with debug.com or overlay build.
-		e.g. -Ffile.sym; default file name is L.SYM.
+-Ffile	Generate a symbol file for debug.com or overlay build (default L.SYM)
 -H      Output help (the OPTIONS file) and exit.
 -I	Specify an include directory, e.g. -I1:B:
 -L	Scan a library, e.g. -LF scans the floating point library.
 -M	Generate a map file, e.g. -Mfile.map
+-N	Use the NRTCPM.OBJ start-up with minimal _getargs().
 -O	Invoke the peephole optimizer (reduced code-size)
 -OF	Invoke the optimizer for speed (Fast)
 -S	Generate assembler code in a .AS file; don't assemble or link.

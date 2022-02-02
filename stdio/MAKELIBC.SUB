@@ -1,8 +1,10 @@
-; Use librarian to place all modules in LIBC10.LIB
+era makelibc.log
+put console output to file makelibc.log [system]
+; Use librarian to place all modules in LIBC12.LIB
 ; NB: the ordering is important for resolving dependencies at link time
-era LIBC10.lib
+era LIBC12.lib
 libr
-<r LIBC10.lib \
+<r LIBC12.lib \
 <start1.obj     \
 <getargs.obj    \
 <assert.obj     \
@@ -56,6 +58,7 @@ libr
 <timezone.obj   \
 <mktime.obj     \
 <isatty.obj     \
+<cleanup.obj    \
 <close.obj      \
 <unlink.obj     \
 <dup.obj        \
@@ -68,7 +71,6 @@ libr
 <getuid.obj     \
 <bdos.obj       \
 <bios.obj       \
-<cleanup.obj    \
 <_exit.obj      \
 <fakeclean.obj  \
 <fakecpcln.obj  \
@@ -76,6 +78,8 @@ libr
 <memcpy.obj     \
 <memcmp.obj     \
 <memset.obj     \
+<strftime.obj \
+<asmod.obj      \
 <abs.obj        \
 <asallsh.obj    \
 <allsh.obj      \
@@ -101,25 +105,6 @@ libr
 <getsp.obj      \
 <index.obj      \
 <strchr.obj     \
-<inout.obj      \
-<iregset.obj    \
-<isalpha.obj    \
-<isdigit.obj    \
-<islower.obj    \
-<isspace.obj    \
-<isupper.obj    \
-<ladd.obj       \
-<land.obj       \
-<linc.obj       \
-<llrsh.obj      \
-<longjmp.obj    \
-<lor.obj        \
-<brelop.obj     \
-<wrelop.obj     \
-<lrelop.obj     \
-<frelop.obj     \
-<lsub.obj       \
-<lxor.obj       \
 <qsort.obj      \
 <malloc.obj     \
 <max.obj        \
@@ -154,11 +139,30 @@ libr
 <strnicmp.obj \
 <strnistr.obj \
 <strtok.obj   \
-<strftime.obj \
+<inout.obj      \
+<iregset.obj    \
+<isalpha.obj    \
+<isdigit.obj    \
+<islower.obj    \
+<isspace.obj    \
+<isupper.obj    \
+<ladd.obj       \
+<land.obj       \
+<linc.obj       \
+<llrsh.obj      \
+<longjmp.obj    \
+<lor.obj        \
+<brelop.obj     \
+<wrelop.obj     \
+<lrelop.obj     \
+<frelop.obj     \
+<lsub.obj       \
+<lxor.obj       \
 <csv.obj        \
 <rcsv.obj       \
 <tolower.obj    \
 <toupper.obj    \
-<asmod.obj      \
 <xtoi.obj
-; Library LIBC10.LIB created
+; Library LIBC12.LIB created
+libr s LIBC12.lib
+put console to console

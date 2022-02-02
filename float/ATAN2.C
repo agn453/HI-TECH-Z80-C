@@ -16,7 +16,7 @@ double	x, y;
 		return v;
 	}
 	v = -atan(y/x);
-	if(y < 0.)
+	if(x < 0.)
 		v -= 1.57079632679489;
 	else
 		v += 1.57079632679489;

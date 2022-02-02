@@ -1,6 +1,7 @@
 double
 eval_poly(x, d, n)
-double	x, d[];
+double	x;
+const double * d;
 int	n;
 {
 	int	i;

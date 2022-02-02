@@ -2,7 +2,7 @@
 10E>; Compile all LIBC10.LIB modules from sources
 10E>c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-10
+Hi-Tech C Compiler (CP/M-80) V3.09-11
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c abort.c \
@@ -172,7 +172,7 @@ ISDIGIT.AS
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-10
+Hi-Tech C Compiler (CP/M-80) V3.09-11
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c islower.as \
@@ -228,7 +228,7 @@ PUTCHAR.C
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-10
+Hi-Tech C Compiler (CP/M-80) V3.09-11
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c puts.c \

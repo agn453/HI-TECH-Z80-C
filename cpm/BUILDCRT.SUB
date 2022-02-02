@@ -1,5 +1,5 @@
 ;
 ; Build the start-up modules
 ;
-c -c -o zcrtcpm.as zdrtcpm.as zrrtcpm.as
-c280 -c -o zc280cpm.as zd280cpm.as zr280cpm.as
+c -c -o zcrtcpm.as zdrtcpm.as zrrtcpm.as znrtcpm.as
+c280 -c -o zc280cpm.as zd280cpm.as zr280cpm.as zn280cpm.as

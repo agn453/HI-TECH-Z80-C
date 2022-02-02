@@ -228,7 +228,7 @@ int main(int argc, char **argv)
     signal_t prev_sig;
     prev_sig=signal(SIGINT,SIG_IGN);
 
-    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-11");
+    fprintf(stderr, "Hi-Tech C Compiler (CP/M-80) V3.09-12");
 #ifdef Z280
     fprintf(stderr, " [Z280 MPU version]");
 #endif
@@ -340,6 +340,10 @@ int main(int argc, char **argv)
 	    case 'H':
                 viewfile(options);
                 exit(0); /* Ignore all other options for HELP */
+
+	    case 'N':
+                RELSTRT = 'N'; /* Use minimal getargs */
+                break;
 
             default:
                 error("Unknown flag %s - use -H for HELP", argv[0]);

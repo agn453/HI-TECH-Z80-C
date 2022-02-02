@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-11 (see Modification History below).
+The latest release is V3.09-12 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -205,6 +205,10 @@ Wildcard expansion
 
         grep 'a.*end' *.h 2d:*.c
         grep "-?"
+
+    _getargs() also recognises piping of stdin and stdout using the
+    Unix-style >filename (redirect stdout to filename) >>filename
+    (append stdout to file) and <filename (read stdin from file).
 
     The -R option passed to the Hi-Tech C compiler is no longer useful.  (It
     didn't work anyway.)
@@ -1295,6 +1299,21 @@ To indicate this fix is included, I've bumped the release to V3.09-11
 and updated the binary distribution library files.
 
 
+## Re-order library file modules and V3.09-12 release
+
+Fixed the order of modules in the C library (LIBC.LIB and LIB280C.LIB)
+to prevent an ```undefined symbol:``` error during linking.
+
+Also added a new feature to the main front-end driver (C.COM) to accept
+an ```-N``` switch.  This causes the resulting CP/M program to be
+linked with a new start-up module ```NRTCPM.OBJ``` that does not
+provide the enhanced _getargs() feature.  This significantly reduces
+the size of the generated CP/M binary .COM file at the expense of
+wild-card argument processing and command-line file redirection of
+stdout and stdin
+(using the ```>file```, ```>>file``` and ```<file``` modifiers).
+
+
 --
 Tony Nicholson
-12-Jan-2022
+02-Feb-2022

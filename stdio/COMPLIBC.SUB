@@ -169,6 +169,7 @@ c
 <xtoi.as \
 <zcrtcpm.as \
 <zdrtcpm.as \
+<znrtcpm.as \
 <zrrtcpm.as
 ; All modules compiled.
 put console to console

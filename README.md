@@ -1324,7 +1324,7 @@ routines from the HI-TECH Z80 cross compiler V7.80pl2.
 
 These fix -
 
-* some typos in the ```atan()``` coefficients (affecting ```acos()```
+* some typos in the ```atan()``` coefficients - affecting ```acos()```
 and ```asin()```,
 
 * improved accuracy of the polynomial estimation for ```asin()``` and

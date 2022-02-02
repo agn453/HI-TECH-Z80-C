@@ -1320,9 +1320,11 @@ Phillip Stevens has submited updates to the floating point library
 routines for ```acos()```, ```asin()```, ```atan()```, ```atan2()```,
 ```cos()```, ```eval_poly()```, ```exp()```, ```float()```, ```log()```,
 ```sin()``` and ```sinh()```.  These are from a backport of the
-routines from the HI-TECH Z80 cross compiler V7.80pl2 and fix
+routines from the HI-TECH Z80 cross compiler V7.80pl2.
 
-* some typos in the ```atan()`` coefficients (affecting ```acos()```
+These fix -
+
+* some typos in the ```atan()``` coefficients (affecting ```acos()```
 and ```asin()```,
 
 * improved accuracy of the polynomial estimation for ```asin()``` and

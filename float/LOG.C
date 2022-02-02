@@ -7,7 +7,7 @@ double	x;
 {
 	int	exp;
 
-	static double coeff[] =
+	static const double coeff[] =
 	{
 		 0.0000000000,	/* a0 */
 		 0.9999964239,	/* a1 */

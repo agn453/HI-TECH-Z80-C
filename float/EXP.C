@@ -8,7 +8,7 @@ double x;
 	int	exp;
 	char	sign;
 
-	static double coeff[] =
+	const static double coeff[] =
 	{
 		1.0000000000e+00,
 		6.9314718056e-01,
@@ -40,12 +40,22 @@ double
 pow(x, y)
 double	x, y;
 {
-	if(y == 0.0)
-		return 1.0;
-	if(x < 0.0)
-		return 0.0;
+	unsigned char	sign = 0;
+	unsigned long	yi;
+	
 	if(x == 0.0)
 		return 0.0;
+	if(y == 0.0)
+		return 1.0;
+	if(x < 0.0) {
+		yi = (unsigned long)y;
+		if(yi != y)
+			return 0.0;
+		sign = yi & 1;
+		x = -x;
+	}
 	x = exp(log(x) * y);
+	if(sign)
+		return -x;
 	return x;
 }

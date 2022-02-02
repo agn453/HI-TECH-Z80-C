@@ -92,8 +92,11 @@ flsub:
 	pop	de		;low word
 	pop	hl		;hi word
 	ld	a,h		;get sign/exponent
+	or	a
+	jr	z,1f
 	xor	80h		;toggle sign
 	ld	h,a		;put back
+1:
 	push	hl		;put back on stack
 	push	de
 	exx			;get other operand back
@@ -163,14 +166,20 @@ fladd:
 	exx
 	pop	bc
 	adc	hl,bc		;add it in
+	res	7,a		;clear sign from exponent
+	jr	c,hm3
+	inc	h
+	dec	h		;zero in h?
+	jr	z,hm2
+hm3:
 	sra	h		;now shift down 1 bit to compensate
 	rr	l		;propogate the shift
 	rr	d
 	rr	e
-	push	af		;save carry flag
-	res	7,a		;clear sign from exponent
 	inc	a		;increment to compensate for shift above
-	ld	c,a		;save it
+hm2:
+	push	af		;save carry flag
+	ld	c,a		;save exponent
 	ld	a,h
 	and	80h		;mask off low bits
 	or	c		;or in exponent
@@ -313,8 +322,9 @@ flmul:
 	ld	h,a		;put exponent in
 	ld	a,c		;now check signs
 	xor	b
-	ret	p		;return if +ve
+	jp	p,1f
 	set	7,h		;set sign flag
+1:
 	ex	af,af'
 	rla			;shift top bit out
 	ret	nc		;return if no carry

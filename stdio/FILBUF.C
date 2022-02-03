@@ -1,5 +1,5 @@
 /*
- *	_filbuf for Zios stdio
+ *	_filbuf for HI-TECH C stdio
  */
 
 extern int	read(int, void *, int);
@@ -28,5 +28,5 @@ register FILE *	f;
 	}
 	f->_ptr = f->_base;
 	f->_cnt--;
-	return((unsigned)*f->_ptr++);
+	return((unsigned char)*f->_ptr++);
 }

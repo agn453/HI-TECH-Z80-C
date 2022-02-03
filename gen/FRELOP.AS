@@ -18,27 +18,21 @@ frelop:
 	ld	a,h		;get the sign of the LHS
 	or	1		;ensure zero flag is reset, set sign flag
 	pop	bc		;unjunk stack
-	jp	1f		;return	with sign of LHS
+	jr	1f		;return	with sign of LHS
 2:
-	ld	a,h		;test for differing exponents
-	sub	d		;compare with the other
-	jr	z,2f		;the same, go for mantissas
-	xor	h		;complement sign flag if operands -ve
-	or	1		;reset zero flag
-	pop	bc		;unjunk stack
-	jp	1f		;and return
-2:
-	or	a
+	ld	a,d		;preserve sign flag
+	res	7,d		;clear sign flag
+	res	7,h		;and the other
+	and	80h		;mask out sign flag
 	sbc	hl,de		;set the flags
 	pop	hl		;low word of 1st into hl again
-	jr	nz,1f		;go return if not zero
+	jr	nz,togs		;go fixup sign flag if different
 	sbc	hl,bc		;now set flags on basis	of low word
 	jr	z,1f		;if zero, all ok
-	ld	a,2		;make non-zero
-	rra			;rotate	carry into sign
-	or	a		;set minus flag
-	rlca			;put carry flag	back
-
+togs:
+	rr	h		;rotate	carry into sign
+	xor	h		;toggle sign if necessary
+	or	1		;reset zero flag
 1:
 	exx			;get return address
 	jp	(hl)		;and return with stack clean

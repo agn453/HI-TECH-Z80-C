@@ -21,7 +21,7 @@ lmod:
 
 ldiv:
 	xor	a
-	ex	af,af'
+	push	af
 	ex	de,hl
 	jr	dv1
 
@@ -30,14 +30,17 @@ adiv:
 	ld	a,h
 	xor	d		;set sign flag for quotient
 	ld	a,h		;get sign of dividend
-	ex	af,af'
+	push	af
 	call	negif
 	ex	de,hl
 	call	negif
 dv1:	ld	b,1
 	ld	a,h
 	or	l
-	ret	z
+	jr	nz,dv8
+	pop	af
+	ret
+
 dv8:	push	hl
 	add	hl,hl
 	jr	c,dv2
@@ -76,7 +79,7 @@ dv3:	ex	(sp),hl
 	djnz	dv4
 	pop	de
 	ex	de,hl
-	ex	af,af'
+	pop	af
 	call	m,negat
 	ex	de,hl
 	or	a			;test remainder sign bit

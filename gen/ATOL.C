@@ -14,7 +14,8 @@ register char *	s;
 	if(*s == '-') {
 		sign++;
 		s++;
-	}
+	} else if(*s == '+')
+		s++;
 	while(isdigit(*s))
 		a = a*10L + (*s++ - '0');
 	if(sign)

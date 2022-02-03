@@ -8,5 +8,5 @@ unsigned x;
 
 rand()
 {
-	return(((randx = randx*1103515245 + 12345)>>16) & 077777);
+	return(((randx = randx*1103515245L + 12345)>>16) & 077777);
 }

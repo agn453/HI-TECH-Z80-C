@@ -2,6 +2,7 @@
 
 static char	mess[] = "Fatal error - program aborted\r\n$";
 
+void
 abort()
 {
 	bdos(CPMWCOB, mess);

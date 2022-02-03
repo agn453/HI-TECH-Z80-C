@@ -1,5 +1,5 @@
 ;	byte relational	operation - returns flags correctly for
-;	comparision of words in a and c
+;	comparision of words in a and b
 
 	psect	text
 	global	brelop

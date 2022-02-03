@@ -309,7 +309,7 @@ static void strfmt(char *str, char *fmt, ...)
                         while (ilen)
                         {
                               ival %= pow[ilen--];
-                              *str++ = '0' + ival / pow[ilen];
+                              *str++ = (char)('0' + ival / pow[ilen]);
                         }
                   }
             }

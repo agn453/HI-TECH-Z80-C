@@ -7,8 +7,8 @@
 	global	fpnorm
 
 lbtof:
-	ld	e,a
-	ld	d,0
+	ld	l,a
+	ld	h,0
 litof:
 	ex	de,hl		;put arg in de
 	ld	l,0		;zero top byte
@@ -17,10 +17,10 @@ b3tof:
 	jp	fpnorm
 
 abtof:
-	ld	e,a
+	ld	l,a
 	rla
 	sbc	a,a
-	ld	d,a
+	ld	h,a
 
 aitof:
 	bit	7,h		;negative?
@@ -37,10 +37,43 @@ lltof:
 	ld	a,h		;anything in top byte?
 	or	a
 	jr	z,b3tof		;no, just do 3 bytes
-	ld	e,d		;shift down 8 bits
-	ld	d,l
-	ld	l,h
-	ld	h,64+24+8	;the 8 compensates for the shift
+	ld	c,0
+;	Do it the hard way
+slop:
+	ld	a,h
+	cp	1		;last shift coming up?
+	jr	z,slop2
+	srl	h
+	rr	l
+	rr	d
+	rr	e
+	inc	c
+	jr	slop
+slop2:
+	inc	e
+	jr	nz,slop3
+	inc	d
+	jr	nz,slop3
+	inc	l
+	jr	nz,slop3
+	inc	h
+slop3:
+	srl	h
+	rr	l
+	rr	d
+	rr	e
+	ld	a,h
+	or	a
+	jr	z,slop4
+	srl	h
+	rr	l
+	rr	d
+	rr	e
+	inc	c
+slop4:
+	ld	a,c
+	add	a,64+25
+	ld	h,a
 	jp	fpnorm		;and normalize it
 
 altof:

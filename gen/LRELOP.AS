@@ -17,7 +17,9 @@ lrelop:
 	xor	d
 	jp	p,2f		;the same, so ok
 	ld	a,h		;get the sign of the LHS
-	or	1		;ensure zero flag is reset, set sign flag
+	or	2		;ensure zero flag is reset, set sign flag
+	ld	a,d		;get RHS
+	rla			;rotate hi bit into carry - Z and S unchanged
 	pop	hl		;unjunk stack
 	jp	1f		;return	with sign of LHS
 2:

@@ -1,3 +1,6 @@
+#ifndef _HTC_STDLIB_H
+#define _HTC_STDLIB_H
+
 /*	Standard utility functions */
 
 #ifndef	_STDDEF
@@ -34,3 +37,5 @@ typedef int (*__qsort_compf)(void *, void *);  /* workaround compiler bug */
 extern void	 qsort(void *, size_t, size_t, __qsort_compf);
 extern int	 abs(int);
 extern long	 labs(long);
+
+#endif

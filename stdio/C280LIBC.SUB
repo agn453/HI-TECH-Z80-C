@@ -1,5 +1,6 @@
 era c280libc.log
 put console output to file c280libc.log [system]
+date
 ; Compile all LIB280C.LIB modules from sources for Z280
 ;
 ; Sources are on drive E:

@@ -40,12 +40,12 @@ You may use this software for whatever you like, providing you acknowledge
 that the copyright to this software remains with HI-TECH Software.
 
 The *dist* folder contains the entire compiler including the original
-distributed library source code in Huffman-encoded archive files (CPM.HUF,
+distributed library source-code in Huffman-encoded archive files (CPM.HUF,
 GEN.HUF, FLOAT.HUF and STDIO.HUF). NB: I have not rebuilt the .HUF files -
 so please use updated run-time library source files in the following folders.
 
 The *cpm*, *gen*, *float* and *stdio* folders contain the library
-source code that has been extracted from the .HUF archive files
+source-code that has been extracted from the .HUF archive files
 using DEHUFF.COM and the updated/modified files.
 
 The *doc* folder contains the documentation in ASCII text as HTCZ80.TXT.
@@ -746,7 +746,7 @@ to the CP/M system path (usually drive A in user area 0) as C.COM
 
 Also included a version of the start-up code for the Z280 under CP/M
 as z280dist/CRTCPM.OBJ 
-(with source code in z280dist/Z280CPM.AS).  This checks whether
+(with source-code in z280dist/Z280CPM.AS).  This checks whether
 the compiled binary is running on a Z280 MPU.
 
 
@@ -1040,7 +1040,7 @@ htc-bin.lbr binary distribution library archive file too.
 
 ### More work on decompiling CPP.COM
 
-Andrea Nikitin has posted some more decompiled sourcecode for the
+Andrea Nikitin has posted some more decompiled source-code for the
 C pre-processor (CPP.COM) and a revised pre-processor for the compiler
 that supports C++ style comments.  You can get this from his GitHub
 repository at
@@ -1344,6 +1344,34 @@ I've rebuilt the floating-point libraries (LIBF.LIB and LIB280F.LIB).
 Please let me know if you notice any issues.
 
 
+## More back-porting of library source-code
+
+Phillip Stevens has back-ported some more of the V7.80pl2 library source.
+
+A summary of the updates are -
+
+* float/LTOF.AS - ```lbtof()``` and ```abtof()``` loaded wrong registers,
+and ```lltof()``` improved conversion of long to float accuracy by up
+to 7 bits.
+
+* gen/ATOL.C - recognise a ```+``` in a number constant (e.g. ```+3.14159```).
+
+* gen/BRELOP.AS, gen/FRELOP.AS, gen/LRELOP.AS - avoid the use of
+an ```ex af af'``` op-code (some CP/M systems use the alternate 
+accumulator and flags register for interrupts without doing a push/pop
+to save it).
+
+* gen/LONGJMP.AS - fixes.
+
+* gen/IDIV.AS - fixes.
+
+* plus add miscellaneous type casts and fix typos in cpm/ABORT.C,
+gen/RAND.C, gen/STRFTIME.C, stdio/FILBUF.C, stdio/GETW.C and stdio/UNGETC.C
+
+Replacement libraries (LIBC.LIB/LIBF.LIB and LIB280C.LIB/LIB280F.LIB) are
+in the dist folder and the binary distribution libraries.
+
+
 --
 Tony Nicholson
-03-Feb-2022
+04-Feb-2022

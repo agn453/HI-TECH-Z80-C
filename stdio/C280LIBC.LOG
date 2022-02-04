@@ -1,4 +1,7 @@
 
+10E>date
+A:DATE     COM  (User 0)
+Fri 04/02/2022 09:28:52
 10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>;
 10E>; Sources are on drive E:
@@ -10,7 +13,7 @@ A:PIP      COM  (User 0)
 
 10M>c280
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-11 [Z280 MPU version]
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:abort.c \
@@ -547,7 +550,7 @@ ERA $$EXEC.$$$
 
 10M>c280
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-11 [Z280 MPU version]
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:islower.as \
@@ -703,7 +706,7 @@ ERA $$EXEC.$$$
 
 10M>c280
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-11 [Z280 MPU version]
+Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:puts.c \
@@ -764,6 +767,7 @@ c> e:write.c \
 c> e:xtoi.as \
 c> e:zc280cpm.as \
 c> e:zd280cpm.as \
+c> e:zn280cpm.as \
 c> e:zr280cpm.as
 E:PUTS.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:PUTS.C $CTMP1.$$$
@@ -1098,6 +1102,8 @@ E:ZC280CPM.AS
 0:A:ZAS -J -OZC280CPM.OBJ E:ZC280CPM.AS
 E:ZD280CPM.AS
 0:A:ZAS -J -OZD280CPM.OBJ E:ZD280CPM.AS
+E:ZN280CPM.AS
+0:A:ZAS -J -OZN280CPM.OBJ E:ZN280CPM.AS
 E:ZR280CPM.AS
 0:A:ZAS -J -OZR280CPM.OBJ E:ZR280CPM.AS
 ERA $CTMP1.$$$

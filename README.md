@@ -1354,7 +1354,7 @@ A summary of the updates are -
 and ```lltof()``` improved conversion of long to float accuracy by up
 to 7 bits.
 
-* gen/ATOL.C - recognise a ```+``` in a number constant (e.g. ```+3.14159```).
+* gen/ATOL.C - recognise a ```+``` in a number constant (e.g. ```+123456L```).
 
 * gen/BRELOP.AS, gen/FRELOP.AS, gen/LRELOP.AS - avoid the use of
 an ```ex af af'``` op-code (some CP/M systems use the alternate 

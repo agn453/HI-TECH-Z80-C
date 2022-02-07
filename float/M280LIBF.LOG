@@ -1,250 +1,643 @@
 
 10D>date
 A:DATE     COM  (User 0)
-Fri 04/02/2022 09:00:48
+Mon 07/02/2022 13:27:39
 10D>;----------  M280LIBF.SUB  ----------
 10D>; Assumes DEHUFF -X FLOAT.HUF has extracted
 10D>; all sources to the default drive
 10D>;------------------------------------
-10D>c280 -c -o2 PRINTF.C
+10D>c280 -v -c -o2 PRINTF.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: PRINTF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  5 bytes optimized away
  6 bytes replaced
+0:A:ZAS -J -N -OPRINTF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 FPRINTF.C
+10D>c280 -v -c -o2 FPRINTF.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: FPRINTF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  7 bytes optimized away
  10 bytes replaced
+0:A:ZAS -J -N -OFPRINTF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 SPRINTF.C
+10D>c280 -v -c -o2 SPRINTF.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: SPRINTF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  10 bytes optimized away
  16 bytes replaced
+0:A:ZAS -J -N -OSPRINTF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 SCANF.C
+10D>c280 -v -c -o2 SCANF.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: SCANF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  5 bytes optimized away
  6 bytes replaced
+0:A:ZAS -J -N -OSCANF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 FSCANF.C
+10D>c280 -v -c -o2 FSCANF.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: FSCANF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  7 bytes optimized away
  10 bytes replaced
+0:A:ZAS -J -N -OFSCANF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 SSCANF.C
+10D>c280 -v -c -o2 SSCANF.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: SSCANF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  16 bytes optimized away
  24 bytes replaced
+0:A:ZAS -J -N -OSSCANF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 DOPRNT.C
+10D>c280 -v -c -o2 DOPRNT.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: DOPRNT.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  51 bytes optimized away
  122 bytes replaced
+0:A:ZAS -J -N -ODOPRNT.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 DOSCAN.C
+10D>c280 -v -c -o2 DOSCAN.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: DOSCAN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  201 bytes optimized away
  410 bytes replaced
+0:A:ZAS -J -N -ODOSCAN.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 ATOF.C
+10D>c280 -v -c -o2 ATOF.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: ATOF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  92 bytes optimized away
  184 bytes replaced
+0:A:ZAS -J -N -OATOF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 FNUM.C
+10D>c280 -v -c -o2 FNUM.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: FNUM.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  187 bytes optimized away
  420 bytes replaced
+0:A:ZAS -J -N -OFNUM.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS FBCD.AS
-A:ZAS      COM  (User 0)
-
-10D>c280 -c -o2 TAN.C
+10D>c280 -v -c -o2 FBCD.AS
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH FBCD.AS $CTMP5.$$$
+ 5 bytes optimized away
+ 10 bytes replaced
+0:A:ZAS -J -OFBCD.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
+
+10D>c280 -v -c -o2 TAN.C
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TAN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  8 bytes optimized away
  16 bytes replaced
+0:A:ZAS -J -N -OTAN.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 ACOS.C
+10D>c280 -v -c -o2 ACOS.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: ACOS.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  4 bytes optimized away
  8 bytes replaced
+0:A:ZAS -J -N -OACOS.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 ASIN.C
+10D>c280 -v -c -o2 ASIN.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: ASIN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  40 bytes optimized away
  80 bytes replaced
+0:A:ZAS -J -N -OASIN.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 ATAN2.C
+10D>c280 -v -c -o2 ATAN2.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: ATAN2.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  45 bytes optimized away
  108 bytes replaced
+0:A:ZAS -J -N -OATAN2.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 ATAN.C
+10D>c280 -v -c -o2 ATAN.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: ATAN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  55 bytes optimized away
  106 bytes replaced
+0:A:ZAS -J -N -OATAN.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 COS.C
+10D>c280 -v -c -o2 COS.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: COS.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  12 bytes optimized away
  24 bytes replaced
+0:A:ZAS -J -N -OCOS.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 SIN.C
+10D>c280 -v -c -o2 SIN.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: SIN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  57 bytes optimized away
  102 bytes replaced
+0:A:ZAS -J -N -OSIN.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 SINH.C
+10D>c280 -v -c -o2 SINH.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: SINH.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  16 bytes optimized away
  32 bytes replaced
+0:A:ZAS -J -N -OSINH.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 COSH.C
+10D>c280 -v -c -o2 COSH.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: COSH.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  12 bytes optimized away
  24 bytes replaced
+0:A:ZAS -J -N -OCOSH.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 TANH.C
+10D>c280 -v -c -o2 TANH.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TANH.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  16 bytes optimized away
  32 bytes replaced
+0:A:ZAS -J -N -OTANH.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 EXP.C
+10D>c280 -v -c -o2 EXP.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: EXP.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  70 bytes optimized away
  132 bytes replaced
+0:A:ZAS -J -N -OEXP.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 LOG.C
+10D>c280 -v -c -o2 LOG.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: LOG.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  27 bytes optimized away
  60 bytes replaced
+0:A:ZAS -J -N -OLOG.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 EVALPOLY.C
+10D>c280 -v -c -o2 EVALPOLY.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: EVALPOLY.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  32 bytes optimized away
  68 bytes replaced
+0:A:ZAS -J -N -OEVALPOLY.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 SQRT.C
+10D>c280 -v -c -o2 SQRT.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: SQRT.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  95 bytes optimized away
  186 bytes replaced
+0:A:ZAS -J -N -OSQRT.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS FREXP.AS
-A:ZAS      COM  (User 0)
-
-10D>c280 -c -o2 FABS.C
+10D>c280 -v -c -o2 FREXP.AS
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH FREXP.AS $CTMP5.$$$
+ 4 bytes optimized away
+ 8 bytes replaced
+0:A:ZAS -J -OFREXP.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
+
+10D>c280 -v -c -o2 FABS.C
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: FABS.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  8 bytes optimized away
  16 bytes replaced
+0:A:ZAS -J -N -OFABS.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 CEIL.C
+10D>c280 -v -c -o2 CEIL.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: CEIL.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  24 bytes optimized away
  48 bytes replaced
+0:A:ZAS -J -N -OCEIL.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>c280 -c -o2 FLOOR.C
+10D>c280 -v -c -o2 FLOOR.C
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: FLOOR.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
  20 bytes optimized away
  40 bytes replaced
+0:A:ZAS -J -N -OFLOOR.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS FINC.AS
-A:ZAS      COM  (User 0)
+10D>c280 -v -c -o2 FINC.AS
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH FINC.AS $CTMP5.$$$
+ 0 bytes optimized away
+ 8 bytes replaced
+0:A:ZAS -J -OFINC.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS ASFLOAT.AS
-A:ZAS      COM  (User 0)
+10D>c280 -v -c -o2 ASFLOAT.AS
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH ASFLOAT.AS $CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -OASFLOAT.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS FRNDINT.AS
-A:ZAS      COM  (User 0)
+10D>c280 -v -c -o2 FRNDINT.AS
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH FRNDINT.AS $CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -OFRNDINT.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS FTOL.AS
-A:ZAS      COM  (User 0)
+10D>c280 -v -c -o2 FTOL.AS
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH FTOL.AS $CTMP5.$$$
+ 0 bytes optimized away
+ 0 bytes replaced
+0:A:ZAS -J -OFTOL.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS LTOF.AS
-A:ZAS      COM  (User 0)
+10D>c280 -v -c -o2 LTOF.AS
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH LTOF.AS $CTMP5.$$$
+ 2 bytes optimized away
+ 4 bytes replaced
+0:A:ZAS -J -OLTOF.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>ZAS FLOAT.AS
-A:ZAS      COM  (User 0)
+10D>c280 -v -c -o2 FLOAT.AS
+A:C280     COM  (User 0)
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:OPTIMH FLOAT.AS $CTMP5.$$$
+ 2 bytes optimized away
+ 4 bytes replaced
+0:A:ZAS -J -OFLOAT.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
 10D>;pip m:lib280f.lib=a:lib280f.lib[g0r]
 10D>LIBR R m:lib280f.LIB PRINTF.OBJ

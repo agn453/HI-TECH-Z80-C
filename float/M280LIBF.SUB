@@ -5,41 +5,41 @@ date
 ; Assumes DEHUFF -X FLOAT.HUF has extracted
 ; all sources to the default drive
 ;------------------------------------
-c280 -c -o2 PRINTF.C
-c280 -c -o2 FPRINTF.C
-c280 -c -o2 SPRINTF.C
-c280 -c -o2 SCANF.C
-c280 -c -o2 FSCANF.C
-c280 -c -o2 SSCANF.C
-c280 -c -o2 DOPRNT.C
-c280 -c -o2 DOSCAN.C
-c280 -c -o2 ATOF.C
-c280 -c -o2 FNUM.C
-ZAS FBCD.AS
-c280 -c -o2 TAN.C
-c280 -c -o2 ACOS.C
-c280 -c -o2 ASIN.C
-c280 -c -o2 ATAN2.C
-c280 -c -o2 ATAN.C
-c280 -c -o2 COS.C
-c280 -c -o2 SIN.C
-c280 -c -o2 SINH.C
-c280 -c -o2 COSH.C
-c280 -c -o2 TANH.C
-c280 -c -o2 EXP.C
-c280 -c -o2 LOG.C
-c280 -c -o2 EVALPOLY.C
-c280 -c -o2 SQRT.C
-ZAS FREXP.AS
-c280 -c -o2 FABS.C
-c280 -c -o2 CEIL.C
-c280 -c -o2 FLOOR.C
-ZAS FINC.AS
-ZAS ASFLOAT.AS
-ZAS FRNDINT.AS
-ZAS FTOL.AS
-ZAS LTOF.AS
-ZAS FLOAT.AS
+c280 -v -c -o2 PRINTF.C
+c280 -v -c -o2 FPRINTF.C
+c280 -v -c -o2 SPRINTF.C
+c280 -v -c -o2 SCANF.C
+c280 -v -c -o2 FSCANF.C
+c280 -v -c -o2 SSCANF.C
+c280 -v -c -o2 DOPRNT.C
+c280 -v -c -o2 DOSCAN.C
+c280 -v -c -o2 ATOF.C
+c280 -v -c -o2 FNUM.C
+c280 -v -c -o2 FBCD.AS
+c280 -v -c -o2 TAN.C
+c280 -v -c -o2 ACOS.C
+c280 -v -c -o2 ASIN.C
+c280 -v -c -o2 ATAN2.C
+c280 -v -c -o2 ATAN.C
+c280 -v -c -o2 COS.C
+c280 -v -c -o2 SIN.C
+c280 -v -c -o2 SINH.C
+c280 -v -c -o2 COSH.C
+c280 -v -c -o2 TANH.C
+c280 -v -c -o2 EXP.C
+c280 -v -c -o2 LOG.C
+c280 -v -c -o2 EVALPOLY.C
+c280 -v -c -o2 SQRT.C
+c280 -v -c -o2 FREXP.AS
+c280 -v -c -o2 FABS.C
+c280 -v -c -o2 CEIL.C
+c280 -v -c -o2 FLOOR.C
+c280 -v -c -o2 FINC.AS
+c280 -v -c -o2 ASFLOAT.AS
+c280 -v -c -o2 FRNDINT.AS
+c280 -v -c -o2 FTOL.AS
+c280 -v -c -o2 LTOF.AS
+c280 -v -c -o2 FLOAT.AS
 ;pip m:lib280f.lib=a:lib280f.lib[g0r]
 LIBR R m:lib280f.LIB PRINTF.OBJ
 LIBR R m:lib280f.LIB FPRINTF.OBJ

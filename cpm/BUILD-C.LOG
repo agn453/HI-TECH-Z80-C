@@ -2,77 +2,76 @@
 10E>;
 10E>date
 A:DATE     COM  (User 0)
-
-Wed 02/02/2022 19:44:17
+Mon 07/02/2022 14:32:50
 10E>;
 10E>; Build Z80 version
-10E>c -o -v c309-12.c
+10E>c -o -v c309-13.c
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: C309-12.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: C309-13.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OC309-12.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OC309-13.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC309-12.COM 0:A:CRTCPM.OBJ C309-12.OBJ 0:A:LIBC.LIB
-ERA C309-12.OBJ
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC309-13.COM 0:A:CRTCPM.OBJ C309-13.OBJ 0:A:LIBC.LIB
+ERA C309-13.OBJ
 ERA M:$$EXEC.$$$
 
 10E>;
 10E>; Now build Z280 version
 10E>;
 10E>; First a Z280 version using the Z80 LIBC.LIB (runs on Z80)
-10E>c309-12 -o -v -ec280z80.com -dZ280 c309-12.c
-E:C309-12  COM
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+10E>c309-13 -o -v -ec280z80.com -dZ280 c309-13.c
+E:C309-13  COM
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-12.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-13.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OC309-12.OBJ M:$CTMP2.$$$
+0:A:ZAS -J -N -OC309-13.OBJ M:$CTMP2.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280Z80.COM 0:A:CRTCPM.OBJ C309-12.OBJ 0:A:LIBC.LIB
-ERA C309-12.OBJ
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280Z80.COM 0:A:CRTCPM.OBJ C309-13.OBJ 0:A:LIBC.LIB
+ERA C309-13.OBJ
 ERA M:$$EXEC.$$$
 
 10E>;
 10E>; and the Z280 optimized version from it (only runs on a Z280)
-10E>c280z80 -of2 -v -ec280-12.com c309-12.c
+10E>c280z80 -of2 -v -ec280-13.com c309-13.c
 E:C280Z80  COM
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-12.C M:$CTMP1.$$$
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: C309-13.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM -F M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH -F M:$CTMP2.$$$ M:$CTMP5.$$$
- 477 bytes optimized away
- 1494 bytes replaced
-0:A:ZAS -N -OC309-12.OBJ M:$CTMP5.$$$
+ 516 bytes optimized away
+ 1626 bytes replaced
+0:A:ZAS -N -OC309-13.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280-12.COM 0:A:C280CPM.OBJ C309-12.OBJ 0:A:LIB280C.LIB
-ERA C309-12.OBJ
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OC280-13.COM 0:A:C280CPM.OBJ C309-13.OBJ 0:A:LIB280C.LIB
+ERA C309-13.OBJ
 ERA M:$$EXEC.$$$
 
 10E>;
-10E>c280-12 -o2 -v optimh.c
-E:C280-12  COM
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+10E>c280-13 -o2 -v optimh.c
+E:C280-13  COM
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: OPTIMH.C M:$CTMP1.$$$
@@ -104,14 +103,14 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-C280-11  COM    24k    188 Dir RW       None   11/01/22 09:50  11/01/22 09:50
 C280-12  COM    24k    188 Dir RW       None   02/02/22 19:54  02/02/22 19:54
-C280Z80  COM    28k    203 Dir RW       None   02/02/22 19:50  02/02/22 19:50
-C309-11  COM    28k    201 Dir RW       None   18/01/22 14:43  18/01/22 14:43
+C280-13  COM    24k    192 Dir RW       None   07/02/22 14:43  07/02/22 14:43
+C280Z80  COM    28k    208 Dir RW       None   07/02/22 14:39  07/02/22 14:39
 C309-12  COM    28k    201 Dir RW       None   02/02/22 19:47  02/02/22 19:47
+C309-13  COM    28k    201 Dir RW       None   07/02/22 14:35  07/02/22 14:35
 
-Total Bytes     =    132k  Total Records =     981  Files Found =    5
-Total 1k Blocks =    126   Used/Max Dir Entries For Drive E: 1121/2048
+Total Bytes     =    132k  Total Records =     990  Files Found =    5
+Total 1k Blocks =    126   Used/Max Dir Entries For Drive E:  946/2048
 
 10E>dir optimh.com [fu
 A:DIR      COM  (User 0)
@@ -123,10 +122,10 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-OPTIMH   COM    20k    144 Dir RW       None   02/02/22 19:56  02/02/22 19:56
+OPTIMH   COM    20k    144 Dir RW       None   07/02/22 14:45  07/02/22 14:45
 
 Total Bytes     =     20k  Total Records =     144  Files Found =    1
-Total 1k Blocks =     18   Used/Max Dir Entries For Drive E: 1121/2048
+Total 1k Blocks =     18   Used/Max Dir Entries For Drive E:  946/2048
 
 10E>;
 10E>; Done

@@ -1368,10 +1368,57 @@ to save it).
 * plus add miscellaneous type casts and fix typos in cpm/ABORT.C,
 gen/RAND.C, gen/STRFTIME.C, stdio/FILBUF.C, stdio/GETW.C and stdio/UNGETC.C
 
-Replacement libraries (LIBC.LIB/LIBF.LIB and LIB280C.LIB/LIB280F.LIB) are
+Updated libraries (LIBC.LIB/LIBF.LIB and LIB280C.LIB/LIB280F.LIB) are
 in the dist folder and the binary distribution libraries.
 
 
+## Z280 assembly language optimisation
+
+The Z280 front-end ```C280.COM``` has been modified to allow optimisation
+of Z80 assembly language input files when either the ```-O2``` or ```-OF2```
+options are specified.  This uses the same ```OPTIMH``` optimisation
+rules as it uses when ```C280``` compiles C programs.
+
+This means a command like ```C280 -O2 -C MODULE.AS``` will firstly
+perform a source-code optimisation pass before invoking the assember
+```ZAS```.  Testing this on the library build procedures squeezes
+a few bytes from some of the modules.
+
+If you wish to examine the result of the ```OPTIMH``` pass, you can use
+the ```-S``` option to retain the optimised source in a file with
+the ```.AS2``` file type.
+
+For example -
+
+```
+10E>c280 -s -o2 -v execl.as                                                     
+A:C280     COM  (User 0)                                                        
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13                                      
+Copyright (C) 1984-87 HI-TECH SOFTWARE                                          
+Updated from https://github.com/agn453/HI-TECH-Z80-C                            
+0:A:OPTIMH EXECL.AS EXECL.AS2                                                   
+ 71 bytes optimized away                                                        
+ 122 bytes replaced                                                             
+0:A:ZAS -J -OEXECL.OBJ EXECL.AS2                                                
+ERA M:$$EXEC.$$$                                                                
+                                                                                
+10E>
+```
+
+There's newly optimised Z280 object libraries (LIB280C.LIB and LIB280F.LIB)
+and execuatables in the *z280dist* folder, along with the new V3.09-13
+compiler front-end as ```C280-13.COM``` (which you should copy and rename to
+``C280.COM``` on the drive where you install the restor of the compiler files).
+Also, I've temporarily put the source-code for the new C309-13.C in the
+*z280dist* folder.
+
+The Z280 binary distribution library has been updated too. Get it from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
+(If you're wondering - there's been no changes that affect the V3.09-12
+Z80 release files).
+
+
 --
-Tony Nicholson
-04-Feb-2022
+Tony Nicholson, Monday 07-Feb-2022

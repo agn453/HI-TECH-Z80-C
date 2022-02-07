@@ -1408,7 +1408,7 @@ ERA M:$$EXEC.$$$
 There's newly optimised Z280 object libraries (LIB280C.LIB and LIB280F.LIB)
 and execuatables in the *z280dist* folder, along with the new V3.09-13
 compiler front-end as ```C280-13.COM``` (which you should copy and rename to
-``C280.COM``` on the drive where you install the restor of the compiler files).
+```C280.COM``` on the drive where you install the rest of the compiler files).
 Also, I've temporarily put the source-code for the new C309-13.C in the
 *z280dist* folder.
 

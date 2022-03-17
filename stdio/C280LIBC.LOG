@@ -1,7 +1,7 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Mon 07/02/2022 12:52:53
+Wed 16/03/2022 13:05:56
 10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>;
 10E>; Sources are on drive E:
@@ -310,8 +310,8 @@ E:CLOSE.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 6 bytes optimized away
- 12 bytes replaced
+ 8 bytes optimized away
+ 16 bytes replaced
 0:A:ZAS -J -N -OCLOSE.OBJ $CTMP5.$$$
 E:CONVTIME.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:CONVTIME.C $CTMP1.$$$

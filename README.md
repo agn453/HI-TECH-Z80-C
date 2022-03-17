@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-12 (see Modification History below).
+The latest release is V3.09-13 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -248,8 +248,8 @@ Exact file sizes (CP/M 3 and DOS+ v2.5)
     b.  LSBC contains the number of USED bytes but 0 means 128.
 
     Both usages have appeared in the small number of CP/M 3 utilities which
-    support exact file lengths.  My own tools use the first interpretation;
-    John Elliott's utilities use the second.
+    support exact file lengths.  Jon Saxton's tools use the first
+    interpretation; John Elliott's utilities use the second.
 
     The first interpretation is slightly simpler to implement because it
     avoids any special-case handling.  It is also historically correct.
@@ -264,6 +264,9 @@ Exact file sizes (CP/M 3 and DOS+ v2.5)
     in a file is always (sectors * 128) - lsbc.
 
     (When running on CP/M 2 lsbc is always zero.)
+
+NB: This change is now selectable for releases v3.09-13 (and later) by
+    setting an EXACT environment variable in the ENVIRON file.
 
 strcasecmp()
 
@@ -1406,7 +1409,7 @@ ERA M:$$EXEC.$$$
 ```
 
 There's newly optimised Z280 object libraries (LIB280C.LIB and LIB280F.LIB)
-and execuatables in the *z280dist* folder, along with the new V3.09-13
+and CP/M COM  files in the *z280dist* folder, including the new V3.09-13
 compiler front-end as ```C280-13.COM``` (which you should copy and rename to
 ```C280.COM``` on the drive where you install the rest of the compiler files).
 Also, I've temporarily put the source-code for the new C309-13.C in the
@@ -1420,5 +1423,48 @@ https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 Z80 release files).
 
 
+## Interpretation of exact file sizes reverted
+
+Following on from Mark Ogden's consultations with John Elliott (the author
+of the ZXCC emulator and PIPEMGR),  I have accepted a proposal from Mark
+Ogden to revert the interpretation of exact file sizes back to John
+Elliot's original DOS Plus interpretation.
+
+As mentioned in the release v3.09-3 notes (above), there are two common
+conventions that can be used to record exact file sizes in CP/M.
+
+* Record the number of bytes used in the last sector (as used by DOS Plus)
+
+or
+
+* Record the number of unused bytes in the last sector (used by ISX for
+ISIS emulation)
+
+To allow you to continue with the alternative ISX/ISIS interpretation,
+you can now select this by defining an ```EXACT``` environment
+variable.  The C library close() routine now detects the mode to use from
+the following line in the system ENVIRON file (usually located at
+0:A:ENVIRON) -
+
+```EXACT=DOSPLUS``` selects DOS Plus mode, and ```EXACT=ISX``` selects
+ISX/ISIS mode.  If you don't define ```EXACT``` (or its value doesn't start
+with a ```D``` or ```I```) the default is to not use exact file size - which
+is compatible with CP/M 2.2 where the last sector byte count is always zero.
+
+Note: You need to take extra care if you're using an emulator like ZXCC
+which has been updated to only support the ```EXACT=DOSPLUS```
+convention or the CP/M 2.2 interpretation (as per the original version
+by John Elliott).  Using the wrong mode will lead to file truncation in
+the last sector.  The CP/M 2.2 mode causes ```Ctrl-Z``` to be written at
+the end of text files (as per the CP/M convention).
+
+The PIPEMGR source code has also been reverted to support only the
+DOS plus and CP/M 2.2 file size convention.  Piping a text concatenation
+(using the ```>>``` operator) will now write the extra text to the end
+of the file (and before the ```Ctrl-Z``` marker if the file has this in
+the last sector).  Files written to by PIPEMGR will use the DOS Plus
+exact file size convention.
+
+
 --
-Tony Nicholson, Monday 07-Feb-2022
+Tony Nicholson, Wednesday 16-Mar-2022

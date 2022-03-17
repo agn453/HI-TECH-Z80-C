@@ -2,7 +2,7 @@
 10E>;
 10E>date
 A:DATE     COM  (User 0)
-Mon 07/02/2022 14:32:50
+Wed 16/03/2022 17:01:44
 10E>;
 10E>; Build Z80 version
 10E>c -o -v c309-13.c
@@ -103,14 +103,12 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-C280-12  COM    24k    188 Dir RW       None   02/02/22 19:54  02/02/22 19:54
-C280-13  COM    24k    192 Dir RW       None   07/02/22 14:43  07/02/22 14:43
-C280Z80  COM    28k    208 Dir RW       None   07/02/22 14:39  07/02/22 14:39
-C309-12  COM    28k    201 Dir RW       None   02/02/22 19:47  02/02/22 19:47
-C309-13  COM    28k    201 Dir RW       None   07/02/22 14:35  07/02/22 14:35
+C280-13  COM    24k    192 Dir RW       None   16/03/22 17:12  16/03/22 17:12
+C280Z80  COM    28k    208 Dir RW       None   16/03/22 17:08  16/03/22 17:08
+C309-13  COM    28k    202 Dir RW       None   16/03/22 17:04  16/03/22 17:04
 
-Total Bytes     =    132k  Total Records =     990  Files Found =    5
-Total 1k Blocks =    126   Used/Max Dir Entries For Drive E:  946/2048
+Total Bytes     =     80k  Total Records =     602  Files Found =    3
+Total 1k Blocks =     76   Used/Max Dir Entries For Drive E: 1131/2048
 
 10E>dir optimh.com [fu
 A:DIR      COM  (User 0)
@@ -122,10 +120,10 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-OPTIMH   COM    20k    144 Dir RW       None   07/02/22 14:45  07/02/22 14:45
+OPTIMH   COM    20k    151 Dir RW       None   16/03/22 17:14  16/03/22 17:14
 
-Total Bytes     =     20k  Total Records =     144  Files Found =    1
-Total 1k Blocks =     18   Used/Max Dir Entries For Drive E:  946/2048
+Total Bytes     =     20k  Total Records =     151  Files Found =    1
+Total 1k Blocks =     19   Used/Max Dir Entries For Drive E: 1131/2048
 
 10E>;
 10E>; Done

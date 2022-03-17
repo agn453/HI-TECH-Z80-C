@@ -1,11 +1,11 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Wed 02/02/2022 20:59:35
+Thu 17/03/2022 09:12:40
 10E>; Compile all test280
 10E>c280 -v -o2 testver.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTVER.C M:$CTMP1.$$$
@@ -26,7 +26,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testio.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTIO.C M:$CTMP1.$$$
@@ -47,7 +47,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testuid.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTUID.C M:$CTMP1.$$$
@@ -68,7 +68,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 teststr.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTSTR.C M:$CTMP1.$$$
@@ -89,7 +89,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testbios.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTBIOS.C M:$CTMP1.$$$
@@ -110,7 +110,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testbdos.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTBDOS.C M:$CTMP1.$$$
@@ -131,7 +131,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testtrig.c -lf
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTTRIG.C M:$CTMP1.$$$
@@ -152,7 +152,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testftim.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTFTIM.C M:$CTMP1.$$$
@@ -173,7 +173,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testfile.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTFILE.C M:$CTMP1.$$$
@@ -194,7 +194,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testaes.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTAES.C M:$CTMP1.$$$
@@ -215,7 +215,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testrc.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTRC.C M:$CTMP1.$$$
@@ -236,7 +236,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testview.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTVIEW.C M:$CTMP1.$$$
@@ -257,7 +257,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testwild.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTWILD.C M:$CTMP1.$$$
@@ -278,7 +278,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -ftestovrx.sym -v -o2 testovr.c -lovr
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTOVR.C M:$CTMP1.$$$
@@ -299,7 +299,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -y -o2 -v testovr2.c testovrx.sym
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR2.C
@@ -318,12 +318,12 @@ ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=02F98h,data -C2F98H -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=0332Fh,data -C332FH -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
 ERA M:$$EXEC.$$$
 
 10E>c280 -y -o2 -v testovr1.c testovrx.sym
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR1.C
@@ -342,12 +342,12 @@ ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=02F98h,data -C2F98H -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=0332Fh,data -C332FH -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
 ERA M:$$EXEC.$$$
 
-10E>c280 -a -v -o2 testhell.c
+10E>c280 -a -v -o2 testhell.c -lc
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTHELL.C M:$CTMP1.$$$
@@ -362,7 +362,7 @@ ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -L -Ptext=0100h,data,bss -OM:$L.OBJ 0:A:R280CPM.OBJ TESTHELL.OBJ 0:A:LIB280C.LIB
+0:A:LINQ -Z -L -Ptext=0100h,data,bss -OM:$L.OBJ 0:A:R280CPM.OBJ TESTHELL.OBJ 0:A:LIB280C.LIB 0:A:LIB280C.LIB
 0:A:OBJTOHEX -R -B100H M:$L.OBJ TESTHELL.COM
 ERA M:$L.OBJ
 ERA TESTHELL.OBJ
@@ -370,7 +370,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testpr.c
 A:C280     COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12 [Z280 MPU version]
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTPR.C M:$CTMP1.$$$
@@ -398,9 +398,11 @@ BIOS Address (0xF800)
 TPA Size (57.0K)
 
 10E>era testio.sta
+No File
 10E>era testio.out
 No File
 10E>era testio.err
+No File
 10E>testovr
 E:TESTOVR  COM
 overlay test
@@ -448,6 +450,9 @@ strnicmp test:
 E:TESTBIOS COM
 Z3ENV is not established.  (This is not an error.)
 Press a key: rc = 005A, character = Z
+The next message should say "Did this work?"
+Did this work?
+
 10E>testbdos
 E:TESTBDOS COM
 First some perror() tests ...
@@ -486,30 +491,30 @@ First some perror() tests ...
 E:TESTTRIG COM
 
   n  LN             EXP            SIN            COS            ATAN
- 01  0.000000e+00   2.718280e+00   8.414706e-01   5.403037e-01   7.853970e-01 
- 02  6.931469e-01   7.389050e+00   9.092973e-01  -4.161461e-01   1.107148e+00 
- 03  1.098612e+00   2.008552e+01   1.411217e-01  -9.899922e-01   1.249045e+00 
- 04  1.386294e+00   5.459808e+01  -7.568023e-01  -6.536445e-01   1.325817e+00 
- 05  1.609438e+00   1.484130e+02  -9.589242e-01   2.836605e-01   1.373400e+00 
- 06  1.791759e+00   4.034281e+02  -2.794159e-01   9.601696e-01   1.405647e+00 
- 07  1.945910e+00   1.096632e+03   6.569859e-01   7.539025e-01   1.428899e+00 
- 08  2.079441e+00   2.980951e+03   9.893581e-01  -1.454975e-01   1.446441e+00 
- 09  2.197224e+00   8.103068e+03   4.121197e-01  -9.111288e-01   1.460139e+00 
- 10  2.302584e+00   2.202640e+04  -5.440195e-01  -8.390731e-01   1.471127e+00 
- 11  2.397894e+00   5.987400e+04  -9.999901e-01   4.422163e-03   1.480136e+00 
- 12  2.484906e+00   1.627543e+05  -5.365736e-01   8.438515e-01   1.487654e+00 
- 13  2.564949e+00   4.424121e+05   4.201658e-01   9.074482e-01   1.494024e+00 
- 14  2.639056e+00   1.202602e+06   9.906070e-01   1.367416e-01   1.499488e+00 
- 15  2.708049e+00   3.269002e+06   6.502892e-01  -7.596840e-01   1.504228e+00 
- 16  2.772588e+00   8.886073e+06  -2.879012e-01  -9.576598e-01   1.508377e+00 
- 17  2.833213e+00   2.415486e+07  -9.613965e-01  -2.751657e-01   1.512040e+00 
- 18  2.890371e+00   6.565973e+07  -7.509890e-01   6.603144e-01   1.515297e+00 
- 19  2.944438e+00   1.784813e+08   1.498741e-01   9.887048e-01   1.518213e+00 
+ 01  0.000000e+00   2.718281e+00   8.414713e-01   5.403028e-01   7.853984e-01 
+ 02  6.931472e-01   7.389053e+00   9.092976e-01  -4.161476e-01   1.107149e+00 
+ 03  1.098612e+00   2.008552e+01   1.411195e-01  -9.899930e-01   1.249045e+00 
+ 04  1.386294e+00   5.459809e+01  -7.568034e-01  -6.536440e-01   1.325817e+00 
+ 05  1.609438e+00   1.484130e+02  -9.589241e-01   2.836642e-01   1.373401e+00 
+ 06  1.791759e+00   4.034281e+02  -2.794138e-01   9.601711e-01   1.405647e+00 
+ 07  1.945910e+00   1.096632e+03   6.569884e-01   7.539010e-01   1.428899e+00 
+ 08  2.079441e+00   2.980951e+03   9.893582e-01  -1.455027e-01   1.446441e+00 
+ 09  2.197225e+00   8.103070e+03   4.121158e-01  -9.111318e-01   1.460139e+00 
+ 10  2.302585e+00   2.202641e+04  -5.440236e-01  -8.390698e-01   1.471127e+00 
+ 11  2.397895e+00   5.987400e+04  -9.999905e-01   4.429656e-03   1.480136e+00 
+ 12  2.484906e+00   1.627543e+05  -5.365700e-01   8.438562e-01   1.487655e+00 
+ 13  2.564949e+00   4.424122e+05   4.201716e-01   9.074452e-01   1.494024e+00 
+ 14  2.639058e+00   1.202601e+06   9.906083e-01   1.367328e-01   1.499489e+00 
+ 15  2.708050e+00   3.269011e+06   6.502848e-01  -7.596909e-01   1.504228e+00 
+ 16  2.772589e+00   8.886073e+06  -2.879071e-01  -9.576581e-01   1.508378e+00 
+ 17  2.833213e+00   2.415486e+07  -9.613985e-01  -2.751586e-01   1.512040e+00 
+ 18  2.890371e+00   6.565974e+07  -7.509834e-01   6.603216e-01   1.515297e+00 
+ 19  2.944439e+00   1.784818e+08   1.498831e-01   9.887040e-01   1.518213e+00 
 
 10E>testftim
 E:TESTFTIM COM
-34: 09:12 PM
-Wed Feb 02 21:12:14 2022
+34: 09:27 AM
+Thu Mar 17 09:27:40 2022
 
 
 10E>testfile
@@ -536,7 +541,6 @@ E:TESTRC   COM
 E:TESTVIEW COM
  1: TESTHELL.C
 #include <stdio.h>
-#include <float.h>
 
 int main() {
     printf("Hello\n");
@@ -602,14 +606,14 @@ E:TESTWILD COM
 Program name: TESTWILD
  1: TESTPR.C
  2: TESTENV.C
- 3: TESTAES.C
- 4: TESTARGS.C
- 5: TESTBDOS.C
- 6: TESTBIOS.C
- 7: TESTFILE.C
- 8: TESTFSIZ.C
- 9: TESTFTIM.C
-10: TESTHELL.C
+ 3: TESTHELL.C
+ 4: TESTAES.C
+ 5: TESTARGS.C
+ 6: TESTBDOS.C
+ 7: TESTBIOS.C
+ 8: TESTFILE.C
+ 9: TESTFSIZ.C
+10: TESTFTIM.C
 11: TESTIO.C
 12: TESTOVR.C
 13: TESTOVR1.C
@@ -625,8 +629,8 @@ Program name: TESTWILD
 23: TESTVIEW.C
 24: TESTWILD.C
 25: TESTQSRT.C
-26: TESTENV.COM
-27: TESTQSRT.COM
+26: TESTLTOF.C
+27: TESTBUG.C
 28: TESTVER.COM
 29: TESTIO.COM
 30: TESTUID.COM

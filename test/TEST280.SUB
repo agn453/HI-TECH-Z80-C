@@ -18,7 +18,7 @@ c280 -v -o2 testwild.c
 c280 -ftestovrx.sym -v -o2 testovr.c -lovr
 c280 -y -o2 -v testovr2.c testovrx.sym
 c280 -y -o2 -v testovr1.c testovrx.sym
-c280 -a -v -o2 testhell.c
+c280 -a -v -o2 testhell.c -lc
 c280 -v -o2 testpr.c
 testver
 era testio.sta

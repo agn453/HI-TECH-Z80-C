@@ -11,3 +11,11 @@ behaves like its namesake in the UNIX world.
 
 Jon Saxton
 June 2014
+
+Version 1.03 of PIPEMGR reverts the last sector byte count to the
+DOS Plus interpretation as the number of USED bytes.  To revert to
+the Jon Saxton ISIS interpretation (number of UNUSED bytes) change
+the conditional 'exact' to -1 and rebuild using MKRSX.SUB
+
+Tony Nicholson
+17-Mar-2022

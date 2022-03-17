@@ -108,7 +108,11 @@ static char *paths[] =
     "CGEN",
     "OPTIM",
     "CPP",
+#ifdef USE_Z80AS
+    "Z80AS",
+#else
     "ZAS",
+#endif
 #ifdef Z280
     "LIB280",
 #else

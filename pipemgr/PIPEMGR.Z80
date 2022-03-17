@@ -10,6 +10,13 @@
 ; by Jon Saxton, May 2014.  In general, comments with a space after the semi-
 ; colon are mine while those without a space are John Elliott's originals.
 ;------------------------------------------------------------------------------
+; 2022-03-17	agn	Tony Nicholson
+;
+; Reverted to use the DOS Plus convention for actual file size (added
+; an 'exact' conditional so that PIPEMGR can be rebuilt to use the
+; ISIS convention if required).
+;
+;------------------------------------------------------------------------------
 ; 2014-04-03	jrs
 ;
 ; Added one instruction and deleted four to change the sense of the "last
@@ -40,6 +47,16 @@ rename	equ	 0		; -1 to have > operator write to a temporary
 				;  0 to have > operator write to the named
 				;    file directly
 
+exact	equ	0		;agn - revert to DOS Plus mode
+				;  0 Selects the DOS Plus exact file size
+				;    where the last sector byte count
+				;    contains the number of USED bytes
+				;    but 0 means 128
+				; -1 Selects the ISX/ISIS convention for
+				;    exact file size where the last sector
+				;    byte count contains the number of
+				;    UNUSED bytes
+
 ; BDOS calls
 ; ==========
 CONIN	  equ	  1		; 01 - Input from console (keyboard)
@@ -53,7 +70,7 @@ RDCONBUF  equ	 10		; 0A - Read console buffer
 CONSTAT	  equ	 11		; 0B - Get console status
 SELDRV	  equ	 14		; 0E - Select drive
 OPENF	  equ	 15		; 0F - Open file
-CLOSEF	  equ	 16		; 10 - Close file
+CLOSEF    equ	 16		; 10 - Close file
 DELETEF	  equ	 19		; 13 - Delete file
 CURDRV	  equ	 25		; 19 - Get current drive
 SETDMA	  equ	 26		; 1A - Set DMA address
@@ -89,7 +106,7 @@ PMTERM2	  equ	127		; 7F - Emergency termination
 ;
 ; Note that fields beyond .rr are not part of the standard CP/M file control
 ; block.  Furthermore, the treatment of those fields in this RSX is different
-; from that defined in cpm.h and used Hi-Tech C programs.
+; from that defined in cpm.h and used by Hi-Tech C programs.
 ;------------------------------------------------------------------------------
 ;	      offset    length	description
 ;		--	  --	----------------------------------------
@@ -124,7 +141,7 @@ rname:	defb	'PIPEMGR '
 	defb	0,0,0
 
 ;------------------------------------------------------------------------------
-;		Initial entry.  This code is only exectued once.
+;		Initial entry.  This code is only executed once.
 ;------------------------------------------------------------------------------
 init:	push	bc
 	push	de
@@ -486,8 +503,14 @@ at_prev:
 	jp	nz,rcreat	; Delete and recreate on any error
 
 	ld	a,(iy+.??)	; Get last record byte count
+  if exact
 	and	a		; Done if not zero
-	jr	nz,hooky
+	jr	nz,hooky	;agn for UNUSED case (ISIS)
+  else
+	and	a		;agn zero means 128 USED (DOS Plus)
+	ld	a,128
+	jr	z,hooky
+  endif
 	ld	hl,outbuf	; Scan for EOF marker
 	ld	a,1Ah
 	ld	bc,128
@@ -495,8 +518,10 @@ at_prev:
 	inc	c
 	ld	a,c
 hooky:
+  if exact			;agn UNUSED case (ISIS)
 	neg			; Convert unused bytes to used bytes
 	and	7Fh
+  endif
 	ld	(outptr),a	; Ready for the next byte.
 	call	hookwb
 	xor	a
@@ -767,7 +792,7 @@ pfcb:				; Parse Filename Control Block
 chkver:
 	call	idrsx
 	jp	nz,fdos
-	ld	hl,0102h	;PIPEMGR 1.02
+	ld	hl,0103h	;agn bump version to PIPEMGR 1.03
 	ret
 
 con1:
@@ -1117,9 +1142,13 @@ CloseOut:
 	call	fcbdos
 	pop	af
 
+  if exact		;agn UNUSED last sector byte count
+
 ; Next instruction added to change meaning of last sector byte count from
 ; USED bytes to UNUSED bytes.  [jrs 03-04-2014]
 	neg
+
+  endif
 
 	and	7fh
 
@@ -1381,10 +1410,16 @@ openin:
 ; FCB[32] as the number of UNUSED bytes in the last sector.  We don't
 ; need to test for zero.  Instead, we unconditionally subtract the last
 ; sector byte count from the calculated file length.
-;;	jr	z,nomsb		;No adjustment necessary
-;;	ld	b,a
-;;	ld	a,80h
-;;	sub	b		;A=no. unused bytes
+
+  if not exact		;agn DOS Plus has USED last byte count
+
+	jr	z,nomsb		;No adjustment necessary
+	ld	b,a
+	ld	a,80h
+	sub	b		;A=no. unused bytes
+
+  endif
+
 ;------------------------------------------------------------------------
 	ld	c,a
 	ld	b,0

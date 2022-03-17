@@ -18,7 +18,7 @@ c -v -o testwild.c
 c -ftestovrx.sym -v -o testovr.c -lovr
 c -y -o -v testovr2.c testovrx.sym
 c -y -o -v testovr1.c testovrx.sym
-c -a -v -o testhell.c
+c -a -v -o testhell.c -lc
 c -v -o testpr.c
 testver
 era testio.sta

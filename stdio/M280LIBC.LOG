@@ -5,168 +5,173 @@
 10M>era m:lib280c.lib
 10M>libr
 A:LIBR     COM  (User 0)
-libr> r m:lib280c.lib \
-libr> start1.obj     \
-libr> getargs.obj    \
-libr> assert.obj     \
-libr> printf.obj     \
-libr> fprintf.obj    \
-libr> sprintf.obj    \
-libr> doprnt.obj     \
-libr> gets.obj       \
-libr> puts.obj       \
-libr> fwrite.obj     \
-libr> getw.obj       \
-libr> putw.obj       \
-libr> getenv.obj     \
-libr> putchar.obj    \
-libr> perror.obj     \
-libr> fputc.obj      \
-libr> flsbuf.obj     \
-libr> fopen.obj      \
-libr> freopen.obj    \
-libr> fseek.obj      \
-libr> fread.obj      \
-libr> rewind.obj     \
-libr> remove.obj     \
-libr> setbuf.obj     \
-libr> fscanf.obj     \
-libr> ctime.obj      \
-libr> cgets.obj      \
-libr> cputs.obj      \
-libr> sscanf.obj     \
-libr> scanf.obj      \
-libr> doscan.obj     \
-libr> ungetc.obj     \
-libr> fgetc.obj      \
-libr> filbuf.obj     \
-libr> stdclean.obj   \
-libr> fclose.obj     \
-libr> fflush.obj     \
-libr> buf.obj        \
-libr> exit.obj       \
-libr> open.obj       \
-libr> read.obj       \
-libr> write.obj      \
-libr> seek.obj       \
-libr> stat.obj       \
-libr> chmod.obj      \
-libr> fcbname.obj    \
-libr> rename.obj     \
-libr> creat.obj      \
-libr> time.obj       \
-libr> convtime.obj   \
-libr> timezone.obj   \
-libr> mktime.obj     \
-libr> isatty.obj     \
-libr> cleanup.obj    \
-libr> close.obj      \
-libr> unlink.obj     \
-libr> dup.obj        \
-libr> execl.obj      \
-libr> getfcb.obj     \
-libr> srand1.obj     \
-libr> abort.obj      \
-libr> getch.obj      \
-libr> signal.obj     \
-libr> getuid.obj     \
-libr> bdos.obj       \
-libr> bios.obj       \
-libr> _exit.obj      \
-libr> fakeclean.obj  \
-libr> fakecpcln.obj  \
-libr> sys_err.obj    \
-libr> memcpy.obj     \
-libr> memcmp.obj     \
-libr> memset.obj     \
-libr> strftime.obj \
-libr> asmod.obj      \
-libr> abs.obj        \
-libr> asallsh.obj    \
-libr> allsh.obj      \
-libr> asalrsh.obj    \
-libr> asar.obj       \
-libr> asdiv.obj      \
-libr> asladd.obj     \
-libr> asland.obj     \
-libr> asll.obj       \
-libr> asllrsh.obj    \
-libr> aslmul.obj     \
-libr> aslor.obj      \
-libr> aslsub.obj     \
-libr> aslxor.obj     \
-libr> atoi.obj       \
-libr> atol.obj       \
-libr> blkclr.obj     \
-libr> blkcpy.obj     \
-libr> calloc.obj     \
-libr> asmul.obj      \
-libr> bitfield.obj   \
-libr> ctype_.obj     \
-libr> getsp.obj      \
-libr> index.obj      \
-libr> strchr.obj     \
-libr> qsort.obj      \
-libr> malloc.obj     \
-libr> max.obj        \
-libr> idiv.obj       \
-libr> pnum.obj       \
-libr> ldiv.obj       \
-libr> swap.obj       \
-libr> aslr.obj       \
-libr> bmove.obj      \
-libr> imul.obj       \
-libr> rand.obj       \
-libr> alrsh.obj      \
-libr> lmul.obj       \
-libr> rindex.obj     \
-libr> strrchr.obj    \
-libr> sbrk.obj       \
-libr> shar.obj       \
-libr> shll.obj       \
-libr> shlr.obj       \
-libr> strcat.obj     \
-libr> strcmp.obj     \
-libr> strcpy.obj     \
-libr> strlen.obj     \
-libr> strncat.obj    \
-libr> strncmp.obj    \
-libr> strncpy.obj    \
-libr> strstr.obj   \
-libr> strnstr.obj  \
-libr> strdup.obj   \
-libr> stricmp.obj  \
-libr> stristr.obj  \
-libr> strnicmp.obj \
-libr> strnistr.obj \
-libr> strtok.obj   \
-libr> inout.obj      \
-libr> iregset.obj    \
-libr> isalpha.obj    \
-libr> isdigit.obj    \
-libr> islower.obj    \
-libr> isspace.obj    \
-libr> isupper.obj    \
-libr> ladd.obj       \
-libr> land.obj       \
-libr> linc.obj       \
-libr> llrsh.obj      \
-libr> longjmp.obj    \
-libr> lor.obj        \
-libr> brelop.obj     \
-libr> wrelop.obj     \
-libr> lrelop.obj     \
-libr> frelop.obj     \
-libr> lsub.obj       \
-libr> lxor.obj       \
-libr> csv.obj        \
-libr> rcsv.obj       \
-libr> tolower.obj    \
-libr> toupper.obj    \
+libr> r m:lib280c.lib	\
+libr> start1.obj	\
+libr> getargs.obj	\
+libr> assert.obj	\
+libr> printf.obj	\
+libr> fprintf.obj	\
+libr> sprintf.obj	\
+libr> doprnt.obj	\
+libr> gets.obj	\
+libr> puts.obj	\
+libr> fwrite.obj	\
+libr> getw.obj	\
+libr> putw.obj	\
+libr> close.obj	\
+libr> getenv.obj	\
+libr> putchar.obj	\
+libr> perror.obj	\
+libr> fputc.obj	\
+libr> flsbuf.obj	\
+libr> fopen.obj	\
+libr> freopen.obj	\
+libr> fseek.obj	\
+libr> fread.obj	\
+libr> rewind.obj	\
+libr> remove.obj	\
+libr> setbuf.obj	\
+libr> fscanf.obj	\
+libr> ctime.obj	\
+libr> cgets.obj	\
+libr> cputs.obj	\
+libr> sscanf.obj	\
+libr> scanf.obj	\
+libr> doscan.obj	\
+libr> ungetc.obj	\
+libr> fgetc.obj	\
+libr> filbuf.obj	\
+libr> stdclean.obj	\
+libr> fclose.obj	\
+libr> fflush.obj	\
+libr> buf.obj	\
+libr> exit.obj	\
+libr> open.obj	\
+libr> read.obj	\
+libr> write.obj	\
+libr> seek.obj	\
+libr> stat.obj	\
+libr> chmod.obj	\
+libr> fcbname.obj	\
+libr> rename.obj	\
+libr> creat.obj	\
+libr> time.obj	\
+libr> convtime.obj	\
+libr> timezone.obj	\
+libr> mktime.obj	\
+libr> isatty.obj	\
+libr> cleanup.obj	\
+libr> close.obj	\
+libr> unlink.obj	\
+libr> dup.obj	\
+libr> execl.obj	\
+libr> getfcb.obj	\
+libr> getenv.obj \
+libr> fopen.obj \
+libr> gets.obj \
+libr> fclose.obj \
+libr> fgetc.obj \
+libr> freopen.obj \
+libr> srand1.obj	\
+libr> abort.obj	\
+libr> getch.obj	\
+libr> signal.obj	\
+libr> getuid.obj	\
+libr> bdos.obj	\
+libr> bios.obj	\
+libr> _exit.obj	\
+libr> fakeclean.obj	\
+libr> fakecpcln.obj	\
+libr> sys_err.obj	\
+libr> memcpy.obj	\
+libr> memcmp.obj	\
+libr> memset.obj	\
+libr> strftime.obj	\
+libr> asmod.obj	\
+libr> abs.obj	\
+libr> asallsh.obj	\
+libr> allsh.obj	\
+libr> asalrsh.obj	\
+libr> asar.obj	\
+libr> asdiv.obj	\
+libr> asladd.obj	\
+libr> asland.obj	\
+libr> asll.obj	\
+libr> asllrsh.obj	\
+libr> aslmul.obj	\
+libr> aslor.obj	\
+libr> aslsub.obj	\
+libr> aslxor.obj	\
+libr> atoi.obj	\
+libr> atol.obj	\
+libr> blkclr.obj	\
+libr> blkcpy.obj	\
+libr> calloc.obj	\
+libr> asmul.obj	\
+libr> bitfield.obj	\
+libr> ctype_.obj	\
+libr> getsp.obj	\
+libr> index.obj	\
+libr> strchr.obj	\
+libr> qsort.obj	\
+libr> malloc.obj	\
+libr> max.obj	\
+libr> idiv.obj	\
+libr> pnum.obj	\
+libr> ldiv.obj	\
+libr> swap.obj	\
+libr> aslr.obj	\
+libr> bmove.obj	\
+libr> imul.obj	\
+libr> rand.obj	\
+libr> alrsh.obj	\
+libr> lmul.obj	\
+libr> rindex.obj	\
+libr> strrchr.obj	\
+libr> sbrk.obj	\
+libr> shar.obj	\
+libr> shll.obj	\
+libr> shlr.obj	\
+libr> strcat.obj	\
+libr> strcmp.obj	\
+libr> strcpy.obj	\
+libr> strlen.obj	\
+libr> strncat.obj	\
+libr> strncmp.obj	\
+libr> strncpy.obj	\
+libr> strstr.obj	\
+libr> strnstr.obj	\
+libr> strdup.obj	\
+libr> stricmp.obj	\
+libr> stristr.obj	\
+libr> strnicmp.obj	\
+libr> strnistr.obj	\
+libr> strtok.obj	\
+libr> inout.obj	\
+libr> iregset.obj	\
+libr> isalpha.obj	\
+libr> isdigit.obj	\
+libr> islower.obj	\
+libr> isspace.obj	\
+libr> isupper.obj	\
+libr> ladd.obj	\
+libr> land.obj	\
+libr> linc.obj	\
+libr> llrsh.obj	\
+libr> longjmp.obj	\
+libr> lor.obj	\
+libr> brelop.obj	\
+libr> wrelop.obj	\
+libr> lrelop.obj	\
+libr> frelop.obj	\
+libr> lsub.obj	\
+libr> lxor.obj	\
+libr> csv.obj	\
+libr> rcsv.obj	\
+libr> tolower.obj	\
+libr> toupper.obj	\
 libr> xtoi.obj
 
-10M>; Library m:lib280c.lib created
-10M>; Remember to copy it to current directory and A0:
 10M>libr s m:lib280c.lib
 A:LIBR     COM  (User 0)
 start1.obj      D __argc_       U __getargs     D startup       
@@ -199,6 +204,10 @@ getw.obj        U _fgetc        D _getw         U cret          U csv
 		U indir         U ncsv          U shal          
 putw.obj        U _fputc        D _putw         U cret          U csv         
 		U indir         U ncsv          U shar          
+close.obj       U __fcb         U _bdos         D _close        U _getenv     
+		U _getuid       U _setuid       U _toupper      U amul        
+		U brelop        U cret          U csv           U indir       
+		U ncsv          
 getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
 		U _fopen        D _getenv       U _memcpy       U _sbrk       
 		U _strcpy       U _strlen       U _strncmp      U cret        
@@ -311,9 +320,10 @@ isatty.obj      U __fcb         D _isatty       U amul          U cret
 cleanup.obj     D __cpm_clean   D __fcb         D __initrsx     D __putrno    
 		U _close        U alrsh         U brelop        U cret        
 		U csv           U indir         U ncsv          
-close.obj       U __fcb         U _bdos         D _close        U _getuid     
-		U _setuid       U amul          U brelop        U cret        
-		U csv           U indir         U ncsv          
+close.obj       U __fcb         U _bdos         D _close        U _getenv     
+		U _getuid       U _setuid       U _toupper      U amul        
+		U brelop        U cret          U csv           U indir       
+		U ncsv          
 unlink.obj      U _bdos         U _errno        U _getuid       U _setfcb     
 		U _setuid       D _unlink       U cret          U indir       
 		U ncsv          
@@ -326,6 +336,21 @@ getfcb.obj      U __ctype_      U __fcb         U _atoi         D _getfcb
 		U _getuid       D _putfcb       D _setfcb       U _toupper    
 		U brelop        U cret          U csv           U indir       
 		U ncsv          U wrelop        
+getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
+		U _fopen        D _getenv       U _memcpy       U _sbrk       
+		U _strcpy       U _strlen       U _strncmp      U cret        
+		U csv           U indir         U ncsv          U wrelop      
+fopen.obj       U __iob         D _fopen        U _freopen      U cret        
+		U csv           U indir         U ncsv          
+gets.obj        U __iob         U _fgetc        D _fgets        D _gets       
+		U _strlen       U cret          U csv           U indir       
+		U ncsv          
+fclose.obj      U __buffree     U _close        D _fclose       U _fflush     
+		U cret          U csv           U indir         U ncsv        
+fgetc.obj       U __filbuf      D _fgetc        
+freopen.obj     U __bufallo     U _close        U _creat        U _errno      
+		U _fclose       D _freopen      U _fseek        U _open       
+		U cret          U csv           U indir         U ncsv        
 srand1.obj      U _kbhit        U _putchar      U _srand        D _srand1     
 		U cret          U csv           U indir         U ncsv        
 abort.obj       D _abort        U _bdos         U _exit         U cret        
@@ -459,5 +484,10 @@ toupper.obj     D _toupper
 xtoi.obj        D _ishex        D _xtoi         
 
 10M>e:
+10E>pip e:=m:lib280c.lib
+A:PIP      COM  (User 0)
+
+10E>; Library m:lib280c.lib created
+10E>; Remember to copy it to current directory and A0:
 10E>put console to console
 A:PUT      COM  (User 0)

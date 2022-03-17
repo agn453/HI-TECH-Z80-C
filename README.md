@@ -1412,8 +1412,6 @@ There's newly optimised Z280 object libraries (LIB280C.LIB and LIB280F.LIB)
 and CP/M COM  files in the *z280dist* folder, including the new V3.09-13
 compiler front-end as ```C280-13.COM``` (which you should copy and rename to
 ```C280.COM``` on the drive where you install the rest of the compiler files).
-Also, I've temporarily put the source-code for the new C309-13.C in the
-*z280dist* folder.
 
 The Z280 binary distribution library has been updated too. Get it from
 
@@ -1431,7 +1429,8 @@ Ogden to revert the interpretation of exact file sizes back to John
 Elliot's original DOS Plus interpretation.
 
 As mentioned in the release v3.09-3 notes (above), there are two common
-conventions that can be used to record exact file sizes in CP/M.
+conventions that can be used to record exact file sizes in CP/M 3 and
+DOS Plus.
 
 * Record the number of bytes used in the last sector (as used by DOS Plus)
 
@@ -1467,4 +1466,4 @@ exact file size convention.
 
 
 --
-Tony Nicholson, Wednesday 16-Mar-2022
+Tony Nicholson, Wednesday 18-Mar-2022

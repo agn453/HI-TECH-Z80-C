@@ -10,11 +10,11 @@
 ; by Jon Saxton, May 2014.  In general, comments with a space after the semi-
 ; colon are mine while those without a space are John Elliott's originals.
 ;------------------------------------------------------------------------------
-; 2022-03-17	agn	Tony Nicholson
+; 2022-03-18	agn	Tony Nicholson
 ;
 ; Reverted to use the DOS Plus convention for actual file size (added
 ; an 'exact' conditional so that PIPEMGR can be rebuilt to use the
-; ISIS convention if required).
+; ISIS convention if required), and bumped version to 1.03.
 ;
 ;------------------------------------------------------------------------------
 ; 2014-04-03	jrs
@@ -503,14 +503,8 @@ at_prev:
 	jp	nz,rcreat	; Delete and recreate on any error
 
 	ld	a,(iy+.??)	; Get last record byte count
-  if exact
 	and	a		; Done if not zero
-	jr	nz,hooky	;agn for UNUSED case (ISIS)
-  else
-	and	a		;agn zero means 128 USED (DOS Plus)
-	ld	a,128
-	jr	z,hooky
-  endif
+	jr	nz,hooky
 	ld	hl,outbuf	; Scan for EOF marker
 	ld	a,1Ah
 	ld	bc,128
@@ -520,8 +514,8 @@ at_prev:
 hooky:
   if exact			;agn UNUSED case (ISIS)
 	neg			; Convert unused bytes to used bytes
-	and	7Fh
   endif
+	and	7Fh
 	ld	(outptr),a	; Ready for the next byte.
 	call	hookwb
 	xor	a

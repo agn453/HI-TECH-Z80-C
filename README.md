@@ -1445,17 +1445,21 @@ variable.  The C library close() routine now detects the mode to use from
 the following line in the system ENVIRON file (usually located at
 0:A:ENVIRON) -
 
-```EXACT=DOSPLUS``` selects DOS Plus mode, and ```EXACT=ISX``` selects
-ISX/ISIS mode.  If you don't define ```EXACT``` (or its value doesn't start
+```EXACT=DOSPLUS``` selects DOS Plus mode, and
+
+```EXACT=ISX``` selects ISX/ISIS mode.
+
+If you don't define ```EXACT``` (or its value doesn't start
 with a ```D``` or ```I```) the default is to not use exact file size - which
 is compatible with CP/M 2.2 where the last sector byte count is always zero.
 
 Note: You need to take extra care if you're using an emulator like ZXCC
 which has been updated to only support the ```EXACT=DOSPLUS```
 convention or the CP/M 2.2 interpretation (as per the original version
-by John Elliott).  Using the wrong mode will lead to file truncation in
-the last sector.  The CP/M 2.2 mode causes ```Ctrl-Z``` to be written at
-the end of text files (as per the CP/M convention).
+by John Elliott).  Using the wrong mode will cause the file will be
+extended or truncated in the last sector.  The CP/M 2.2 mode causes
+```Ctrl-Z``` to be written at the end of text files (as per the CP/M
+convention).
 
 The PIPEMGR source code has also been reverted to support only the
 DOS plus and CP/M 2.2 file size convention.  Piping a text concatenation

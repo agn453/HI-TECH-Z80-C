@@ -66,12 +66,6 @@ libr
 <dup.obj	\
 <execl.obj	\
 <getfcb.obj	\
-<getenv.obj \
-<fopen.obj \
-<gets.obj \
-<fclose.obj \
-<fgetc.obj \
-<freopen.obj \
 <srand1.obj	\
 <abort.obj	\
 <getch.obj	\

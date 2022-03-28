@@ -2,6 +2,8 @@
 #include "cpm.h"
 #include <stdio.h>
 
+extern char _exact;	/* exact file size mode */
+
 int main(int argc, char ** argv)
 {
     int i;
@@ -49,6 +51,21 @@ int main(int argc, char ** argv)
     printf("BIOS Address (0x%04x)\n",*biosaddr-3);
     tpa=((*bdosaddr-6)-0x100);
     fprintf(stdout,"TPA Size (%u.%uK)\n",tpa/1024,(tpa % 1024)/100);
+
+    switch(_exact) {
+    case 'C':
+        printf("Exact file size not used (CP/M 2 mode)\n");
+        break;
+    case 'D':
+        printf("Using DOS Plus exact file size mode\n");
+        break;
+    case 'I':
+        printf("Using ISIS exact file size mode\n");
+    default:
+        printf("Unknown exact file size mode 0%xH\n",_exact);
+        break;
+    }
+
     return 0;
 }
 

@@ -1,7 +1,7 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Wed 16/03/2022 12:35:16
+Mon 28/03/2022 14:37:16
 10E>; Compile all LIBC12.LIB modules from sources
 10E>c
 A:C        COM  (User 0)

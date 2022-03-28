@@ -1,10 +1,10 @@
 era makelibc.log
 put console output to file makelibc.log [system]
-; Use librarian to place all modules in LIBC13.LIB
+; Use librarian to place all modules in LIBC14.LIB
 ; NB: the ordering is important for resolving dependencies at link time
-era LIBC13.lib
+era LIBC14.lib
 libr
-<r LIBC13.lib	\
+<r LIBC14.lib	\
 <start1.obj	\
 <getargs.obj	\
 <assert.obj	\
@@ -64,12 +64,6 @@ libr
 <dup.obj  	\
 <execl.obj	\
 <getfcb.obj	\
-<getenv.obj \
-<fopen.obj \
-<gets.obj \
-<fclose.obj \
-<fgetc.obj \
-<freopen.obj \
 <srand1.obj	\
 <abort.obj	\
 <getch.obj	\
@@ -169,6 +163,6 @@ libr
 <tolower.obj	\
 <toupper.obj	\
 <xtoi.obj
-; Library LIBC13.LIB created
-libr s LIBC13.lib
+; Library LIBC14.LIB created
+libr s LIBC14.lib
 put console to console

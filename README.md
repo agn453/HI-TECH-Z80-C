@@ -1439,6 +1439,11 @@ or
 * Record the number of UNUSED bytes in the last sector (used by ISX for
 ISIS emulation)
 
+NB: The compiler release V3.09-13 was set to select this via
+an ```EXACT``` environment variable (defined in the 0:A:ENVIRON file).
+This feature has been removed from the current release V3.09-14 (and
+subsequent versions) and replaced with the following.
+
 The start-up module (CRTCPM.OBJ) detects whether you are running the
 compiler under CP/M 2 or CP/M 3 (or DOS Plus) and defaults a global
 variable ```_exact``` to enable DOS Plus interpretation of exact file

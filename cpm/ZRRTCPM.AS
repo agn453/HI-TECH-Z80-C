@@ -12,7 +12,7 @@
 	psect	cpm
 	defs	100h		;Base of CP/M's TPA
 	global	start,_main,_exit,__Lbss,__Hstack, __z3env
-	global	__piped,__initrsx
+	global	__piped,__initrsx,__exact
 
 
 reloc:		; DOS Protection	8080/Z80	x86
@@ -235,6 +235,8 @@ __z3env:
 	defw	0
 __piped:
         defw    0
+__exact:		; Exact file size mode
+	defb	'C',0	; 'C' is CP/M 2 (none), 'I' is ISIS, 'D' is DOSPLUS
 rsxpb:	defb	79h,1
 	defw	pipesgn
 pipesgn:

@@ -6,7 +6,7 @@
 
 	psect	text
 	defs	100h		;Base of CP/M's TPA
-	global	start,_main,_exit,__Hdata, __trap, __piped
+	global	start,_main,_exit,__Hdata, __trap, __piped,__exact
 start:	ld	hl,(6)		;base address of fdos
 	ld	sp,hl		;stack grows downwards
 	ld	de,__Hdata	;end of initialized data
@@ -68,6 +68,8 @@ start:	ld	hl,(6)		;base address of fdos
 	psect	data
 __piped:
         defw    0
+__exact:		; Exact file size mode
+	defb	'C',0	; 'C' is CP/M 2 (none), 'I' is ISIS, 'D' is DOSPLUS
 nularg:	defm	'main'
 	defb	0
 	end	start

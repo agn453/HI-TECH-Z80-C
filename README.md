@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-13 (see Modification History below).
+The latest release is V3.09-14 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -265,8 +265,8 @@ Exact file sizes (CP/M 3 and DOS+ v2.5)
 
     (When running on CP/M 2 lsbc is always zero.)
 
-NB: This change is now selectable for releases v3.09-13 (and later) by
-    setting an EXACT environment variable in the ENVIRON file.
+NB: This change is now detected automatically for releases v3.09-14 (and
+    later) by the start-up module (CRTCPM.OBJ) - see below.
 
 strcasecmp()
 
@@ -1432,29 +1432,46 @@ As mentioned in the release v3.09-3 notes (above), there are two common
 conventions that can be used to record exact file sizes in CP/M 3 and
 DOS Plus.
 
-* Record the number of bytes used in the last sector (as used by DOS Plus)
+* Record the number of bytes USED in the last sector (as used by DOS Plus)
 
 or
 
-* Record the number of unused bytes in the last sector (used by ISX for
+* Record the number of UNUSED bytes in the last sector (used by ISX for
 ISIS emulation)
 
+The start-up module (CRTCPM.OBJ) detects whether you are running the
+compiler under CP/M 2 or CP/M 3 (or DOS Plus) and defaults a global
+variable ```_exact``` to enable DOS Plus interpretation of exact file
+size.
+
 To allow you to continue with the alternative ISX/ISIS interpretation,
-you can now select this by defining an ```EXACT``` environment
-variable.  The C library close() routine now detects the mode to use from
-the following line in the system ENVIRON file (usually located at
-0:A:ENVIRON) -
+you can override the value of the global variable as follows -
 
-```EXACT=DOSPLUS``` selects DOS Plus mode, and
+```
+#include <stdio.h>
+extern char _exact;
+..
+int main(int argc, char ** argv)
+{
+    _exact = 'I';  /* Enable ISIS exact file size */
+..
+}
+```
 
-```EXACT=ISX``` selects ISX/ISIS mode.
+The values of ```_exact``` can also be only one of the following -
 
-If you don't define ```EXACT``` (or its value doesn't start
-with a ```D``` or ```I```) the default is to not use exact file size - which
-is compatible with CP/M 2.2 where the last sector byte count is always zero.
+```
+    _exact = 'C';  /* No exact file size - like CP/M 2.2 uses */
+or
+    _exact = 'D';  /* DOS Plus convention for exact file size */
+```
+
+The C library close() routine uses the selected exact file size mode
+to write the last record USED (DOS Plus) or UNUSED (ISIS) byte value
+to the directory entry.
 
 Note: You need to take extra care if you're using an emulator like ZXCC
-which has been updated to only support the ```EXACT=DOSPLUS```
+which has been updated to only support the DOS Plus
 convention or the CP/M 2.2 interpretation (as per the original version
 by John Elliott).  Using the wrong mode will cause the file will be
 extended or truncated in the last sector.  The CP/M 2.2 mode causes
@@ -1470,4 +1487,4 @@ exact file size convention.
 
 
 --
-Tony Nicholson, Friday 18-Mar-2022
+Tony Nicholson, Monday 28-Mar-2022

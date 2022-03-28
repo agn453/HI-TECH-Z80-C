@@ -8,7 +8,7 @@
 	defs	100h		;Base of CP/M's TPA
 
 	global	start,_main,_exit,__Hbss, __Lbss, __argc_, __z3env, startup
-        global  __piped,__initrsx
+        global  __piped,__initrsx,__exact
 
 ;	Start with MS-DOS x86 detection
 start:		; DOS Protection	8080/Z80	x86
@@ -107,9 +107,12 @@ memok:
 	xor	a		; CP/M 2.2 has no RSX
 	jr	norsx
 
+iscpm3:	ld	hl,__exact	; Default exact file size
+	inc	(hl)		;  to DOSplus mode ('C' becomes 'D')
+
 ;If the PIPEMGR RSX is loaded, initialise it.
 
-iscpm3:	ld	c,60		; RSX call
+	ld	c,60		; RSX call
 	ld	de,rsxpb	; RSX data
 	call	5
 	ld	a,h
@@ -160,6 +163,8 @@ __z3env:
 	defw	0
 __piped:
         defw    0
+__exact:		; Exact file size mode
+	defb	'C',0	; 'C' is CP/M 2 (none), 'I' is ISIS, 'D' is DOSPLUS
 rsxpb:	defb	79h,1
 	defw	pipesgn
 pipesgn:

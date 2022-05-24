@@ -1,11 +1,11 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Mon 28/03/2022 14:37:16
-10E>; Compile all LIBC12.LIB modules from sources
+Tue 24/05/2022 09:56:58
+10E>; Compile all LIBC15.LIB modules from sources
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-13
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c abort.c \
@@ -175,7 +175,7 @@ ISDIGIT.AS
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-13
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c islower.as \
@@ -231,7 +231,7 @@ PUTCHAR.C
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-13
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c puts.c \

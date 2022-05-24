@@ -3,6 +3,7 @@
 10E>; NB: the ordering is important for resolving dependencies at link time
 10E>m:
 10M>era m:lib280c.lib
+No File
 10M>libr
 A:LIBR     COM  (User 0)
 libr> r m:lib280c.lib	\
@@ -66,12 +67,6 @@ libr> unlink.obj	\
 libr> dup.obj	\
 libr> execl.obj	\
 libr> getfcb.obj	\
-libr> getenv.obj \
-libr> fopen.obj \
-libr> gets.obj \
-libr> fclose.obj \
-libr> fgetc.obj \
-libr> freopen.obj \
 libr> srand1.obj	\
 libr> abort.obj	\
 libr> getch.obj	\
@@ -204,10 +199,9 @@ getw.obj        U _fgetc        D _getw         U cret          U csv
 		U indir         U ncsv          U shal          
 putw.obj        U _fputc        D _putw         U cret          U csv         
 		U indir         U ncsv          U shar          
-close.obj       U __fcb         U _bdos         D _close        U _getenv     
-		U _getuid       U _setuid       U _toupper      U amul        
-		U brelop        U cret          U csv           U indir       
-		U ncsv          
+close.obj       U __exact       U __fcb         U _bdos         D _close      
+		U _getuid       U _setuid       U amul          U brelop      
+		U cret          U csv           U indir         U ncsv        
 getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
 		U _fopen        D _getenv       U _memcpy       U _sbrk       
 		U _strcpy       U _strlen       U _strncmp      U cret        
@@ -320,10 +314,9 @@ isatty.obj      U __fcb         D _isatty       U amul          U cret
 cleanup.obj     D __cpm_clean   D __fcb         D __initrsx     D __putrno    
 		U _close        U alrsh         U brelop        U cret        
 		U csv           U indir         U ncsv          
-close.obj       U __fcb         U _bdos         D _close        U _getenv     
-		U _getuid       U _setuid       U _toupper      U amul        
-		U brelop        U cret          U csv           U indir       
-		U ncsv          
+close.obj       U __exact       U __fcb         U _bdos         D _close      
+		U _getuid       U _setuid       U amul          U brelop      
+		U cret          U csv           U indir         U ncsv        
 unlink.obj      U _bdos         U _errno        U _getuid       U _setfcb     
 		U _setuid       D _unlink       U cret          U indir       
 		U ncsv          
@@ -336,21 +329,6 @@ getfcb.obj      U __ctype_      U __fcb         U _atoi         D _getfcb
 		U _getuid       D _putfcb       D _setfcb       U _toupper    
 		U brelop        U cret          U csv           U indir       
 		U ncsv          U wrelop        
-getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
-		U _fopen        D _getenv       U _memcpy       U _sbrk       
-		U _strcpy       U _strlen       U _strncmp      U cret        
-		U csv           U indir         U ncsv          U wrelop      
-fopen.obj       U __iob         D _fopen        U _freopen      U cret        
-		U csv           U indir         U ncsv          
-gets.obj        U __iob         U _fgetc        D _fgets        D _gets       
-		U _strlen       U cret          U csv           U indir       
-		U ncsv          
-fclose.obj      U __buffree     U _close        D _fclose       U _fflush     
-		U cret          U csv           U indir         U ncsv        
-fgetc.obj       U __filbuf      D _fgetc        
-freopen.obj     U __bufallo     U _close        U _creat        U _errno      
-		U _fclose       D _freopen      U _fseek        U _open       
-		U cret          U csv           U indir         U ncsv        
 srand1.obj      U _kbhit        U _putchar      U _srand        D _srand1     
 		U cret          U csv           U indir         U ncsv        
 abort.obj       D _abort        U _bdos         U _exit         U cret        

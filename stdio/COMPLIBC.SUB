@@ -1,7 +1,7 @@
 era complibc.log
 put console output to file complibc.log [system]
 date
-; Compile all LIBC12.LIB modules from sources
+; Compile all LIBC15.LIB modules from sources
 c
 <-o -c abort.c \
 <abs.as \

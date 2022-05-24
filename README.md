@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-14 (see Modification History below).
+The latest release is V3.09-15 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1491,5 +1491,23 @@ the last sector).  Files written to by PIPEMGR will use the DOS Plus
 exact file size convention.
 
 
+## Fixes to longjmp() and detect underflow in floating point division
+
+Mark Ogden has supplied a couple of fixes.
+
+The first was a result of an incorrect assumption about a compiler
+optimisation from later versions of the HI-TECH Z80 cross-compiler.
+V3.09-x does not pass an initial function argument in the DE register.
+Only the longjmp() routine (in gen/LONGJMP.AS) is affected.
+
+The second concerns a floating point division not detecting an underflow
+condition.  The fldiv() routine (in float/FLOAT.AS) now detects this
+and returns a zero result.
+
+Updated LIBC.LIB and LIBF.LIB contain the fixes (as well as the Z280
+versions LIB280C.LIB and LIB280F.LIB), and I've bumped the release
+to V3.09-15.
+
+
 --
-Tony Nicholson, Monday 28-Mar-2022
+Tony Nicholson, Tuesday 24-May-2022

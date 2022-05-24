@@ -1,68 +1,68 @@
 
 10D>date
 A:DATE     COM  (User 0)
-Fri 04/02/2022 08:32:27
+Tue 24/05/2022 09:25:10
 10D>;----------  MAKELIBF.SUB  ----------
 10D>; Assumes DEHUFF -X FLOAT.HUF has extracted
 10D>; all sources to the default drive
 10D>;------------------------------------
 10D>C -C -O PRINTF.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O FPRINTF.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O SPRINTF.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O SCANF.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O FSCANF.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O SSCANF.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O DOPRNT.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O DOSCAN.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O ATOF.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O FNUM.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
@@ -71,85 +71,85 @@ A:ZAS      COM  (User 0)
 
 10D>C -C -O TAN.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O ACOS.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O ASIN.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O ATAN2.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O ATAN.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O COS.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O SIN.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O SINH.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O COSH.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O TANH.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O EXP.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O LOG.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O EVALPOLY.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O SQRT.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
@@ -158,19 +158,19 @@ A:ZAS      COM  (User 0)
 
 10D>C -C -O FABS.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O CEIL.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 
 10D>C -C -O FLOOR.C
 A:C        COM  (User 0)
-Hi-Tech C Compiler (CP/M-80) V3.09-12
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 

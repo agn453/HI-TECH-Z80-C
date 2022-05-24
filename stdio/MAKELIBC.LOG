@@ -1,11 +1,11 @@
 
-10E>; Use librarian to place all modules in LIBC14.LIB
+10E>; Use librarian to place all modules in LIBC15.LIB
 10E>; NB: the ordering is important for resolving dependencies at link time
-10E>era LIBC14.lib
+10E>era LIBC15.lib
 No File
 10E>libr
 A:LIBR     COM  (User 0)
-libr> r LIBC14.lib	\
+libr> r LIBC15.lib	\
 libr> start1.obj	\
 libr> getargs.obj	\
 libr> assert.obj	\
@@ -165,8 +165,8 @@ libr> tolower.obj	\
 libr> toupper.obj	\
 libr> xtoi.obj
 
-10E>; Library LIBC14.LIB created
-10E>libr s LIBC14.lib
+10E>; Library LIBC15.LIB created
+10E>libr s LIBC15.lib
 A:LIBR     COM  (User 0)
 start1.obj      D __argc_       U __getargs     D startup       
 getargs.obj     U __argc_       D __getargs     U __iob         U _bdos       

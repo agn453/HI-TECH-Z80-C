@@ -460,6 +460,7 @@ fldiv:
 	add	a,h
 	ld	h,a
 	pop	bc
+    jp  m,fpovrflw  ;PMO catch under/overflow
 	ld	a,c
 	xor	b		;get sign
 	jp	p,1f

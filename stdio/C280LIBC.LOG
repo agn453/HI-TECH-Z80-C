@@ -1,7 +1,7 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Mon 28/03/2022 15:07:27
+Tue 24/05/2022 10:23:09
 10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>;
 10E>; Sources are on drive E:
@@ -13,7 +13,7 @@ A:PIP      COM  (User 0)
 
 10M>c280
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:abort.c \
@@ -676,7 +676,7 @@ ERA $$EXEC.$$$
 
 10M>c280
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:islower.as \
@@ -877,7 +877,7 @@ ERA $$EXEC.$$$
 
 10M>c280
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-13
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-14
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:puts.c \

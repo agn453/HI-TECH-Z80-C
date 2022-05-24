@@ -4,10 +4,10 @@
 	global	_longjmp, _setjmp
 
 _setjmp:
-	pop	bc
-	push	de
+	pop	bc		;return address
 	ex	(sp),iy		;jmp_buf ptr to IY
 	pop	de		;old IY to DE
+	push	de		;keep stack balanced for return
 	ld	hl,0
 	add	hl,sp
 	ld	(iy+0),l	;save SP in jmp_buf
@@ -27,10 +27,9 @@ _setjmp:
 	ret
 
 _longjmp:
-	push	de
+	pop	bc		; return address - junk now
 	pop	iy		;jmp_buf ptr to IY
-	ld	e,c		;return val to DE
-	ld	d,b
+	pop	de		; return val in de as stack will change
 	ld	l,(iy+0)	;restore SP from jmp_buf
 	ld	h,(iy+1)
 	ld	sp,hl

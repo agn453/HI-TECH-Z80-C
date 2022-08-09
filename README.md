@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-15 (see Modification History below).
+The latest release is V3.09-16 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1509,5 +1509,28 @@ versions LIB280C.LIB and LIB280F.LIB), and I've bumped the release
 to V3.09-15.
 
 
+## Fixes to the compiler driver
+
+As reported by Mark Ogden, there are a couple of bugs in the compiler
+driver program.
+
+* The first is regarding the use of the self-relocating (-A) option,
+where the code compiled for the linker should use the ```cpm``` psect 
+segment (as per the relocatable start-up module RRTCPM.OBJ); and
+
+* If you specify a .SYM file on the command line without specifying
+the overlay (-Y) option, the compiler driver tries to assemble a
+non-existing temporary file.
+
+The latest compiler driver (in cpm/C309-16.C) addresses both by passing
+the ```cpm``` psect to the linker and ignores .SYM files unless the
+overlay (-Y) option is specified.
+
+The binaries for the compiler driver (in dist//C309-16.COM and
+z280dist/C280-16.COM) have been updated as well as the binary distribution
+library files to be release V3.09-16 (download link at the top of
+this README file).
+
+
 --
-Tony Nicholson, Tuesday 24-May-2022
+Tony Nicholson, Tuesday 09-Aug-2022

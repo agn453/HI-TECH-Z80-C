@@ -1531,6 +1531,12 @@ z280dist/C280-16.COM) have been updated as well as the binary distribution
 library files to be release V3.09-16 (download link at the top of
 this README file).
 
+## Minor LIBC ordering fix
+
+The C library has had the ordering of modules adjusted to resolve
+an undefined symbol error (thanks to Mark Ogden for bringing this 
+to my attention).
+
 
 --
-Tony Nicholson, Tuesday 09-Aug-2022
+Tony Nicholson, Monday 06-Feb-2023

@@ -1,10 +1,10 @@
 era makelibc.log
 put console output to file makelibc.log [system]
-; Use librarian to place all modules in LIBC15.LIB
+; Use librarian to place all modules in LIBC17.LIB
 ; NB: the ordering is important for resolving dependencies at link time
-era LIBC15.lib
+era LIBC17.lib
 libr
-<r LIBC15.lib	\
+<r LIBC17.lib	\
 <start1.obj	\
 <getargs.obj	\
 <assert.obj	\
@@ -12,12 +12,12 @@ libr
 <fprintf.obj	\
 <sprintf.obj	\
 <doprnt.obj	\
+<getenv.obj	\
 <gets.obj	\
 <puts.obj	\
 <fwrite.obj	\
 <getw.obj	\
 <putw.obj	\
-<getenv.obj	\
 <putchar.obj	\
 <perror.obj	\
 <fputc.obj	\
@@ -163,6 +163,6 @@ libr
 <tolower.obj	\
 <toupper.obj	\
 <xtoi.obj
-; Library LIBC15.LIB created
-libr s LIBC15.lib
+; Library LIBC17.LIB created
+libr s LIBC17.lib
 put console to console

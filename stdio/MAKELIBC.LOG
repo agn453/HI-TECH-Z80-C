@@ -1,11 +1,11 @@
 
-10E>; Use librarian to place all modules in LIBC15.LIB
+10E>; Use librarian to place all modules in LIBC17.LIB
 10E>; NB: the ordering is important for resolving dependencies at link time
-10E>era LIBC15.lib
+10E>era LIBC17.lib
 No File
 10E>libr
 A:LIBR     COM  (User 0)
-libr> r LIBC15.lib	\
+libr> r LIBC17.lib	\
 libr> start1.obj	\
 libr> getargs.obj	\
 libr> assert.obj	\
@@ -13,12 +13,12 @@ libr> printf.obj	\
 libr> fprintf.obj	\
 libr> sprintf.obj	\
 libr> doprnt.obj	\
+libr> getenv.obj	\
 libr> gets.obj	\
 libr> puts.obj	\
 libr> fwrite.obj	\
 libr> getw.obj	\
 libr> putw.obj	\
-libr> getenv.obj	\
 libr> putchar.obj	\
 libr> perror.obj	\
 libr> fputc.obj	\
@@ -165,8 +165,8 @@ libr> tolower.obj	\
 libr> toupper.obj	\
 libr> xtoi.obj
 
-10E>; Library LIBC15.LIB created
-10E>libr s LIBC15.lib
+10E>; Library LIBC17.LIB created
+10E>libr s LIBC17.lib
 A:LIBR     COM  (User 0)
 start1.obj      D __argc_       U __getargs     D startup       
 getargs.obj     U __argc_       D __getargs     U __iob         U _bdos       
@@ -187,6 +187,10 @@ sprintf.obj     U __doprnt      D _sprintf      U cret          U csv
 doprnt.obj      U __ctype_      D __doprnt      U __pnum        U _atoi       
 		U _fputc        U _strlen       U brelop        U cret        
 		U csv           U indir         U ncsv          U wrelop      
+getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
+		U _fopen        D _getenv       U _memcpy       U _sbrk       
+		U _strcpy       U _strlen       U _strncmp      U cret        
+		U csv           U indir         U ncsv          U wrelop      
 gets.obj        U __iob         U _fgetc        D _fgets        D _gets       
 		U _strlen       U cret          U csv           U indir       
 		U ncsv          
@@ -198,10 +202,6 @@ getw.obj        U _fgetc        D _getw         U cret          U csv
 		U indir         U ncsv          U shal          
 putw.obj        U _fputc        D _putw         U cret          U csv         
 		U indir         U ncsv          U shar          
-getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
-		U _fopen        D _getenv       U _memcpy       U _sbrk       
-		U _strcpy       U _strlen       U _strncmp      U cret        
-		U csv           U indir         U ncsv          U wrelop      
 putchar.obj     U __iob         U _fgetc        U _fputc        D _getchar    
 		D _putchar      U cret          U csv           U indir       
 		U ncsv          

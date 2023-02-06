@@ -13,13 +13,13 @@ libr
 <fprintf.obj	\
 <sprintf.obj	\
 <doprnt.obj	\
+<getenv.obj	\
 <gets.obj	\
 <puts.obj	\
 <fwrite.obj	\
 <getw.obj	\
 <putw.obj	\
 <close.obj	\
-<getenv.obj	\
 <putchar.obj	\
 <perror.obj	\
 <fputc.obj	\

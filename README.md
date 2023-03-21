@@ -1544,7 +1544,7 @@ left behind a stray ```$$EXEC.$$$``` file on the current drive (or on the
 temporary drive if you specified a TMP environment variable in your
 ```0:A:ENVIRON.``` file).  This now fixed.
 
-I've also bumped the version number to be release V3.09-17).
+I've also bumped the version number to be release V3.09-17.
 
 
 --

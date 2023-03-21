@@ -23,7 +23,7 @@ https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 I welcome bug reports/fixes and additional commentry and discussion.
 
 You can raise an issue here on GitHub or contact me directly via e-mail
-at <agn453@gmail.com> or by posting to the USENET newsgroup
+at <tony.nicholson@computer.org> or by posting to the USENET newsgroup
 forum at comp.os.cpm in the "Consolidating Updates for HI-TECH C for
 Z80 CP/M v3.09" discussion thread - (accessible via Google Groups at
 https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak ).
@@ -1537,6 +1537,15 @@ The C library has had the ordering of modules adjusted to resolve
 an undefined symbol error (thanks to Mark Ogden for bringing this 
 to my attention).
 
+## Remove temporary file
+
+When the compiler driver was executed without producing an output file, it
+left behind a stray ```$$EXEC.$$$``` file on the current drive (or on the
+temporary drive if you specified a TMP environment variable in your
+```0:A:ENVIRON.``` file).  This now fixed.
+
+I've also bumped the version number to be release V3.09-17).
+
 
 --
-Tony Nicholson, Monday 06-Feb-2023
+Tony Nicholson, Wednesday 22-Mar-2023

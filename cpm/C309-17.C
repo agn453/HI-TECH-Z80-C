@@ -9,7 +9,7 @@
  *  processor is prohibited.
  */
 
-#define	VERSION	"V3.09-16"
+#define	VERSION	"V3.09-17"
 
 /*----------------------------------------------------------------------*\
  | Note by Jon Saxton, 3 May 2014.					|
@@ -513,6 +513,8 @@ void doit()
         if (!outfile)
         {
             fprintf(stderr,"No output file specified\n");
+            fclose(cmdfile); /* remove the $$EXEC.$$$ file */
+            remove(execmd);
             exit(-1);
         }
         if (reloc)

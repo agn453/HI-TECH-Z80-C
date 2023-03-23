@@ -1547,5 +1547,16 @@ temporary drive if you specified a TMP environment variable in your
 I've also bumped the version number to be release V3.09-17.
 
 
+## Library containing distribution files for unmodified V3.09 release
+
+I've added a CP/M library format (.LBR) file containing the unmodified
+HI-TECH C COMPILER V3.09 for Z80 CP/M to the *historical* folder.
+The files in
+[historical/Z80V309.LBR](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/historical/Z80V309.LBR)
+can be extracted using one of the CP/M library utilities like
+[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM),
+or a Unix tool like lar,
+
+
 --
-Tony Nicholson, Wednesday 22-Mar-2023
+Tony Nicholson, Friday 24-Mar-2023

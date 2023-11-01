@@ -2,12 +2,12 @@
 10E>;
 10E>date
 A:DATE     COM  (User 0)
-Wed 22/03/2023 09:29:53
+Wed 01/11/2023 14:48:30
 10E>;
 10E>; Build Z80 version
 10E>c -o -v c309-17.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: C309-17.C M:$CTMP1.$$$
@@ -57,8 +57,8 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM -F M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH -F M:$CTMP2.$$$ M:$CTMP5.$$$
- 515 bytes optimized away
- 1616 bytes replaced
+ 496 bytes speed optimised away
+ 1643 bytes replaced
 0:A:ZAS -N -OC309-17.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
@@ -79,8 +79,8 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 217 bytes optimized away
- 390 bytes replaced
+ 244 bytes size optimised away
+ 442 bytes replaced
 0:A:ZAS -J -N -OOPTIMH.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
@@ -103,14 +103,12 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-C280-16  COM    24k    192 Dir RW       None   09/08/22 09:34  09/08/22 09:34
-C280-17  COM    24k    192 Dir RW       None   22/03/23 09:40  22/03/23 09:40
-C280Z80  COM    28k    208 Dir RW       None   22/03/23 09:36  22/03/23 09:36
-C309-16  COM    28k    201 Dir RW       None   09/08/22 09:27  09/08/22 09:27
-C309-17  COM    28k    201 Dir RW       None   22/03/23 09:32  22/03/23 09:32
+C280-17  COM    24k    192 Dir RW       None   01/11/23 14:58  01/11/23 14:58
+C280Z80  COM    28k    208 Dir RW       None   01/11/23 14:54  01/11/23 14:54
+C309-17  COM    28k    201 Dir RW       None   01/11/23 14:51  01/11/23 14:51
 
-Total Bytes     =    132k  Total Records =     994  Files Found =    5
-Total 1k Blocks =    126   Used/Max Dir Entries For Drive E: 1140/2048
+Total Bytes     =     80k  Total Records =     601  Files Found =    3
+Total 1k Blocks =     76   Used/Max Dir Entries For Drive E: 1142/2048
 
 10E>dir optimh.com [fu
 A:DIR      COM  (User 0)
@@ -122,10 +120,10 @@ Directory For Drive E:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-OPTIMH   COM    20k    144 Dir RW       None   22/03/23 09:42  22/03/23 09:42
+OPTIMH   COM    20k    147 Dir RW       None   01/11/23 15:01  01/11/23 15:01
 
-Total Bytes     =     20k  Total Records =     144  Files Found =    1
-Total 1k Blocks =     18   Used/Max Dir Entries For Drive E: 1140/2048
+Total Bytes     =     20k  Total Records =     147  Files Found =    1
+Total 1k Blocks =     19   Used/Max Dir Entries For Drive E: 1142/2048
 
 10E>;
 10E>; Done

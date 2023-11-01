@@ -170,4 +170,10 @@ e:
 pip e:=m:lib280c.lib
 ; Library m:lib280c.lib created
 ; Remember to copy it to current directory and A0:
+;
+; Now save the Z280 object files in E:LIB280C.LBR
+dir m:*.obj[fu,length=65535]
+era e:lib280c.lbr
+; Enter the number of files from above DIR command when prompted
+nulu e:lib280c.lbr -a m:*.obj -x
 put console to console

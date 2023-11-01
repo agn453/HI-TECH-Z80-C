@@ -19,23 +19,39 @@
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-/***************************************************************/
-/*  Z280 optimizer for the HITECH 3.09 c-compiler               */
-/*  St.Nitschke 11.05.93                                        */
-/*  Erweitert und Umgesetzt von Turbo-Pascal auf Hi-Tech-C      */
-/*  Alexander Schmid 30.10.93                                   */
-/*   
-   last edit 18.3.96	SN				
-  
-   The following instructions are optimized:
+/*
+   Z280 optimiser for the HITECH 3.09 c-compiler
+   St.Nitschke 11.05.93
+   Erweitert und Umgesetzt von Turbo-Pascal auf Hi-Tech-C
+   (Converted and enhanced from Turbo-Pascal to Hi-Tech-C)
+   Alexander Schmid 30.10.93
+
+   This version is included in the GitHub repository for Hi Tech Z80 C
+   at https://github.com/agn453/HI-TECH-Z80-C
+
+   Modification History
+
+   31-Oct-2023	Tony Nicholson
+		Translated German to English comments added in brackets;
+		Correct additional byte and replaced counter updates;
+		Summary output includes "speed" or "size";
+		Change default filetype for output from .ASO to .AS2;
+		Some "call csv" and "jp cret" speed optimisations were
+		 not being detected (add space and tab tests); and
+		Statement labels on optimised statements were being
+		 omitted from optimised output.
+
+   18-Mar-1996	Stefan Nitschke
+
+   The following instructions are optimised:
 
       call amul        -> multw hl,de
 
       call lmul        -> multuw hl,de
 
-      call	csv	-> push	iy, push ix, lda ix,(sp+0)  (+6 bytes)
+      call csv		-> push	iy, push ix, lda ix,(sp+0)  (+6 bytes)
 
-      jp cret		-> ld sp,ix pop ix pop iy ret (+6 bytes)
+      jp cret		-> ld sp,ix pop ix pop iy ret (+4 bytes)
 
       ld  (hl),c
       inc hl           -> ldw (hl),bc
@@ -62,14 +78,14 @@
       ld  l,(ix+n)     or iy
       ld  h,(ix+n+1)   -> ldw hl,(ix+n)    (2 byte)
 
-      ld  (ix+n),b     or iy
-      ld  (ix+n+1),c   -> ldw (ix+n),bc    (2 byte)
+      ld  (ix+n),c     or iy
+      ld  (ix+n+1),b   -> ldw (ix+n),bc    (2 byte)
 
       ld  (ix+n),e     or iy
       ld  (ix+n+1),d   -> ldw (ix+n),de    (2 byte)
 
-      ld  (ix+n),h     or iy
-      ld  (ix+n+1),l   -> ldw (ix+n),hl    (2 byte)
+      ld  (ix+n),l     or iy
+      ld  (ix+n+1),h   -> ldw (ix+n),hl    (2 byte)
 
       or  a
       sbc hl,bc        -> subw hl,bc       (1 byte)
@@ -88,7 +104,7 @@
       push  ix
       pop   hl         -> lda hl,(ix+0)
 
-   Adressing with large offset
+   Addressing with large offset
 
       push  ix
       pop   de
@@ -112,10 +128,11 @@
       ld    hl,mm      -> ld   hl,(nn)
       add   hl,de      -> lda  hl,(hl+mm)  (1 byte)
 
-***************************************************************************/
+ */
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -130,7 +147,8 @@ char	speed;
 char	text[101];
 char	line[6][101];
 
-/* sucht den String s im String t */
+/* sucht dden String s im String t */
+/* (search for the string s in the string t) */
 int instr(char *t, char *s) {
     register int i,j,k;
     for (i=0; s[i] != '\0'; ++i) {
@@ -141,6 +159,7 @@ int instr(char *t, char *s) {
 }
 
 /* kopiert ab Position p maximal i Zeichen von String a in String b */
+/* (from position p, copy up to i characters from string a to string b) */
 void copyn(char *a, char *b, int p, int i) {
     register int x;
     char ch;
@@ -157,7 +176,7 @@ void csv(char *str1,char *bytes) {
         fprintf(outfile,"push\tiy\npush\tix\n;-> lda ix,(sp+0)\ndefb\t%s\n",bytes);
         lines = 0;
         count -= 6;	/* 6 bytes mehr aber schneller */
-        repl += 2;	/*	   more (but faster) */
+        repl += 3;	/*	   more (but faster) */
         found = TRUE;
     }
 }
@@ -167,8 +186,8 @@ void cret(char *str1) {
         fprintf(outfile,";->jp cret\n");
         fprintf(outfile,"ld\tsp,ix\npop\tix\npop\tiy\nret\n");
         lines = 0;
-        count -= 3;	/* 6 bytes mehr aber schneller */
-        repl += 2;	/*	   more (but faster) */
+        count -= 4;	/* 4 bytes mehr aber schneller */
+        repl += 3;	/*	   more (but faster) */
         found = TRUE;
     }
 }
@@ -178,8 +197,8 @@ void mult(char *str1, char *str2,char *bytes) {
         fprintf(outfile,";->%s  hl,de\n",str2);
         fprintf(outfile,"defb\t%s\n",bytes);
         lines = 0;
-        ++count;
-        repl += 2;
+        ++count;	/* 1 byte less */
+        repl += 3;	/* replaces call amul/lmul */
         found = TRUE;
     }
 }
@@ -307,6 +326,29 @@ void subwhl(char *str1, char *byte1) {
     }
 }
 
+void label(void) {
+/* check for statement label in line[0].  if detected, output the label
+   on a line by itself and strip the label from line[0] */
+
+    register int p, x;
+    char lab[101], islabel, c;
+
+    if(p = instr(":",line[0])) {
+	copyn(line[0],lab,0,p); /* copy label */
+	islabel = TRUE;
+	for (x=0; x<(p-1); x++) {
+	    c = lab[x]; /* valid chars are 0..9, a..z, $ and _ */
+	    if( (!isalnum(c)) && (c!='$') && (c!='_') ) {
+		islabel = FALSE;
+	    }
+	}
+	if (islabel && (line[0][p+1]!='\0')) { /* check if bare label too */
+            fprintf(outfile,"%s\n",lab);
+	    for (x=0; x<=p; x++) line[0][x] = ' '; /* blank out label */
+	}
+    }
+}
+
 void check(void) {
 /******************************************************************************/
     if(instr("mul",line[0])) {
@@ -318,8 +360,10 @@ void check(void) {
         /* both these increase speed at the expense of 6 extra bytes */
         if(instr("csv",line[0])) {
             if(!found) csv("call csv","0ddh,0edh,02h,0,0");  /* call csv   */
+            if(!found) csv("call\tcsv","0ddh,0edh,02h,0,0");  /* call csv   */
         }
         if(instr("cret",line[0])) {
+            if(!found) cret("jp cret");  /* jp cret   */
             if(!found) cret("jp\tcret");  /* jp cret   */
         }
     }
@@ -439,6 +483,7 @@ void check(void) {
 
 /******************************************************************************/
 /* verursacht Fehler */
+/* (causes errors) */
 #ifdef xxx
     if(!found) if(instr("ld\thl,",line[0]) && instr("(",line[0])==0) {
         if(lines<1)  fgets(line[1],100,infile);            /* push arg        */
@@ -457,6 +502,7 @@ void check(void) {
 #endif
 /******************************************************************************/
 /* verursacht Fehler */
+/* (causes errors) */
 #ifdef xxx
     if(!found) if(instr("ld\thl,(",line[0])) {
         if(lines<1)  fgets(line[1],100,infile);            /* push (arg)      */
@@ -477,6 +523,7 @@ void check(void) {
 #endif
 /******************************************************************************/
 /* verursacht Fehler */
+/* (causes errors) */
 #ifdef xxx
    if(!found) if(instr("ld\tde,(",line[0])) {
         if(lines<1) fgets(line[1],100,infile);             /* lda hl,(hl+ofs) */
@@ -505,7 +552,7 @@ void check(void) {
 
 main(int argc,*argv[]) {
     if(argc==1) {
-        puts("Z280 optimizer for the HITECH C-Compiler");
+        puts("Z280 optimiser for the HITECH C-Compiler");
         printf("Name of input file :"); scanf("%s",inname);
         printf("Name of output file :"); scanf("%s",outname);
     }
@@ -515,7 +562,7 @@ main(int argc,*argv[]) {
         strcat(inname,".AS");
         inptr=inname; outptr=outname;
         while(*inptr != '.') *outptr++ = *inptr++;
-        strcat(outname,".ASO");
+        strcat(outname,".AS2");
     }
     else if(argc==3) {
         strcpy(inname,(char*)argv[1]);
@@ -542,6 +589,7 @@ main(int argc,*argv[]) {
     count = 0;
     repl = 0;
     while(fgets(line[0],100,infile) != NULL) {
+	label();
         lines = 0;
         found = FALSE;
         check();
@@ -556,12 +604,12 @@ main(int argc,*argv[]) {
             if(!found) fputs(line[0],outfile);
         }
     }
-    printf(" %d bytes optimized away\n",count);
+    printf(" %d bytes %s optimised away\n",count,speed?"speed":"size");
     printf(" %d bytes replaced\n",repl);
-    fputs("\n; Optimizer statistics:\n",outfile);
-    fprintf(outfile,"; %d bytes optimized away\n",count);
+    fputs("\n; optimiser statistics:\n",outfile);
+    fprintf(outfile,"; %d bytes %s optimised away\n",count,speed?"speed":"size");
     fprintf(outfile,"; %d bytes replaced\n\n",repl);
-    fputc(0x1a,outfile); /* explizites EOF */
+    fputc(0x1a,outfile); /* explizites (explicit) EOF */
     fclose(infile);
     fclose(outfile);
     exit(0);

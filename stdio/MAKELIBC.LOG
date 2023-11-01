@@ -2,7 +2,6 @@
 10E>; Use librarian to place all modules in LIBC17.LIB
 10E>; NB: the ordering is important for resolving dependencies at link time
 10E>era LIBC17.lib
-No File
 10E>libr
 A:LIBR     COM  (User 0)
 libr> r LIBC17.lib	\

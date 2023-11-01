@@ -1,303 +1,404 @@
 
 10D>date
 A:DATE     COM  (User 0)
-Tue 24/05/2022 09:25:10
+Wed 01/11/2023 14:22:13
 10D>;----------  MAKELIBF.SUB  ----------
 10D>; Assumes DEHUFF -X FLOAT.HUF has extracted
 10D>; all sources to the default drive
 10D>;------------------------------------
-10D>C -C -O PRINTF.C
+10D>m:
+10M>era *.obj
+ERASE *.OBJ (Y/N)? Y
+10M>;
+10M>C
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
+c> -O -V -C d:PRINTF.C \
+c> d:FPRINTF.C \
+c> d:SPRINTF.C \
+c> d:SCANF.C \
+c> d:FSCANF.C \
+c> d:SSCANF.C \
+c> d:DOPRNT.C \
+c> d:DOSCAN.C \
+c> d:ATOF.C \
+c> d:FNUM.C \
+c> d:FBCD.AS \
+c> d:TAN.C \
+c> d:ACOS.C \
+c> d:ASIN.C \
+c> d:ATAN2.C \
+c> d:ATAN.C \
+c> d:COS.C \
+c> d:SIN.C \
+c> d:SINH.C \
+c> d:COSH.C \
+c> d:TANH.C \
+c> d:EXP.C \
+c> d:LOG.C \
+c> d:EVALPOLY.C \
+c> d:SQRT.C \
+c> d:FREXP.AS \
+c> d:FABS.C \
+c> d:CEIL.C \
+c> d:FLOOR.C \
+c> d:FINC.AS \
+c> d:ASFLOAT.AS \
+c> d:FRNDINT.AS \
+c> d:FTOL.AS \
+c> d:LTOF.AS \
+c> d:FLOAT.AS
+D:PRINTF.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:PRINTF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OPRINTF.OBJ $CTMP2.$$$
+D:FPRINTF.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:FPRINTF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OFPRINTF.OBJ $CTMP2.$$$
+D:SPRINTF.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:SPRINTF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OSPRINTF.OBJ $CTMP2.$$$
+D:SCANF.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:SCANF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OSCANF.OBJ $CTMP2.$$$
+D:FSCANF.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:FSCANF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OFSCANF.OBJ $CTMP2.$$$
+D:SSCANF.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:SSCANF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OSSCANF.OBJ $CTMP2.$$$
+D:DOPRNT.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:DOPRNT.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -ODOPRNT.OBJ $CTMP2.$$$
+D:DOSCAN.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:DOSCAN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -ODOSCAN.OBJ $CTMP2.$$$
+D:ATOF.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:ATOF.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OATOF.OBJ $CTMP2.$$$
+D:FNUM.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:FNUM.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OFNUM.OBJ $CTMP2.$$$
+D:FBCD.AS
+0:A:ZAS -J -OFBCD.OBJ D:FBCD.AS
+D:TAN.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:TAN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OTAN.OBJ $CTMP2.$$$
+D:ACOS.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:ACOS.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OACOS.OBJ $CTMP2.$$$
+D:ASIN.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:ASIN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OASIN.OBJ $CTMP2.$$$
+D:ATAN2.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:ATAN2.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OATAN2.OBJ $CTMP2.$$$
+D:ATAN.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:ATAN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OATAN.OBJ $CTMP2.$$$
+D:COS.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:COS.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OCOS.OBJ $CTMP2.$$$
+D:SIN.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:SIN.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OSIN.OBJ $CTMP2.$$$
+D:SINH.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:SINH.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OSINH.OBJ $CTMP2.$$$
+D:COSH.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:COSH.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OCOSH.OBJ $CTMP2.$$$
+D:TANH.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:TANH.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OTANH.OBJ $CTMP2.$$$
+D:EXP.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:EXP.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OEXP.OBJ $CTMP2.$$$
+D:LOG.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:LOG.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OLOG.OBJ $CTMP2.$$$
+D:EVALPOLY.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:EVALPOLY.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OEVALPOLY.OBJ $CTMP2.$$$
+D:SQRT.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:SQRT.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OSQRT.OBJ $CTMP2.$$$
+D:FREXP.AS
+0:A:ZAS -J -OFREXP.OBJ D:FREXP.AS
+D:FABS.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:FABS.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OFABS.OBJ $CTMP2.$$$
+D:CEIL.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:CEIL.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OCEIL.OBJ $CTMP2.$$$
+D:FLOOR.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:FLOOR.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OFLOOR.OBJ $CTMP2.$$$
+D:FINC.AS
+0:A:ZAS -J -OFINC.OBJ D:FINC.AS
+D:ASFLOAT.AS
+0:A:ZAS -J -OASFLOAT.OBJ D:ASFLOAT.AS
+D:FRNDINT.AS
+0:A:ZAS -J -OFRNDINT.OBJ D:FRNDINT.AS
+D:FTOL.AS
+0:A:ZAS -J -OFTOL.OBJ D:FTOL.AS
+D:LTOF.AS
+0:A:ZAS -J -OLTOF.OBJ D:LTOF.AS
+D:FLOAT.AS
+0:A:ZAS -J -OFLOAT.OBJ D:FLOAT.AS
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+ERA $$EXEC.$$$
 
-10D>C -C -O FPRINTF.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O SPRINTF.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O SCANF.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O FSCANF.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O SSCANF.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O DOPRNT.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O DOSCAN.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O ATOF.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O FNUM.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>ZAS FBCD.AS
-A:ZAS      COM  (User 0)
-
-10D>C -C -O TAN.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O ACOS.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O ASIN.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O ATAN2.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O ATAN.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O COS.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O SIN.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O SINH.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O COSH.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O TANH.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O EXP.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O LOG.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O EVALPOLY.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O SQRT.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>ZAS FREXP.AS
-A:ZAS      COM  (User 0)
-
-10D>C -C -O FABS.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O CEIL.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>C -C -O FLOOR.C
-A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-14
-Copyright (C) 1984-87 HI-TECH SOFTWARE
-Updated from https://github.com/agn453/HI-TECH-Z80-C
-
-10D>ZAS FINC.AS
-A:ZAS      COM  (User 0)
-
-10D>ZAS ASFLOAT.AS
-A:ZAS      COM  (User 0)
-
-10D>ZAS FRNDINT.AS
-A:ZAS      COM  (User 0)
-
-10D>ZAS FTOL.AS
-A:ZAS      COM  (User 0)
-
-10D>ZAS LTOF.AS
-A:ZAS      COM  (User 0)
-
-10D>ZAS FLOAT.AS
-A:ZAS      COM  (User 0)
-
-10D>era libf.lib
-10D>LIBR R LIBF.LIB PRINTF.OBJ
+10M>;
+10M>era m:libf.lib
+10M>libr
 A:LIBR     COM  (User 0)
+libr> r m:LIBF.LIB \
+libr> PRINTF.OBJ \
+libr> FPRINTF.OBJ \
+libr> SPRINTF.OBJ \
+libr> SCANF.OBJ \
+libr> FSCANF.OBJ \
+libr> SSCANF.OBJ \
+libr> DOPRNT.OBJ \
+libr> DOSCAN.OBJ \
+libr> ATOF.OBJ \
+libr> FNUM.OBJ \
+libr> FBCD.OBJ \
+libr> TAN.OBJ \
+libr> ACOS.OBJ \
+libr> ASIN.OBJ \
+libr> ATAN2.OBJ \
+libr> ATAN.OBJ \
+libr> COS.OBJ \
+libr> SIN.OBJ \
+libr> SINH.OBJ \
+libr> COSH.OBJ \
+libr> TANH.OBJ \
+libr> EXP.OBJ \
+libr> LOG.OBJ \
+libr> EVALPOLY.OBJ \
+libr> SQRT.OBJ \
+libr> FREXP.OBJ \
+libr> FABS.OBJ \
+libr> CEIL.OBJ \
+libr> FLOOR.OBJ \
+libr> FINC.OBJ \
+libr> ASFLOAT.OBJ \
+libr> FRNDINT.OBJ \
+libr> FTOL.OBJ \
+libr> LTOF.OBJ \
+libr> FLOAT.OBJ
 
-10D>LIBR R LIBF.LIB FPRINTF.OBJ
-A:LIBR     COM  (User 0)
+10M>;
+10M>pip d:=m:LIBF.LIB
+A:PIP      COM  (User 0)
 
-10D>LIBR R LIBF.LIB SPRINTF.OBJ
-A:LIBR     COM  (User 0)
+10M>;
+10M>dir m:*.obj[fu,length=65535]
+A:DIR      COM  (User 0)
 
-10D>LIBR R LIBF.LIB SCANF.OBJ
-A:LIBR     COM  (User 0)
+Scanning Directory...
 
-10D>LIBR R LIBF.LIB FSCANF.OBJ
-A:LIBR     COM  (User 0)
+Sorting  Directory...
 
-10D>LIBR R LIBF.LIB SSCANF.OBJ
-A:LIBR     COM  (User 0)
+Directory For Drive M:  User 10
 
-10D>LIBR R LIBF.LIB DOPRNT.OBJ
-A:LIBR     COM  (User 0)
+    Name     Bytes   Recs   Attributes   Prot      Update          Create    
+------------ ------ ------ ------------ ------ --------------  --------------
 
-10D>LIBR R LIBF.LIB DOSCAN.OBJ
-A:LIBR     COM  (User 0)
+ACOS     OBJ     4k      3 Dir RW       None   01/11/23 14:25  01/11/23 14:25
+ASFLOAT  OBJ     4k      3 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+ASIN     OBJ     4k      9 Dir RW       None   01/11/23 14:25  01/11/23 14:25
+ATAN     OBJ     4k      9 Dir RW       None   01/11/23 14:26  01/11/23 14:26
+ATAN2    OBJ     4k      9 Dir RW       None   01/11/23 14:26  01/11/23 14:26
+ATOF     OBJ     4k     11 Dir RW       None   01/11/23 14:24  01/11/23 14:24
+CEIL     OBJ     4k      4 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+COS      OBJ     4k      5 Dir RW       None   01/11/23 14:26  01/11/23 14:26
+COSH     OBJ     4k      4 Dir RW       None   01/11/23 14:26  01/11/23 14:26
+DOPRNT   OBJ     4k     21 Dir RW       None   01/11/23 14:23  01/11/23 14:23
+DOSCAN   OBJ     4k     32 Dir RW       None   01/11/23 14:24  01/11/23 14:24
+EVALPOLY OBJ     4k      3 Dir RW       None   01/11/23 14:27  01/11/23 14:27
+EXP      OBJ     4k     14 Dir RW       None   01/11/23 14:27  01/11/23 14:27
+FABS     OBJ     4k      3 Dir RW       None   01/11/23 14:27  01/11/23 14:27
+FBCD     OBJ     4k      6 Dir RW       None   01/11/23 14:25  01/11/23 14:25
+FINC     OBJ     4k      2 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+FLOAT    OBJ     4k      9 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+FLOOR    OBJ     4k      4 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+FNUM     OBJ     4k     31 Dir RW       None   01/11/23 14:25  01/11/23 14:25
+FPRINTF  OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
+FREXP    OBJ     4k      2 Dir RW       None   01/11/23 14:27  01/11/23 14:27
+FRNDINT  OBJ     4k      1 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+FSCANF   OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
+FTOL     OBJ     4k      2 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+LOG      OBJ     4k      8 Dir RW       None   01/11/23 14:27  01/11/23 14:27
+LTOF     OBJ     4k      4 Dir RW       None   01/11/23 14:28  01/11/23 14:28
+PRINTF   OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
+SCANF    OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
+SIN      OBJ     4k     10 Dir RW       None   01/11/23 14:26  01/11/23 14:26
+SINH     OBJ     4k      4 Dir RW       None   01/11/23 14:26  01/11/23 14:26
+SPRINTF  OBJ     4k      3 Dir RW       None   01/11/23 14:22  01/11/23 14:22
+SQRT     OBJ     4k     10 Dir RW       None   01/11/23 14:27  01/11/23 14:27
+SSCANF   OBJ     4k      2 Dir RW       None   01/11/23 14:23  01/11/23 14:23
+TAN      OBJ     4k      2 Dir RW       None   01/11/23 14:25  01/11/23 14:25
+TANH     OBJ     4k      4 Dir RW       None   01/11/23 14:26  01/11/23 14:26
 
-10D>LIBR R LIBF.LIB ATOF.OBJ
-A:LIBR     COM  (User 0)
+Total Bytes     =    140k  Total Records =     242  Files Found =   35
+Total 1k Blocks =     51   Used/Max Dir Entries For Drive M:   98/ 512
 
-10D>LIBR R LIBF.LIB FNUM.OBJ
-A:LIBR     COM  (User 0)
+10M>era d:libf-obj.lbr
+10M>nulu d:libf-obj.lbr -a m:*.obj -x
+A:NULU     COM  (User 0)
+^ZNULU 1.52  (07/12/87)
+Copyright (C) 1984, 1985 & 1987 by Martin Murray
+Bug fixes in version 1.52 by Mick Waters
 
-10D>LIBR R LIBF.LIB FBCD.OBJ
-A:LIBR     COM  (User 0)
+TYPE -H FOR HELP
 
-10D>LIBR R LIBF.LIB TAN.OBJ
-A:LIBR     COM  (User 0)
 
-10D>LIBR R LIBF.LIB ACOS.OBJ
-A:LIBR     COM  (User 0)
+SYSIN58 .$$$ | LIBF    .LIB | PRINTF  .OBJ | FPRINTF .OBJ | SPRINTF .OBJ
+SCANF   .OBJ | FSCANF  .OBJ | SSCANF  .OBJ | DOPRNT  .OBJ | DOSCAN  .OBJ
+ATOF    .OBJ | FNUM    .OBJ | FBCD    .OBJ | TAN     .OBJ | ACOS    .OBJ
+ASIN    .OBJ | ATAN2   .OBJ | ATAN    .OBJ | COS     .OBJ | SIN     .OBJ
+SINH    .OBJ | COSH    .OBJ | TANH    .OBJ | EXP     .OBJ | LOG     .OBJ
+EVALPOLY.OBJ | SQRT    .OBJ | FREXP   .OBJ | FABS    .OBJ | CEIL    .OBJ
+FLOOR   .OBJ | FINC    .OBJ | ASFLOAT .OBJ | FRNDINT .OBJ | FTOL    .OBJ
+LTOF    .OBJ | FLOAT   .OBJ | 
+Drive M: Total 1520k, Used 176k, Free 1344k
 
-10D>LIBR R LIBF.LIB ASIN.OBJ
-A:LIBR     COM  (User 0)
+Library D10:LIBF-OBJ.LBR^G not found.
+  To make it, enter the number of entries to allow.
+  Press RETURN now to abort making the library.
+Allow how many entries: 35
+Library D10:LIBF-OBJ.LBR open.
+(Buffer size: 283 sectors)
+Active entries: 1, Deleted: 0, Free: 35, Total: 36.
+Adding:    M10:PRINTF  .OBJ
+Adding:    M10:FPRINTF .OBJ
+Adding:    M10:SPRINTF .OBJ
+Adding:    M10:SCANF   .OBJ
+Adding:    M10:FSCANF  .OBJ
+Adding:    M10:SSCANF  .OBJ
+Adding:    M10:DOPRNT  .OBJ
+Adding:    M10:DOSCAN  .OBJ
+Adding:    M10:ATOF    .OBJ
+Adding:    M10:FNUM    .OBJ
+Adding:    M10:FBCD    .OBJ
+Adding:    M10:TAN     .OBJ
+Adding:    M10:ACOS    .OBJ
+Adding:    M10:ASIN    .OBJ
+Adding:    M10:ATAN2   .OBJ
+Adding:    M10:ATAN    .OBJ
+Adding:    M10:COS     .OBJ
+Adding:    M10:SIN     .OBJ
+Adding:    M10:SINH    .OBJ
+Adding:    M10:COSH    .OBJ
+Adding:    M10:TANH    .OBJ
+Adding:    M10:EXP     .OBJ
+Adding:    M10:LOG     .OBJ
+Adding:    M10:EVALPOLY.OBJ
+Adding:    M10:SQRT    .OBJ
+Adding:    M10:FREXP   .OBJ
+Adding:    M10:FABS    .OBJ
+Adding:    M10:CEIL    .OBJ
+Adding:    M10:FLOOR   .OBJ
+Adding:    M10:FINC    .OBJ
+Adding:    M10:ASFLOAT .OBJ
+Adding:    M10:FRNDINT .OBJ
+Adding:    M10:FTOL    .OBJ
+Adding:    M10:LTOF    .OBJ
+Adding:    M10:FLOAT   .OBJ
+Active entries: 36, Deleted: 0, Free: 0, Total: 36.
 
-10D>LIBR R LIBF.LIB ATAN2.OBJ
-A:LIBR     COM  (User 0)
+Closing D10:LIBF-OBJ.LBR...
 
-10D>LIBR R LIBF.LIB ATAN.OBJ
-A:LIBR     COM  (User 0)
 
-10D>LIBR R LIBF.LIB COS.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB SIN.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB SINH.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB COSH.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB TANH.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB EXP.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB LOG.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB EVALPOLY.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB SQRT.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB FREXP.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB FABS.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB CEIL.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB FLOOR.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB FINC.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB ASFLOAT.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB FRNDINT.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB FTOL.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB LTOF.OBJ
-A:LIBR     COM  (User 0)
-
-10D>LIBR R LIBF.LIB FLOAT.OBJ
-A:LIBR     COM  (User 0)
-
+10M>d:
 10D>;----------  done  ---------- 
 10D>put console to console
 A:PUT      COM  (User 0)

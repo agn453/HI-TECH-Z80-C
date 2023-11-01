@@ -5,76 +5,93 @@ date
 ; Assumes DEHUFF -X FLOAT.HUF has extracted
 ; all sources to the default drive
 ;------------------------------------
-c280 -v -c -o2 PRINTF.C
-c280 -v -c -o2 FPRINTF.C
-c280 -v -c -o2 SPRINTF.C
-c280 -v -c -o2 SCANF.C
-c280 -v -c -o2 FSCANF.C
-c280 -v -c -o2 SSCANF.C
-c280 -v -c -o2 DOPRNT.C
-c280 -v -c -o2 DOSCAN.C
-c280 -v -c -o2 ATOF.C
-c280 -v -c -o2 FNUM.C
-c280 -v -c -o2 FBCD.AS
-c280 -v -c -o2 TAN.C
-c280 -v -c -o2 ACOS.C
-c280 -v -c -o2 ASIN.C
-c280 -v -c -o2 ATAN2.C
-c280 -v -c -o2 ATAN.C
-c280 -v -c -o2 COS.C
-c280 -v -c -o2 SIN.C
-c280 -v -c -o2 SINH.C
-c280 -v -c -o2 COSH.C
-c280 -v -c -o2 TANH.C
-c280 -v -c -o2 EXP.C
-c280 -v -c -o2 LOG.C
-c280 -v -c -o2 EVALPOLY.C
-c280 -v -c -o2 SQRT.C
-c280 -v -c -o2 FREXP.AS
-c280 -v -c -o2 FABS.C
-c280 -v -c -o2 CEIL.C
-c280 -v -c -o2 FLOOR.C
-c280 -v -c -o2 FINC.AS
-c280 -v -c -o2 ASFLOAT.AS
-c280 -v -c -o2 FRNDINT.AS
-c280 -v -c -o2 FTOL.AS
-c280 -v -c -o2 LTOF.AS
-c280 -v -c -o2 FLOAT.AS
-;pip m:lib280f.lib=a:lib280f.lib[g0r]
-LIBR R m:lib280f.LIB PRINTF.OBJ
-LIBR R m:lib280f.LIB FPRINTF.OBJ
-LIBR R m:lib280f.LIB SPRINTF.OBJ
-LIBR R m:lib280f.LIB SCANF.OBJ
-LIBR R m:lib280f.LIB FSCANF.OBJ
-LIBR R m:lib280f.LIB SSCANF.OBJ
-LIBR R m:lib280f.LIB DOPRNT.OBJ
-LIBR R m:lib280f.LIB DOSCAN.OBJ
-LIBR R m:lib280f.LIB ATOF.OBJ
-LIBR R m:lib280f.LIB FNUM.OBJ
-LIBR R m:lib280f.LIB FBCD.OBJ
-LIBR R m:lib280f.LIB TAN.OBJ
-LIBR R m:lib280f.LIB ACOS.OBJ
-LIBR R m:lib280f.LIB ASIN.OBJ
-LIBR R m:lib280f.LIB ATAN2.OBJ
-LIBR R m:lib280f.LIB ATAN.OBJ
-LIBR R m:lib280f.LIB COS.OBJ
-LIBR R m:lib280f.LIB SIN.OBJ
-LIBR R m:lib280f.LIB SINH.OBJ
-LIBR R m:lib280f.LIB COSH.OBJ
-LIBR R m:lib280f.LIB TANH.OBJ
-LIBR R m:lib280f.LIB EXP.OBJ
-LIBR R m:lib280f.LIB LOG.OBJ
-LIBR R m:lib280f.LIB EVALPOLY.OBJ
-LIBR R m:lib280f.LIB SQRT.OBJ
-LIBR R m:lib280f.LIB FREXP.OBJ
-LIBR R m:lib280f.LIB FABS.OBJ
-LIBR R m:lib280f.LIB CEIL.OBJ
-LIBR R m:lib280f.LIB FLOOR.OBJ
-LIBR R m:lib280f.LIB FINC.OBJ
-LIBR R m:lib280f.LIB ASFLOAT.OBJ
-LIBR R m:lib280f.LIB FRNDINT.OBJ
-LIBR R m:lib280f.LIB FTOL.OBJ
-LIBR R m:lib280f.LIB LTOF.OBJ
-LIBR R m:lib280f.LIB FLOAT.OBJ
+m:
+era m:*.obj
+<Y
+;
+c280
+<-v -c -o2 \
+<d:PRINTF.C \
+<d:FPRINTF.C \
+<d:SPRINTF.C \
+<d:SCANF.C \
+<d:FSCANF.C \
+<d:SSCANF.C \
+<d:DOPRNT.C \
+<d:DOSCAN.C \
+<d:ATOF.C \
+<d:FNUM.C \
+<d:FBCD.AS \
+<d:TAN.C \
+<d:ACOS.C \
+<d:ASIN.C \
+<d:ATAN2.C \
+<d:ATAN.C \
+<d:COS.C \
+<d:SIN.C \
+<d:SINH.C \
+<d:COSH.C \
+<d:TANH.C \
+<d:EXP.C \
+<d:LOG.C \
+<d:EVALPOLY.C \
+<d:SQRT.C \
+<d:FREXP.AS \
+<d:FABS.C \
+<d:CEIL.C \
+<d:FLOOR.C \
+<d:FINC.AS \
+<d:ASFLOAT.AS \
+<d:FRNDINT.AS \
+<d:FTOL.AS \
+<d:LTOF.AS \
+<d:FLOAT.AS
+;
+era m:lib280f.lib
+;
+LIBR
+<R m:lib280f.LIB \
+<PRINTF.OBJ \
+<FPRINTF.OBJ \
+<SPRINTF.OBJ \
+<SCANF.OBJ \
+<FSCANF.OBJ \
+<SSCANF.OBJ \
+<DOPRNT.OBJ \
+<DOSCAN.OBJ \
+<ATOF.OBJ \
+<FNUM.OBJ \
+<FBCD.OBJ \
+<TAN.OBJ \
+<ACOS.OBJ \
+<ASIN.OBJ \
+<ATAN2.OBJ \
+<ATAN.OBJ \
+<COS.OBJ \
+<SIN.OBJ \
+<SINH.OBJ \
+<COSH.OBJ \
+<TANH.OBJ \
+<EXP.OBJ \
+<LOG.OBJ \
+<EVALPOLY.OBJ \
+<SQRT.OBJ \
+<FREXP.OBJ \
+<FABS.OBJ \
+<CEIL.OBJ \
+<FLOOR.OBJ \
+<FINC.OBJ \
+<ASFLOAT.OBJ \
+<FRNDINT.OBJ \
+<FTOL.OBJ \
+<LTOF.OBJ \
+<FLOAT.OBJ
+;
+pip d:=m:lib280f.lib
+;
+dir m:*.obj[fu,length=65535]
+era d:libf2obj.lbr
+nulu d:libf2obj.lbr -a m:*.obj -x
+d:
 ;----------  done  ---------- 
 put console to console

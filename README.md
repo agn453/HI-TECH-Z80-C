@@ -9,7 +9,7 @@ emulation using RunZ80, SIMH or ZXCC.
 Each release is a consolidated milestone with various updates and
 patches applied.
 
-The latest release is V3.09-16 (see Modification History below).
+The latest release is V3.09-17 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -550,12 +550,13 @@ C280.COM
     The compiler front-end for driving the HI-TECH Z80 C compiler
     for CP/M to produce code to run on a Zilog Z280 MPU.  It accepts
     command lines similar to the C.COM front-end from the *dist*
-    folder - with one extra command-line switch to perform optimisation
+    folder - with a modified command-line switch to perform optimisation
     of generated assembly language to use the enhanced Z280 instructions.
+    You can optimise for size (-O2) or speed (-OF2). For example,
 
         c280 -of2 ...
 
-    will cause the OPTIMH.COM pass to perform this optimisation.
+    will cause the OPTIMH.COM pass to perform speed optimisation.
 
 OPTIMH.COM and OPTIMH.C
     This is the Z280 assembly language optimiser (with source-code).
@@ -594,14 +595,14 @@ OPTIMH.COM and OPTIMH.C
         ld  l,(ix+n)     or iy
         ld  h,(ix+n+1)   -> ldw hl,(ix+n)    (2 byte)
 
-        ld  (ix+n),b     or iy
-        ld  (ix+n+1),c   -> ldw (ix+n),bc    (2 byte)
+        ld  (ix+n),c     or iy
+        ld  (ix+n+1),b   -> ldw (ix+n),bc    (2 byte)
 
         ld  (ix+n),e     or iy
         ld  (ix+n+1),d   -> ldw (ix+n),de    (2 byte)
 
-        ld  (ix+n),h     or iy
-        ld  (ix+n+1),l   -> ldw (ix+n),hl    (2 byte)
+        ld  (ix+n),l     or iy
+        ld  (ix+n+1),h   -> ldw (ix+n),hl    (2 byte)
 
         or  a
         sbc hl,bc        -> subw hl,bc       (1 byte)
@@ -1558,5 +1559,40 @@ can be extracted using one of the CP/M library utilities like
 or a Unix tool like lar,
 
 
+## Z280 optimiser (OPTIMH) fixes/enhancements
+
+The following updates have been made to the Z280 assembly language
+optimiser (OPTIMH.COM) -
+
+* Comments in the OPTIMH.C source file have been translated from German
+into English;
+
+* The counters for the additional byte and replaced counts are now more
+accurate;
+
+* The processing summary output now includes "speed" or "size";
+
+* The default filetype for the output file has been changed from .ASO to .AS2
+to be consistent with the compiler behaviour when it optimises and saves
+the output assembler source (i.e compilation using the ```-O2``` or
+```-OF2``` with the ```-S``` option);
+
+* Some ```call csv``` and ```jp cret``` speed optimisations were not being
+detected; and
+
+* Assembly language statement labels on optimised code were being omitted
+in the output file.  Processing now detects them and outputs them
+on a separate line prior to performing optimisation.
+
+I've rebuilt the Z280 optimised libraries (LIB280C.LIB, LIB280F.LIB) and
+compiler frontend C280-17.COM using the update optimiser - and these files
+are now available in both the *z280dist* folder and updated Z280 binary
+distribution at
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
+Please raise an issue if you have any problems with them.
+
+
 --
-Tony Nicholson, Friday 24-Mar-2023
+Tony Nicholson, Wednesday 01-Nov-2023

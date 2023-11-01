@@ -1,0 +1,101 @@
+; Test input for OPTIMH (Z280 code optimiser)
+;
+global _instr
+n	equ	25
+nn	equ	1abch
+psect text
+_instr:
+;
+	global csv,cret
+;->call csv
+push	iy
+push	ix
+;-> lda ix,(sp+0)
+defb	0ddh,0edh,02h,0,0
+;->jp cret
+ld	sp,ix
+pop	ix
+pop	iy
+ret
+;
+	global amul,lmul
+;->multw  hl,de
+defb	0edh,0d2h
+;->multuw  hl,de
+defb	0edh,0d3h
+;
+label:
+;->ldw (hl),bc
+defb	0edh,0eh
+inc	hl
+	inc	hl
+;
+;->ldw (hl),bc
+defb	0edh,0eh
+inc	hl
+;
+;->ldw (hl),de
+defb	0edh,1eh
+inc	hl
+;
+;->ldw bc,(hl)
+defb	0edh,06h
+inc	hl
+;
+;->ldw de,(hl)
+defb	0edh,16h
+inc	hl
+;
+;->ldw  bc,(ix+n)
+defb	0ddh,0edh,06h,+n
+;->ldw  bc,(iy+n)
+defb	0fdh,0edh,06h,+n
+;
+;->ldw  de,(ix+n)
+defb	0ddh,0edh,16h,+n
+;
+;->ldw  hl,(ix+n)
+defb	0ddh,0edh,26h,+n
+;
+;->ldw  (ix+n),bc
+defb	0ddh,0edh,0eh,+n
+;
+;->ldw  (ix+n),de
+defb	0ddh,0edh,1eh,+n
+;
+;->ldw  (ix+n),hl
+defb	0ddh,0edh,2eh,+n
+;
+;->subw  hl,bc
+defb	0edh,0ceh
+;
+;->subw  hl,de
+defb	0edh,0deh
+;
+;->lda  hl,(ix+nn)
+defb	0edh,2ah
+defw	nn
+;
+;->ld  d,ixh
+defb	0ddh,54h
+;->ld  e,ixl
+defb	0ddh,5dh
+;
+;->lda  hl,(ix+0)
+defb	0edh,2ah,0,0
+;
+; Addressing with large offset
+;
+;->lda  hl,(ix+nn)
+defb	0edh,2ah
+defw	nn
+;
+;->lda  hl,(iy+nn)
+defb	0edh,32h
+defw	nn
+;
+
+; optimiser statistics:
+; 15 bytes speed optimised away
+; 68 bytes replaced
+

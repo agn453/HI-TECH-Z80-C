@@ -1,11 +1,12 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Tue 09/08/2022 09:49:50
+
+Wed 01/11/2023 15:05:25
 10E>; Compile all tests
 10E>c -v -o testver.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVER.C M:$CTMP1.$$$
@@ -23,7 +24,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testio.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTIO.C M:$CTMP1.$$$
@@ -41,7 +42,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testuid.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTUID.C M:$CTMP1.$$$
@@ -59,7 +60,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o teststr.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTSTR.C M:$CTMP1.$$$
@@ -77,7 +78,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testbios.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
@@ -95,7 +96,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testbdos.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
@@ -113,7 +114,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testtrig.c -lf
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
@@ -131,7 +132,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testftim.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
@@ -149,7 +150,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testfile.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFILE.C M:$CTMP1.$$$
@@ -167,7 +168,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testaes.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTAES.C M:$CTMP1.$$$
@@ -185,7 +186,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testrc.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTRC.C M:$CTMP1.$$$
@@ -203,7 +204,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testview.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
@@ -221,7 +222,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testwild.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTWILD.C M:$CTMP1.$$$
@@ -239,7 +240,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -ftestovrx.sym -v -o testovr.c -lovr
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR.C M:$CTMP1.$$$
@@ -257,7 +258,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -y -o -v testovr2.c testovrx.sym
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR2.C
@@ -278,7 +279,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -y -o -v testovr1.c testovrx.sym
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR1.C
@@ -299,7 +300,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -a -v -o testhell.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTHELL.C M:$CTMP1.$$$
@@ -319,7 +320,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testpr.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTPR.C M:$CTMP1.$$$
@@ -394,7 +395,7 @@ strnicmp test:
 10E>testbios
 E:TESTBIOS COM
 Z3ENV is not established.  (This is not an error.)
-Press a key: rc = 007A, character = z
+Press a key: rc = 005A, character = Z
 The next message should say "Did this work?"
 Did this work?
 
@@ -458,8 +459,8 @@ E:TESTTRIG COM
 
 10E>testftim
 E:TESTFTIM COM
-34: 10:01 AM
-Tue Aug 09 10:01:11 2022
+34: 03:16 PM
+Wed Nov 01 15:16:46 2023
 
 
 10E>testfile
@@ -593,22 +594,24 @@ Program name: TESTWILD
 25: TESTQSRT.C
 26: TESTLTOF.C
 27: TESTBUG.C
-28: TESTIO.COM
-29: TESTUID.COM
-30: TESTSTR.COM
-31: TESTBIOS.COM
-32: TESTBDOS.COM
-33: TESTTRIG.COM
-34: TESTFTIM.COM
-35: TESTFILE.COM
-36: TESTAES.COM
-37: TESTRC.COM
-38: TESTVIEW.COM
-39: TESTWILD.COM
-40: TESTOVR.COM
-41: TESTHELL.COM
-42: TESTPR.COM
-43: TESTVER.COM
+28: TESTL.C
+29: TESTIO.COM
+30: TESTUID.COM
+31: TESTSTR.COM
+32: TESTBIOS.COM
+33: TESTBDOS.COM
+34: TESTTRIG.COM
+35: TESTFTIM.COM
+36: TESTFILE.COM
+37: TESTAES.COM
+38: TESTRC.COM
+39: TESTVIEW.COM
+40: TESTWILD.COM
+41: TESTOVR.COM
+42: TESTHELL.COM
+43: TESTPR.COM
+44: TESTVER.COM
+45: TESTL.COM
 
 10E>testhell
 E:TESTHELL COM

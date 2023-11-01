@@ -39,5 +39,8 @@ testview testh*.c testver.c
 testwild test*.c test*.com
 testhell
 testpr
+; Z280 optimiser
+optimh -f test-opt.as test-opt.as2
+optimh test-opt.as test-opt.as3
 ; All tests completed
 put console to console

@@ -1,11 +1,11 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Tue 09/08/2022 10:01:41
+Wed 01/11/2023 15:19:37
 10E>; Compile all test280
 10E>c280 -v -o2 testver.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTVER.C M:$CTMP1.$$$
@@ -13,7 +13,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 34 bytes optimized away
+ 34 bytes size optimised away
  74 bytes replaced
 0:A:ZAS -J -N -OTESTVER.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -26,7 +26,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testio.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTIO.C M:$CTMP1.$$$
@@ -34,7 +34,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 32 bytes optimized away
+ 32 bytes size optimised away
  66 bytes replaced
 0:A:ZAS -J -N -OTESTIO.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -47,7 +47,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testuid.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTUID.C M:$CTMP1.$$$
@@ -55,7 +55,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 0 bytes optimized away
+ 0 bytes size optimised away
  0 bytes replaced
 0:A:ZAS -J -N -OTESTUID.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -68,7 +68,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 teststr.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTSTR.C M:$CTMP1.$$$
@@ -76,7 +76,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 28 bytes optimized away
+ 28 bytes size optimised away
  72 bytes replaced
 0:A:ZAS -J -N -OTESTSTR.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -89,7 +89,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testbios.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTBIOS.C M:$CTMP1.$$$
@@ -97,7 +97,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 20 bytes optimized away
+ 20 bytes size optimised away
  42 bytes replaced
 0:A:ZAS -J -N -OTESTBIOS.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -110,7 +110,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testbdos.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTBDOS.C M:$CTMP1.$$$
@@ -118,7 +118,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 43 bytes optimized away
+ 43 bytes size optimised away
  66 bytes replaced
 0:A:ZAS -J -N -OTESTBDOS.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -131,7 +131,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testtrig.c -lf
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTTRIG.C M:$CTMP1.$$$
@@ -139,7 +139,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 0 bytes optimized away
+ 0 bytes size optimised away
  0 bytes replaced
 0:A:ZAS -J -N -OTESTTRIG.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -152,7 +152,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testftim.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTFTIM.C M:$CTMP1.$$$
@@ -160,7 +160,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 19 bytes optimized away
+ 19 bytes size optimised away
  30 bytes replaced
 0:A:ZAS -J -N -OTESTFTIM.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -173,7 +173,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testfile.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTFILE.C M:$CTMP1.$$$
@@ -181,7 +181,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 18 bytes optimized away
+ 18 bytes size optimised away
  36 bytes replaced
 0:A:ZAS -J -N -OTESTFILE.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -194,7 +194,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testaes.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTAES.C M:$CTMP1.$$$
@@ -202,8 +202,8 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 264 bytes optimized away
- 552 bytes replaced
+ 264 bytes size optimised away
+ 553 bytes replaced
 0:A:ZAS -J -N -OTESTAES.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
@@ -215,7 +215,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testrc.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTRC.C M:$CTMP1.$$$
@@ -223,7 +223,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 0 bytes optimized away
+ 0 bytes size optimised away
  0 bytes replaced
 0:A:ZAS -J -N -OTESTRC.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -236,7 +236,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testview.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTVIEW.C M:$CTMP1.$$$
@@ -244,7 +244,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 33 bytes optimized away
+ 33 bytes size optimised away
  66 bytes replaced
 0:A:ZAS -J -N -OTESTVIEW.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -257,7 +257,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testwild.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTWILD.C M:$CTMP1.$$$
@@ -265,7 +265,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 14 bytes optimized away
+ 14 bytes size optimised away
  32 bytes replaced
 0:A:ZAS -J -N -OTESTWILD.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -278,7 +278,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -ftestovrx.sym -v -o2 testovr.c -lovr
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTOVR.C M:$CTMP1.$$$
@@ -286,7 +286,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 8 bytes optimized away
+ 8 bytes size optimised away
  16 bytes replaced
 0:A:ZAS -J -N -OTESTOVR.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -299,7 +299,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -y -o2 -v testovr2.c testovrx.sym
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR2.C
@@ -308,7 +308,7 @@ TESTOVR2.C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 0 bytes optimized away
+ 0 bytes size optimised away
  0 bytes replaced
 0:A:ZAS -J -N -OTESTOVR2.OBJ M:$CTMP5.$$$
 0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
@@ -323,7 +323,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -y -o2 -v testovr1.c testovrx.sym
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR1.C
@@ -332,7 +332,7 @@ TESTOVR1.C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 0 bytes optimized away
+ 0 bytes size optimised away
  0 bytes replaced
 0:A:ZAS -J -N -OTESTOVR1.OBJ M:$CTMP5.$$$
 0:A:SYMTOAS TESTOVRX.SYM M:$CTMP5.$$$
@@ -347,7 +347,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -a -v -o2 testhell.c -lc
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTHELL.C M:$CTMP1.$$$
@@ -355,7 +355,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 0 bytes optimized away
+ 0 bytes size optimised away
  0 bytes replaced
 0:A:ZAS -J -N -OTESTHELL.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -370,7 +370,7 @@ ERA M:$$EXEC.$$$
 
 10E>c280 -v -o2 testpr.c
 A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-16
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTPR.C M:$CTMP1.$$$
@@ -378,7 +378,7 @@ Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
 0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
 0:A:OPTIMH M:$CTMP2.$$$ M:$CTMP5.$$$
- 0 bytes optimized away
+ 0 bytes size optimised away
  0 bytes replaced
 0:A:ZAS -J -N -OTESTPR.OBJ M:$CTMP5.$$$
 ERA M:$CTMP1.$$$
@@ -448,7 +448,7 @@ strnicmp test:
 10E>testbios
 E:TESTBIOS COM
 Z3ENV is not established.  (This is not an error.)
-Press a key: rc = 007A, character = z
+Press a key: rc = 005A, character = Z
 The next message should say "Did this work?"
 Did this work?
 
@@ -512,8 +512,8 @@ E:TESTTRIG COM
 
 10E>testftim
 E:TESTFTIM COM
-34: 10:13 AM
-Tue Aug 09 10:13:34 2022
+34: 03:31 PM
+Wed Nov 01 15:31:26 2023
 
 
 10E>testfile
@@ -647,22 +647,24 @@ Program name: TESTWILD
 25: TESTQSRT.C
 26: TESTLTOF.C
 27: TESTBUG.C
-28: TESTIO.COM
-29: TESTUID.COM
-30: TESTSTR.COM
-31: TESTBIOS.COM
-32: TESTBDOS.COM
-33: TESTTRIG.COM
-34: TESTFTIM.COM
-35: TESTFILE.COM
-36: TESTAES.COM
-37: TESTRC.COM
-38: TESTVIEW.COM
-39: TESTWILD.COM
-40: TESTOVR.COM
-41: TESTHELL.COM
-42: TESTPR.COM
-43: TESTVER.COM
+28: TESTL.C
+29: TESTIO.COM
+30: TESTUID.COM
+31: TESTSTR.COM
+32: TESTBIOS.COM
+33: TESTBDOS.COM
+34: TESTTRIG.COM
+35: TESTFTIM.COM
+36: TESTFILE.COM
+37: TESTAES.COM
+38: TESTRC.COM
+39: TESTVIEW.COM
+40: TESTWILD.COM
+41: TESTOVR.COM
+42: TESTHELL.COM
+43: TESTPR.COM
+44: TESTVER.COM
+45: TESTL.COM
 
 10E>testhell
 E:TESTHELL COM
@@ -672,6 +674,17 @@ Hello
 E:TESTPR   COM
 len: 320
 string: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+10E>; Z280 optimiser
+10E>optimh -f test-opt.as test-opt.as2
+E:OPTIMH   COM
+ 15 bytes speed optimised away
+ 68 bytes replaced
+
+10E>optimh test-opt.as test-opt.as3
+E:OPTIMH   COM
+ 25 bytes size optimised away
+ 62 bytes replaced
 
 10E>; All tests completed
 10E>put console to console

@@ -2,12 +2,14 @@
 
 ## Introduction
 
-In this repository I intend to supply updates and enhancements to
-the HI-TECH C Compiler for Z80 v3.09 running natively under CP/M or under
-emulation using RunZ80, SIMH or ZXCC.
+This repository contains the HI-TECH C Compiler for Z80 v3.09 along with
+updates and enhancements.  It runs natively on a Zilog Z80/Z180/Z280
+processor under the CP/M operating system or under emulation on your
+Windows/Linux/macOS system using RunCPM[^1], SIMH AltairZ80[^2] or
+ZXCC[^3].
 
 Each release is a consolidated milestone with various updates and
-patches applied.
+patches applied.  You should read this README.md file for details.
 
 The latest release is V3.09-17 (see Modification History below).
 
@@ -25,8 +27,7 @@ I welcome bug reports/fixes and additional commentry and discussion.
 You can raise an issue here on GitHub or contact me directly via e-mail
 at <tony.nicholson@computer.org> or by posting to the USENET newsgroup
 forum at comp.os.cpm in the "Consolidating Updates for HI-TECH C for
-Z80 CP/M v3.09" discussion thread - (accessible via Google Groups at
-https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak ).
+Z80 CP/M v3.09" discussion thread[^4].
 
 The first release is a slightly modified (see below) v3.09.
 
@@ -1479,7 +1480,7 @@ to the directory entry.
 Note: You need to take extra care if you're using an emulator like ZXCC
 which has been updated to only support the DOS Plus
 convention or the CP/M 2.2 interpretation (as per the original version
-by John Elliott).  Using the wrong mode will cause the file will be
+by John Elliott).  Using the wrong mode will cause the file to be
 extended or truncated in the last sector.  The CP/M 2.2 mode causes
 ```Ctrl-Z``` to be written at the end of text files (as per the CP/M
 convention).
@@ -1585,7 +1586,7 @@ in the output file.  Processing now detects them and outputs them
 on a separate line prior to performing optimisation.
 
 I've rebuilt the Z280 optimised libraries (LIB280C.LIB, LIB280F.LIB) and
-compiler frontend C280-17.COM using the update optimiser - and these files
+compiler frontend C280-17.COM using the updated optimiser - and these files
 are now available in both the *z280dist* folder and updated Z280 binary
 distribution at
 
@@ -1593,6 +1594,30 @@ https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 
 Please raise an issue if you have any problems with them.
 
+--
+[^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
+actively maintained and available from https://github.com/MockbaTheBorg/RunCPM
+
+[^2]: SIMH AltairZ80 is one of many computer system simulators from the
+Open SIMH Project (https://opensimh.org).  It emulates 8080/Z80/8085 and
+MC68000 S-100 bus computers (like the MITS Altair with various interface
+cards and peripherals).  You can obtain source-code for over 70 different
+systems from https://github.com/open-simh/simh or just the AltairZ80
+specific simulator and various prebuilt CP/M operating system kits from
+Peter Schorn's site at https://schorn.ch/altair.html
+
+[^3]: ZXCC is a CP/M 2/3 emulator for cross compiling and running most
+CP/M binary command files under Linux/Unix/macOS and Microsoft Windows.
+It was authored by John Elliott and with various updates may be obtained
+from https://github.com/agn453/ZXCC
+
+[^4]: The newsgroup comp.os.cpm can be accessed via a USENET
+provider like www.eternal-september.org using newsreader software like
+Mozilla Thunderbird.  An archived copy of the original thread can be
+read via Google Groups at
+https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak - but
+since February 2024 you will need to access comp.os.cpm via a USENET
+provider to be able to post messages). 
 
 --
-Tony Nicholson, Wednesday 01-Nov-2023
+Tony Nicholson, Friday 15-Mar-2024

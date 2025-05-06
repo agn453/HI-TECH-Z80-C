@@ -1651,7 +1651,7 @@ https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 
 Please raise an issue if you have any problems with them.
 
-## Update missing exact file length code in the C Library for stat() and open() routines, and fix fseek() bug..
+## Update missing exact file length code in the C Library for stat() and open() routines, and fix fseek() bug.
 <!-- May 6, 2025 -->
 
 When the exact file length code was reverted back in V3.09-13 I missed
@@ -1671,7 +1671,6 @@ compiler front-end processor have been updated to include the corrected
 modules.  I've also bumped the version to V3.09-18 so you
 know you're using the corrected modules.
 
-## Footnotes
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
 actively maintained and available from https://github.com/MockbaTheBorg/RunCPM

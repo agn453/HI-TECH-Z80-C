@@ -57,7 +57,7 @@ The *doc* folder contains the documentation in ASCII text as HTCZ80.TXT.
 In chronological order - so be sure to check the latest updates at the
 end of this README file.
 
-### Release v3.09
+## Release v3.09
 <!-- Mar 3, 2020 -->
 
 The original HI-TECH C linker (LINK.COM) has been renamed as LINQ.COM
@@ -70,7 +70,7 @@ I've edited the documentation to remove the underlining and bolding of
 text by over-printing and fixed some layout issues and typos.
 
 
-### Release v3.09-1
+## Release v3.09-1
 <!-- Mar 4, 2020 -->
 
 As supplied in v3.09, the LIBF.LIB produces inaccurate floating point
@@ -95,7 +95,7 @@ A *test* folder has been created.  In it is a TESTTRIG.C program for testing
 this release.
 
 
-### Release v3.09-2
+## Release v3.09-2
 <!-- Mar 3, 2020 -->
 
 The late Jon Saxton (former SYSOP of the Australian Tesseract RCPM)
@@ -192,7 +192,7 @@ bdos()
 ```
 
 
-### Release v3.09-3
+## Release v3.09-3
 <!-- Mar 4, 2020 -->
 
 These are the Jon Saxton modified versions of John Elliott's patches.
@@ -421,7 +421,7 @@ Extended getenv()
 ```
 
 
-### Release v3.09-3b
+## Release v3.09-3b
 <!-- Mar 5, 2020 -->
 
 Updated the previous release to adjust the ordering of modules in LIBC.LIB -
@@ -431,7 +431,7 @@ now defunct hitech.com.au web site) and scanned PDFs of the 1989
 vintage documentation.
 
 
-### Release v3.09-4
+## Release v3.09-4
 <!-- Mar 8, 2020 -->
 
 Some of the string related function prototypes in STRING.H are missing from
@@ -536,7 +536,7 @@ strftime()
     than maxs characters were produced.
 ```
 
-### Release v3.09-4-Z280
+## Release v3.09-4-Z280
 <!-- Mar 8, 2020 -->
 
 This is the first experimental release of the libraries that have been
@@ -649,7 +649,7 @@ LIB280C.LIB and LIB280F.LIB
 
 ```
 
-### Not actually a release - but including MSX-DOS 2 distribution
+## Not actually a release - but including MSX-DOS 2 distribution
 <!-- Apr 17, 2020 -->
 
 I'm making available the raw updates for MSX-DOS 2 for those interested in
@@ -677,7 +677,7 @@ Windows Win32 environment.  This is available on GitHub at
 https://github.com/sharksym/CPMEMU_HI-TECH_C
 
 
-### Fix to getenv()
+## Fix to getenv()
 <!-- May 24, 2020 -->
 
 The getenv() function was not correctly looking up the location of
@@ -695,7 +695,7 @@ in your CP/M 3 PROFILE.SUB file (or manually entered on the command line).
 Updated dist/LIBC.LIB and z280dist/LIBC280.LIB too.
 
 
-### General tidy-up and Overlay capability
+## General tidy-up and Overlay capability
 <!-- Jun 3, 2020 -->
 
 Updates merged from @tsupplis
@@ -706,14 +706,14 @@ and to fix an incompatibility with conflicting _TIME macros in both
 TIME.H and CPM.H
 
 
-### Release V3.09-5
+## Release V3.09-5
 <!-- Jun 3, 2020 -->
 
 Rebuilt libraries LIBC.LIB and LIBF.LIB (as well as LIB280C.LIB and
 LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
 
 
-### Fix CRTCPM.OBJ start-up module
+## Fix CRTCPM.OBJ start-up module
 <!-- Jun 12, 2020 -->
 
 The CP/M start-up module CRTCPM.OBJ was not checking the CP/M version
@@ -724,7 +724,7 @@ A new version of CRTCPM.OBJ is available (and the source-code in
 ZCRTCPM.AS has been updated to correct this).
 
 
-### Add source for DEHUFF and ENHUFF
+## Add source for DEHUFF and ENHUFF
 <!-- Dec 13, 2020 -->
 
 Andrey Nikitin has contributed the sources for the DEHUFF and ENHUFF
@@ -747,7 +747,7 @@ c -O -v dehuff.c decode.c misc.c
 (If you're using a Z280 use 'c280 -of2 -v ...')
 
 
-### Change supported string length in printf() routine
+## Change supported string length in printf() routine
 <!-- Jan 5, 2021 -->
 
 Merged a minor change into stdio/DOPRNT.C from @tupplis so that various
@@ -757,7 +757,7 @@ Updated the dist/LIBC.LIB and z280dist/LIB280C.LIB libraries too
 and created a new v3.09-6 release to consolidate the recent updates.
 
 
-### Release V3.09-6
+## Release V3.09-6
 <!-- Jan 6, 2021 -->
 
 Updated the cpm/C.C source to include the V3.09-6 identifier and
@@ -770,7 +770,7 @@ as z280dist/CRTCPM.OBJ
 the compiled binary is running on a Z280 MPU.
 
 
-### PIPEMGR sources
+## PIPEMGR sources
 <!-- Jan 8, 2021 -->
 
 I've included Jon Saxton's version of the PIPEMGR RSX for handling
@@ -795,7 +795,7 @@ original PIPEMGR page at
 http://www.seasip.info/Cpm/software/Pipemgr/index.html
 
 
-### Self-relocating .COM program PIPEMGR integration
+## Self-relocating .COM program PIPEMGR integration
 <!-- Jan 8, 2021 -->
 
 @tsupplis provided updates to the self-relocating image start-up module
@@ -806,7 +806,7 @@ dist/RRTCPM.OBJ
 To build a self-relocating image, use the -A compile option.
 
 
-### Minor issues
+## Minor issues
 <!-- Jan 10, 2021 -->
 
 * Declaration for rename() missing from dist/UNIXIO.H
@@ -955,7 +955,7 @@ copied from the dist folder to the system directory (usually drive A:
 in user area 0, and marked with the SYS and RO attributes).
 
 
-### Minor Updates
+## Minor Updates
 <!-- Jan 15, 2021 -->
 
 Addressing some minor changes from issue #18 -
@@ -971,7 +971,7 @@ been adjusted to be consistently in uppercase.
 I've re-issued this as a revised v3.09-7b release too.
 
 
-### Release v3.09-8 (support for Z280 MPU)
+## Release v3.09-8 (support for Z280 MPU)
 <!-- Jan 15, 2021 -->
 
 The compiler front-end source in cpm/C.C has been updated so that it
@@ -993,13 +993,13 @@ the z280dist/LIB280*.LIB libraries to the system drive too.
 This is also a new release milestone at v3.09-8.
 
 
-### Minor fixes
+## Minor fixes
 <!-- Jan 15, 2021 -->
 
 * Minor change to allow size optimization (-O2 switch) for Z280.
 
 
-### Easy binary download
+## Easy binary download
 <!-- Jan 17, 2021 -->
 
 Include an easy-download CP/M library file containing the binary
@@ -1014,7 +1014,7 @@ and extract the files using one of the CP/M .LBR extraction tools, e.g.
 [NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM),
 
 
-### Minor update
+## Minor update
 <!-- Jan 17, 2021 -->
 
 * Revert change defining "Z80" symbol back to the lowercase form "z80"
@@ -1022,7 +1022,7 @@ in the main driver.  There are some inconsistencies with how this is used
 in the other compiler modules - and in the library sourcefiles.
 
 
-### Z280 optimizer speed/size
+## Z280 optimizer speed/size
 <!-- Jan 18, 2021 -->
 
 * Modify z280/OPTIMH.C and the front-end driver to select between size
@@ -1033,7 +1033,7 @@ it omits them for reduced code-size.  This is selected by using the -OF2
 and -O2 option to the C280 front-end.
 
 
-### Old files removed
+## Old files removed
 <!-- Jan 19, 2021 -->
 
 Up until now, I've kept various replaced files in this repository
@@ -1044,7 +1044,7 @@ will show them from now on!  If you need to refer to them you can
 download one of the previous releases.
 
 
-### Decompilation of CGEN.COM
+## Decompilation of CGEN.COM
 <!-- Feb 5, 2021 -->
 
 Andrey Nikitin has made available a decompilation of the HI-TECH C V3.09
@@ -1056,7 +1056,7 @@ You'll find this at
 https://github.com/nikitinprior/dcgen
 
 
-### bios() routine restrictions
+## bios() routine restrictions
 <!-- Mar 18, 2021 -->
 
 Issue #24 raised a limitation with calling the bios() function to perform
@@ -1065,7 +1065,7 @@ inter-bank memory moves using the CP/M 3 BIOS XMOVE and MOVE routines
 document this and the SELMEM (function 27) restriction.
 
 
-### Incomplete prototype definitions in TIME.H
+## Incomplete prototype definitions in TIME.H
 <!-- Mar 20, 2021 -->
 
 As per issue #25 - corrected the function prototype definitions in
@@ -1073,7 +1073,7 @@ dist/TIME.H for ctime(), gmtime() and localtime().  Updated the
 htc-bin.lbr binary distribution library archive file too.
 
 
-### More work on decompiling CPP.COM
+## More work on decompiling CPP.COM
 <!-- Mar 29, 2021 -->
 
 Andrea Nikitin has posted some more decompiled source-code for the
@@ -1084,7 +1084,7 @@ repository at
 https://github.com/nikitinprior/dcpp
 
 
-### Historical version 1.3 added
+## Historical version 1.3 added
 <!-- Jun 7, 2021 -->
 
 I've added a CP/M library format file containing the HI-TECH C COMPILER V1.3
@@ -1103,7 +1103,7 @@ repository at
 https://github.com/nikitinprior/ddump
 
 
-### Object librarian source-code reconstructed
+## Object librarian source-code reconstructed
 <!-- Aug 4, 2021 -->
 
 Andrey Nikitin has managed to reconstruct the C language source for the
@@ -1113,7 +1113,7 @@ find this in his repository at
 https://github.com/nikitinprior/dlibr
 
 
-### v3.09-9 update release
+## v3.09-9 update release
 <!-- Aug 16, 2021 -->
 
 I've added a mktime() routine to the C library (LIBC.LIB and LIB280C.LIB)
@@ -1151,7 +1151,7 @@ mktime()
 ```
 
 
-### CPM.H header file update
+## CPM.H header file update
 <!-- Aug 16, 2021 -->
 
 * Added a few missing bdos() function constants for CP/M 3, MP/M, ZSDOS
@@ -1162,7 +1162,7 @@ and ZPM3.
 * Add -Y description to dist/OPTIONS file.
 
 
-### Reconstructed source for OPTIM.COM
+## Reconstructed source for OPTIM.COM
 <!-- Nov 12, 2021 -->
 
 Andrey Nikitin and Mark Ogden have been busy.  They've reconstructed the
@@ -1171,7 +1171,7 @@ C source-code for the Z80 code optimiser.  You'll find it at
 https://github.com/nikitinprior/doptim
 
 
-### Fix to fgets routine
+## Fix to fgets routine
 <!-- Dec 19, 2021 -->
 
 Reported by Mark Ogden, the fgets() library routine (in LIBC.LIB and
@@ -1184,7 +1184,7 @@ files from the updated binary distribution from
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
 
 
-### Bundle up the Z280 distribution
+## Bundle up the Z280 distribution
 <!-- Dec 28, 2021 -->
 
 I've added a binary Z280 distribution library file too.  Get it from
@@ -1657,10 +1657,10 @@ Please raise an issue if you have any problems with them.
 When the exact file length code was reverted back in V3.09-13 I missed
 updating a couple of the C library routines to use the ```_exact```
 global variable to correctly handle the selected mode for handing
-DOS Plus mode (the DEFAULT).  The ```stat()``` and ```open()``` have now
-been updated.   These were found when looking for the resolution to
-issue #49. The ```fseek()``` routine was returning with an offset of
-the buffer size (512 bytes) for files opened in read and write ("r+b")
+DOS Plus mode (the DEFAULT).  The ```stat()``` and ```open()``` library
+routines have now been updated.   These were found when looking for the
+resolution to issue #49. The ```fseek()``` routine was returning with an
+offset of the buffer size (512 bytes) for files opened in read and write ("r+b")
 mode.  The ```ftell()``` routine was the culprit in the FSEEK.C library
 module and the offset is no longer added for a file opened in this mode.
 (This bug appears to be a long standing one that is in the C library

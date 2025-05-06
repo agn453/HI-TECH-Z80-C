@@ -37,8 +37,10 @@
     For the ZXCC emulator, using _exact as 'D' is safe.
 */
 
-extern char _exact;  /* 'C' = not used (old CP/M),
-                        'D' = DOSPLUS mode,  'I' = ISX mode
+extern char _exact;  /* Exact file size hint for last sector
+			'C' = not used (old CP/M),
+                        'D' = DOSPLUS mode (count is USED bytes),
+			'I' = ISX mode (count is UNUSED bytes)
                       */
 
 char *getenv(char *);

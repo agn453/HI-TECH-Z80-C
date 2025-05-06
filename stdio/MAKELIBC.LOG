@@ -1,10 +1,11 @@
 
-10E>; Use librarian to place all modules in LIBC17.LIB
+10E>; Use librarian to place all modules in LIBC18.LIB
 10E>; NB: the ordering is important for resolving dependencies at link time
-10E>era LIBC17.lib
+10E>era LIBC18.lib
 10E>libr
 A:LIBR     COM  (User 0)
-libr> r LIBC17.lib	\
+libr> r LIBC18.lib	\
+libr> libcver.obj	\
 libr> start1.obj	\
 libr> getargs.obj	\
 libr> assert.obj	\
@@ -164,9 +165,10 @@ libr> tolower.obj	\
 libr> toupper.obj	\
 libr> xtoi.obj
 
-10E>; Library LIBC17.LIB created
-10E>libr s LIBC17.lib
+10E>; Library LIBC18.LIB created
+10E>libr s LIBC18.lib
 A:LIBR     COM  (User 0)
+libcver.obj     D __libcver     
 start1.obj      D __argc_       U __getargs     D startup       
 getargs.obj     U __argc_       D __getargs     U __iob         U _bdos       
 		U _bmove        U _exit         U _fprintf      U _freopen    
@@ -261,12 +263,12 @@ buf.obj         D __bufallo     D __buffree     U _sbrk         U cret
 		U csv           U indir         U ncsv          
 exit.obj        U __cleanup     U __exit        D _exit         U cret        
 		U csv           U indir         U ncsv          
-open.obj        U __fcb         D __fsize       U _bdos         U _errno      
-		U _getfcb       U _getuid       D _open         U _putfcb     
-		U _setfcb       U _setuid       U adiv          U aland       
-		U aldiv         U amul          U asalsub       U brelop      
-		U cret          U csv           U indir         U ncsv        
-		U shll          U wrelop        
+open.obj        U __exact       U __fcb         D __fsize       U _bdos       
+		U _errno        U _getfcb       U _getuid       D _open       
+		U _putfcb       U _setfcb       U _setuid       U adiv        
+		U aland         U aldiv         U amul          U asalsub     
+		U brelop        U cret          U csv           U indir       
+		U ncsv          U shll          U wrelop        
 read.obj        U __fcb         U __piped       U __putrno      U __sigchk    
 		U _bdos         U _bmove        U _getuid       D _read       
 		U _setuid       U aldiv         U alsub         U amul        
@@ -280,10 +282,10 @@ write.obj       U __fcb         U __piped       U __putrno      U __sigchk
 seek.obj        U __fcb         D _lseek        U aladd         U amul        
 		U arelop        U brelop        U cret          U csv         
 		U indir         U ncsv          
-stat.obj        U _bdos         U _convtime     U _getuid       U _setfcb     
-		U _setuid       D _stat         U asallsh       U asalsub     
-		U cret          U indir         U lladd         U lllsh       
-		U ncsv          U shal          U wrelop        
+stat.obj        U __exact       U _bdos         U _convtime     U _getuid     
+		U _setfcb       U _setuid       D _stat         U asallsh     
+		U asalsub       U cret          U indir         U lladd       
+		U lllsh         U ncsv          U shal          U wrelop      
 chmod.obj       U _bdos         D _chmod        U _getuid       U _setfcb     
 		U _setuid       U cret          U indir         U ncsv        
 fcbname.obj     U __fcb         U _bdos         D _fcbname      U _sprintf    

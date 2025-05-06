@@ -6,6 +6,7 @@ m:
 era m:lib280c.lib
 libr
 <r m:lib280c.lib	\
+<libcver.obj	\
 <start1.obj	\
 <getargs.obj	\
 <assert.obj	\

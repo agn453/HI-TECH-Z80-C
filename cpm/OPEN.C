@@ -2,6 +2,12 @@
 
 extern int errno;
 
+extern char _exact;  /* Exact file size hint for last sector
+			'C' = not used (old CP/M),
+                        'D' = DOSPLUS mode (count is USED bytes),
+			'I' = ISX mode (count is UNUSED bytes)
+                      */
+
 long _fsize(uchar fd)
 {
     register struct fcb *fc;
@@ -23,11 +29,12 @@ long _fsize(uchar fd)
     tmp = (*(long *)(&fc->ranrec[-1]) & 0xFFFFFF00) / 2;
 
     bdos(CPMSDMA,buf);
-    if ((d = bdos(CPMFFST, fc) & 0xFF) < 4)   /* Account for CP/M3 bytewise */
+    /* Account for CP/M3 bytewise file sizes in last sector */
+    if ((d = bdos(CPMFFST, fc) & 0xFF) < 4)
     {
-        d = (buf[13 + (d << 5)] & 0x7F);  /* file sizes */
-/*      if (d)               // Byte count represents UNUSED bytes in last
-            d = 0x80 - d;    // sector ... Changed 9 Apr 2014 jrs */
+        d = (buf[13 + (d << 5)] & 0x7F); /* Count of UNUSED bytes */
+        if ((_exact == 'D') && (d != 0)) /* DOS Plus has count of USED bytes */
+            d = 0x80 - d;
         tmp -= d;
     }
     setuid(luid);

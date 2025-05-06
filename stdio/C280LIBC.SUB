@@ -177,7 +177,8 @@ c280
 <e:zc280cpm.as \
 <e:zd280cpm.as \
 <e:zn280cpm.as \
-<e:zr280cpm.as
+<e:zr280cpm.as \
+<e:libcver.c
 ; All modules compiled.
 put console to console
 e:

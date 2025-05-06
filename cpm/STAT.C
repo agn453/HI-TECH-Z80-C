@@ -2,6 +2,12 @@
 #include    <cpm.h>
 #include    <time.h>
 
+extern char _exact;  /* Exact file size hint for last sector
+			'C' = not used (old CP/M),
+                        'D' = DOSPLUS mode (count is USED bytes),
+			'I' = ISX mode (count is UNUSED bytes)
+                      */
+
 /*
  *  int stat(char * s, struct stat * b);
  *
@@ -49,16 +55,10 @@ int stat(register char * s, register struct stat * b)
         bdos(CPMSDMA,buf);
         if ((d = bdos(CPMFFST,&fc)) < 4)
         {
-            /* Account for CP/M3 bytewise */
-            d = (buf[13 + (d << 5)] & 0x7F);  /* file sizes */
-/*
-            Changed to interpret last record byte count as the number of
-            UNUSED bytes.  Slightly simpler, historically correct and
-            consistent with other tools that I use.  [jrs 2014-04-08]
-
-            if (d)
+            /* Account for CP/M3 bytewise file sizes */
+            d = (buf[13 + (d << 5)] & 0x7F); /* count of UNUSED bytes */
+            if (( _exact == 'D') && (d != 0)) /* DOS Plus has USED bytes */
                 d=0x80-d;
-*/
             b->st_size-=d;
         }
 	/* Corrected to account for directory code return [jrs 2014-04-20] */

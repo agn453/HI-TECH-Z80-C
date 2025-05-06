@@ -89,7 +89,9 @@ long ftell(register FILE *f)
     pos = lseek(f->_file, 0L, 1);
     if (f->_cnt < 0)
         f->_cnt = 0;
+/* Why?  commented out 06-May-2025 AGN
     if (f->_base && f->_flag & _IOWRT)
         pos += BUFSIZ;
+ */
     return pos - f->_cnt;
 }

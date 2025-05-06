@@ -11,6 +11,7 @@ era m:*.obj
 ;
 c280
 <-v -c -o2 \
+<d:LIBFVER.C \
 <d:PRINTF.C \
 <d:FPRINTF.C \
 <d:SPRINTF.C \
@@ -51,6 +52,7 @@ era m:lib280f.lib
 ;
 LIBR
 <R m:lib280f.LIB \
+<LIBFVER.OBJ \
 <PRINTF.OBJ \
 <FPRINTF.OBJ \
 <SPRINTF.OBJ \

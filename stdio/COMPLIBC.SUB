@@ -1,7 +1,7 @@
 era complibc.log
 put console output to file complibc.log [system]
 date
-; Compile all LIBC17.LIB modules from sources
+; Compile all LIBC18.LIB modules from sources
 c
 <-o -c abort.c \
 <abs.as \
@@ -171,6 +171,7 @@ c
 <zcrtcpm.as \
 <zdrtcpm.as \
 <znrtcpm.as \
-<zrrtcpm.as
+<zrrtcpm.as \
+<libcver.c
 ; All modules compiled.
 put console to console

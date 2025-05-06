@@ -1,11 +1,11 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Wed 01/11/2023 10:35:04
-10E>; Compile all LIBC17.LIB modules from sources
+Tue 06/05/2025 10:02:44
+10E>; Compile all LIBC18.LIB modules from sources
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c abort.c \
@@ -175,7 +175,7 @@ ISDIGIT.AS
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c islower.as \
@@ -231,7 +231,7 @@ PUTCHAR.C
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c puts.c \
@@ -293,7 +293,8 @@ c> xtoi.as \
 c> zcrtcpm.as \
 c> zdrtcpm.as \
 c> znrtcpm.as \
-c> zrrtcpm.as
+c> zrrtcpm.as \
+c> libcver.c
 PUTS.C
 PUTW.C
 QSORT.C
@@ -354,6 +355,7 @@ ZCRTCPM.AS
 ZDRTCPM.AS
 ZNRTCPM.AS
 ZRRTCPM.AS
+LIBCVER.C
 
 10E>; All modules compiled.
 10E>put console to console

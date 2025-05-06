@@ -1,0 +1,9 @@
+c 
+<-o -c getargs.c getenv.c assert.c printf.c fprintf.c sprintf.c \
+<doprnt.c gets.c puts.c fwrite.c getw.c putw.c \
+<putchar.c perror.c fputc.as flsbuf.c \
+<fopen.c freopen.c fseek.c fread.c rewind.c remove.c \
+<setbuf.c fscanf.c ctime.c cgets.c cputs.c \
+<sscanf.c scanf.c doscan.c ungetc.c \
+<fgetc.as filbuf.c stdclean.c fclose.c fflush.c \
+<buf.c exit.c fakeclean.c

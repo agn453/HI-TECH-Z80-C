@@ -1,7 +1,7 @@
 
 10D>date
 A:DATE     COM  (User 0)
-Wed 01/11/2023 14:22:13
+Tue 06/05/2025 11:14:44
 10D>;----------  MAKELIBF.SUB  ----------
 10D>; Assumes DEHUFF -X FLOAT.HUF has extracted
 10D>; all sources to the default drive
@@ -9,13 +9,15 @@ A:DATE     COM  (User 0)
 10D>m:
 10M>era *.obj
 ERASE *.OBJ (Y/N)? Y
+No File
 10M>;
 10M>C
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-17
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
-c> -O -V -C d:PRINTF.C \
+c> -O -V -C d:LIBFVER.C \
+c> d:PRINTF.C \
 c> d:FPRINTF.C \
 c> d:SPRINTF.C \
 c> d:SCANF.C \
@@ -50,6 +52,12 @@ c> d:FRNDINT.AS \
 c> d:FTOL.AS \
 c> d:LTOF.AS \
 c> d:FLOAT.AS
+D:LIBFVER.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:LIBFVER.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:ZAS -J -N -OLIBFVER.OBJ $CTMP2.$$$
 D:PRINTF.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: D:PRINTF.C $CTMP1.$$$
 0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
@@ -236,9 +244,11 @@ ERA $$EXEC.$$$
 
 10M>;
 10M>era m:libf.lib
+No File
 10M>libr
 A:LIBR     COM  (User 0)
 libr> r m:LIBF.LIB \
+libr> LIBFVER.OBJ \
 libr> PRINTF.OBJ \
 libr> FPRINTF.OBJ \
 libr> SPRINTF.OBJ \
@@ -292,44 +302,45 @@ Directory For Drive M:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-ACOS     OBJ     4k      3 Dir RW       None   01/11/23 14:25  01/11/23 14:25
-ASFLOAT  OBJ     4k      3 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-ASIN     OBJ     4k      9 Dir RW       None   01/11/23 14:25  01/11/23 14:25
-ATAN     OBJ     4k      9 Dir RW       None   01/11/23 14:26  01/11/23 14:26
-ATAN2    OBJ     4k      9 Dir RW       None   01/11/23 14:26  01/11/23 14:26
-ATOF     OBJ     4k     11 Dir RW       None   01/11/23 14:24  01/11/23 14:24
-CEIL     OBJ     4k      4 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-COS      OBJ     4k      5 Dir RW       None   01/11/23 14:26  01/11/23 14:26
-COSH     OBJ     4k      4 Dir RW       None   01/11/23 14:26  01/11/23 14:26
-DOPRNT   OBJ     4k     21 Dir RW       None   01/11/23 14:23  01/11/23 14:23
-DOSCAN   OBJ     4k     32 Dir RW       None   01/11/23 14:24  01/11/23 14:24
-EVALPOLY OBJ     4k      3 Dir RW       None   01/11/23 14:27  01/11/23 14:27
-EXP      OBJ     4k     14 Dir RW       None   01/11/23 14:27  01/11/23 14:27
-FABS     OBJ     4k      3 Dir RW       None   01/11/23 14:27  01/11/23 14:27
-FBCD     OBJ     4k      6 Dir RW       None   01/11/23 14:25  01/11/23 14:25
-FINC     OBJ     4k      2 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-FLOAT    OBJ     4k      9 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-FLOOR    OBJ     4k      4 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-FNUM     OBJ     4k     31 Dir RW       None   01/11/23 14:25  01/11/23 14:25
-FPRINTF  OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
-FREXP    OBJ     4k      2 Dir RW       None   01/11/23 14:27  01/11/23 14:27
-FRNDINT  OBJ     4k      1 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-FSCANF   OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
-FTOL     OBJ     4k      2 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-LOG      OBJ     4k      8 Dir RW       None   01/11/23 14:27  01/11/23 14:27
-LTOF     OBJ     4k      4 Dir RW       None   01/11/23 14:28  01/11/23 14:28
-PRINTF   OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
-SCANF    OBJ     4k      2 Dir RW       None   01/11/23 14:22  01/11/23 14:22
-SIN      OBJ     4k     10 Dir RW       None   01/11/23 14:26  01/11/23 14:26
-SINH     OBJ     4k      4 Dir RW       None   01/11/23 14:26  01/11/23 14:26
-SPRINTF  OBJ     4k      3 Dir RW       None   01/11/23 14:22  01/11/23 14:22
-SQRT     OBJ     4k     10 Dir RW       None   01/11/23 14:27  01/11/23 14:27
-SSCANF   OBJ     4k      2 Dir RW       None   01/11/23 14:23  01/11/23 14:23
-TAN      OBJ     4k      2 Dir RW       None   01/11/23 14:25  01/11/23 14:25
-TANH     OBJ     4k      4 Dir RW       None   01/11/23 14:26  01/11/23 14:26
+ACOS     OBJ     4k      3 Dir RW       None   06/05/25 11:18  06/05/25 11:18
+ASFLOAT  OBJ     4k      3 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+ASIN     OBJ     4k      9 Dir RW       None   06/05/25 11:18  06/05/25 11:18
+ATAN     OBJ     4k      9 Dir RW       None   06/05/25 11:18  06/05/25 11:18
+ATAN2    OBJ     4k      9 Dir RW       None   06/05/25 11:18  06/05/25 11:18
+ATOF     OBJ     4k     11 Dir RW       None   06/05/25 11:17  06/05/25 11:17
+CEIL     OBJ     4k      4 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+COS      OBJ     4k      5 Dir RW       None   06/05/25 11:19  06/05/25 11:19
+COSH     OBJ     4k      4 Dir RW       None   06/05/25 11:19  06/05/25 11:19
+DOPRNT   OBJ     4k     21 Dir RW       None   06/05/25 11:16  06/05/25 11:16
+DOSCAN   OBJ     4k     32 Dir RW       None   06/05/25 11:16  06/05/25 11:16
+EVALPOLY OBJ     4k      3 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+EXP      OBJ     4k     14 Dir RW       None   06/05/25 11:19  06/05/25 11:19
+FABS     OBJ     4k      3 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+FBCD     OBJ     4k      6 Dir RW       None   06/05/25 11:18  06/05/25 11:18
+FINC     OBJ     4k      2 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+FLOAT    OBJ     4k      9 Dir RW       None   06/05/25 11:21  06/05/25 11:21
+FLOOR    OBJ     4k      4 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+FNUM     OBJ     4k     31 Dir RW       None   06/05/25 11:17  06/05/25 11:17
+FPRINTF  OBJ     4k      2 Dir RW       None   06/05/25 11:15  06/05/25 11:15
+FREXP    OBJ     4k      2 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+FRNDINT  OBJ     4k      1 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+FSCANF   OBJ     4k      2 Dir RW       None   06/05/25 11:15  06/05/25 11:15
+FTOL     OBJ     4k      2 Dir RW       None   06/05/25 11:21  06/05/25 11:21
+LIBFVER  OBJ     4k      1 Dir RW       None   06/05/25 11:14  06/05/25 11:14
+LOG      OBJ     4k      8 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+LTOF     OBJ     4k      4 Dir RW       None   06/05/25 11:21  06/05/25 11:21
+PRINTF   OBJ     4k      2 Dir RW       None   06/05/25 11:15  06/05/25 11:15
+SCANF    OBJ     4k      2 Dir RW       None   06/05/25 11:15  06/05/25 11:15
+SIN      OBJ     4k     10 Dir RW       None   06/05/25 11:19  06/05/25 11:19
+SINH     OBJ     4k      4 Dir RW       None   06/05/25 11:19  06/05/25 11:19
+SPRINTF  OBJ     4k      3 Dir RW       None   06/05/25 11:15  06/05/25 11:15
+SQRT     OBJ     4k     10 Dir RW       None   06/05/25 11:20  06/05/25 11:20
+SSCANF   OBJ     4k      2 Dir RW       None   06/05/25 11:15  06/05/25 11:15
+TAN      OBJ     4k      2 Dir RW       None   06/05/25 11:18  06/05/25 11:18
+TANH     OBJ     4k      4 Dir RW       None   06/05/25 11:19  06/05/25 11:19
 
-Total Bytes     =    140k  Total Records =     242  Files Found =   35
-Total 1k Blocks =     51   Used/Max Dir Entries For Drive M:   98/ 512
+Total Bytes     =    144k  Total Records =     243  Files Found =   36
+Total 1k Blocks =     52   Used/Max Dir Entries For Drive M:  107/ 512
 
 10M>era d:libf-obj.lbr
 10M>nulu d:libf-obj.lbr -a m:*.obj -x
@@ -341,23 +352,24 @@ Bug fixes in version 1.52 by Mick Waters
 TYPE -H FOR HELP
 
 
-SYSIN58 .$$$ | LIBF    .LIB | PRINTF  .OBJ | FPRINTF .OBJ | SPRINTF .OBJ
-SCANF   .OBJ | FSCANF  .OBJ | SSCANF  .OBJ | DOPRNT  .OBJ | DOSCAN  .OBJ
-ATOF    .OBJ | FNUM    .OBJ | FBCD    .OBJ | TAN     .OBJ | ACOS    .OBJ
-ASIN    .OBJ | ATAN2   .OBJ | ATAN    .OBJ | COS     .OBJ | SIN     .OBJ
-SINH    .OBJ | COSH    .OBJ | TANH    .OBJ | EXP     .OBJ | LOG     .OBJ
-EVALPOLY.OBJ | SQRT    .OBJ | FREXP   .OBJ | FABS    .OBJ | CEIL    .OBJ
-FLOOR   .OBJ | FINC    .OBJ | ASFLOAT .OBJ | FRNDINT .OBJ | FTOL    .OBJ
-LTOF    .OBJ | FLOAT   .OBJ | 
-Drive M: Total 1520k, Used 176k, Free 1344k
+SYSIN58 .$$$ | LIBF    .LIB | LIBFVER .OBJ | PRINTF  .OBJ | FPRINTF .OBJ
+SPRINTF .OBJ | SCANF   .OBJ | FSCANF  .OBJ | SSCANF  .OBJ | DOPRNT  .OBJ
+DOSCAN  .OBJ | ATOF    .OBJ | FNUM    .OBJ | FBCD    .OBJ | TAN     .OBJ
+ACOS    .OBJ | ASIN    .OBJ | ATAN2   .OBJ | ATAN    .OBJ | COS     .OBJ
+SIN     .OBJ | SINH    .OBJ | COSH    .OBJ | TANH    .OBJ | EXP     .OBJ
+LOG     .OBJ | EVALPOLY.OBJ | SQRT    .OBJ | FREXP   .OBJ | FABS    .OBJ
+CEIL    .OBJ | FLOOR   .OBJ | FINC    .OBJ | ASFLOAT .OBJ | FRNDINT .OBJ
+FTOL    .OBJ | LTOF    .OBJ | FLOAT   .OBJ | 
+Drive M: Total 1520k, Used 180k, Free 1340k
 
 Library D10:LIBF-OBJ.LBR^G not found.
   To make it, enter the number of entries to allow.
   Press RETURN now to abort making the library.
-Allow how many entries: 35
+Allow how many entries: 36
 Library D10:LIBF-OBJ.LBR open.
-(Buffer size: 283 sectors)
-Active entries: 1, Deleted: 0, Free: 35, Total: 36.
+(Buffer size: 281 sectors)
+Active entries: 1, Deleted: 0, Free: 39, Total: 40.
+Adding:    M10:LIBFVER .OBJ
 Adding:    M10:PRINTF  .OBJ
 Adding:    M10:FPRINTF .OBJ
 Adding:    M10:SPRINTF .OBJ
@@ -393,7 +405,7 @@ Adding:    M10:FRNDINT .OBJ
 Adding:    M10:FTOL    .OBJ
 Adding:    M10:LTOF    .OBJ
 Adding:    M10:FLOAT   .OBJ
-Active entries: 36, Deleted: 0, Free: 0, Total: 36.
+Active entries: 37, Deleted: 0, Free: 3, Total: 40.
 
 Closing D10:LIBF-OBJ.LBR...
 

@@ -1,7 +1,7 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Wed 01/11/2023 12:52:37
+Tue 06/05/2025 10:39:51
 10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>;
 10E>; Sources are on drive E:
@@ -12,8 +12,8 @@ A:DATE     COM  (User 0)
 A:PIP      COM  (User 0)
 
 10M>c280
-A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
+C:C280     COM
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-18
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:abort.c \
@@ -548,8 +548,8 @@ E:FSEEK.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 84 bytes size optimised away
- 165 bytes replaced
+ 85 bytes size optimised away
+ 161 bytes replaced
 0:A:ZAS -J -N -OFSEEK.OBJ $CTMP5.$$$
 E:FWRITE.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FWRITE.C $CTMP1.$$$
@@ -675,8 +675,8 @@ ERA $CTMP5.$$$
 ERA $$EXEC.$$$
 
 10M>c280
-A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
+C:C280     COM
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-18
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:islower.as \
@@ -830,8 +830,8 @@ E:OPEN.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 29 bytes size optimised away
- 79 bytes replaced
+ 30 bytes size optimised away
+ 81 bytes replaced
 0:A:ZAS -J -N -OOPEN.OBJ $CTMP5.$$$
 E:PERROR.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:PERROR.C $CTMP1.$$$
@@ -876,8 +876,8 @@ ERA $CTMP5.$$$
 ERA $$EXEC.$$$
 
 10M>c280
-A:C280     COM  (User 0)
-Hi-Tech Z280 C Compiler (CP/M-80) V3.09-17
+C:C280     COM
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-18
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -v -o2 -c e:puts.c \
@@ -939,7 +939,8 @@ c> e:xtoi.as \
 c> e:zc280cpm.as \
 c> e:zd280cpm.as \
 c> e:zn280cpm.as \
-c> e:zr280cpm.as
+c> e:zr280cpm.as \
+c> e:libcver.c
 E:PUTS.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:PUTS.C $CTMP1.$$$
 0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
@@ -1135,8 +1136,8 @@ E:STAT.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 68 bytes size optimised away
- 144 bytes replaced
+ 73 bytes size optimised away
+ 154 bytes replaced
 0:A:ZAS -J -N -OSTAT.OBJ $CTMP5.$$$
 E:STDCLEAN.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:STDCLEAN.C $CTMP1.$$$
@@ -1364,6 +1365,15 @@ E:ZR280CPM.AS
  3 bytes size optimised away
  10 bytes replaced
 0:A:ZAS -J -OZR280CPM.OBJ $CTMP5.$$$
+E:LIBCVER.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:LIBCVER.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
+ 0 bytes size optimised away
+ 0 bytes replaced
+0:A:ZAS -J -N -OLIBCVER.OBJ $CTMP5.$$$
 ERA $CTMP1.$$$
 ERA $CTMP2.$$$
 ERA $CTMP3.$$$

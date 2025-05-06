@@ -9,7 +9,7 @@
  *  processor is prohibited.
  */
 
-#define	VERSION	"V3.09-17"
+#define	VERSION	"V3.09-18"
 
 /*----------------------------------------------------------------------*\
  | Note by Jon Saxton, 3 May 2014.					|

@@ -1671,6 +1671,15 @@ compiler front-end processor have been updated to include the corrected
 modules.  I've also bumped the version to V3.09-18 so you
 know you're using the corrected modules.
 
+## OCR version of scanned manual added
+
+Thanks to Martin for contributing an OCR enhanced copy of the scanned October
+1989 "HI-TECH SOFTWARE C COMPILER (Z80) User's Manual".  You'll find this in
+the
+[doc/Hi-Tech-Z80-1989-october_ocr.pdf](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/doc/Hi-Tech-Z80-1989-october_ocr.pdf)
+file.  This allows you to search the document for content using your PDF
+reader/web browser.
+
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
 actively maintained and available from https://github.com/MockbaTheBorg/RunCPM

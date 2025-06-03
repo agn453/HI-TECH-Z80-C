@@ -1733,7 +1733,7 @@ setvbuf() and setbuf()
      another setvbuf() changes it.
 ```
 
-The updated ibinaries, libraries and header files have been included in
+The updated binaries, libraries and header files have been included in
 the *dist* and *z280dist* folders, along with source-code and build files
 in the *stdio*, *float* and *cpm* folders.
 

@@ -6,8 +6,8 @@
  | Jon Saxton	April 2014						|
 \*----------------------------------------------------------------------*/
 
-#include <stdio.h>
 #include <cpm.h>
+#include <stdio.h>
 
 void test(short func, void *data)
 {

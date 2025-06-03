@@ -1,4 +1,4 @@
-extern int	unlink();
+#include	<unixio.h>
 
 remove(s)
 char *	s;

@@ -199,8 +199,9 @@ gets.obj        U __iob         U _fgetc        D _fgets        D _gets
 		U ncsv          
 puts.obj        U __iob         U _fputc        D _fputs        D _puts       
 		U cret          U csv           U indir         U ncsv        
-fwrite.obj      U _fputc        D _fwrite       U cret          U csv         
-		U indir         U ldiv          U lmul          U ncsv        
+fwrite.obj      U _fflush       U _fputc        U _fseek        D _fwrite     
+		U _memcpy       U cret          U indir         U ldiv        
+		U lmul          U ncsv          U wrelop        
 getw.obj        U _fgetc        D _getw         U cret          U csv         
 		U indir         U ncsv          U shal          
 putw.obj        U _fputc        D _putw         U cret          U csv         
@@ -214,33 +215,36 @@ putchar.obj     U __iob         U _fgetc        U _fputc        D _getchar
 perror.obj      U __iob         U _errno        U _fputc        D _perror     
 		U _sys_err      U _sys_ner      U cret          U csv         
 		U indir         U ncsv          U wrelop        
-fputc.obj       U __flsbuf      D _fputc        
-flsbuf.obj      D __flsbuf      U _write        U cret          U csv         
-		U indir         U ncsv          
+fputc.obj       U __flsbuf      U _fflush       D _fputc        U _fseek      
+		U cret          U csv           U indir         U ncsv        
+flsbuf.obj      U __bufallo     D __flsbuf      U _isatty       U _write      
+		U cret          U csv           U indir         U ncsv        
 fopen.obj       U __iob         D _fopen        U _freopen      U cret        
 		U csv           U indir         U ncsv          
-freopen.obj     U __bufallo     U _close        U _creat        U _errno      
-		U _fclose       D _freopen      U _fseek        U _open       
-		U cret          U csv           U indir         U ncsv        
+freopen.obj     U __bufallo     U _close        U _creat        U _fclose     
+		D _freopen      U _fseek        U _open         U cret        
+		U csv           U indir         U ncsv          
 fseek.obj       U __fcb         U _fflush       U _fread        D _fseek      
-		D _ftell        U _lseek        U alsub         U amul        
-		U arelop        U asaladd       U cret          U csv         
-		U indir         U ncsv          
-fread.obj       U _fgetc        D _fread        U cret          U indir       
-		U ldiv          U lmul          U ncsv          
+		D _ftell        U _lseek        U aladd         U alsub       
+		U amul          U arelop        U asaladd       U cret        
+		U csv           U indir         U ncsv          
+fread.obj       U _fgetc        D _fread        U _memcpy       U cret        
+		U indir         U ldiv          U lmul          U ncsv        
+		U wrelop        
 rewind.obj      U _fseek        D _rewind       U cret          U csv         
 		U indir         U ncsv          
 remove.obj      D _remove       U _unlink       U cret          U csv         
 		U indir         U ncsv          
-setbuf.obj      U __buffree     D _setbuf       U cret          U csv         
-		U indir         U ncsv          
+setbuf.obj      U __bufallo     U __buffree     D _setbuf       D _setvbuf    
+		U cret          U csv           U indir         U ncsv        
 fscanf.obj      U __doscan      D _fscanf       U cret          U csv         
 		U indir         U ncsv          
 ctime.obj       D _asctime      D _ctime        D _gmtime       D _localtime  
 		D _monlen       U _time_zone    U adiv          U aldiv       
-		U almod         U alsub         U amod          U amul        
-		U asaldiv       U asldiv        U cret          U csv         
-		U indir         U lmod          U ncsv          U wrelop      
+		U almod         U almul         U alsub         U amod        
+		U amul          U asaldiv       U asldiv        U cret        
+		U csv           U indir         U lmod          U ncsv        
+		U wrelop        
 cgets.obj       D _cgets        U _getche       U cret          U csv         
 		U indir         U ncsv          
 cputs.obj       D _cputs        U _putch        U cret          U csv         
@@ -255,9 +259,11 @@ doscan.obj      U __ctype_      D __doscan      U _atoi         U _fgetc
 		U wrelop        
 ungetc.obj      D _ungetc       U cret          U csv           U indir       
 		U ncsv          
-fgetc.obj       U __filbuf      D _fgetc        
-filbuf.obj      D __filbuf      U _read         U cret          U csv         
+fgetc.obj       U __filbuf      D _fgetc        U cret          U csv         
 		U indir         U ncsv          U wrelop        
+filbuf.obj      D __filbuf      U __iob         U _fflush       U _read       
+		U cret          U csv           U indir         U ncsv        
+		U wrelop        
 stdclean.obj    D __cleanup     D __iob         D __sibuf       U _fclose     
 		U cret          U csv           U indir         U ncsv        
 fclose.obj      U __buffree     U _close        D _fclose       U _fflush     
@@ -483,207 +489,207 @@ Directory For Drive M:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-ABORT    OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ABS      OBJ     4k      1 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ACOS     OBJ     4k      3 Dir RW       None   05/05/25 15:13  05/05/25 15:13
-ALLSH    OBJ     4k      1 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ALRSH    OBJ     4k      1 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASALLSH  OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASALRSH  OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASAR     OBJ     4k      1 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASDIV    OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASFLOAT  OBJ     4k      3 Dir RW       None   05/05/25 15:16  05/05/25 15:16
-ASIN     OBJ     4k      8 Dir RW       None   05/05/25 15:13  05/05/25 15:13
-ASLADD   OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLAND   OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLL     OBJ     4k      1 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLLRSH  OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLMUL   OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLOR    OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLR     OBJ     4k      1 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLSUB   OBJ     4k      2 Dir RW       None   06/05/25 10:40  06/05/25 10:40
-ASLXOR   OBJ     4k      2 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-ASMOD    OBJ     4k      2 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-ASMUL    OBJ     4k      1 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-ASSERT   OBJ     4k      3 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-ATAN     OBJ     4k      8 Dir RW       None   05/05/25 15:13  05/05/25 15:13
-ATAN2    OBJ     4k      8 Dir RW       None   05/05/25 15:13  05/05/25 15:13
-ATOF     OBJ     4k     10 Dir RW       None   05/05/25 15:11  05/05/25 15:11
-ATOI     OBJ     4k      2 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-ATOL     OBJ     4k      4 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-BDOS     OBJ     4k      4 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-BIOS     OBJ     4k      4 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-BITFIELD OBJ     4k      2 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-BLKCLR   OBJ     4k      1 Dir RW       None   06/05/25 10:41  06/05/25 10:41
-BLKCPY   OBJ     4k      2 Dir RW       None   06/05/25 10:42  06/05/25 10:42
-BMOVE    OBJ     4k      1 Dir RW       None   06/05/25 10:42  06/05/25 10:42
-BRELOP   OBJ     4k      1 Dir RW       None   06/05/25 10:42  06/05/25 10:42
-BUF      OBJ     4k      3 Dir RW       None   06/05/25 10:42  06/05/25 10:42
-CALLOC   OBJ     4k      4 Dir RW       None   06/05/25 10:42  06/05/25 10:42
-CEIL     OBJ     4k      3 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-CGETS    OBJ     4k      3 Dir RW       None   06/05/25 10:42  06/05/25 10:42
-CHMOD    OBJ     4k      4 Dir RW       None   06/05/25 10:42  06/05/25 10:42
-CLEANUP  OBJ     4k      7 Dir RW       None   06/05/25 10:43  06/05/25 10:43
-CLOSE    OBJ     4k      5 Dir RW       None   06/05/25 10:43  06/05/25 10:43
-CONVTIME OBJ     4k      5 Dir RW       None   06/05/25 10:43  06/05/25 10:43
-COS      OBJ     4k      5 Dir RW       None   05/05/25 15:13  05/05/25 15:13
-COSH     OBJ     4k      3 Dir RW       None   05/05/25 15:14  05/05/25 15:14
-CPUTS    OBJ     4k      2 Dir RW       None   06/05/25 10:43  06/05/25 10:43
-CREAT    OBJ     4k      6 Dir RW       None   06/05/25 10:43  06/05/25 10:43
-CSV      OBJ     4k      2 Dir RW       None   06/05/25 10:43  06/05/25 10:43
-CTIME    OBJ     4k     17 Dir RW       None   06/05/25 10:44  06/05/25 10:44
-CTYPE    OBJ     4k      2 Dir RW       None   06/05/25 10:44  06/05/25 10:44
-CTYPE_   OBJ     4k      2 Dir RW       None   06/05/25 10:44  06/05/25 10:44
-DOPRNT   OBJ     4k     17 Dir RW       None   06/05/25 10:45  06/05/25 10:45
-DOSCAN   OBJ     4k     23 Dir RW       None   06/05/25 10:45  06/05/25 10:45
-DUP      OBJ     4k      3 Dir RW       None   06/05/25 10:45  06/05/25 10:45
-EVALPOLY OBJ     4k      3 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-EXEC     OBJ     4k     22 Dir RW       None   06/05/25 10:46  06/05/25 10:46
-EXECL    OBJ     4k      9 Dir RW       None   06/05/25 10:46  06/05/25 10:46
-EXIT     OBJ     4k      2 Dir RW       None   06/05/25 10:46  06/05/25 10:46
-EXP      OBJ     4k     13 Dir RW       None   05/05/25 15:14  05/05/25 15:14
-FABS     OBJ     4k      3 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-FAKECLEA OBJ     4k      1 Dir RW       None   06/05/25 10:46  06/05/25 10:46
-FAKECPCL OBJ     4k      1 Dir RW       None   06/05/25 10:46  06/05/25 10:46
-FBCD     OBJ     4k      6 Dir RW       None   05/05/25 15:12  05/05/25 15:12
-FCBNAME  OBJ     4k     12 Dir RW       None   06/05/25 10:46  06/05/25 10:46
-FCLOSE   OBJ     4k      3 Dir RW       None   06/05/25 10:47  06/05/25 10:47
-FFLUSH   OBJ     4k      3 Dir RW       None   06/05/25 10:47  06/05/25 10:47
-FGETC    OBJ     4k      5 Dir RW       None   06/05/25 10:47  06/05/25 10:47
-FILBUF   OBJ     4k      4 Dir RW       None   06/05/25 10:47  06/05/25 10:47
-FINC     OBJ     4k      2 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-FLOAT    OBJ     4k      9 Dir RW       None   05/05/25 15:16  05/05/25 15:16
-FLOOR    OBJ     4k      3 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-FLSBUF   OBJ     4k      4 Dir RW       None   06/05/25 10:47  06/05/25 10:47
-FNUM     OBJ     4k     29 Dir RW       None   05/05/25 15:12  05/05/25 15:12
-FOPEN    OBJ     4k      3 Dir RW       None   06/05/25 10:47  06/05/25 10:47
-FPRINTF  OBJ     4k      2 Dir RW       None   06/05/25 10:48  06/05/25 10:48
-FPUTC    OBJ     4k      4 Dir RW       None   06/05/25 10:48  06/05/25 10:48
-FREAD    OBJ     4k      3 Dir RW       None   06/05/25 10:48  06/05/25 10:48
-FRELOP   OBJ     4k      2 Dir RW       None   06/05/25 10:48  06/05/25 10:48
-FREOPEN  OBJ     4k      9 Dir RW       None   06/05/25 10:48  06/05/25 10:48
-FREXP    OBJ     4k      2 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-FRNDINT  OBJ     4k      1 Dir RW       None   05/05/25 15:16  05/05/25 15:16
-FSCANF   OBJ     4k      2 Dir RW       None   06/05/25 10:48  06/05/25 10:48
-FSEEK    OBJ     4k     11 Dir RW       None   06/05/25 10:49  06/05/25 10:49
-FTOL     OBJ     4k      2 Dir RW       None   05/05/25 15:16  05/05/25 15:16
-FWRITE   OBJ     4k      3 Dir RW       None   06/05/25 10:49  06/05/25 10:49
-GETARGS  OBJ     8k     37 Dir RW       None   06/05/25 10:50  06/05/25 10:50
-GETCH    OBJ     4k      5 Dir RW       None   06/05/25 10:50  06/05/25 10:50
-GETENV   OBJ     4k     14 Dir RW       None   06/05/25 10:51  06/05/25 10:51
-GETFCB   OBJ     4k     17 Dir RW       None   06/05/25 10:51  06/05/25 10:51
-GETS     OBJ     4k      4 Dir RW       None   06/05/25 10:51  06/05/25 10:51
-GETSP    OBJ     4k      1 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-GETUID   OBJ     4k      2 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-GETW     OBJ     4k      3 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-IDIV     OBJ     4k      4 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-IMUL     OBJ     4k      2 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-INDEX    OBJ     4k      2 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-INOUT    OBJ     4k      2 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-IREGSET  OBJ     4k      1 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-ISALPHA  OBJ     4k      2 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-ISATTY   OBJ     4k      3 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-ISDIGIT  OBJ     4k      1 Dir RW       None   06/05/25 10:52  06/05/25 10:52
-ISLOWER  OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-ISSPACE  OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-ISUPPER  OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LADD     OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LAND     OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LDIV     OBJ     4k      7 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LIBCVER  OBJ     4k      1 Dir RW       None   06/05/25 11:05  06/05/25 11:05
-LIBFVER  OBJ     4k      1 Dir RW       None   05/05/25 15:09  05/05/25 15:09
-LINC     OBJ     4k      2 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LLRSH    OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LMUL     OBJ     4k      2 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LOG      OBJ     4k      7 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-LONGJMP  OBJ     4k      2 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LOR      OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LRELOP   OBJ     4k      2 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LSUB     OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-LTOF     OBJ     4k      4 Dir RW       None   05/05/25 15:16  05/05/25 15:16
-LXOR     OBJ     4k      1 Dir RW       None   06/05/25 10:53  06/05/25 10:53
-MALLOC   OBJ     4k     14 Dir RW       None   06/05/25 10:54  06/05/25 10:54
-MAX      OBJ     4k      1 Dir RW       None   06/05/25 10:54  06/05/25 10:54
-MEMCMP   OBJ     4k      2 Dir RW       None   06/05/25 10:54  06/05/25 10:54
-MEMCPY   OBJ     4k      2 Dir RW       None   06/05/25 10:54  06/05/25 10:54
-MEMSET   OBJ     4k      2 Dir RW       None   06/05/25 10:54  06/05/25 10:54
-MKTIME   OBJ     4k     10 Dir RW       None   06/05/25 10:55  06/05/25 10:55
-OPEN     OBJ     4k     11 Dir RW       None   06/05/25 10:55  06/05/25 10:55
-PERROR   OBJ     4k      5 Dir RW       None   06/05/25 10:55  06/05/25 10:55
-PNUM     OBJ     4k      7 Dir RW       None   06/05/25 10:55  06/05/25 10:55
-PRINTF   OBJ     4k      2 Dir RW       None   06/05/25 10:56  06/05/25 10:56
-PUTCHAR  OBJ     4k      3 Dir RW       None   06/05/25 10:56  06/05/25 10:56
-PUTS     OBJ     4k      3 Dir RW       None   06/05/25 10:56  06/05/25 10:56
-PUTW     OBJ     4k      3 Dir RW       None   06/05/25 10:56  06/05/25 10:56
-QSORT    OBJ     4k     10 Dir RW       None   06/05/25 10:57  06/05/25 10:57
-RAND     OBJ     4k      3 Dir RW       None   06/05/25 10:57  06/05/25 10:57
-RCSV     OBJ     4k      1 Dir RW       None   06/05/25 10:57  06/05/25 10:57
-READ     OBJ     4k     15 Dir RW       None   06/05/25 10:57  06/05/25 10:57
-REMOVE   OBJ     4k      2 Dir RW       None   06/05/25 10:57  06/05/25 10:57
-RENAME   OBJ     4k      3 Dir RW       None   06/05/25 10:58  06/05/25 10:58
-REWIND   OBJ     4k      2 Dir RW       None   06/05/25 10:58  06/05/25 10:58
-RINDEX   OBJ     4k      2 Dir RW       None   06/05/25 10:58  06/05/25 10:58
-SBRK     OBJ     4k      3 Dir RW       None   06/05/25 10:58  06/05/25 10:58
-SCANF    OBJ     4k      2 Dir RW       None   06/05/25 10:58  06/05/25 10:58
-SEEK     OBJ     4k      5 Dir RW       None   06/05/25 10:58  06/05/25 10:58
-SETBUF   OBJ     4k      3 Dir RW       None   06/05/25 10:58  06/05/25 10:58
-SETUP    OBJ     4k      2 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SHAR     OBJ     4k      1 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SHLL     OBJ     4k      1 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SHLR     OBJ     4k      1 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SIGNAL   OBJ     4k      4 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SIN      OBJ     4k     10 Dir RW       None   05/05/25 15:14  05/05/25 15:14
-SINH     OBJ     4k      3 Dir RW       None   05/05/25 15:14  05/05/25 15:14
-SPRINTF  OBJ     4k      3 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SQRT     OBJ     4k      9 Dir RW       None   05/05/25 15:15  05/05/25 15:15
-SRAND    OBJ     4k      1 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SRAND1   OBJ     4k      3 Dir RW       None   06/05/25 10:59  06/05/25 10:59
-SSCANF   OBJ     4k      2 Dir RW       None   06/05/25 11:00  06/05/25 11:00
-START1   OBJ     4k      2 Dir RW       None   06/05/25 11:00  06/05/25 11:00
-START2   OBJ     4k      2 Dir RW       None   06/05/25 11:00  06/05/25 11:00
-STAT     OBJ     4k     10 Dir RW       None   06/05/25 11:00  06/05/25 11:00
-STDCLEAN OBJ     4k      4 Dir RW       None   06/05/25 11:00  06/05/25 11:00
-STRCAT   OBJ     4k      1 Dir RW       None   06/05/25 11:00  06/05/25 11:00
-STRCHR   OBJ     4k      1 Dir RW       None   06/05/25 11:00  06/05/25 11:00
-STRCMP   OBJ     4k      1 Dir RW       None   06/05/25 11:01  06/05/25 11:01
-STRCPY   OBJ     4k      1 Dir RW       None   06/05/25 11:01  06/05/25 11:01
-STRDUP   OBJ     4k      3 Dir RW       None   06/05/25 11:01  06/05/25 11:01
-STRFTIME OBJ     4k     31 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRICMP  OBJ     4k      1 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRISTR  OBJ     4k      3 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRLEN   OBJ     4k      1 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRNCAT  OBJ     4k      2 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRNCMP  OBJ     4k      2 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRNCPY  OBJ     4k      2 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRNICMP OBJ     4k      3 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRNISTR OBJ     4k      4 Dir RW       None   06/05/25 11:02  06/05/25 11:02
-STRNSTR  OBJ     4k      4 Dir RW       None   06/05/25 11:03  06/05/25 11:03
-STRRCHR  OBJ     4k      1 Dir RW       None   06/05/25 11:03  06/05/25 11:03
-STRSTR   OBJ     4k      3 Dir RW       None   06/05/25 11:03  06/05/25 11:03
-STRTOK   OBJ     4k      4 Dir RW       None   06/05/25 11:03  06/05/25 11:03
-SWAP     OBJ     4k      2 Dir RW       None   06/05/25 11:03  06/05/25 11:03
-SYS_ERR  OBJ     4k      6 Dir RW       None   06/05/25 11:03  06/05/25 11:03
-TAN      OBJ     4k      2 Dir RW       None   05/05/25 15:12  05/05/25 15:12
-TANH     OBJ     4k      4 Dir RW       None   05/05/25 15:14  05/05/25 15:14
-TIME     OBJ     4k      3 Dir RW       None   06/05/25 11:04  06/05/25 11:04
-TIMEZONE OBJ     4k      1 Dir RW       None   06/05/25 11:04  06/05/25 11:04
-TOLOWER  OBJ     4k      1 Dir RW       None   06/05/25 11:04  06/05/25 11:04
-TOUPPER  OBJ     4k      1 Dir RW       None   06/05/25 11:04  06/05/25 11:04
-UNGETC   OBJ     4k      3 Dir RW       None   06/05/25 11:04  06/05/25 11:04
-UNLINK   OBJ     4k      4 Dir RW       None   06/05/25 11:04  06/05/25 11:04
-WRELOP   OBJ     4k      1 Dir RW       None   06/05/25 11:04  06/05/25 11:04
-WRITE    OBJ     4k     14 Dir RW       None   06/05/25 11:05  06/05/25 11:05
-XTOI     OBJ     4k      2 Dir RW       None   06/05/25 11:05  06/05/25 11:05
-ZC280CPM OBJ     4k      9 Dir RW       None   06/05/25 11:05  06/05/25 11:05
-ZD280CPM OBJ     4k      3 Dir RW       None   06/05/25 11:05  06/05/25 11:05
-ZN280CPM OBJ     4k     10 Dir RW       None   06/05/25 11:05  06/05/25 11:05
-ZR280CPM OBJ     4k     11 Dir RW       None   06/05/25 11:05  06/05/25 11:05
-_EXIT    OBJ     4k      2 Dir RW       None   06/05/25 10:46  06/05/25 10:46
+ABORT    OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ABS      OBJ     4k      1 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ACOS     OBJ     4k      3 Dir RW       None   02/06/25 21:59  02/06/25 21:59
+ALLSH    OBJ     4k      1 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ALRSH    OBJ     4k      1 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASALLSH  OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASALRSH  OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASAR     OBJ     4k      1 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASDIV    OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASFLOAT  OBJ     4k      3 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+ASIN     OBJ     4k      9 Dir RW       None   02/06/25 21:59  02/06/25 21:59
+ASLADD   OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLAND   OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLL     OBJ     4k      1 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLLRSH  OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLMUL   OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLOR    OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLR     OBJ     4k      1 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLSUB   OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASLXOR   OBJ     4k      2 Dir RW       None   02/06/25 22:23  02/06/25 22:23
+ASMOD    OBJ     4k      2 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+ASMUL    OBJ     4k      1 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+ASSERT   OBJ     4k      3 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+ATAN     OBJ     4k      9 Dir RW       None   02/06/25 21:59  02/06/25 21:59
+ATAN2    OBJ     4k      9 Dir RW       None   02/06/25 21:59  02/06/25 21:59
+ATOF     OBJ     4k     11 Dir RW       None   02/06/25 21:58  02/06/25 21:58
+ATOI     OBJ     4k      2 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+ATOL     OBJ     4k      4 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+BDOS     OBJ     4k      4 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+BIOS     OBJ     4k      4 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+BITFIELD OBJ     4k      2 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+BLKCLR   OBJ     4k      1 Dir RW       None   02/06/25 22:24  02/06/25 22:24
+BLKCPY   OBJ     4k      2 Dir RW       None   02/06/25 22:25  02/06/25 22:25
+BMOVE    OBJ     4k      1 Dir RW       None   02/06/25 22:25  02/06/25 22:25
+BRELOP   OBJ     4k      1 Dir RW       None   02/06/25 22:25  02/06/25 22:25
+BUF      OBJ     4k      3 Dir RW       None   02/06/25 22:25  02/06/25 22:25
+CALLOC   OBJ     4k      4 Dir RW       None   02/06/25 22:25  02/06/25 22:25
+CEIL     OBJ     4k      4 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+CGETS    OBJ     4k      3 Dir RW       None   02/06/25 22:25  02/06/25 22:25
+CHMOD    OBJ     4k      4 Dir RW       None   02/06/25 22:25  02/06/25 22:25
+CLEANUP  OBJ     4k      7 Dir RW       None   02/06/25 22:26  02/06/25 22:26
+CLOSE    OBJ     4k      5 Dir RW       None   02/06/25 22:26  02/06/25 22:26
+CONVTIME OBJ     4k      5 Dir RW       None   02/06/25 22:26  02/06/25 22:26
+COS      OBJ     4k      5 Dir RW       None   02/06/25 21:59  02/06/25 21:59
+COSH     OBJ     4k      4 Dir RW       None   02/06/25 22:00  02/06/25 22:00
+CPUTS    OBJ     4k      2 Dir RW       None   02/06/25 22:26  02/06/25 22:26
+CREAT    OBJ     4k      6 Dir RW       None   02/06/25 22:26  02/06/25 22:26
+CSV      OBJ     4k      2 Dir RW       None   02/06/25 22:26  02/06/25 22:26
+CTIME    OBJ     4k     17 Dir RW       None   02/06/25 22:27  02/06/25 22:27
+CTYPE    OBJ     4k      2 Dir RW       None   02/06/25 22:27  02/06/25 22:27
+CTYPE_   OBJ     4k      2 Dir RW       None   02/06/25 22:27  02/06/25 22:27
+DOPRNT   OBJ     4k     17 Dir RW       None   02/06/25 22:28  02/06/25 22:28
+DOSCAN   OBJ     4k     23 Dir RW       None   02/06/25 22:28  02/06/25 22:28
+DUP      OBJ     4k      3 Dir RW       None   02/06/25 22:29  02/06/25 22:29
+EVALPOLY OBJ     4k      3 Dir RW       None   02/06/25 22:00  02/06/25 22:00
+EXEC     OBJ     4k     22 Dir RW       None   02/06/25 22:29  02/06/25 22:29
+EXECL    OBJ     4k      9 Dir RW       None   02/06/25 22:29  02/06/25 22:29
+EXIT     OBJ     4k      2 Dir RW       None   02/06/25 22:29  02/06/25 22:29
+EXP      OBJ     4k     14 Dir RW       None   02/06/25 22:00  02/06/25 22:00
+FABS     OBJ     4k      3 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+FAKECLEA OBJ     4k      1 Dir RW       None   02/06/25 22:29  02/06/25 22:29
+FAKECPCL OBJ     4k      1 Dir RW       None   02/06/25 22:29  02/06/25 22:29
+FBCD     OBJ     4k      6 Dir RW       None   02/06/25 21:59  02/06/25 21:59
+FCBNAME  OBJ     4k     12 Dir RW       None   02/06/25 22:30  02/06/25 22:30
+FCLOSE   OBJ     4k      3 Dir RW       None   02/06/25 22:30  02/06/25 22:30
+FFLUSH   OBJ     4k      4 Dir RW       None   02/06/25 22:30  02/06/25 22:30
+FGETC    OBJ     4k      4 Dir RW       None   02/06/25 22:30  02/06/25 22:30
+FILBUF   OBJ     4k      6 Dir RW       None   02/06/25 22:31  02/06/25 22:31
+FINC     OBJ     4k      2 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+FLOAT    OBJ     4k      9 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+FLOOR    OBJ     4k      4 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+FLSBUF   OBJ     4k      5 Dir RW       None   02/06/25 22:31  02/06/25 22:31
+FNUM     OBJ     4k     31 Dir RW       None   02/06/25 21:58  02/06/25 21:58
+FOPEN    OBJ     4k      3 Dir RW       None   02/06/25 22:31  02/06/25 22:31
+FPRINTF  OBJ     4k      2 Dir RW       None   02/06/25 22:31  02/06/25 22:31
+FPUTC    OBJ     4k      5 Dir RW       None   02/06/25 22:31  02/06/25 22:31
+FREAD    OBJ     4k      6 Dir RW       None   02/06/25 22:32  02/06/25 22:32
+FRELOP   OBJ     4k      2 Dir RW       None   02/06/25 22:32  02/06/25 22:32
+FREOPEN  OBJ     4k      9 Dir RW       None   02/06/25 22:32  02/06/25 22:32
+FREXP    OBJ     4k      2 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+FRNDINT  OBJ     4k      1 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+FSCANF   OBJ     4k      2 Dir RW       None   02/06/25 22:32  02/06/25 22:32
+FSEEK    OBJ     4k     11 Dir RW       None   02/06/25 22:33  02/06/25 22:33
+FTOL     OBJ     4k      2 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+FWRITE   OBJ     4k      7 Dir RW       None   02/06/25 22:33  02/06/25 22:33
+GETARGS  OBJ     8k     37 Dir RW       None   02/06/25 22:34  02/06/25 22:34
+GETCH    OBJ     4k      5 Dir RW       None   02/06/25 22:34  02/06/25 22:34
+GETENV   OBJ     4k     14 Dir RW       None   02/06/25 22:35  02/06/25 22:35
+GETFCB   OBJ     4k     16 Dir RW       None   02/06/25 22:35  02/06/25 22:35
+GETS     OBJ     4k      4 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+GETSP    OBJ     4k      1 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+GETUID   OBJ     4k      2 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+GETW     OBJ     4k      3 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+IDIV     OBJ     4k      4 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+IMUL     OBJ     4k      2 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+INDEX    OBJ     4k      2 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+INOUT    OBJ     4k      2 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+IREGSET  OBJ     4k      1 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+ISALPHA  OBJ     4k      2 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+ISATTY   OBJ     4k      3 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+ISDIGIT  OBJ     4k      1 Dir RW       None   02/06/25 22:36  02/06/25 22:36
+ISLOWER  OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+ISSPACE  OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+ISUPPER  OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LADD     OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LAND     OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LDIV     OBJ     4k      7 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LIBCVER  OBJ     4k      1 Dir RW       None   02/06/25 22:50  02/06/25 22:50
+LIBFVER  OBJ     4k      1 Dir RW       None   02/06/25 21:55  02/06/25 21:55
+LINC     OBJ     4k      2 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LLRSH    OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LMUL     OBJ     4k      2 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LOG      OBJ     4k      8 Dir RW       None   02/06/25 22:00  02/06/25 22:00
+LONGJMP  OBJ     4k      2 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LOR      OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LRELOP   OBJ     4k      2 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LSUB     OBJ     4k      1 Dir RW       None   02/06/25 22:37  02/06/25 22:37
+LTOF     OBJ     4k      4 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+LXOR     OBJ     4k      1 Dir RW       None   02/06/25 22:38  02/06/25 22:38
+MALLOC   OBJ     4k     14 Dir RW       None   02/06/25 22:38  02/06/25 22:38
+MAX      OBJ     4k      1 Dir RW       None   02/06/25 22:38  02/06/25 22:38
+MEMCMP   OBJ     4k      2 Dir RW       None   02/06/25 22:38  02/06/25 22:38
+MEMCPY   OBJ     4k      2 Dir RW       None   02/06/25 22:38  02/06/25 22:38
+MEMSET   OBJ     4k      2 Dir RW       None   02/06/25 22:38  02/06/25 22:38
+MKTIME   OBJ     4k     10 Dir RW       None   02/06/25 22:39  02/06/25 22:39
+OPEN     OBJ     4k     11 Dir RW       None   02/06/25 22:39  02/06/25 22:39
+PERROR   OBJ     4k      5 Dir RW       None   02/06/25 22:39  02/06/25 22:39
+PNUM     OBJ     4k      7 Dir RW       None   02/06/25 22:40  02/06/25 22:40
+PRINTF   OBJ     4k      2 Dir RW       None   02/06/25 22:40  02/06/25 22:40
+PUTCHAR  OBJ     4k      3 Dir RW       None   02/06/25 22:40  02/06/25 22:40
+PUTS     OBJ     4k      3 Dir RW       None   02/06/25 22:40  02/06/25 22:40
+PUTW     OBJ     4k      3 Dir RW       None   02/06/25 22:40  02/06/25 22:40
+QSORT    OBJ     4k     10 Dir RW       None   02/06/25 22:41  02/06/25 22:41
+RAND     OBJ     4k      3 Dir RW       None   02/06/25 22:41  02/06/25 22:41
+RCSV     OBJ     4k      1 Dir RW       None   02/06/25 22:41  02/06/25 22:41
+READ     OBJ     4k     15 Dir RW       None   02/06/25 22:42  02/06/25 22:42
+REMOVE   OBJ     4k      2 Dir RW       None   02/06/25 22:42  02/06/25 22:42
+RENAME   OBJ     4k      3 Dir RW       None   02/06/25 22:42  02/06/25 22:42
+REWIND   OBJ     4k      2 Dir RW       None   02/06/25 22:42  02/06/25 22:42
+RINDEX   OBJ     4k      2 Dir RW       None   02/06/25 22:42  02/06/25 22:42
+SBRK     OBJ     4k      3 Dir RW       None   02/06/25 22:42  02/06/25 22:42
+SCANF    OBJ     4k      2 Dir RW       None   02/06/25 22:42  02/06/25 22:42
+SEEK     OBJ     4k      5 Dir RW       None   02/06/25 22:43  02/06/25 22:43
+SETBUF   OBJ     4k      6 Dir RW       None   02/06/25 22:43  02/06/25 22:43
+SHAR     OBJ     4k      1 Dir RW       None   02/06/25 22:43  02/06/25 22:43
+SHLL     OBJ     4k      1 Dir RW       None   02/06/25 22:43  02/06/25 22:43
+SHLR     OBJ     4k      1 Dir RW       None   02/06/25 22:43  02/06/25 22:43
+SIGNAL   OBJ     4k      4 Dir RW       None   02/06/25 22:43  02/06/25 22:43
+SIN      OBJ     4k     10 Dir RW       None   02/06/25 22:00  02/06/25 22:00
+SINH     OBJ     4k      4 Dir RW       None   02/06/25 22:00  02/06/25 22:00
+SPRINTF  OBJ     4k      3 Dir RW       None   02/06/25 22:43  02/06/25 22:43
+SQRT     OBJ     4k     10 Dir RW       None   02/06/25 22:01  02/06/25 22:01
+SRAND    OBJ     4k      1 Dir RW       None   02/06/25 22:44  02/06/25 22:44
+SRAND1   OBJ     4k      3 Dir RW       None   02/06/25 22:44  02/06/25 22:44
+SSCANF   OBJ     4k      2 Dir RW       None   02/06/25 22:44  02/06/25 22:44
+START1   OBJ     4k      2 Dir RW       None   02/06/25 22:44  02/06/25 22:44
+START2   OBJ     4k      2 Dir RW       None   02/06/25 22:44  02/06/25 22:44
+STAT     OBJ     4k     10 Dir RW       None   02/06/25 22:44  02/06/25 22:44
+STDCLEAN OBJ     4k      4 Dir RW       None   02/06/25 22:45  02/06/25 22:45
+STRCAT   OBJ     4k      1 Dir RW       None   02/06/25 22:45  02/06/25 22:45
+STRCHR   OBJ     4k      1 Dir RW       None   02/06/25 22:45  02/06/25 22:45
+STRCMP   OBJ     4k      1 Dir RW       None   02/06/25 22:45  02/06/25 22:45
+STRCPY   OBJ     4k      1 Dir RW       None   02/06/25 22:45  02/06/25 22:45
+STRDUP   OBJ     4k      3 Dir RW       None   02/06/25 22:45  02/06/25 22:45
+STRFTIME OBJ     4k     31 Dir RW       None   02/06/25 22:46  02/06/25 22:46
+STRICMP  OBJ     4k      1 Dir RW       None   02/06/25 22:46  02/06/25 22:46
+STRISTR  OBJ     4k      3 Dir RW       None   02/06/25 22:46  02/06/25 22:46
+STRLEN   OBJ     4k      1 Dir RW       None   02/06/25 22:46  02/06/25 22:46
+STRNCAT  OBJ     4k      2 Dir RW       None   02/06/25 22:46  02/06/25 22:46
+STRNCMP  OBJ     4k      2 Dir RW       None   02/06/25 22:46  02/06/25 22:46
+STRNCPY  OBJ     4k      2 Dir RW       None   02/06/25 22:47  02/06/25 22:47
+STRNICMP OBJ     4k      3 Dir RW       None   02/06/25 22:47  02/06/25 22:47
+STRNISTR OBJ     4k      4 Dir RW       None   02/06/25 22:47  02/06/25 22:47
+STRNSTR  OBJ     4k      4 Dir RW       None   02/06/25 22:47  02/06/25 22:47
+STRRCHR  OBJ     4k      1 Dir RW       None   02/06/25 22:47  02/06/25 22:47
+STRSTR   OBJ     4k      3 Dir RW       None   02/06/25 22:47  02/06/25 22:47
+STRTOK   OBJ     4k      4 Dir RW       None   02/06/25 22:47  02/06/25 22:47
+SWAP     OBJ     4k      2 Dir RW       None   02/06/25 22:48  02/06/25 22:48
+SYS_ERR  OBJ     4k      6 Dir RW       None   02/06/25 22:48  02/06/25 22:48
+TAN      OBJ     4k      2 Dir RW       None   02/06/25 21:59  02/06/25 21:59
+TANH     OBJ     4k      4 Dir RW       None   02/06/25 22:00  02/06/25 22:00
+TIME     OBJ     4k      3 Dir RW       None   02/06/25 22:48  02/06/25 22:48
+TIMEZONE OBJ     4k      1 Dir RW       None   02/06/25 22:48  02/06/25 22:48
+TOLOWER  OBJ     4k      1 Dir RW       None   02/06/25 22:48  02/06/25 22:48
+TOUPPER  OBJ     4k      1 Dir RW       None   02/06/25 22:48  02/06/25 22:48
+UNGETC   OBJ     4k      3 Dir RW       None   02/06/25 22:48  02/06/25 22:48
+UNLINK   OBJ     4k      4 Dir RW       None   02/06/25 22:49  02/06/25 22:49
+WRELOP   OBJ     4k      1 Dir RW       None   02/06/25 22:49  02/06/25 22:49
+WRITE    OBJ     4k     14 Dir RW       None   02/06/25 22:49  02/06/25 22:49
+XTOI     OBJ     4k      2 Dir RW       None   02/06/25 22:49  02/06/25 22:49
+ZC280CPM OBJ     4k      9 Dir RW       None   02/06/25 22:49  02/06/25 22:49
+ZD280CPM OBJ     4k      3 Dir RW       None   02/06/25 22:49  02/06/25 22:49
+ZN280CPM OBJ     4k     10 Dir RW       None   02/06/25 22:50  02/06/25 22:50
+ZR280CPM OBJ     4k     11 Dir RW       None   02/06/25 22:50  02/06/25 22:50
+_EXIT    OBJ     4k      2 Dir RW       None   02/06/25 22:29  02/06/25 22:29
 
-Total Bytes     =    788k  Total Records =     847  Files Found =  196
-Total 1k Blocks =    236   Used/Max Dir Entries For Drive M:  271/ 512
+Total Bytes     =    784k  Total Records =     871  Files Found =  195
+Total 1k Blocks =    237   Used/Max Dir Entries For Drive M:  270/ 512
 
 10E>era e:lib280c.lbr
+No File
 10E>; Enter the number of files from above DIR command when prompted
 10E>nulu e:lib280c.lbr -a m:*.obj -x
 A:NULU     COM  (User 0)
@@ -694,116 +700,112 @@ Bug fixes in version 1.52 by Mick Waters
 TYPE -H FOR HELP
 
 
-BUILDCPM.SUB | FSEEK   .C   | TEST280 .LOG | TESTOVR2.OBJ | TESTOVRX.OBJ
-MKTIME  .C   | M280LIBC.LOG | LISTMODC.SUB | TESTPR  .C   | TESTENV .C  
-COMPLIBC.LOG | BUILD-C .LOG | ABORT   .OBJ | C280LIBC.LOG | TESTIO  .COM
-TESTUID .COM | ABS     .OBJ | GETFCB  .NEW | TESTSTR .COM | TESTBIOS.COM
-TESTBDOS.COM | HTC13   .LBR | TESTTRIG.COM | TESTFTIM.COM | TESTFILE.COM
-TESTAES .COM | TESTRC  .COM | OPTIMH  .COM | TESTVIEW.COM | TESTWILD.COM
-TESTOVR .COM | TESTOVR2.OVR | TESTOVRX.SYM | TESTOVR1.OBJ | TESTOVR1.OVR
-TESTIO  .ERR | ALLSH   .OBJ | TESTHELL.COM | TESTPR  .COM | TSTFSEEK.DAT
-MAKELIBC.LOG | TESTIO  .STA | ALRSH   .OBJ | C280Z80 .COM | TESTVER .COM
-ASALLSH .OBJ | ASALRSH .OBJ | TSTFOPEN.C   | OPEN-O  .C   | ASAR    .OBJ
-ASDIV   .OBJ | EXECL   .OBJ | TESTOPTH.AS  | TESTOPTH.OBJ | LIB280C .LIB
-BUILD-C2.SUB | C309    .OBJ | CLOSE   .C   | TSTFSEEK.C   | TESTHELL.C  
-TEST280 .SUB | C-JS    .C   | TEST    .LOG | ENVIRON .^[a^B^[A ^[N   | TEST    .SUB
-_EXIT   .AS  | ABORT   .C   | ASLADD  .OBJ | BDOS    .AS  | BIOS    .AS 
-SYMTOAS .C   | BUILDOVR.SUB | TSTFSEEK.OBJ | TEST    .DAT | SYS_ERR .C  
-ASLAND  .OBJ | CHMOD   .C   | ASLL    .OBJ | CLOSE-O .C   | ASLLRSH .OBJ
-CONVTIME.C   | CREAT   .C   | CSV-CPM .AS  | ASLMUL  .OBJ | DECODE  .C  
-ASLOR   .OBJ | OVREADME.TXT | OVRBGN  .AS  | OVRLOAD .C   | DEHUFF  .C  
-DEHUFF  .COM | ENCODE  .C   | ENHUFF  .C   | ENHUFF  .COM | HUFF    .H  
-DUP     .C   | WRITE   .C   | EXEC    .AS  | EXECL   .AS  | EXIT    .AS 
-ASLR    .OBJ | FAKECLEA.AS  | FAKECPCL.AS  | ASLSUB  .OBJ | ASLXOR  .OBJ
-GETCH   .C   | LIBOVR  .SUB | ASMOD   .OBJ | B280OVR .SUB | GETUID  .AS 
-ASMUL   .OBJ | ISATTY  .C   | MAKEFILE.CPM | ZC280CPM.AS  | READ    .C  
-DOPRNT  .C   | RENAME  .C   | MAKEFILE.COD | ASSERT  .OBJ | SEEK    .C  
-ATOI    .OBJ | SRAND   .AS  | SRAND1  .C   | START1  .OBJ | START2  .AS 
-ATOL    .OBJ | BDOS    .OBJ | TIME    .C   | TIMEZONE.C   | UNLINK  .C  
-SYMTOAS .COM | BIOS    .OBJ | BITFIELD.OBJ | BLKCLR  .OBJ | ABS     .AS 
-TESTAES .C   | TESTARGS.C   | ALLSH   .AS  | ALRSH   .AS  | TESTBDOS.C  
+COMPLIBC.LOG | ABORT   .C   | ABS     .AS  | ALLSH   .AS  | ALRSH   .AS 
 ASALLSH .AS  | ASALRSH .AS  | ASAR    .AS  | ASDIV   .AS  | ASLADD  .AS 
-ASLAND  .AS  | ASLL    .AS  | TESTBIOS.C   | BLKCPY  .OBJ | BMOVE   .OBJ
-BRELOP  .OBJ | BUF     .OBJ | CALLOC  .OBJ | CGETS   .OBJ | CHMOD   .OBJ
-CLEANUP .OBJ | TESTFSIZ.C   | TESTFTIM.C   | CLOSE   .OBJ | CONVTIME.OBJ
-TESTIO  .C   | ASLLRSH .AS  | ASLMUL  .AS  | TESTOVR .C   | TESTOVR1.C  
-CPUTS   .OBJ | CREAT   .OBJ | CSV     .OBJ | CTIME   .OBJ | CTYPE_  .OBJ
-CTYPE   .OBJ | DOPRNT  .OBJ | DOSCAN  .OBJ | DUP     .OBJ | EXEC    .OBJ
-_EXIT   .OBJ | TESTOVR2.C   | EXIT    .OBJ | FAKECLEA.OBJ | FAKECPCL.OBJ
-FCBNAME .OBJ | FCLOSE  .OBJ | FFLUSH  .OBJ | FGETC   .OBJ | FILBUF  .OBJ
-FLSBUF  .OBJ | FOPEN   .OBJ | FPRINTF .OBJ | FPUTC   .OBJ | FREAD   .OBJ
-FRELOP  .OBJ | FREOPEN .OBJ | FSCANF  .OBJ | FSEEK   .OBJ | FWRITE  .OBJ
-GETARGS .OBJ | GETCH   .OBJ | STAT-O  .C   | GETENV  .OBJ | GETFCB  .OBJ
+ASLAND  .AS  | ASLL    .AS  | ASLLRSH .AS  | ASLMUL  .AS  | ASLOR   .AS 
+ASLR    .AS  | ASLSUB  .AS  | ASLXOR  .AS  | ASMOD   .AS  | ASMUL   .AS 
+ASSERT  .C   | ATOI    .AS  | ATOL    .C   | B280OVR .SUB | BDOS    .AS 
+BIOS    .AS  | BITFIELD.AS  | BLKCLR  .AS  | BLKCPY  .C   | BMOVE   .AS 
+BRELOP  .AS  | BUF     .C   | ABORT   .OBJ | BUILD-C .SUB | BUILD-C2.SUB
+BUILDCPM.SUB | BUILDCRT.SUB | BUILDGEN.SUB | BUILDOVR.SUB | BUILDSTD.SUB
+C       .C   | C-JS    .C   | C-ORIG  .C   | TESTARGS.COM | ABS     .OBJ
+ALLSH   .OBJ | C280LIBC.SUB | C280OPTS.    | ALRSH   .OBJ | C309-18 .C  
+ASALLSH .OBJ | CALLOC  .C   | CGETS   .C   | CHMOD   .C   | CLEANUP .C  
+CLOSE   .C   | ASALRSH .OBJ | CLOSE-O .C   | ASAR    .OBJ | COMPLIBC.SUB
+CONVTIME.C   | CPUTS   .C   | CREAT   .C   | CSV     .AS  | CSV-CPM .AS 
+CTIME   .C   | CTYPE   .C   | CTYPE_  .C   | DECODE  .C   | DEHUFF  .C  
+DEHUFF  .COM | DOPRNT  .C   | DOSCAN  .C   | DUP     .C   | ENCODE  .C  
+ENHUFF  .C   | ENHUFF  .COM | ENVIRON .    | EXEC    .AS  | EXECL   .AS 
+EXIT    .AS  | EXIT    .C   | FAKECLEA.AS  | FAKECLEA.C   | FAKECPCL.AS 
+FCBNAME .C   | FCLOSE  .C   | FFLUSH  .C   | ASDIV   .OBJ | FILBUF  .C  
+FILESIZE.C   | ASLADD  .OBJ | FLSBUF  .C   | FOPEN   .C   | FPRINTF .C  
+FPUTC   .AS  | FREAD   .C   | FRELOP  .AS  | FREOPEN .C   | FSCANF  .C  
+FSEEK   .C   | ASLAND  .OBJ | ASLL    .OBJ | ASLLRSH .OBJ | FWRITE  .C  
+GETARGS .C   | GETCH   .C   | GETENV  .C   | GETFCB  .C   | GETS    .C  
+GETSP   .AS  | GETUID  .AS  | GETW    .C   | HELLO   .C   | HELLOS  .C  
+HUFF    .H   | IDIV    .AS  | IMUL    .AS  | INDEX   .AS  | INOUT   .AS 
+IREGSET .AS  | ISALPHA .AS  | ISATTY  .C   | ISDIGIT .AS  | ISLOWER .AS 
+ISSPACE .AS  | ISUPPER .AS  | LADD    .AS  | LAND    .AS  | LDIV    .AS 
+ASLMUL  .OBJ | ASLOR   .OBJ | ASLR    .OBJ | ASLSUB  .OBJ | ASLXOR  .OBJ
+ASMOD   .OBJ | ASMUL   .OBJ | LIBCVER .C   | ASSERT  .OBJ | LIBOVR  .SUB
+LIBSYM  .PAS | LINC    .AS  | ATOI    .OBJ | ATOL    .OBJ | LISTLIBS.SUB
+LISTMODC.SUB | LLRSH   .AS  | LMUL    .AS  | LONGJMP .AS  | LOR     .AS 
+LRELOP  .AS  | LSUB    .AS  | LXOR    .AS  | BDOS    .OBJ | BIOS    .OBJ
+M280LIBC.SUB | M280LIBV.SUB | MAKEFILE.COD | MAKEFILE.CPM | MAKEFILE.GEN
+MAKEFILE.STD | BITFIELD.OBJ | MAKELIBC.SUB | MALLOC  .C   | MAX     .AS 
+MEMCMP  .C   | MEMCPY  .C   | MEMSET  .C   | MISC    .C   | MKTIME  .C  
+NOMAIN  .C   | OBJDUMP .COM | OPEN    .C   | BLKCLR  .OBJ | OPTIMH  .C  
+BLKCPY  .OBJ | BMOVE   .OBJ | OPTIONS .    | OVRBGN  .AS  | OVREADME.TXT
+OVRLOAD .C   | PERROR  .C   | PNUM    .C   | PRINTF  .C   | PUTCHAR .C  
+PUTS    .C   | PUTW    .C   | QSORT   .C   | RAND    .C   | RCSV    .AS 
+READ    .C   | RELIBCPM.SUB | RELIBGEN.SUB | RELIBSTD.SUB | REMOVE  .C  
+RENAME  .C   | REWIND  .C   | RINDEX  .AS  | SBRK    .AS  | SCANF   .C  
+SEEK    .C   | SETBUF  .C   | BRELOP  .OBJ | SHAR    .AS  | SHLL    .AS 
+SHLR    .AS  | SIGNAL  .C   | SPRINTF .C   | SRAND   .AS  | SRAND1  .C  
+SSCANF  .C   | START1  .AS  | START2  .AS  | STAT    .C   | STAT-O  .C  
+STDCLEAN.C   | STDIO   .I   | STRCAT  .AS  | STRCHR  .AS  | STRCMP  .AS 
+STRCPY  .AS  | STRDUP  .C   | STRFTIME.C   | STRICMP .AS  | STRISTR .C  
+STRLEN  .AS  | STRNCAT .AS  | STRNCMP .AS  | STRNCPY .AS  | STRNICMP.AS 
+STRNISTR.C   | STRNSTR .C   | STRRCHR .AS  | STRSTR  .C   | STRTOK  .C  
+SWAP    .AS  | SYMTOAS .C   | SYMTOAS .COM | SYS_ERR .C   | BUF     .OBJ
+TEST    .SUB | TEST-OPT.AS  | CALLOC  .OBJ | TEST280 .SUB | TESTAES .C  
+TESTAES .COM | TESTARGS.C   | TESTBDOS.C   | CGETS   .OBJ | TESTBIOS.C  
+CHMOD   .OBJ | TESTBUG .AS  | TESTBUG .C   | TESTENV .C   | TESTFILE.C  
+CLEANUP .OBJ | TESTFTIM.C   | CLOSE   .OBJ | TESTHELL.C   | CONVTIME.OBJ
+TESTIO  .C   | CPUTS   .OBJ | TESTIO  .ERR | TESTIO  .STA | TESTL   .C  
+CREAT   .OBJ | TESTLTOF.AS  | TESTLTOF.C   | TESTOPTH.AS  | TESTOVR .C  
+CSV     .OBJ | TESTOVR1.C   | CTIME   .OBJ | TESTOVR2.C   | CTYPE_  .OBJ
+CTYPE   .OBJ | TESTPR  .C   | DOPRNT  .OBJ | TESTPWD .C   | TESTQSRT.C  
+TESTRC  .C   | DOSCAN  .OBJ | TESTREL .C   | TESTSTR .C   | DUP     .OBJ
+TESTSUB .C   | TESTTRIG.C   | EXEC    .OBJ | TESTUID .C   | EXECL   .OBJ
+TESTVER .C   | _EXIT   .OBJ | TESTVER .SUB | TESTVIEW.C   | EXIT    .OBJ
+TESTWILD.C   | FAKECLEA.OBJ | TIME    .C   | TIMEZONE.C   | TOLOWER .AS 
+TOUPPER .AS  | FAKECPCL.OBJ | FCBNAME .OBJ | FGETC   .AS  | FCLOSE  .OBJ
+TSTRDWR .C   | TXT4096 .SAV | FFLUSH  .OBJ | TSTRDWR .ZIP | FGETC   .OBJ
+UNGETC  .C   | UNLINK  .C   | WRELOP  .AS  | WRITE   .C   | XTOI    .AS 
+ZC280CPM.AS  | ZCRTCPM .AS  | ZD280CPM.AS  | ZDRTCPM .AS  | ZN280CPM.AS 
+ZNRTCPM .AS  | ZR280CPM.AS  | ZRRTCPM .AS  | ZXCCCPM .AS  | _EXIT   .AS 
+FILBUF  .OBJ | FLSBUF  .OBJ | FOPEN   .OBJ | FPRINTF .OBJ | FPUTC   .OBJ
+FREAD   .OBJ | FRELOP  .OBJ | FREOPEN .OBJ | FSCANF  .OBJ | FSEEK   .OBJ
+FWRITE  .OBJ | GETARGS .OBJ | GETCH   .OBJ | GETENV  .OBJ | GETFCB  .OBJ
 GETS    .OBJ | GETSP   .OBJ | GETUID  .OBJ | GETW    .OBJ | IDIV    .OBJ
 IMUL    .OBJ | INDEX   .OBJ | INOUT   .OBJ | IREGSET .OBJ | ISALPHA .OBJ
 ISATTY  .OBJ | ISDIGIT .OBJ | ISLOWER .OBJ | ISSPACE .OBJ | ISUPPER .OBJ
-ASLOR   .AS  | TESTPWD .C   | ASLR    .AS  | TESTRC  .C   | ASLSUB  .AS 
-TESTREL .C   | ASLXOR  .AS  | ASMOD   .AS  | ASMUL   .AS  | TESTSTR .C  
-ATOI    .AS  | ATOL    .C   | BITFIELD.AS  | BLKCLR  .AS  | BLKCPY  .C  
-BMOVE   .AS  | BRELOP  .AS  | BUILDGEN.SUB | CALLOC  .C   | CTYPE   .C  
-CTYPE_  .C   | FRELOP  .AS  | GETSP   .AS  | IDIV    .AS  | IMUL    .AS 
-INDEX   .AS  | INOUT   .AS  | IREGSET .AS  | ISALPHA .AS  | ISDIGIT .AS 
-ISLOWER .AS  | ISSPACE .AS  | ISUPPER .AS  | LADD    .AS  | LAND    .AS 
-LDIV    .AS  | LINC    .AS  | LLRSH   .AS  | LMUL    .AS  | LONGJMP .AS 
-LOR     .AS  | LRELOP  .AS  | LSUB    .AS  | LXOR    .AS  | MAKEFILE.GEN
-MALLOC  .C   | MAX     .AS  | MEMCMP  .C   | MEMCPY  .C   | MEMSET  .C  
-PNUM    .C   | QSORT   .C   | RAND    .C   | RCSV    .AS  | TESTSUB .C  
-RINDEX  .AS  | SBRK    .AS  | SHAR    .AS  | SHLL    .AS  | SHLR    .AS 
-STRCAT  .AS  | FSHOW   .OBJ | STRCHR  .AS  | STRCMP  .AS  | TESTTRIG.C  
-STRCPY  .AS  | STRLEN  .AS  | STRNCAT .AS  | STRNCMP .AS  | STRNCPY .AS 
-STRRCHR .AS  | SWAP    .AS  | TOLOWER .AS  | TOUPPER .AS  | WRELOP  .AS 
-XTOI    .AS  | CSV     .AS  | ASSERT  .C   | BUF     .C   | BUILDSTD.SUB
-CGETS   .C   | CPUTS   .C   | CTIME   .C   | TESTUID .C   | DOSCAN  .C  
-EXIT    .C   | FAKECLEA.C   | FCLOSE  .C   | FFLUSH  .C   | FGETC   .AS 
-FILBUF  .C   | FLSBUF  .C   | FOPEN   .C   | FPRINTF .C   | FPUTC   .AS 
-FREAD   .C   | FREOPEN .C   | FSCANF  .C   | FSEEK-O .C   | FWRITE  .C  
-MAKEFILE.STD | PERROR  .C   | PRINTF  .C   | PUTCHAR .C   | PUTS    .C  
-PUTW    .C   | LADD    .OBJ | REMOVE  .C   | REWIND  .C   | SCANF   .C  
-SETBUF  .C   | SETUP   .C   | SPRINTF .C   | SSCANF  .C   | STDCLEAN.C  
-TESTVIEW.C   | STDIO   .I   | UNGETC  .C   | GETARGS .C   | LAND    .OBJ
-ZXCCCPM .AS  | GETW    .C   | FILESIZE.C   | TESTWILD.C   | LDIV    .OBJ
-MISC    .C   | LINC    .OBJ | LLRSH   .OBJ | LMUL    .OBJ | LONGJMP .OBJ
-LOR     .OBJ | LRELOP  .OBJ | LSUB    .OBJ | LXOR    .OBJ | MALLOC  .OBJ
-TSTFSEEK.COM | @LIBC309.-18 | MAX     .OBJ | MEMCMP  .OBJ | MEMCPY  .OBJ
-RELIBCPM.SUB | RELIBGEN.SUB | MEMSET  .OBJ | GETS    .C   | ZR280CPM.AS 
-RELIBSTD.SUB | MKTIME  .OBJ | OPEN    .OBJ | PERROR  .OBJ | PNUM    .OBJ
-PRINTF  .OBJ | PUTCHAR .OBJ | PUTS    .OBJ | PUTW    .OBJ | QSORT   .OBJ
-RAND    .OBJ | RCSV    .OBJ | OPEN    .C   | READ    .OBJ | REMOVE  .OBJ
-RENAME  .OBJ | REWIND  .OBJ | RINDEX  .OBJ | TSTF    .DAT | SBRK    .OBJ
-SCANF   .OBJ | SEEK    .OBJ | SETBUF  .OBJ | SETUP   .OBJ | SHAR    .OBJ
-SHLL    .OBJ | SHLR    .OBJ | SIGNAL  .OBJ | SPRINTF .OBJ | SRAND1  .OBJ
-SRAND   .OBJ | SSCANF  .OBJ | START2  .OBJ | STAT    .OBJ | STDCLEAN.OBJ
-STRCAT  .OBJ | STRCHR  .OBJ | STRCMP  .OBJ | STRCPY  .OBJ | COMPLIBC.SUB
-STRDUP  .OBJ | STRFTIME.OBJ | ZN280CPM.AS  | STRICMP .OBJ | T2      .C  
-STRISTR .OBJ | STRLEN  .OBJ | STRNCAT .OBJ | STRNCMP .OBJ | FCBNAME .NEW
-CLEANUP .C   | STRNCPY .OBJ | NOMAIN  .C   | STRNICMP.OBJ | FCBNAME .C  
-STRNISTR.OBJ | STRNSTR .OBJ | C-ORIG  .C   | STRRCHR .OBJ | STRSTR  .OBJ
-STRTOK  .OBJ | SWAP    .OBJ | SYS_ERR .OBJ | TESTLTOF.AS  | TIME    .OBJ
-LISTLIBS.LOG | TIMEZONE.OBJ | TOLOWER .OBJ | TOUPPER .OBJ | UNGETC  .OBJ
-TESTQSRT.C   | LIBSYM  .PAS | HELLO   .MAP | UNLINK  .OBJ | LISTLIBS.SUB
-WRELOP  .OBJ | WRITE   .OBJ | XTOI    .OBJ | MAKELIBC.SU$ | ZCRTCPM .OBJ
-TESTLTOF.C   | ZDRTCPM .OBJ | TEST-OPT.AS  | TMP     .C   | ZNRTCPM .OBJ
-ZRRTCPM .OBJ | LIBCVER .OBJ | LIBC18  .LIB | C280LIBC.SUB | HELLO   .C  
-TESTBUG .C   | GETFCB  .C   | C309-18 .COM | HELLOS  .C   | OVRLOAD .OBJ
-OBJDUMP .COM | STAT    .C   | C280-18 .COM | MAKES   .LBR | FSHOW   .C  
-TESTBUG .AS  | TESTLTOF.12  | TESTL   .C   | LIBCVER .C   | TESTL   .COM
-OVRBGN  .OBJ | ZNRTCPM .AS  | BUILDCRT.SUB | TESTL   .OBJ | C309-18 .C  
-ZDRTCPM .AS  | OPTIONS .    | C280OPTS.    | C       .C   | BUILD-C .SUB
-TESTVER .C   | STRFTIME.C   | ZD280CPM.AS  | LIBOVR  .LIB | ZRRTCPM .AS 
-M280LIBV.SUB | SIGNAL  .C   | OPTIMH  .C   | CLOSE-13.C   | ZCRTCPM .AS 
-TESTVER .SUB | OPTIMH-O.C   | START1  .AS  | LIB280OV.LIB | TSTFOPEN.COM
-MAKELIBC.SUB | M280LIBC.SUB | TESTFILE.C   | FILESIZE.COM | STRDUP  .C  
-STRICMP .AS  | STRISTR .C   | STRNICMP.AS  | STRNISTR.C   | STRNSTR .C  
-STRSTR  .C   | STRTOK  .C   | GETENV  .C   | 
-Drive E: Total 8000k, Used 7276k, Free 724k
+LADD    .OBJ | LAND    .OBJ | LDIV    .OBJ | LINC    .OBJ | LLRSH   .OBJ
+LMUL    .OBJ | LONGJMP .OBJ | LOR     .OBJ | LRELOP  .OBJ | LSUB    .OBJ
+LXOR    .OBJ | MALLOC  .OBJ | MAX     .OBJ | MEMCMP  .OBJ | MEMCPY  .OBJ
+MEMSET  .OBJ | MKTIME  .OBJ | OPEN    .OBJ | PERROR  .OBJ | PNUM    .OBJ
+PRINTF  .OBJ | PUTCHAR .OBJ | PUTS    .OBJ | PUTW    .OBJ | TXT4096 .TXT
+QSORT   .OBJ | RAND    .OBJ | RCSV    .OBJ | READ    .OBJ | REMOVE  .OBJ
+RENAME  .OBJ | REWIND  .OBJ | RINDEX  .OBJ | SBRK    .OBJ | SCANF   .OBJ
+SEEK    .OBJ | SETBUF  .OBJ | SHAR    .OBJ | SHLL    .OBJ | SHLR    .OBJ
+SIGNAL  .OBJ | SPRINTF .OBJ | SRAND1  .OBJ | SRAND   .OBJ | SSCANF  .OBJ
+START1  .OBJ | START2  .OBJ | STAT    .OBJ | STDCLEAN.OBJ | STRCAT  .OBJ
+STRCHR  .OBJ | STRCMP  .OBJ | STRCPY  .OBJ | STRDUP  .OBJ | STRFTIME.OBJ
+STRICMP .OBJ | STRISTR .OBJ | STRLEN  .OBJ | STRNCAT .OBJ | STRNCMP .OBJ
+STRNCPY .OBJ | STRNICMP.OBJ | STRNISTR.OBJ | STRNSTR .OBJ | STRRCHR .OBJ
+STRSTR  .OBJ | STRTOK  .OBJ | SWAP    .OBJ | SYS_ERR .OBJ | TIME    .OBJ
+TIMEZONE.OBJ | TOLOWER .OBJ | TOUPPER .OBJ | UNGETC  .OBJ | UNLINK  .OBJ
+WRELOP  .OBJ | WRITE   .OBJ | XTOI    .OBJ | ZCRTCPM .OBJ | ZDRTCPM .OBJ
+ZNRTCPM .OBJ | ZRRTCPM .OBJ | LIBCVER .OBJ | MAKELIBC.LOG | OVRLOAD .OBJ
+OVRBGN  .OBJ | BUILD-C .LOG | @LIBC309.-19 | C309-19 .C   | C309-19 .COM
+LIBOVR  .LIB | C280LIBC.LOG | C280Z80 .COM | EXEC-BLD.SUB | FGETC   .C  
+FGETC-O .AS  | FILESIZE.COM | FPUTC   .C   | FPUTC-O .AS  | FSHOW   .C  
+LIBC19  .LIB | MKLIBC  .SUB | TEST    .DAT | TESTBDOS.COM | TESTBIOS.COM
+TESTFILE.COM | TESTFTIM.COM | TESTHELL.COM | TESTIO  .COM | TESTOVR .COM
+TESTOVR1.OVR | TESTOVR2.OVR | TESTOVRX.SYM | TESTPR  .COM | TESTRC  .COM
+TESTSTR .COM | TESTTRIG.COM | TESTUID .COM | TESTVER .COM | TESTVIEW.COM
+TESTWILD.COM | TSTRDWR .COM | TSTRDWR .SUB | TSTRDWRO.C   | C280-19 .COM
+OPTIMH  .COM | M280LIBC.LOG | LIB280C .LIB | 
+Drive E: Total 8000k, Used 7156k, Free 844k
 
 Library E10:LIB280C.LBR^G not found.
   To make it, enter the number of entries to allow.
   Press RETURN now to abort making the library.
-Allow how many entries: 196
+Allow how many entries: 195
 Library E10:LIB280C.LBR open.
-(Buffer size: 200 sectors)
-Active entries: 1, Deleted: 0, Free: 199, Total: 200.
+(Buffer size: 202 sectors)
+Active entries: 1, Deleted: 0, Free: 195, Total: 196.
 Adding:    M10:ISLOWER .OBJ
 Adding:    M10:LIBFVER .OBJ
 Adding:    M10:PRINTF  .OBJ
@@ -955,7 +957,6 @@ Adding:    M10:RINDEX  .OBJ
 Adding:    M10:SBRK    .OBJ
 Adding:    M10:SEEK    .OBJ
 Adding:    M10:SETBUF  .OBJ
-Adding:    M10:SETUP   .OBJ
 Adding:    M10:SHAR    .OBJ
 Adding:    M10:SHLL    .OBJ
 Adding:    M10:SHLR    .OBJ
@@ -1000,7 +1001,7 @@ Adding:    M10:ZD280CPM.OBJ
 Adding:    M10:ZN280CPM.OBJ
 Adding:    M10:ZR280CPM.OBJ
 Adding:    M10:LIBCVER .OBJ
-Active entries: 197, Deleted: 0, Free: 3, Total: 200.
+Active entries: 196, Deleted: 0, Free: 0, Total: 196.
 
 Closing E10:LIB280C.LBR...
 

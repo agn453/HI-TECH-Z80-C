@@ -1,8 +1,8 @@
-#define VERSION "3.09-18"
+#include <stdio.h>
 
 char *_libfver =
 #ifdef Z280
- "LIB280F " VERSION;
+ "LIB280F " _HTC_VERSION;
 #else
- "LIBF " VERSION;
+ "LIBF " _HTC_VERSION;
 #endif

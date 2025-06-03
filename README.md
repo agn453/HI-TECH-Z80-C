@@ -11,7 +11,7 @@ ZXCC[^3].
 Each release is a consolidated milestone with various updates and
 patches applied.  You should read this README.md file for details.
 
-The latest release is V3.09-18 (see Modification History below).
+The latest release is V3.09-19 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1672,6 +1672,7 @@ modules.  I've also bumped the version to V3.09-18 so you
 know you're using the corrected modules.
 
 ## OCR version of scanned manual added
+<!-- May 29, 2025 -->
 
 Thanks to Martin for contributing an OCR enhanced copy of the scanned October
 1989 "HI-TECH SOFTWARE C COMPILER (Z80) User's Manual".  You'll find this in
@@ -1679,6 +1680,90 @@ the
 [doc/Hi-Tech-Z80-1989-october_ocr.pdf](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/doc/Hi-Tech-Z80-1989-october_ocr.pdf)
 file.  This allows you to search the document for content using your PDF
 reader/web browser.
+
+## Backported V4.11 STDIO routines
+<!-- June 3, 2025 -->
+
+In order to resolve issue #50 concerning incorrect handling of file position
+and failure to flush buffers when a file is accessed for updating (in
+```r+b``` mode),  I have backported the stdio routines from the HI-TECH
+C Z80 Cross-compiler V4.11 into the C Library (LIBC.LIB and LIB280C.LIB).
+The original V3.09 routines had convoluted code that was not properly
+handling a file read followed by a seek and write.
+
+When examining the HI-TECH stdio routines from the V4.11 cross-compiler
+it became obvious that the problem was known and corrected using a
+different combination of file flag status bytes.  The update adds a
+word to the ```FILE``` structure that permits a different file buffer size
+to be selected (using a newly added ```setvbuf()``` routine) whilst
+maintaining the old default of 512 bytes; and replaces the old
+```_IOWROTE``` flag status bit with an ```_IOSEEKED``` flag to indicate
+that a file seek has occurred since the last file write.
+
+```
+setvbuf() and setbuf()
+
+     The setvbuf() function allows the buffering behaviour of a STDIO
+     stream to be altered. It supersedes the function setbuf() which is
+     retained for backwards compatibility.
+
+     #include <stdio.h>
+
+     int void setvbuf(FILE * stream, char * buf, int mode, size_t size);
+
+     setbuf(FILE * stream, char * buf)
+
+     The arguments to setvbuf() are as follows:
+
+     stream designates the STDIO stream to be affected; buf is a pointer
+     to a buffer which will be used for all subsequent I/O operations on
+     this stream. If buf is null, then the routine will allocate a buffer
+     from the heap if necessary, of size BUFSIZ as defined in <stdio.h>.
+     mode may take the values _IONBF, to turn buffering off completely,
+     _IOFBF, for full buffering, or _IOLBF for line buffering. Full
+     buffering means that the associated buffer will only be flushed when
+     full, while line buffering means that the buffer will be flushed at
+     the end of each line or when input is requested from another STDIO
+     stream. size is the size of the buffer supplied. For example:
+
+     setvbuf(stdout, my_buf, _IOLBF, sizeof my_buf);
+
+     If a buffer is supplied by the caller, that buffer will remain
+     associated with that stream even over fclose(), fopen() calls until
+     another setvbuf() changes it.
+```
+
+The updated ibinaries, libraries and header files have been included in
+the *dist* and *z280dist* folders, along with source-code and build files
+in the *stdio*, *float* and *cpm* folders.
+
+I've also bumped the version to V3.09-19 so you know you're using the
+latest library modules.  Library version information is also now included
+in the ```STDIO.H``` file as
+
+```
+#define _HTC_VERSION    "3.09-19"
+#define _HTC_MAJOR      3
+#define _HTC_MINOR      9
+#define _HTC_REV        19
+```
+
+and a global string can be accessed from the C libraries. This can be
+referenced and printed using
+
+```
+extern char * _libcver; /* or _libfver for LIBF.LIB */
+..
+fprintf(stdout,"C library version %s\n",_libcver);
+```
+
+Grab the updated V3.09-19 distribution binary .LBR file for Z80 CP/M from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
+
+and optionally the Z280 binary distribution (if you need it) from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
@@ -1707,4 +1792,4 @@ provider to be able to post messages.
 
 --
 
-Tony Nicholson, Tuesday 06-May-2025
+Tony Nicholson, Tuesday 03-Jun-2025

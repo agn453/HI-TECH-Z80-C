@@ -63,12 +63,12 @@ c280
 <e:fcbname.c \
 <e:fclose.c \
 <e:fflush.c \
-<e:fgetc.as \
+<e:fgetc.c \
 <e:filbuf.c \
 <e:flsbuf.c \
 <e:fopen.c \
 <e:fprintf.c \
-<e:fputc.as \
+<e:fputc.c \
 <e:fread.c \
 <e:frelop.as \
 <e:freopen.c \
@@ -132,7 +132,6 @@ c280
 <e:scanf.c \
 <e:seek.c \
 <e:setbuf.c \
-<e:setup.c \
 <e:shar.as \
 <e:shll.as \
 <e:shlr.as \

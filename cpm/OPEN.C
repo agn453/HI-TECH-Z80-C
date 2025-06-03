@@ -54,7 +54,7 @@ int open(char *name, int mode)
     if (!setfcb(fc, name))
    {
         if (mode == U_READ && (bdos(CPMVERS)&0x7F) >= 0x30)
-            fc->name[5] |= 0x80;    /* read-only mode */
+            fc->name[5] |= (char) 0x80;    /* read-only mode */
         luid = getuid();
         setuid(fc->uid);
         if ((bdos(CPMOPN, fc) & 0xFF)  == 0xFF)

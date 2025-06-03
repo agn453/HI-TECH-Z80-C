@@ -1,6 +1,5 @@
 #include	<stdio.h>
-
-extern char *sbrk();
+#include	<sys.h>
 
 static union stdbuf
 {

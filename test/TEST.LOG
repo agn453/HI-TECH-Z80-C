@@ -1,11 +1,29 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Mon 05/05/2025 14:56:43
+Tue 03/06/2025 11:01:45
 10E>; Compile all tests
+10E>c -v -o filesize.c
+A:C        COM  (User 0)
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: FILESIZE.C M:$CTMP1.$$$
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
+0:A:ZAS -J -N -OFILESIZE.OBJ M:$CTMP2.$$$
+ERA M:$CTMP1.$$$
+ERA M:$CTMP2.$$$
+ERA M:$CTMP3.$$$
+ERA M:$CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OFILESIZE.COM 0:A:CRTCPM.OBJ FILESIZE.OBJ 0:A:LIBC.LIB
+ERA FILESIZE.OBJ
+ERA M:$$EXEC.$$$
+
 10E>c -v -o testver.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVER.C M:$CTMP1.$$$
@@ -23,7 +41,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testio.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTIO.C M:$CTMP1.$$$
@@ -41,7 +59,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testuid.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTUID.C M:$CTMP1.$$$
@@ -59,7 +77,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o teststr.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTSTR.C M:$CTMP1.$$$
@@ -77,7 +95,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testbios.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBIOS.C M:$CTMP1.$$$
@@ -95,25 +113,27 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testbdos.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTBDOS.C M:$CTMP1.$$$
 0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$
-0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$
-0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$
-0:A:ZAS -J -N -OTESTBDOS.OBJ M:$CTMP2.$$$
+TESTBDOS.C: test()
+    16:	    e = errno;
+	        ^ undefined identifier: errno
+TESTBDOS.C: main()
+    45:	        errno = e;
+	        ^ undefined identifier: errno
 ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBDOS.COM 0:A:CRTCPM.OBJ TESTBDOS.OBJ 0:A:LIBC.LIB
 ERA TESTBDOS.OBJ
 ERA M:$$EXEC.$$$
 
 10E>c -v -o testtrig.c -lf
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTTRIG.C M:$CTMP1.$$$
@@ -131,7 +151,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testftim.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFTIM.C M:$CTMP1.$$$
@@ -149,7 +169,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testfile.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTFILE.C M:$CTMP1.$$$
@@ -167,7 +187,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testaes.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTAES.C M:$CTMP1.$$$
@@ -185,7 +205,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testrc.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTRC.C M:$CTMP1.$$$
@@ -203,7 +223,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testview.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTVIEW.C M:$CTMP1.$$$
@@ -221,7 +241,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testwild.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTWILD.C M:$CTMP1.$$$
@@ -239,7 +259,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -ftestovrx.sym -v -o testovr.c -lovr
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTOVR.C M:$CTMP1.$$$
@@ -257,7 +277,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -y -o -v testovr2.c testovrx.sym
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR2.C
@@ -273,12 +293,12 @@ ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=033EDh,data -C33EDH -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=0367Eh,data -C367EH -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
 ERA M:$$EXEC.$$$
 
 10E>c -y -o -v testovr1.c testovrx.sym
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 TESTOVR1.C
@@ -294,12 +314,12 @@ ERA M:$CTMP1.$$$
 ERA M:$CTMP2.$$$
 ERA M:$CTMP3.$$$
 ERA M:$CTMP5.$$$
-0:A:LINQ -Z -Ptext=033EDh,data -C33EDH -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=0367Eh,data -C367EH -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
 ERA M:$$EXEC.$$$
 
 10E>c -a -v -o testhell.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTHELL.C M:$CTMP1.$$$
@@ -319,7 +339,7 @@ ERA M:$$EXEC.$$$
 
 10E>c -v -o testpr.c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TESTPR.C M:$CTMP1.$$$
@@ -342,7 +362,7 @@ Machine (MCS80/Z80)
 BDOS Address (0xE500)
 BIOS Address (0xF800)
 TPA Size (57.0K)
-C library version LIBC 3.09-18
+C library version LIBC 3.09-19
 Using DOS Plus exact file size mode
 
 10E>era testio.sta
@@ -459,8 +479,8 @@ E:TESTTRIG COM
 
 10E>testftim
 E:TESTFTIM COM
-34: 03:08 PM
-Mon May 05 15:08:09 2025
+34: 11:14 AM
+Tue Jun 03 11:14:56 2025
 
 
 10E>testfile
@@ -569,51 +589,50 @@ int main(int argc, char ** argv)
 10E>testwild test*.c test*.com
 E:TESTWILD COM
 Program name: TESTWILD
- 1: TESTPR.C
- 2: TESTENV.C
- 3: TESTHELL.C
- 4: TESTAES.C
- 5: TESTARGS.C
- 6: TESTBDOS.C
- 7: TESTBIOS.C
- 8: TESTFILE.C
- 9: TESTFSIZ.C
-10: TESTFTIM.C
-11: TESTIO.C
-12: TESTOVR.C
-13: TESTOVR1.C
-14: TESTOVR2.C
-15: TESTPWD.C
-16: TESTRC.C
-17: TESTREL.C
-18: TESTSTR.C
-19: TESTSUB.C
-20: TESTTRIG.C
-21: TESTUID.C
-22: TESTVIEW.C
-23: TESTWILD.C
-24: TESTQSRT.C
-25: TESTLTOF.C
-26: TESTBUG.C
-27: TESTL.C
-28: TESTVER.C
-29: TESTIO.COM
-30: TESTUID.COM
-31: TESTSTR.COM
+ 1: TESTAES.C
+ 2: TESTARGS.C
+ 3: TESTBDOS.C
+ 4: TESTBIOS.C
+ 5: TESTBUG.C
+ 6: TESTENV.C
+ 7: TESTFILE.C
+ 8: TESTFTIM.C
+ 9: TESTHELL.C
+10: TESTIO.C
+11: TESTL.C
+12: TESTLTOF.C
+13: TESTOVR.C
+14: TESTOVR1.C
+15: TESTOVR2.C
+16: TESTPR.C
+17: TESTPWD.C
+18: TESTQSRT.C
+19: TESTRC.C
+20: TESTREL.C
+21: TESTSTR.C
+22: TESTSUB.C
+23: TESTTRIG.C
+24: TESTUID.C
+25: TESTVER.C
+26: TESTVIEW.C
+27: TESTWILD.C
+28: TESTARGS.COM
+29: TESTAES.COM
+30: TESTVER.COM
+31: TESTBDOS.COM
 32: TESTBIOS.COM
-33: TESTBDOS.COM
-34: TESTTRIG.COM
-35: TESTFTIM.COM
-36: TESTFILE.COM
-37: TESTAES.COM
-38: TESTRC.COM
-39: TESTVIEW.COM
-40: TESTWILD.COM
-41: TESTOVR.COM
-42: TESTHELL.COM
-43: TESTPR.COM
-44: TESTVER.COM
-45: TESTL.COM
+33: TESTFILE.COM
+34: TESTFTIM.COM
+35: TESTHELL.COM
+36: TESTIO.COM
+37: TESTOVR.COM
+38: TESTPR.COM
+39: TESTRC.COM
+40: TESTSTR.COM
+41: TESTTRIG.COM
+42: TESTUID.COM
+43: TESTVIEW.COM
+44: TESTWILD.COM
 
 10E>testhell
 E:TESTHELL COM
@@ -623,6 +642,74 @@ Hello
 E:TESTPR   COM
 len: 320
 string: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+10E>filesize test*.*
+E:FILESIZE COM
+argc = 62
+                         Bytes
+             File   ftell()   fopen() Sectors    kB
+----------------- --------- --------- ------- -----
+     TESTARGS.COM     12544     12544      98    13
+         TEST.LOG     19072     19072     149    19
+      TEST-OPT.AS       896       896       7     1
+     TESTOVR2.OBJ       256       256       2     1
+        TESTAES.C     13952     13952     109    14
+      TESTAES.COM     17152     17152     134    17
+       TESTARGS.C       256       256       2     1
+       TESTBDOS.C      1280      1280      10     2
+       TESTBIOS.C      1280      1280      10     2
+       TESTBUG.AS      4480      4480      35     5
+        TESTBUG.C       512       512       4     1
+        TESTENV.C       256       256       2     1
+       TESTFILE.C       896       896       7     1
+       TESTFTIM.C       512       512       4     1
+       TESTHELL.C       128       128       1     1
+         TESTIO.C       768       768       6     1
+       TESTIO.ERR        15        15       1     1
+       TESTIO.STA         8         8       1     1
+          TESTL.C       128       128       1     1
+      TESTLTOF.AS      8576      8576      67     9
+       TESTLTOF.C      1408      1408      11     2
+      TESTOPTH.AS       384       384       3     1
+        TESTOVR.C       512       512       4     1
+       TESTOVR1.C       128       128       1     1
+       TESTOVR2.C       128       128       1     1
+         TESTPR.C       640       640       5     1
+        TESTPWD.C      1152      1152       9     2
+       TESTQSRT.C       768       768       6     1
+         TESTRC.C       256       256       2     1
+        TESTREL.C       128       128       1     1
+        TESTSTR.C       896       896       7     1
+        TESTSUB.C      1280      1280      10     2
+       TESTTRIG.C      4480      4480      35     5
+        TESTUID.C       384       384       3     1
+        TESTVER.C      1920      1920      15     2
+      TESTVER.SUB       128       128       1     1
+       TESTVIEW.C      1024      1024       8     1
+       TESTWILD.C       896       896       7     1
+      TESTVER.COM     13952     13952     109    14
+         TEST.DAT         7         7       1     1
+     TESTBDOS.COM     12800     12800     100    13
+     TESTBIOS.COM     13696     13696     107    14
+     TESTFILE.COM     13696     13696     107    14
+     TESTFTIM.COM     16640     16640     130    17
+     TESTHELL.COM      9472      9472      74    10
+       TESTIO.COM     13568     13568     106    14
+      TESTOVR.COM     13696     13696     107    14
+     TESTOVR1.OVR       128       128       1     1
+     TESTOVR2.OVR       128       128       1     1
+     TESTOVRX.SYM      2688      2688      21     3
+       TESTPR.COM     13568     13568     106    14
+       TESTRC.COM     13056     13056     102    13
+      TESTSTR.COM     13824     13824     108    14
+     TESTTRIG.COM     18688     18688     146    19
+      TESTUID.COM     13184     13184     103    13
+     TESTVIEW.COM     13312     13312     104    13
+     TESTWILD.COM     13184     13184     103    13
+     TESTOVRX.OBJ      2944      2944      23     3
+     TESTOVR1.OBJ       256       256       2     1
+         TEST.SUB       896       896       7     1
+      TEST280.SUB      1024      1024       8     1
 
 10E>; All tests completed
 10E>put console to console

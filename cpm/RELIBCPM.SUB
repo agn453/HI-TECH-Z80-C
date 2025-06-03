@@ -1,5 +1,5 @@
 libr 
-<r libc.lib \
+<r libc3.lib \
 <start1.obj open.obj read.obj write.obj chmod.obj seek.obj \
 <fcbname.obj rename.obj creat.obj time.obj convtime.obj timezone.obj \
 <stat.obj isatty.obj cleanup.obj close.obj unlink.obj dup.obj getfcb.obj \

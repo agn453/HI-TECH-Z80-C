@@ -9,8 +9,6 @@
  *  processor is prohibited.
  */
 
-#define	VERSION	"V3.09-18"
-
 /*----------------------------------------------------------------------*\
  | Note by Jon Saxton, 3 May 2014.					|
  |									|
@@ -245,9 +243,9 @@ int main(int argc, char **argv)
     prev_sig=signal(SIGINT,SIG_IGN);
 
 #ifdef Z280
-    fprintf(stderr, "Hi-Tech Z280 C Compiler (CP/M-80) %s",VERSION);
+    fprintf(stderr, "Hi-Tech Z280 C Compiler (CP/M-80) V%s",_HTC_VERSION);
 #else
-    fprintf(stderr, "Hi-Tech Z80 C Compiler (CP/M-80) %s",VERSION);
+    fprintf(stderr, "Hi-Tech Z80 C Compiler (CP/M-80) V%s",_HTC_VERSION);
 #endif
     fprintf(stderr, "\nCopyright (C) 1984-87 HI-TECH SOFTWARE\n");
     fprintf(stderr, "Updated from https://github.com/agn453/HI-TECH-Z80-C\n");

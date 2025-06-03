@@ -1,4 +1,6 @@
 #include    <cpm.h>
+#include    <stdlib.h>
+#include    <ctype.h>
 /*
     This is a modified version of close.c to support exact file sizes.
 
@@ -43,9 +45,6 @@ extern char _exact;  /* Exact file size hint for last sector
 			'I' = ISX mode (count is UNUSED bytes)
                       */
 
-char *getenv(char *);
-int toupper(int );
-
 int close(uchar fd)
 {
     register struct fcb *fc;
@@ -61,7 +60,7 @@ int close(uchar fd)
         bdos(CPMCLS, fc);
     if (_exact != 'C') { /* skip if old CP/M mode */
         fc->nr = (_exact == 'D' ? fc->fsize : -fc->fsize) & 0x7f; /* Set exact file size */
-        fc->name[5] |= 0x80;
+        fc->name[5] |= (char) 0x80;
         if (fc->use == U_WRITE || fc->use == U_RDWR)
             bdos(CPMSATT, fc);
     }

@@ -1,7 +1,7 @@
 era complibc.log
 put console output to file complibc.log [system]
 date
-; Compile all LIBC18.LIB modules from sources
+; Compile all LIBC19.LIB modules from sources
 c
 <-o -c abort.c \
 <abs.as \
@@ -57,12 +57,12 @@ c
 <fcbname.c \
 <fclose.c \
 <fflush.c \
-<fgetc.as \
+<fgetc.c \
 <filbuf.c \
 <flsbuf.c \
 <fopen.c \
 <fprintf.c \
-<fputc.as \
+<fputc.c \
 <fread.c \
 <frelop.as \
 <freopen.c \
@@ -126,7 +126,6 @@ c
 <scanf.c \
 <seek.c \
 <setbuf.c \
-<setup.c \
 <shar.as \
 <shll.as \
 <shlr.as \

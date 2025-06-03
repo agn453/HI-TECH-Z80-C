@@ -1,5 +1,6 @@
 #include	<assert.h>
 #include	<stdio.h>
+#include	<stdlib.h>
 
 void
 _fassert(line, file, exp)

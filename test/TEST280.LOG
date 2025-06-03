@@ -1,8 +1,29 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Mon 05/05/2025 14:38:49
+Tue 03/06/2025 11:17:00
 10E>; Compile all test280
+10E>c280 -v -o2 filesize.c
+C:C280     COM
+Hi-Tech Z280 C Compiler (CP/M-80) V3.09-18
+Copyright (C) 1984-87 HI-TECH SOFTWARE
+Updated from https://github.com/agn453/HI-TECH-Z80-C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: FILESIZE.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
+ 57 bytes size optimised away
+ 123 bytes replaced
+0:A:ZAS -J -N -OFILESIZE.OBJ $CTMP5.$$$
+ERA $CTMP1.$$$
+ERA $CTMP2.$$$
+ERA $CTMP3.$$$
+ERA $CTMP5.$$$
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OFILESIZE.COM 0:A:C280CPM.OBJ FILESIZE.OBJ 0:A:LIB280C.LIB
+ERA FILESIZE.OBJ
+ERA $$EXEC.$$$
+
 10E>c280 -v -o2 testver.c
 C:C280     COM
 Hi-Tech Z280 C Compiler (CP/M-80) V3.09-18
@@ -115,17 +136,16 @@ Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: TESTBDOS.C $CTMP1.$$$
 0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 43 bytes size optimised away
- 66 bytes replaced
-0:A:ZAS -J -N -OTESTBDOS.OBJ $CTMP5.$$$
+TESTBDOS.C: test()
+    16:	    e = errno;
+	        ^ undefined identifier: errno
+TESTBDOS.C: main()
+    45:	        errno = e;
+	        ^ undefined identifier: errno
 ERA $CTMP1.$$$
 ERA $CTMP2.$$$
 ERA $CTMP3.$$$
 ERA $CTMP5.$$$
-0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTESTBDOS.COM 0:A:C280CPM.OBJ TESTBDOS.OBJ 0:A:LIB280C.LIB
 ERA TESTBDOS.OBJ
 ERA $$EXEC.$$$
 
@@ -318,7 +338,7 @@ ERA $CTMP1.$$$
 ERA $CTMP2.$$$
 ERA $CTMP3.$$$
 ERA $CTMP5.$$$
-0:A:LINQ -Z -Ptext=02FA6h,data -C2FA6H -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=031B7h,data -C31B7H -OTESTOVR2.OVR TESTOVR2.OBJ TESTOVRX.OBJ
 ERA $$EXEC.$$$
 
 10E>c280 -y -o2 -v testovr1.c testovrx.sym
@@ -342,7 +362,7 @@ ERA $CTMP1.$$$
 ERA $CTMP2.$$$
 ERA $CTMP3.$$$
 ERA $CTMP5.$$$
-0:A:LINQ -Z -Ptext=02FA6h,data -C2FA6H -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
+0:A:LINQ -Z -Ptext=031B7h,data -C31B7H -OTESTOVR1.OVR TESTOVR1.OBJ TESTOVRX.OBJ
 ERA $$EXEC.$$$
 
 10E>c280 -a -v -o2 testhell.c -lc
@@ -396,7 +416,7 @@ Machine (MCS80/Z80)
 BDOS Address (0xE500)
 BIOS Address (0xF800)
 TPA Size (57.0K)
-C library version LIB280C 3.09-18
+C library version LIB280C 3.09-19
 Using DOS Plus exact file size mode
 
 10E>era testio.sta
@@ -513,8 +533,8 @@ E:TESTTRIG COM
 
 10E>testftim
 E:TESTFTIM COM
-34: 02:55 PM
-Mon May 05 14:55:53 2025
+34: 11:33 AM
+Tue Jun 03 11:33:09 2025
 
 
 10E>testfile
@@ -623,51 +643,50 @@ int main(int argc, char ** argv)
 10E>testwild test*.c test*.com
 E:TESTWILD COM
 Program name: TESTWILD
- 1: TESTPR.C
- 2: TESTENV.C
- 3: TESTHELL.C
- 4: TESTAES.C
- 5: TESTARGS.C
- 6: TESTBDOS.C
- 7: TESTBIOS.C
- 8: TESTFILE.C
- 9: TESTFSIZ.C
-10: TESTFTIM.C
-11: TESTIO.C
-12: TESTOVR.C
-13: TESTOVR1.C
-14: TESTOVR2.C
-15: TESTPWD.C
-16: TESTRC.C
-17: TESTREL.C
-18: TESTSTR.C
-19: TESTSUB.C
-20: TESTTRIG.C
-21: TESTUID.C
-22: TESTVIEW.C
-23: TESTWILD.C
-24: TESTQSRT.C
-25: TESTLTOF.C
-26: TESTBUG.C
-27: TESTL.C
-28: TESTVER.C
-29: TESTIO.COM
-30: TESTUID.COM
-31: TESTSTR.COM
+ 1: TESTAES.C
+ 2: TESTARGS.C
+ 3: TESTBDOS.C
+ 4: TESTBIOS.C
+ 5: TESTBUG.C
+ 6: TESTENV.C
+ 7: TESTFILE.C
+ 8: TESTFTIM.C
+ 9: TESTHELL.C
+10: TESTIO.C
+11: TESTL.C
+12: TESTLTOF.C
+13: TESTOVR.C
+14: TESTOVR1.C
+15: TESTOVR2.C
+16: TESTPR.C
+17: TESTPWD.C
+18: TESTQSRT.C
+19: TESTRC.C
+20: TESTREL.C
+21: TESTSTR.C
+22: TESTSUB.C
+23: TESTTRIG.C
+24: TESTUID.C
+25: TESTVER.C
+26: TESTVIEW.C
+27: TESTWILD.C
+28: TESTARGS.COM
+29: TESTAES.COM
+30: TESTVER.COM
+31: TESTBDOS.COM
 32: TESTBIOS.COM
-33: TESTBDOS.COM
-34: TESTTRIG.COM
-35: TESTFTIM.COM
-36: TESTFILE.COM
-37: TESTAES.COM
-38: TESTRC.COM
-39: TESTVIEW.COM
-40: TESTWILD.COM
-41: TESTOVR.COM
-42: TESTHELL.COM
-43: TESTPR.COM
-44: TESTVER.COM
-45: TESTL.COM
+33: TESTFILE.COM
+34: TESTFTIM.COM
+35: TESTHELL.COM
+36: TESTIO.COM
+37: TESTOVR.COM
+38: TESTPR.COM
+39: TESTRC.COM
+40: TESTSTR.COM
+41: TESTTRIG.COM
+42: TESTUID.COM
+43: TESTVIEW.COM
+44: TESTWILD.COM
 
 10E>testhell
 E:TESTHELL COM
@@ -677,6 +696,75 @@ Hello
 E:TESTPR   COM
 len: 320
 string: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+10E>filesize test*.*
+E:FILESIZE COM
+argc = 63
+                         Bytes
+             File   ftell()   fopen() Sectors    kB
+----------------- --------- --------- ------- -----
+     TESTARGS.COM     12544     12544      98    13
+         TEST.LOG     22656     22656     177    23
+      TEST-OPT.AS       896       896       7     1
+     TESTOVR2.OBJ       256       256       2     1
+        TESTAES.C     13952     13952     109    14
+      TESTAES.COM     15616     15616     122    16
+       TESTARGS.C       256       256       2     1
+       TESTBDOS.C      1280      1280      10     2
+       TESTBIOS.C      1280      1280      10     2
+       TESTBUG.AS      4480      4480      35     5
+        TESTBUG.C       512       512       4     1
+        TESTENV.C       256       256       2     1
+       TESTFILE.C       896       896       7     1
+       TESTFTIM.C       512       512       4     1
+       TESTHELL.C       128       128       1     1
+         TESTIO.C       768       768       6     1
+       TESTIO.ERR        15        15       1     1
+       TESTIO.STA         8         8       1     1
+          TESTL.C       128       128       1     1
+      TESTLTOF.AS      8576      8576      67     9
+       TESTLTOF.C      1408      1408      11     2
+      TESTOPTH.AS       384       384       3     1
+        TESTOVR.C       512       512       4     1
+       TESTOVR1.C       128       128       1     1
+       TESTOVR2.C       128       128       1     1
+         TESTPR.C       640       640       5     1
+        TESTPWD.C      1152      1152       9     2
+       TESTQSRT.C       768       768       6     1
+         TESTRC.C       256       256       2     1
+        TESTREL.C       128       128       1     1
+        TESTSTR.C       896       896       7     1
+        TESTSUB.C      1280      1280      10     2
+       TESTTRIG.C      4480      4480      35     5
+        TESTUID.C       384       384       3     1
+        TESTVER.C      1920      1920      15     2
+      TESTVER.SUB       128       128       1     1
+       TESTVIEW.C      1024      1024       8     1
+       TESTWILD.C       896       896       7     1
+      TESTVER.COM     12800     12800     100    13
+         TEST.DAT         7         7       1     1
+     TESTBDOS.COM     12800     12800     100    13
+     TESTBIOS.COM     12544     12544      98    13
+     TESTFILE.COM     12416     12416      97    13
+     TESTFTIM.COM     15104     15104     118    15
+     TESTHELL.COM      8704      8704      68     9
+       TESTIO.COM     12288     12288      96    12
+      TESTOVR.COM     12544     12544      98    13
+     TESTOVR1.OVR       128       128       1     1
+     TESTOVR2.OVR       128       128       1     1
+     TESTOVRX.SYM      2688      2688      21     3
+       TESTPR.COM     12416     12416      97    13
+       TESTRC.COM     11776     11776      92    12
+      TESTSTR.COM     12672     12672      99    13
+     TESTTRIG.COM     17024     17024     133    17
+      TESTUID.COM     11904     11904      93    12
+     TESTVIEW.COM     12160     12160      95    12
+     TESTWILD.COM     12032     12032      94    12
+     TESTOVRX.OBJ      2944      2944      23     3
+     TESTOVR1.OBJ       256       256       2     1
+      TEST280.LOG     20608     20608     161    21
+         TEST.SUB       896       896       7     1
+      TEST280.SUB      1024      1024       8     1
 
 10E>; Z280 optimiser
 10E>optimh -f test-opt.as test-opt.as2

@@ -1,7 +1,7 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Tue 06/05/2025 10:39:51
+Mon 02/06/2025 22:22:48
 10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>;
 10E>; Sources are on drive E:
@@ -70,12 +70,12 @@ c> e:fakecpcl.as \
 c> e:fcbname.c \
 c> e:fclose.c \
 c> e:fflush.c \
-c> e:fgetc.as \
+c> e:fgetc.c \
 c> e:filbuf.c \
 c> e:flsbuf.c \
 c> e:fopen.c \
 c> e:fprintf.c \
-c> e:fputc.as \
+c> e:fputc.c \
 c> e:fread.c \
 c> e:frelop.as \
 c> e:freopen.c \
@@ -351,8 +351,8 @@ E:CTIME.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 161 bytes size optimised away
- 323 bytes replaced
+ 160 bytes size optimised away
+ 320 bytes replaced
 0:A:ZAS -J -N -OCTIME.OBJ $CTMP5.$$$
 E:CTYPE_.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:CTYPE_.C $CTMP1.$$$
@@ -387,8 +387,8 @@ E:DOSCAN.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 127 bytes size optimised away
- 274 bytes replaced
+ 125 bytes size optimised away
+ 270 bytes replaced
 0:A:ZAS -J -N -ODOSCAN.OBJ $CTMP5.$$$
 E:DUP.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:DUP.C $CTMP1.$$$
@@ -452,8 +452,8 @@ E:FCLOSE.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 7 bytes size optimised away
- 14 bytes replaced
+ 9 bytes size optimised away
+ 18 bytes replaced
 0:A:ZAS -J -N -OFCLOSE.OBJ $CTMP5.$$$
 E:FFLUSH.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FFLUSH.C $CTMP1.$$$
@@ -461,22 +461,26 @@ E:FFLUSH.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 18 bytes size optimised away
- 36 bytes replaced
+ 19 bytes size optimised away
+ 38 bytes replaced
 0:A:ZAS -J -N -OFFLUSH.OBJ $CTMP5.$$$
-E:FGETC.AS
-0:A:OPTIMH E:FGETC.AS $CTMP5.$$$
- 16 bytes size optimised away
- 32 bytes replaced
-0:A:ZAS -J -OFGETC.OBJ $CTMP5.$$$
+E:FGETC.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FGETC.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
+ 32 bytes size optimised away
+ 64 bytes replaced
+0:A:ZAS -J -N -OFGETC.OBJ $CTMP5.$$$
 E:FILBUF.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FILBUF.C $CTMP1.$$$
 0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 18 bytes size optimised away
- 42 bytes replaced
+ 38 bytes size optimised away
+ 84 bytes replaced
 0:A:ZAS -J -N -OFILBUF.OBJ $CTMP5.$$$
 E:FLSBUF.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FLSBUF.C $CTMP1.$$$
@@ -484,8 +488,8 @@ E:FLSBUF.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 13 bytes size optimised away
- 22 bytes replaced
+ 22 bytes size optimised away
+ 40 bytes replaced
 0:A:ZAS -J -N -OFLSBUF.OBJ $CTMP5.$$$
 E:FOPEN.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FOPEN.C $CTMP1.$$$
@@ -505,19 +509,23 @@ E:FPRINTF.C
  7 bytes size optimised away
  10 bytes replaced
 0:A:ZAS -J -N -OFPRINTF.OBJ $CTMP5.$$$
-E:FPUTC.AS
-0:A:OPTIMH E:FPUTC.AS $CTMP5.$$$
- 8 bytes size optimised away
- 16 bytes replaced
-0:A:ZAS -J -OFPUTC.OBJ $CTMP5.$$$
+E:FPUTC.C
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FPUTC.C $CTMP1.$$$
+0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
+0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
+0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
+0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
+ 26 bytes size optimised away
+ 52 bytes replaced
+0:A:ZAS -J -N -OFPUTC.OBJ $CTMP5.$$$
 E:FREAD.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FREAD.C $CTMP1.$$$
 0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 33 bytes size optimised away
- 67 bytes replaced
+ 71 bytes size optimised away
+ 143 bytes replaced
 0:A:ZAS -J -N -OFREAD.OBJ $CTMP5.$$$
 E:FRELOP.AS
 0:A:OPTIMH E:FRELOP.AS $CTMP5.$$$
@@ -530,8 +538,8 @@ E:FREOPEN.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 29 bytes size optimised away
- 64 bytes replaced
+ 30 bytes size optimised away
+ 66 bytes replaced
 0:A:ZAS -J -N -OFREOPEN.OBJ $CTMP5.$$$
 E:FSCANF.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FSCANF.C $CTMP1.$$$
@@ -548,8 +556,8 @@ E:FSEEK.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 85 bytes size optimised away
- 161 bytes replaced
+ 91 bytes size optimised away
+ 173 bytes replaced
 0:A:ZAS -J -N -OFSEEK.OBJ $CTMP5.$$$
 E:FWRITE.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:FWRITE.C $CTMP1.$$$
@@ -557,8 +565,8 @@ E:FWRITE.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 31 bytes size optimised away
- 63 bytes replaced
+ 76 bytes size optimised away
+ 153 bytes replaced
 0:A:ZAS -J -N -OFWRITE.OBJ $CTMP5.$$$
 E:GETARGS.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:GETARGS.C $CTMP1.$$$
@@ -593,8 +601,8 @@ E:GETFCB.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 138 bytes size optimised away
- 280 bytes replaced
+ 139 bytes size optimised away
+ 282 bytes replaced
 0:A:ZAS -J -N -OGETFCB.OBJ $CTMP5.$$$
 E:GETS.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:GETS.C $CTMP1.$$$
@@ -894,7 +902,6 @@ c> e:sbrk.as \
 c> e:scanf.c \
 c> e:seek.c \
 c> e:setbuf.c \
-c> e:setup.c \
 c> e:shar.as \
 c> e:shll.as \
 c> e:shlr.as \
@@ -947,8 +954,8 @@ E:PUTS.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 10 bytes size optimised away
- 20 bytes replaced
+ 15 bytes size optimised away
+ 30 bytes replaced
 0:A:ZAS -J -N -OPUTS.OBJ $CTMP5.$$$
 E:PUTW.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:PUTW.C $CTMP1.$$$
@@ -1052,18 +1059,9 @@ E:SETBUF.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 12 bytes size optimised away
- 24 bytes replaced
+ 40 bytes size optimised away
+ 80 bytes replaced
 0:A:ZAS -J -N -OSETBUF.OBJ $CTMP5.$$$
-E:SETUP.C
-0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:SETUP.C $CTMP1.$$$
-0:A:P1 $CTMP1.$$$ $CTMP2.$$$ $CTMP3.$$$
-0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
-0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
-0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 0 bytes size optimised away
- 0 bytes replaced
-0:A:ZAS -J -N -OSETUP.OBJ $CTMP5.$$$
 E:SHAR.AS
 0:A:OPTIMH E:SHAR.AS $CTMP5.$$$
  0 bytes size optimised away
@@ -1117,8 +1115,8 @@ E:SSCANF.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 16 bytes size optimised away
- 24 bytes replaced
+ 18 bytes size optimised away
+ 28 bytes replaced
 0:A:ZAS -J -N -OSSCANF.OBJ $CTMP5.$$$
 E:START1.AS
 0:A:OPTIMH E:START1.AS $CTMP5.$$$
@@ -1314,8 +1312,8 @@ E:UNGETC.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 25 bytes size optimised away
- 50 bytes replaced
+ 27 bytes size optimised away
+ 54 bytes replaced
 0:A:ZAS -J -N -OUNGETC.OBJ $CTMP5.$$$
 E:UNLINK.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:UNLINK.C $CTMP1.$$$

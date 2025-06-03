@@ -1,7 +1,7 @@
 
 10D>date
 A:DATE     COM  (User 0)
-Tue 06/05/2025 11:23:19
+Tue 03/06/2025 10:26:45
 10D>;----------  M280LIBF.SUB  ----------
 10D>; Assumes DEHUFF -X FLOAT.HUF has extracted
 10D>; all sources to the default drive
@@ -113,8 +113,8 @@ D:SSCANF.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 16 bytes size optimised away
- 24 bytes replaced
+ 18 bytes size optimised away
+ 28 bytes replaced
 0:A:ZAS -J -N -OSSCANF.OBJ $CTMP5.$$$
 D:DOPRNT.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: D:DOPRNT.C $CTMP1.$$$
@@ -412,47 +412,48 @@ Directory For Drive M:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-ACOS     OBJ     4k      3 Dir RW       None   06/05/25 11:27  06/05/25 11:27
-ASFLOAT  OBJ     4k      3 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-ASIN     OBJ     4k      8 Dir RW       None   06/05/25 11:27  06/05/25 11:27
-ATAN     OBJ     4k      8 Dir RW       None   06/05/25 11:28  06/05/25 11:28
-ATAN2    OBJ     4k      8 Dir RW       None   06/05/25 11:27  06/05/25 11:27
-ATOF     OBJ     4k     10 Dir RW       None   06/05/25 11:26  06/05/25 11:26
-CEIL     OBJ     4k      3 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-COS      OBJ     4k      5 Dir RW       None   06/05/25 11:28  06/05/25 11:28
-COSH     OBJ     4k      3 Dir RW       None   06/05/25 11:28  06/05/25 11:28
-DOPRNT   OBJ     4k     20 Dir RW       None   06/05/25 11:24  06/05/25 11:24
-DOSCAN   OBJ     4k     31 Dir RW       None   06/05/25 11:25  06/05/25 11:25
-EVALPOLY OBJ     4k      3 Dir RW       None   06/05/25 11:29  06/05/25 11:29
-EXP      OBJ     4k     13 Dir RW       None   06/05/25 11:29  06/05/25 11:29
-FABS     OBJ     4k      3 Dir RW       None   06/05/25 11:29  06/05/25 11:29
-FBCD     OBJ     4k      6 Dir RW       None   06/05/25 11:27  06/05/25 11:27
-FINC     OBJ     4k      2 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-FLOAT    OBJ     4k      9 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-FLOOR    OBJ     4k      3 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-FNUM     OBJ     4k     29 Dir RW       None   06/05/25 11:26  06/05/25 11:26
-FPRINTF  OBJ     4k      2 Dir RW       None   06/05/25 11:23  06/05/25 11:23
-FREXP    OBJ     4k      2 Dir RW       None   06/05/25 11:29  06/05/25 11:29
-FRNDINT  OBJ     4k      1 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-FSCANF   OBJ     4k      2 Dir RW       None   06/05/25 11:24  06/05/25 11:24
-FTOL     OBJ     4k      2 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-LIBFVER  OBJ     4k      1 Dir RW       None   06/05/25 11:23  06/05/25 11:23
-LOG      OBJ     4k      7 Dir RW       None   06/05/25 11:29  06/05/25 11:29
-LTOF     OBJ     4k      4 Dir RW       None   06/05/25 11:30  06/05/25 11:30
-PRINTF   OBJ     4k      2 Dir RW       None   06/05/25 11:23  06/05/25 11:23
-SCANF    OBJ     4k      2 Dir RW       None   06/05/25 11:24  06/05/25 11:24
-SIN      OBJ     4k     10 Dir RW       None   06/05/25 11:28  06/05/25 11:28
-SINH     OBJ     4k      3 Dir RW       None   06/05/25 11:28  06/05/25 11:28
-SPRINTF  OBJ     4k      3 Dir RW       None   06/05/25 11:23  06/05/25 11:23
-SQRT     OBJ     4k      9 Dir RW       None   06/05/25 11:29  06/05/25 11:29
-SSCANF   OBJ     4k      2 Dir RW       None   06/05/25 11:24  06/05/25 11:24
-TAN      OBJ     4k      2 Dir RW       None   06/05/25 11:27  06/05/25 11:27
-TANH     OBJ     4k      4 Dir RW       None   06/05/25 11:28  06/05/25 11:28
+ACOS     OBJ     4k      3 Dir RW       None   03/06/25 10:30  03/06/25 10:30
+ASFLOAT  OBJ     4k      3 Dir RW       None   03/06/25 10:34  03/06/25 10:34
+ASIN     OBJ     4k      8 Dir RW       None   03/06/25 10:31  03/06/25 10:31
+ATAN     OBJ     4k      8 Dir RW       None   03/06/25 10:31  03/06/25 10:31
+ATAN2    OBJ     4k      8 Dir RW       None   03/06/25 10:31  03/06/25 10:31
+ATOF     OBJ     4k     10 Dir RW       None   03/06/25 10:29  03/06/25 10:29
+CEIL     OBJ     4k      3 Dir RW       None   03/06/25 10:33  03/06/25 10:33
+COS      OBJ     4k      5 Dir RW       None   03/06/25 10:31  03/06/25 10:31
+COSH     OBJ     4k      3 Dir RW       None   03/06/25 10:32  03/06/25 10:32
+DOPRNT   OBJ     4k     20 Dir RW       None   03/06/25 10:28  03/06/25 10:28
+DOSCAN   OBJ     4k     31 Dir RW       None   03/06/25 10:29  03/06/25 10:29
+EVALPOLY OBJ     4k      3 Dir RW       None   03/06/25 10:33  03/06/25 10:33
+EXP      OBJ     4k     13 Dir RW       None   03/06/25 10:32  03/06/25 10:32
+FABS     OBJ     4k      3 Dir RW       None   03/06/25 10:33  03/06/25 10:33
+FBCD     OBJ     4k      6 Dir RW       None   03/06/25 10:30  03/06/25 10:30
+FINC     OBJ     4k      2 Dir RW       None   03/06/25 10:33  03/06/25 10:33
+FLOAT    OBJ     4k      9 Dir RW       None   03/06/25 10:34  03/06/25 10:34
+FLOOR    OBJ     4k      3 Dir RW       None   03/06/25 10:33  03/06/25 10:33
+FNUM     OBJ     4k     29 Dir RW       None   03/06/25 10:30  03/06/25 10:30
+FPRINTF  OBJ     4k      2 Dir RW       None   03/06/25 10:27  03/06/25 10:27
+FREXP    OBJ     4k      2 Dir RW       None   03/06/25 10:33  03/06/25 10:33
+FRNDINT  OBJ     4k      1 Dir RW       None   03/06/25 10:34  03/06/25 10:34
+FSCANF   OBJ     4k      2 Dir RW       None   03/06/25 10:27  03/06/25 10:27
+FTOL     OBJ     4k      2 Dir RW       None   03/06/25 10:34  03/06/25 10:34
+LIBFVER  OBJ     4k      1 Dir RW       None   03/06/25 10:26  03/06/25 10:26
+LOG      OBJ     4k      7 Dir RW       None   03/06/25 10:32  03/06/25 10:32
+LTOF     OBJ     4k      4 Dir RW       None   03/06/25 10:34  03/06/25 10:34
+PRINTF   OBJ     4k      2 Dir RW       None   03/06/25 10:27  03/06/25 10:27
+SCANF    OBJ     4k      2 Dir RW       None   03/06/25 10:27  03/06/25 10:27
+SIN      OBJ     4k     10 Dir RW       None   03/06/25 10:32  03/06/25 10:32
+SINH     OBJ     4k      3 Dir RW       None   03/06/25 10:32  03/06/25 10:32
+SPRINTF  OBJ     4k      3 Dir RW       None   03/06/25 10:27  03/06/25 10:27
+SQRT     OBJ     4k      9 Dir RW       None   03/06/25 10:33  03/06/25 10:33
+SSCANF   OBJ     4k      2 Dir RW       None   03/06/25 10:27  03/06/25 10:27
+TAN      OBJ     4k      2 Dir RW       None   03/06/25 10:30  03/06/25 10:30
+TANH     OBJ     4k      4 Dir RW       None   03/06/25 10:32  03/06/25 10:32
 
 Total Bytes     =    144k  Total Records =     228  Files Found =   36
-Total 1k Blocks =     49   Used/Max Dir Entries For Drive M:  107/ 512
+Total 1k Blocks =     49   Used/Max Dir Entries For Drive M:  108/ 512
 
 10M>era d:libf2obj.lbr
+No File
 10M>nulu d:libf2obj.lbr -a m:*.obj -x
 A:NULU     COM  (User 0)
 ^ZNULU 1.52  (07/12/87)

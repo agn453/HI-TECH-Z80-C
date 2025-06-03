@@ -1,11 +1,11 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Tue 06/05/2025 10:02:44
-10E>; Compile all LIBC18.LIB modules from sources
+Mon 02/06/2025 21:20:52
+10E>; Compile all LIBC19.LIB modules from sources
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c abort.c \
@@ -62,12 +62,12 @@ c> fakecpcl.as \
 c> fcbname.c \
 c> fclose.c \
 c> fflush.c \
-c> fgetc.as \
+c> fgetc.c \
 c> filbuf.c \
 c> flsbuf.c \
 c> fopen.c \
 c> fprintf.c \
-c> fputc.as \
+c> fputc.c \
 c> fread.c \
 c> frelop.as \
 c> freopen.c \
@@ -144,12 +144,12 @@ FAKECPCL.AS
 FCBNAME.C
 FCLOSE.C
 FFLUSH.C
-FGETC.AS
+FGETC.C
 FILBUF.C
 FLSBUF.C
 FOPEN.C
 FPRINTF.C
-FPUTC.AS
+FPUTC.C
 FREAD.C
 FRELOP.AS
 FREOPEN.C
@@ -175,7 +175,7 @@ ISDIGIT.AS
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c islower.as \
@@ -231,7 +231,7 @@ PUTCHAR.C
 
 10E>c
 A:C        COM  (User 0)
-Hi-Tech Z80 C Compiler (CP/M-80) V3.09-18
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-19
 Copyright (C) 1984-87 HI-TECH SOFTWARE
 Updated from https://github.com/agn453/HI-TECH-Z80-C
 c> -o -c puts.c \
@@ -248,7 +248,6 @@ c> sbrk.as \
 c> scanf.c \
 c> seek.c \
 c> setbuf.c \
-c> setup.c \
 c> shar.as \
 c> shll.as \
 c> shlr.as \
@@ -309,7 +308,6 @@ SBRK.AS
 SCANF.C
 SEEK.C
 SETBUF.C
-SETUP.C
 SHAR.AS
 SHLL.AS
 SHLR.AS

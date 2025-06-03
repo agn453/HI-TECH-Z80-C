@@ -2,6 +2,7 @@ era test280.log
 put console output to file test280.log [system]
 date
 ; Compile all test280
+c280 -v -o2 filesize.c
 c280 -v -o2 testver.c
 c280 -v -o2 testio.c
 c280 -v -o2 testuid.c
@@ -39,6 +40,7 @@ testview testh*.c testver.c
 testwild test*.c test*.com
 testhell
 testpr
+filesize test*.*
 ; Z280 optimiser
 optimh -f test-opt.as test-opt.as2
 optimh test-opt.as test-opt.as3

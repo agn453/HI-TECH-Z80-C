@@ -15,7 +15,7 @@ int	args;
 	FILE	file;
 
 	file._base = file._ptr = str;
-	file._cnt = strlen(str);
+	file._size = file._cnt = strlen(str);
 	file._flag = _IOSTRG|_IOBINARY|_IOREAD;
 	return _doscan(&file, fmt, &args);
 }

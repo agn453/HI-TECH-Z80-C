@@ -1,7 +1,5 @@
 #include    "cpm.h"
 
-extern int errno;
-
 unlink(char *name)
 {
     struct fcb  fc;

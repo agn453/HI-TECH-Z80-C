@@ -10,7 +10,8 @@ era *.obj
 <Y
 ;
 C
-<-O -V -C d:PRINTF.C \
+<-O -V -C d:LIBFVER.C \
+<d:PRINTF.C \
 <d:FPRINTF.C \
 <d:SPRINTF.C \
 <d:SCANF.C \
@@ -49,6 +50,7 @@ C
 era m:libf.lib
 libr
 <r m:LIBF.LIB \
+<LIBFVER.OBJ \
 <PRINTF.OBJ \
 <FPRINTF.OBJ \
 <SPRINTF.OBJ \

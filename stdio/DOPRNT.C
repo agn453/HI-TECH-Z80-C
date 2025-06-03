@@ -1,4 +1,5 @@
 #include	<stdio.h>
+#include	<stdlib.h>
 #include	<ctype.h>
 #include	<string.h>
 
@@ -7,7 +8,6 @@
  *	doprnt for Z80
  */
 
-extern int	atoi(char *);
 extern int	_pnum();
 
 static uchar	ival;
@@ -38,9 +38,9 @@ int *		a;
 {
 	char	c;
 	uchar	fill, left;
-	unsigned	i;
+	unsigned int	i;
 	uchar	base, width, prec, sign;
-	unsigned	len;
+	unsigned int	len;
 
 	ffile = file;
 	while(c = *f++)

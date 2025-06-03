@@ -1,5 +1,5 @@
 /*
- *	puts and fputs for Zios stdio
+ *	puts and fputs for HI-TECH C stdio
  */
 
 #include	<stdio.h>
@@ -9,12 +9,17 @@ char *		s;
 register FILE *	f;
 {
 	while(*s)
-		putc(*s++, f);
+		if(putc(*s++, f) == EOF)
+			return EOF;
+	return 0;
 }
 
 puts(s)
 char *		s;
 {
-	fputs(s, stdout);
+	register int	i;
+
+	i = fputs(s, stdout);
 	putchar('\n');
+	return i;
 }

@@ -31,13 +31,6 @@ static char dnames[][DNAMLEN] =
 extern int  atoi(char *);
 static void fc_parse(struct fcb *, char *);
 
-static char upcase(char c)
-{
-    if (islower(c))
-        return toupper(c);
-    return c;
-}
-
 struct fcb *getfcb()
 {
     register struct fcb *fp;
@@ -66,7 +59,7 @@ uchar setfcb(struct fcb *fc, char *name)
     /* Check device names */
     for (i = 0 ; i < NDNAMES ; ++i)
         for (j = 0; ;)
-            if (dnames[i][j] != upcase(name[j]))
+            if (dnames[i][j] != toupper(name[j]))
                 break;
             else if (++j == DNAMLEN)
             {
@@ -98,7 +91,7 @@ static void fc_parse(struct fcb *fc, char *name)
             if (isdigit(*cp)) 
                 *np++ = *cp;
             else if (fc->dr == 0)
-                fc->dr = upcase(*cp) - 'A' + 1;  
+                fc->dr = toupper(*cp) - 'A' + 1;  
             ++cp;
         }
         *np = 0;
@@ -108,13 +101,13 @@ static void fc_parse(struct fcb *fc, char *name)
     }
     if (cp[1]==':' && fc->dr == 0 && !isdigit(cp[0]))  /* u:d: */
     {
-        fc->dr=upcase(*cp) - 'A' + 1;
+        fc->dr=toupper(*cp) - 'A' + 1;
         cp += 2;
     }
     name = cp;
     cp = fc->name;
     while (*name != '.' && *name != '*' && *name > ' ' && cp < &fc->name[8])
-        *cp++ = upcase(*name++);
+        *cp++ = toupper(*name++);
     if (*name == '*')
         c = '?';
     else
@@ -124,7 +117,7 @@ static void fc_parse(struct fcb *fc, char *name)
     while (*name && *name++ != '.')
         continue;
     while (*name > ' ' && *name != '*' && cp < &fc->ft[3])
-        *cp++ = upcase(*name++);
+        *cp++ = toupper(*name++);
     if (*name == '*')
         c = '?';
     else

@@ -24,20 +24,23 @@ FILE	_iob[_NFILE] =
 		0,
 		_sibuf,
 		_IOREAD|_IOMYBUF,
-		0			/* stdin */
+		0,			/* stdin */
+		BUFSIZ
 	},
 	{
 		(char *)0,
 		0,
 		(char *)0,
 		_IOWRT|_IONBF,
-		1			/* stdout */
+		1,			/* stdout */
+		0
 	},
 	{
 		(char *)0,
 		0,
 		(char *)0,
 		_IOWRT|_IONBF,
-		2			/* stderr */
+		2,			/* stderr */
+		0
 	},
 };

@@ -1,4 +1,4 @@
-extern int	kbhit();
+#include <conio.h>
 
 srand1(s)
 char *	s;

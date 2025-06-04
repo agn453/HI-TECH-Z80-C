@@ -1766,6 +1766,37 @@ and optionally the Z280 binary distribution (if you need it) from
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 
 
+## Z280 assembly optimiser minor update
+<!-- June 5, 2025 -->
+
+A minor issue has been corrected with the Z280 optimiser ```OPTIMH.COM```
+where it was failing to process assembly language source files lines where a
+statement label has no white-space (a space or tab) between the colon
+and the opcode.  e.g.
+
+```
+label1:ld hl,0
+```
+
+was incorrectly output as
+
+```
+label1:
+        d hl,0
+```
+
+to the optimised source output file.
+
+This did not trigger with the normal compiler processing of assembler
+intermediate files - since all labels that the compiler produces have
+a space after them.
+
+The updated source ```OPTIMH.C``` and binary ```OPTIMH.COM``` are in the
+*z280dist* folder and the 
+[z280bin.lbr](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr)
+Z280 binary distribution library.
+
+
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
 actively maintained and available from https://github.com/MockbaTheBorg/RunCPM
 
@@ -1792,4 +1823,4 @@ provider to be able to post messages.
 
 --
 
-Tony Nicholson, Tuesday 03-Jun-2025
+Tony Nicholson, Thursday 05-Jun-2025

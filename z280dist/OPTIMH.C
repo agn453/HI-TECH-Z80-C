@@ -31,6 +31,11 @@
 
    Modification History
 
+   04-Jun-2025	Tony Nicholson
+		Statement labels without a space after the colon were
+		 causing the character after the colon to be replaced
+		 by a space (overwriting the first character of the
+		 opcode/assembler directive).
    31-Oct-2023	Tony Nicholson
 		Translated German to English comments added in brackets;
 		Correct additional byte and replaced counter updates;
@@ -344,7 +349,7 @@ void label(void) {
 	}
 	if (islabel && (line[0][p+1]!='\0')) { /* check if bare label too */
             fprintf(outfile,"%s\n",lab);
-	    for (x=0; x<=p; x++) line[0][x] = ' '; /* blank out label */
+	    for (x=0; x<p; x++) line[0][x] = ' '; /* blank out label */
 	}
     }
 }

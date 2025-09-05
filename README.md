@@ -1800,7 +1800,7 @@ Z280 binary distribution library.
 ## Update to support binaries running under Digital Research MP/M-II
 <!-- September 5, 2025 -->
 
-NB:  There may be insufficient memory to run the compiler modules under
+NB:  There is insufficient memory to run the compiler modules under
 MP/M due to the reduced transient program area.
 
 The binaries produced by the compiler now run under MP/M-II following
@@ -1824,7 +1824,8 @@ intercepting the CTRL-C internally and prompting to abort the running
 program.  A side-effect of this is that now when you SIGINT a HI-TECH C
 program using CTRL-C via ```signal()```, the ```^C``` will no longer be
 echoed back to the console.  MP/M does not intercept characters using
-the Direct Console I/O call.  HI-TECH C will recogise and act on it though.
+the Direct Console I/O call.  HI-TECH C produced binaries will recognise
+and act on it though.
 
 The version number for HI-TECH C has been bumped to V3.09-20 to reflect
 these changes (in the libraries and main driver).  I've done all my testing

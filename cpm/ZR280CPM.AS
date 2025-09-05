@@ -1,3 +1,6 @@
+; This is ZRRTCPM for the Z280 MPU
+;
+
 ;	Self relocating startup for CP/M
 
 	psect	cpm,global
@@ -13,7 +16,6 @@
 	defs	100h		;Base of CP/M's TPA
 	global	start,_main,_exit,__Lbss,__Hstack, __z3env
 	global	__piped,__initrsx,__exact
-
 
 reloc:		; DOS Protection	8080/Z80	x86
 				;	---------  --------------------
@@ -53,11 +55,15 @@ memmes:	defm	'Not enough memory to run.'
 begin:	sub	a		;Stop 8080 processors running this.
 	jp	po,okver
 ;
-	ld	de,bvmes
+badcpu:	ld	de,bvmes
 	ld	c,9		;Print error message
 	jp	5
 
-okver:	
+okver:	ld	a,40h		;Check for Z280 MPU
+;	tset	a		; (this instruction will set the S flag
+	defb	0CBh,037h
+	jp	m,badcpu	; on a Z80 and clear it on a Z280)
+
 	push	hl		;HL holds possible Z3ENV address
 	ld	hl,(6)		;get base of fdos
 	ld	de,__Hstack
@@ -159,17 +165,20 @@ memok:
 	jr	z,norsx
 	ld	a,l
 	cp	30h		; CP/M Plus (L >= 30h)?
-	jr	nc,iscpm3
+ 	jr	nc,iscpm3
  	xor	a		; CP/M 2.2 has no RSX
  	jr	norsx
 
-    ;If the PIPEMGR RSX is loaded, initialise it.
-iscpm3:
+iscpm3:	ld	hl,__exact	; Default exact file size
+	inc	(hl)		;  to DOSplus mode ('C' becomes 'D')
+
+;If the PIPEMGR RSX is loaded, initialise it.
+
 	ld	c,3Ch
 	ld	de,rsxpb
 	call	5
 	ld	a,h
-	inc	l		;HL=00FFh if no PIPEMGR present.
+	inc	l	;HL=00FFh if no PIPEMGR present.
 	or	l
 norsx:
 	ld	(__piped),a

@@ -1,10 +1,10 @@
 era makelibc.log
 put console output to file makelibc.log [system]
-; Use librarian to place all modules in LIBC19.LIB
+; Use librarian to place all modules in LIBC20.LIB
 ; NB: the ordering is important for resolving dependencies at link time
-era LIBC19.lib
+era LIBC20.lib
 libr
-<r LIBC19.lib	\
+<r LIBC20.lib	\
 <libcver.obj	\
 <start1.obj	\
 <getargs.obj	\
@@ -164,6 +164,6 @@ libr
 <tolower.obj	\
 <toupper.obj	\
 <xtoi.obj
-; Library LIBC19.LIB created
-libr s LIBC19.lib
+; Library LIBC20.LIB created
+libr s LIBC20.lib
 put console to console

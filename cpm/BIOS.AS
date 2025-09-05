@@ -40,7 +40,9 @@
 	global	exit22
 
 cpm	equ	 5			;bdos entry point
-version	equ	12
+CPMVERS	equ	12			; Get Version function
+CPMBIOS	equ	50			; CP/M+ Call BIOS function
+
 arg	equ	 6			;offset of 1st arg on stack
 
 SELDSK	equ	 9
@@ -52,8 +54,10 @@ USERF	equ	30
 
 _bios:
 	call	csv
-	ld	c,version
+	ld	c,CPMVERS
 	call	cpm
+	dec	h			; if running under MP/M
+	jr	z,1f			;  treat it like CP/M 2.2
 	cp	30h
 	jr	nc,30f
 
@@ -61,7 +65,7 @@ _bios:
 ;			   BIOS call for CP/M 2.2
 ;==============================================================================
 
-	ld	hl,21f			;set up return address
+1:	ld	hl,21f			;set up return address
 	push	hl
 	ld	l,(ix+arg+0)		;get bios index
 	dec	l			;adjust
@@ -158,7 +162,7 @@ exit22:
 
 	pop	iy			; Restore caller's IY
 	ld	de,biospb		; Recover BPB address
-	ld	c,50			; BIOS call via BDOS
+	ld	c,CPMBIOS		; BIOS call via BDOS
 	call	cpm
 	jr	21b			; Exit with 8- or 16-bit result
 

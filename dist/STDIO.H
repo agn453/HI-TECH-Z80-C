@@ -8,10 +8,10 @@
  *		resulting from backporting features from V4.11
  */
 
-#define _HTC_VERSION	"3.09-19"
+#define _HTC_VERSION	"3.09-20"
 #define _HTC_MAJOR	3
 #define _HTC_MINOR	9
-#define _HTC_REV	19
+#define _HTC_REV	20
 
 #if	z80
 #define	BUFSIZ		512

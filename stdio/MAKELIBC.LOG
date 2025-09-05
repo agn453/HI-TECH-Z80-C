@@ -1,10 +1,10 @@
 
-10E>; Use librarian to place all modules in LIBC19.LIB
+10E>; Use librarian to place all modules in LIBC20.LIB
 10E>; NB: the ordering is important for resolving dependencies at link time
-10E>era LIBC19.lib
+10E>era LIBC20.lib
 10E>libr
 A:LIBR     COM  (User 0)
-libr> r LIBC19.lib	\
+libr> r LIBC20.lib	\
 libr> libcver.obj	\
 libr> start1.obj	\
 libr> getargs.obj	\
@@ -165,8 +165,8 @@ libr> tolower.obj	\
 libr> toupper.obj	\
 libr> xtoi.obj
 
-10E>; Library LIBC19.LIB created
-10E>libr s LIBC19.lib
+10E>; Library LIBC20.LIB created
+10E>libr s LIBC20.lib
 A:LIBR     COM  (User 0)
 libcver.obj     D __libcver     
 start1.obj      D __argc_       U __getargs     D startup       

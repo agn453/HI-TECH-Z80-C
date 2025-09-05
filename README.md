@@ -11,7 +11,7 @@ ZXCC[^3].
 Each release is a consolidated milestone with various updates and
 patches applied.  You should read this README.md file for details.
 
-The latest release is V3.09-19 (see Modification History below).
+The latest release is V3.09-20 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1011,7 +1011,7 @@ Download this from
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
 
 and extract the files using one of the CP/M .LBR extraction tools, e.g.
-[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM),
+[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM).
 
 
 ## Minor update
@@ -1378,14 +1378,14 @@ routines from the HI-TECH Z80 cross compiler V7.80pl2.
 These fix -
 
 * some typos in the ```atan()``` coefficients - affecting ```acos()```
-and ```asin()```,
+and ```asin()```;
 
 * improved accuracy of the polynomial estimation for ```asin()``` and
-```acos()``` by restricting the range of the polynomial in use,
+```acos()``` by restricting the range of the polynomial in use;
 
-* correct the sign of ```atan2()``` to reflect the standard usage,
+* correct the sign of ```atan2()``` to reflect the standard usage;
 
-* allow integer powers of negative bases, and
+* allow integer powers of negative bases; and
 
 * fixes to the intrinsic ```float.as``` floating point arithmetic
 functions.
@@ -1479,7 +1479,7 @@ Z80 release files).
 Following on from Mark Ogden's consultations with John Elliott (the author
 of the ZXCC emulator and PIPEMGR),  I have accepted a proposal from Mark
 Ogden to revert the interpretation of exact file sizes back to John
-Elliot's original DOS Plus interpretation.
+Elliott's original DOS Plus interpretation.
 
 As mentioned in the release v3.09-3 notes (above), there are two common
 conventions that can be used to record exact file sizes in CP/M 3 and
@@ -1674,9 +1674,9 @@ know you're using the corrected modules.
 ## OCR version of scanned manual added
 <!-- May 29, 2025 -->
 
-Thanks to Martin for contributing an OCR enhanced copy of the scanned October
-1989 "HI-TECH SOFTWARE C COMPILER (Z80) User's Manual".  You'll find this in
-the
+Thanks to Martin Homuth-Rosemann for contributing an OCR enhanced copy of
+the scanned October 1989 "HI-TECH SOFTWARE C COMPILER (Z80) User's Manual".
+You'll find this in the
 [doc/Hi-Tech-Z80-1989-october_ocr.pdf](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/doc/Hi-Tech-Z80-1989-october_ocr.pdf)
 file.  This allows you to search the document for content using your PDF
 reader/web browser.
@@ -1709,22 +1709,22 @@ setvbuf() and setbuf()
 
      #include <stdio.h>
 
-     int void setvbuf(FILE * stream, char * buf, int mode, size_t size);
+     int setvbuf(FILE * stream, char * buf, int mode, size_t size);
 
-     setbuf(FILE * stream, char * buf)
+     void setbuf(FILE * stream, char * buf)
 
      The arguments to setvbuf() are as follows:
 
      stream designates the STDIO stream to be affected; buf is a pointer
      to a buffer which will be used for all subsequent I/O operations on
      this stream. If buf is null, then the routine will allocate a buffer
-     from the heap if necessary, of size BUFSIZ as defined in <stdio.h>.
+     from the heap if necessary, of size BUFSIZ as defined in ```<stdio.h>```.
      mode may take the values _IONBF, to turn buffering off completely,
      _IOFBF, for full buffering, or _IOLBF for line buffering. Full
      buffering means that the associated buffer will only be flushed when
      full, while line buffering means that the buffer will be flushed at
      the end of each line or when input is requested from another STDIO
-     stream. size is the size of the buffer supplied. For example:
+     stream. size is the size of the buffer supplied. For example -
 
      setvbuf(stdout, my_buf, _IOLBF, sizeof my_buf);
 
@@ -1770,7 +1770,7 @@ https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 <!-- June 5, 2025 -->
 
 A minor issue has been corrected with the Z280 optimiser ```OPTIMH.COM```
-where it was failing to process assembly language source files lines where a
+where it was failing to process assembly language source files where a
 statement label has no white-space (a space or tab) between the colon
 and the opcode.  e.g.
 
@@ -1785,7 +1785,7 @@ label1:
         d hl,0
 ```
 
-to the optimised source output file.
+to the Z280 assembler ```.AS2``` output file.
 
 This did not trigger with the normal compiler processing of assembler
 intermediate files - since all labels that the compiler produces have
@@ -1795,6 +1795,37 @@ The updated source ```OPTIMH.C``` and binary ```OPTIMH.COM``` are in the
 *z280dist* folder and the 
 [z280bin.lbr](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr)
 Z280 binary distribution library.
+
+
+## Update to support running under Digital Research MP/M-II
+<!-- September 5, 2025 -->
+
+The compiler binaries now run under MP/M-II following a correction to the
+various start-up modules (CRTCPM.OBJ C280CPM.OBJ etc) to check for MP/M
+after doing a BDOS function 12 Get Version call.  Previously it was
+following the CP/M 3 path and trying un-implemented BDOS calls to check
+for the presence of the PIPEMGR RSX and making all the wrong configuration
+choices.  (As an aside -- one of the main differences
+between MP/M and CP/M is that it returns a HL=0xFFFF error code for
+unimplemented BDOS calls whereas CP/M returns HL=0).  Hopefully I have
+reviewed all the places the C Library routines do a BDOS Check Version call.
+
+Also, I have modified the code in the ```signal()``` library routine that
+detects a SIGINT to use a Direct Console I/O (BDOS function 6) call to check
+for a CTRL-C while processing a stdio call.  Previously it was checking
+if a character had been struck using the Console Status (BDOS function 11)
+and fetching it using the Console Input with Echo (BDOS function 1) call.
+The old way did not work correctly under MP/M since it was already
+intercepting the CTRL-C internally and prompting to abort the running
+program.  A side-effect of this is that now when you SIGINT a HI-TECH C
+program using CTRL-C via ```signal()```, the ```^C``` will no longer be
+echoed back to the console.  MP/M does not intercept characters using
+the Direct Console I/O call.  HI-TECH C will recogise and act on it though.
+
+The version number for HI-TECH C has been bumped to V3.09-20 to reflect
+these changes (in the libraries and main driver).  I've done all my testing
+under MP/M V2.1 and it should work with older versions.  If not, please
+raise an issue on GitHub.
 
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
@@ -1823,4 +1854,4 @@ provider to be able to post messages.
 
 --
 
-Tony Nicholson, Thursday 05-Jun-2025
+Tony Nicholson, Friday 05-Sep-2025

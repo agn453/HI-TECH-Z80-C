@@ -19,12 +19,11 @@ _sigchk()
 {
 	char	c;
 
-	if(where == SIG_IGN || bdos(CPMICON) == 0)
+	if(where == SIG_IGN || (c = bdos(CPMDCIO,0xFF)) == 0)
 		return;
-	c = bdos(CPMRCON);
 	if(c != CPMRBT)
 		return;
 	if(where == SIG_DFL)
-		exit(0);
-	((int(*)())where)(0);
+		exit(-SIGINT);
+	((int(*)())where)(SIGINT);
 }

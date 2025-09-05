@@ -177,4 +177,7 @@ dir m:*.obj[fu,length=65535]
 era e:lib280c.lbr
 ; Enter the number of files from above DIR command when prompted
 nulu e:lib280c.lbr -a m:*.obj -x
+; Finally copy over the start-up modules
+pip e:=m:z?280cpm.obj
+;
 put console to console

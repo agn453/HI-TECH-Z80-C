@@ -1,23 +1,18 @@
-; This is ZRRTCPM for the Z280 MPU
+; This is ZNRTCPM for the Z280 MPU (with minimal getargs)
 ;
-
-;	Self relocating startup for CP/M
-
-	psect	cpm,global
 	psect	text,global,pure
 	psect	data,global
 	psect	bss,global
-	psect	stack,global
 
-	defs	256		;a minimal stack
-
-
-	psect	cpm
+	psect	text
 	defs	100h		;Base of CP/M's TPA
-	global	start,_main,_exit,__Lbss,__Hstack, __z3env
-	global	__piped,__initrsx,__exact
 
-reloc:		; DOS Protection	8080/Z80	x86
+	global	start,_main,_exit,__Hbss, __Lbss, __argc_, __z3env, startup
+        global  __piped,__initrsx,__exact
+	global	__getargs
+
+;	Start with MS-DOS x86 detection
+start:		; DOS Protection	8080/Z80	x86
 				;	---------  --------------------
 	defb	0EBh,04h	;	EX DE,HL   JMPS LABE
 				;	INC B
@@ -41,20 +36,21 @@ labe:	defb	0B8h,0,09h	;		   MOV AX,9 ; print string
 						   ; we never return here
 
 	defb	13
-	defm	'Compiled with Hi-Tech C [Relocatable]'
+	defm	'Compiled with Hi-Tech C'
 	defb	13,10,26
 
 	psect	data
 z3ecst:	defm	'Z3ENV'
-bvmes:	defm	'This CP/M program requires a Z80 CPU.'
+bvmes:	defm	'This CP/M program requires a Z280 MPU.'
 	defb	13,10,'$'
 memmes:	defm	'Not enough memory to run.'
 	defb	13,10,'$'
-	psect	cpm
+	psect	text
 
-begin:	sub	a		;Stop 8080 processors running this.
+begin:
+	sub	a		;Stop 8080 processors running this.
 	jp	po,okver
-;
+
 badcpu:	ld	de,bvmes
 	ld	c,9		;Print error message
 	jp	5
@@ -64,73 +60,9 @@ okver:	ld	a,40h		;Check for Z280 MPU
 	defb	0CBh,037h
 	jp	m,badcpu	; on a Z80 and clear it on a Z280)
 
-	push	hl		;HL holds possible Z3ENV address
-	ld	hl,(6)		;get base of fdos
-	ld	de,__Hstack
-	or	a
-	sbc	hl,de		;get distance to move
-	ld	c,l		;save it in bc
-	ld	b,h
-1:
-	ld	hl,(__Lbss)	;get count
-	ld	a,l		;zero?
-	or	h
-	jr	z,2f
-	dec	hl
-	ld	(__Lbss),hl
-	ld	hl,(addr)	;get address
-	ld	e,(hl)		;pick up value
-	inc	hl
-	ld	d,(hl)
-	inc	hl
-	ld	(addr),hl	;save for next
-	ex	de,hl
-	ld	(where),hl	;save it
-	ld	de,3f		;dont relocate any of our addresses
-	or	a
-	sbc	hl,de		;check for range
-	jr	c,1b		;skip if less than 3f
-	ld	hl,(where)
-	ld	e,(hl)		;get value to relocate
-	inc	hl
-	ld	d,(hl)
-	ex	de,hl
-	add	hl,bc		;add difference
-	ex	de,hl
-	ld	(hl),d		;put relocated value back
-	dec	hl
-	ld	(hl),e
-	jr	1b		;loop for more
+;Check if HL holds a valid Z-System environment descriptor
 
-addr:	defw	__Lbss+2	;start of addresses
-where:	defs	2		;temp storage
-
-2:
-	ld	hl,__Lbss	;now find how much to move
-	ld	de,start
-	or	a
-	sbc	hl,de
-	ld	c,l		;save in bc
-	ld	b,h
-	ld	hl,__Hstack	;top of memory
-	ld	de,__Lbss	;top of code and data
-	sbc	hl,de		;room to leave at top of mem
-	ex	de,hl
-	ld	hl,(6)
-	scf			;discount it
-	sbc	hl,de
-	ex	de,hl		;destination into de
-	ld	hl,__Lbss-1	;source in hl - count is already in bc
-	ld	a,c		;check for zero
-	or	b
-	jr	z,3f
-	lddr			;move it
-	pop	hl
-3:
-	jp	start		;go to it
-
-	psect	text
-start:	ld	l,0		;Start of the page
+	ld	l,0		;Start of the page
 	ld	a,(hl)
 	cp	0c3h		;Must start with a jump
 	jr	nz,noz3
@@ -155,36 +87,48 @@ z3ecmp:	ld	a,(de)
 	defb	3eh		;Swallow the LD HL
 noz3:	ld	hl,0
 yesz3:	ld	(__z3env),hl
-;
+	ld	hl,(6)		;Base of FDOS
+	push	hl
+	dec	h		;Allow 128 stack levels at least
+	ld	de,__Hbss	;Last address used by the program
+	and	a
+	sbc	hl,de
+	jr	nc,memok
+	ld	de,memmes	;Bss segment hits the BDOS.
+	ld	c,9
+	call	5
+	rst	0
+
 memok:	
- 
 	ld	c,12
- 	call    5		;Check CP/M version
- 	ld	a,l
- 	cp	30h
- 	jr	nc,iscpm3
- 	xor	a		; CP/M 2.2 has no RSX
- 	jr	norsx
+	call	5		;Check CP/M version
+	ld	a,h
+	dec	a		; MP/M (H == 1) has no RSX
+	jr	z,norsx
+	ld	a,l
+	cp	30h		; CP/M Plus (L >= 30h)?
+	jr	nc,iscpm3
+	xor	a		; CP/M 2.2 has no RSX
+	jr	norsx
 
 iscpm3:	ld	hl,__exact	; Default exact file size
 	inc	(hl)		;  to DOSplus mode ('C' becomes 'D')
 
 ;If the PIPEMGR RSX is loaded, initialise it.
 
-	ld	c,3Ch
-	ld	de,rsxpb
+	ld	c,60		; RSX call
+	ld	de,rsxpb	; RSX data
 	call	5
 	ld	a,h
-	inc	l	;HL=00FFh if no PIPEMGR present.
+	inc	l		;HL=00FFh if no PIPEMGR present.
 	or	l
-norsx:
-	ld	(__piped),a
+norsx:	ld	(__piped),a
 	call	nz,__initrsx	;use PIPEMGR for stdin, stdout and stderr
-	ld	hl,(6)		;base address of fdos
-
+        pop	hl		;base address of fdos
 	ld	sp,hl		;stack grows downwards
-	ld	de,__Lbss	;end of initialized data
-	scf
+	ld	de,__Lbss	;Start of BSS segment
+	or	a		;clear carry
+	ld	hl,__Hbss
 	sbc	hl,de		;size of uninitialized data area
 	ld	c,l
 	ld	b,h
@@ -194,18 +138,53 @@ norsx:
 	inc	de
 	ld	(hl),0
 	ldir			;clear memory
-	ld	hl,80h		;arg buf
-	ld	c,(hl)		;size of buffer
+	ld	hl,nularg
+	push	hl
+	ld	hl,80h		;argument buffer
+	ld	c,(hl)
+	inc	hl
 	ld	b,0
-	ld	hl,0
-	scf			;one for the road
-	sbc	hl,bc		;negate it
+	add	hl,bc
+	ld	(hl),0		;zero terminate it
+	ld	hl,81h
+	push	hl
+	call	startup
+	pop	bc		;unjunk stack
+	pop	bc
+	ld	bc,(__z3env)	;main (argc,argv,z3env)
+	push	bc
+	push	hl
+	ld	hl,(__argc_)
+	push	hl
+	call	_main
+	push	hl
+	call	_exit
+	rst	0
+
+;
+; This is a substitute getargs() function that is of minimal
+; size and does not perform wildcard argument expansion and
+; redirection.
+;
+
+__getargs:
+	pop	hl		;return address
+	exx
+	pop	hl
+	pop	hl		;unjunk stack
+	ld	a,(80h)		;get buffer length
+	inc	a		;allow for null byte
+	neg
+	ld	l,a
+	ld	h,-1
 	add	hl,sp
 	ld	sp,hl		;allow space for args
-	ld	de,0		;flag end of args
-	push	de
+	ld	bc,0		;flag end of args
+	push	bc
 	ld	hl,80h		;address of argument buffer
-	add	hl,bc		;bc has size of arg buffer
+	ld	c,(hl)
+	ld	b,0
+	add	hl,bc
 	ld	b,c
 	ex	de,hl
 	ld	hl,(6)
@@ -219,27 +198,33 @@ norsx:
 	cp	' '
 	dec	de
 	jr	nz,1f
-	xor	a
 	push	hl
 	inc	c
+4:	ld	a,(de)		;remove extra spaces
+	cp	' '
+	jr	nz,5f
+	dec	de
+	jr	4b
+5:
+	xor	a
 1:	dec	hl
 	ld	(hl),a
 3:
 	djnz	2b
+	ld	(__argc_),bc		;store argcount
 	ld	hl,nularg
 	push	hl
 	ld	hl,0
 	add	hl,sp
-	push	hl
-	push	bc
-	call	_main
-	push	hl
-	call	_exit
-	jp	p,0
+	exx
+	push	de		;junk the stack again
+	push	de
+	push	hl		;return address
+	exx
+	ret
 
 	psect	data
-nularg:	defm	'main'
-	defb	0
+nularg:	defb	0
 __z3env:
 	defw	0
 __piped:
@@ -251,4 +236,4 @@ rsxpb:	defb	79h,1
 pipesgn:
 	defm	'PIPEMGR '
 
-	end	reloc
+	end	start

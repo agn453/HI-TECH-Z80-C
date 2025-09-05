@@ -214,7 +214,9 @@ retry:
 	push	hl		; Save BDOS return code
 	ld	c,12		; Get CP/M version
 	call	entry
+	dec	l		; set Z bit if MP/M
 	pop	hl		; Restore BDOS result before checking version
+	jr	z,2f		; No return codes for MP/M
 	cp	30h		; Need at least 3.x
 	jr	c,2f		; No extended error processing if not CP/M+
 	ld	iy,instruction	; Prepare to modify code

@@ -1797,10 +1797,14 @@ The updated source ```OPTIMH.C``` and binary ```OPTIMH.COM``` are in the
 Z280 binary distribution library.
 
 
-## Update to support running under Digital Research MP/M-II
+## Update to support binaries running under Digital Research MP/M-II
 <!-- September 5, 2025 -->
 
-The compiler binaries now run under MP/M-II following a correction to the
+NB:  There may be insufficient memory to run the compiler modules under
+MP/M due to the reduced transient program area.
+
+The binaries produced by the compiler now run under MP/M-II following
+a correction to the
 various start-up modules (CRTCPM.OBJ C280CPM.OBJ etc) to check for MP/M
 after doing a BDOS function 12 Get Version call.  Previously it was
 following the CP/M 3 path and trying un-implemented BDOS calls to check

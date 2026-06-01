@@ -19,7 +19,7 @@ static char loadenv(char *name, char **avec, char *abuf, short *i,
 
     if((fp = fopen(name, "r")) == NULL) return(0);
 
-    while((*i) < avsize && fgets(abuf, absize, fp)) {
+    while((*i) < avsize - 1 && fgets(abuf, absize, fp)) {
         cp = sbrk(strlen(abuf)+1);
         strcpy(cp, abuf);
         cp[strlen(cp)-1] = 0;
@@ -79,7 +79,7 @@ char * getenv(char * s)
 #else
         loadenv(envname+4,avec,abuf,&i,av,ab);
 #endif
-        avec[i] = 0;
+        avec[i++] = 0;
         xp = (char **)sbrk(i * sizeof avec[0]);
         memcpy(xp, avec, i * sizeof avec[0]);
         environ = xp;

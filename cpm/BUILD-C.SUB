@@ -4,15 +4,15 @@ put console output to file build-c.log [system]
 date
 ;
 ; Build Z80 version
-c -o -v c309-20.c
+c -o -v c309-21.c
 ;
 ; Now build Z280 version
 ;
 ; First a Z280 version using the Z80 LIBC.LIB (runs on Z80)
-c309-20 -o -v -ec280z80.com -dZ280 c309-20.c
+c309-21 -o -v -ec280z80.com -dZ280 c309-21.c
 ;
 ; and the Z280 optimized version from it (only runs on a Z280)
-c280z80 -of2 -v -ec280-20.com c309-20.c
+c280z80 -of2 -v -ec280-21.com c309-21.c
 ;
 ; plus a Z80 version of the Z280 optimisation program in case
 ; we need to bootstrap a new LIB280C.LIB using the Z80 C280Z80
@@ -22,7 +22,7 @@ c280z80 -o2 -v -eoptimh80.com optimh.c
 ; Build the optimiser with the Z280 compiler front-end (may fail
 ; if the LIB280C.LIB library is not present or compatible with
 ; the latest updates - use C280Z80 and OPTIMH80 instead.
-c280-20 -o2 -v optimh.c
+c280-21 -o2 -v optimh.c
 ;
 dir c*.com [fu
 dir optimh.com [fu

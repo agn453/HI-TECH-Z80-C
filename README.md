@@ -11,7 +11,7 @@ ZXCC[^3].
 Each release is a consolidated milestone with various updates and
 patches applied.  You should read this README.md file for details.
 
-The latest release is V3.09-20 (see Modification History below).
+The latest release is V3.09-21 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -1832,6 +1832,24 @@ these changes (in the libraries and main driver).  I've done all my testing
 under MP/M V2.1 and it should work with older versions.  If not, please
 raise an issue on GitHub.
 
+## Fix to getenv() and release 3.09-21
+<!-- June 2, 2026 -->
+
+Issue #54 reported by Jamie Lokier @jlokier fixes a bug in the C library
+```getenv()``` routine (array bounds could be exceeded, and missing NULL
+terminator pointer could read past the end of the ```environ``` array).
+
+This has been incorporated into a new release V3.09-21 (updated ```LIBC.LIB```,
+```LIB280C.LIB``` as well as rebuilt compiler driver ```C309-21.COM```,
+```C280-21.COM```, ```OPTIMH.COM``` and ```STDIO.H``` with version constants
+bumped).  New binary distributions are at
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
+
+and the Z280 binary distribution (if you need it) from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
 actively maintained and available from https://github.com/MockbaTheBorg/RunCPM
@@ -1859,4 +1877,4 @@ provider to be able to post messages.
 
 --
 
-Tony Nicholson, Friday 05-Sep-2025
+Tony Nicholson, Tuesday 02-Jun-2026

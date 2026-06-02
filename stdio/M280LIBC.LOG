@@ -489,176 +489,176 @@ Directory For Drive M:  User 10
     Name     Bytes   Recs   Attributes   Prot      Update          Create    
 ------------ ------ ------ ------------ ------ --------------  --------------
 
-ABORT    OBJ     4k      2 Dir RW       None   05/09/25 12:33  05/09/25 12:33
-ABS      OBJ     4k      1 Dir RW       None   05/09/25 12:33  05/09/25 12:33
-ALLSH    OBJ     4k      1 Dir RW       None   05/09/25 12:33  05/09/25 12:33
-ALRSH    OBJ     4k      1 Dir RW       None   05/09/25 12:33  05/09/25 12:33
-ASALLSH  OBJ     4k      2 Dir RW       None   05/09/25 12:33  05/09/25 12:33
-ASALRSH  OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASAR     OBJ     4k      1 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASDIV    OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLADD   OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLAND   OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLL     OBJ     4k      1 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLLRSH  OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLMUL   OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLOR    OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLR     OBJ     4k      1 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLSUB   OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASLXOR   OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASMOD    OBJ     4k      2 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASMUL    OBJ     4k      1 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ASSERT   OBJ     4k      3 Dir RW       None   05/09/25 12:34  05/09/25 12:34
-ATOI     OBJ     4k      2 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-ATOL     OBJ     4k      4 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BDOS     OBJ     4k      4 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BIOS     OBJ     4k      5 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BITFIELD OBJ     4k      2 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BLKCLR   OBJ     4k      1 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BLKCPY   OBJ     4k      2 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BMOVE    OBJ     4k      1 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BRELOP   OBJ     4k      1 Dir RW       None   05/09/25 12:35  05/09/25 12:35
-BUF      OBJ     4k      3 Dir RW       None   05/09/25 12:36  05/09/25 12:36
-CALLOC   OBJ     4k      4 Dir RW       None   05/09/25 12:36  05/09/25 12:36
-CGETS    OBJ     4k      3 Dir RW       None   05/09/25 12:36  05/09/25 12:36
-CHMOD    OBJ     4k      4 Dir RW       None   05/09/25 12:36  05/09/25 12:36
-CLEANUP  OBJ     4k      7 Dir RW       None   05/09/25 12:36  05/09/25 12:36
-CLOSE    OBJ     4k      5 Dir RW       None   05/09/25 12:37  05/09/25 12:37
-CONVTIME OBJ     4k      5 Dir RW       None   05/09/25 12:37  05/09/25 12:37
-CPUTS    OBJ     4k      2 Dir RW       None   05/09/25 12:37  05/09/25 12:37
-CREAT    OBJ     4k      6 Dir RW       None   05/09/25 12:37  05/09/25 12:37
-CSV      OBJ     4k      2 Dir RW       None   05/09/25 12:37  05/09/25 12:37
-CTIME    OBJ     4k     17 Dir RW       None   05/09/25 12:38  05/09/25 12:38
-CTYPE    OBJ     4k      2 Dir RW       None   05/09/25 12:38  05/09/25 12:38
-CTYPE_   OBJ     4k      2 Dir RW       None   05/09/25 12:38  05/09/25 12:38
-DOPRNT   OBJ     4k     17 Dir RW       None   05/09/25 12:39  05/09/25 12:39
-DOSCAN   OBJ     4k     23 Dir RW       None   05/09/25 12:39  05/09/25 12:39
-DUP      OBJ     4k      3 Dir RW       None   05/09/25 12:39  05/09/25 12:39
-EXEC     OBJ     4k     22 Dir RW       None   05/09/25 12:40  05/09/25 12:40
-EXECL    OBJ     4k      9 Dir RW       None   05/09/25 12:40  05/09/25 12:40
-EXIT     OBJ     4k      2 Dir RW       None   05/09/25 12:40  05/09/25 12:40
-FAKECLEA OBJ     4k      1 Dir RW       None   05/09/25 12:40  05/09/25 12:40
-FAKECPCL OBJ     4k      1 Dir RW       None   05/09/25 12:40  05/09/25 12:40
-FCBNAME  OBJ     4k     12 Dir RW       None   05/09/25 12:40  05/09/25 12:40
-FCLOSE   OBJ     4k      3 Dir RW       None   05/09/25 12:41  05/09/25 12:41
-FFLUSH   OBJ     4k      4 Dir RW       None   05/09/25 12:41  05/09/25 12:41
-FGETC    OBJ     4k      4 Dir RW       None   05/09/25 12:41  05/09/25 12:41
-FILBUF   OBJ     4k      6 Dir RW       None   05/09/25 12:41  05/09/25 12:41
-FLSBUF   OBJ     4k      5 Dir RW       None   05/09/25 12:42  05/09/25 12:42
-FOPEN    OBJ     4k      3 Dir RW       None   05/09/25 12:42  05/09/25 12:42
-FPRINTF  OBJ     4k      2 Dir RW       None   05/09/25 12:42  05/09/25 12:42
-FPUTC    OBJ     4k      5 Dir RW       None   05/09/25 12:42  05/09/25 12:42
-FREAD    OBJ     4k      6 Dir RW       None   05/09/25 12:42  05/09/25 12:42
-FRELOP   OBJ     4k      2 Dir RW       None   05/09/25 12:43  05/09/25 12:43
-FREOPEN  OBJ     4k      9 Dir RW       None   05/09/25 12:43  05/09/25 12:43
-FSCANF   OBJ     4k      2 Dir RW       None   05/09/25 12:43  05/09/25 12:43
-FSEEK    OBJ     4k     11 Dir RW       None   05/09/25 12:43  05/09/25 12:43
-FWRITE   OBJ     4k      7 Dir RW       None   05/09/25 12:44  05/09/25 12:44
-GETARGS  OBJ     8k     37 Dir RW       None   05/09/25 12:45  05/09/25 12:45
-GETCH    OBJ     4k      5 Dir RW       None   05/09/25 12:45  05/09/25 12:45
-GETENV   OBJ     4k     14 Dir RW       None   05/09/25 12:46  05/09/25 12:46
-GETFCB   OBJ     4k     16 Dir RW       None   05/09/25 12:46  05/09/25 12:46
-GETS     OBJ     4k      4 Dir RW       None   05/09/25 12:46  05/09/25 12:46
-GETSP    OBJ     4k      1 Dir RW       None   05/09/25 12:46  05/09/25 12:46
-GETUID   OBJ     4k      2 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-GETW     OBJ     4k      3 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-IDIV     OBJ     4k      4 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-IMUL     OBJ     4k      2 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-INDEX    OBJ     4k      2 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-INOUT    OBJ     4k      2 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-IREGSET  OBJ     4k      1 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-ISALPHA  OBJ     4k      2 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-ISATTY   OBJ     4k      3 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-ISDIGIT  OBJ     4k      1 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-ISLOWER  OBJ     4k      1 Dir RW       None   05/09/25 12:47  05/09/25 12:47
-ISSPACE  OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-ISUPPER  OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LADD     OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LAND     OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LDIV     OBJ     4k      7 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LIBCVER  OBJ     4k      1 Dir RW       None   05/09/25 13:00  05/09/25 13:00
-LINC     OBJ     4k      2 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LLRSH    OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LMUL     OBJ     4k      2 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LONGJMP  OBJ     4k      2 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LOR      OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LRELOP   OBJ     4k      2 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LSUB     OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-LXOR     OBJ     4k      1 Dir RW       None   05/09/25 12:48  05/09/25 12:48
-MALLOC   OBJ     4k     14 Dir RW       None   05/09/25 12:49  05/09/25 12:49
-MAX      OBJ     4k      1 Dir RW       None   05/09/25 12:49  05/09/25 12:49
-MEMCMP   OBJ     4k      2 Dir RW       None   05/09/25 12:49  05/09/25 12:49
-MEMCPY   OBJ     4k      2 Dir RW       None   05/09/25 12:49  05/09/25 12:49
-MEMSET   OBJ     4k      2 Dir RW       None   05/09/25 12:49  05/09/25 12:49
-MKTIME   OBJ     4k     10 Dir RW       None   05/09/25 12:50  05/09/25 12:50
-OPEN     OBJ     4k     11 Dir RW       None   05/09/25 12:50  05/09/25 12:50
-PERROR   OBJ     4k      5 Dir RW       None   05/09/25 12:50  05/09/25 12:50
-PNUM     OBJ     4k      7 Dir RW       None   05/09/25 12:50  05/09/25 12:50
-PRINTF   OBJ     4k      2 Dir RW       None   05/09/25 12:51  05/09/25 12:51
-PUTCHAR  OBJ     4k      3 Dir RW       None   05/09/25 12:51  05/09/25 12:51
-PUTS     OBJ     4k      3 Dir RW       None   05/09/25 12:51  05/09/25 12:51
-PUTW     OBJ     4k      3 Dir RW       None   05/09/25 12:51  05/09/25 12:51
-QSORT    OBJ     4k     10 Dir RW       None   05/09/25 12:52  05/09/25 12:52
-RAND     OBJ     4k      3 Dir RW       None   05/09/25 12:52  05/09/25 12:52
-RCSV     OBJ     4k      1 Dir RW       None   05/09/25 12:52  05/09/25 12:52
-READ     OBJ     4k     15 Dir RW       None   05/09/25 12:52  05/09/25 12:52
-REMOVE   OBJ     4k      2 Dir RW       None   05/09/25 12:52  05/09/25 12:52
-RENAME   OBJ     4k      3 Dir RW       None   05/09/25 12:53  05/09/25 12:53
-REWIND   OBJ     4k      2 Dir RW       None   05/09/25 12:53  05/09/25 12:53
-RINDEX   OBJ     4k      2 Dir RW       None   05/09/25 12:53  05/09/25 12:53
-SBRK     OBJ     4k      3 Dir RW       None   05/09/25 12:53  05/09/25 12:53
-SCANF    OBJ     4k      2 Dir RW       None   05/09/25 12:53  05/09/25 12:53
-SEEK     OBJ     4k      5 Dir RW       None   05/09/25 12:53  05/09/25 12:53
-SETBUF   OBJ     4k      6 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SHAR     OBJ     4k      1 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SHLL     OBJ     4k      1 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SHLR     OBJ     4k      1 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SIGNAL   OBJ     4k      4 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SPRINTF  OBJ     4k      3 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SRAND    OBJ     4k      1 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SRAND1   OBJ     4k      3 Dir RW       None   05/09/25 12:54  05/09/25 12:54
-SSCANF   OBJ     4k      2 Dir RW       None   05/09/25 12:55  05/09/25 12:55
-START1   OBJ     4k      2 Dir RW       None   05/09/25 12:55  05/09/25 12:55
-START2   OBJ     4k      2 Dir RW       None   05/09/25 12:55  05/09/25 12:55
-STAT     OBJ     4k     10 Dir RW       None   05/09/25 12:55  05/09/25 12:55
-STDCLEAN OBJ     4k      4 Dir RW       None   05/09/25 12:55  05/09/25 12:55
-STRCAT   OBJ     4k      1 Dir RW       None   05/09/25 12:55  05/09/25 12:55
-STRCHR   OBJ     4k      1 Dir RW       None   05/09/25 12:55  05/09/25 12:55
-STRCMP   OBJ     4k      1 Dir RW       None   05/09/25 12:56  05/09/25 12:56
-STRCPY   OBJ     4k      1 Dir RW       None   05/09/25 12:56  05/09/25 12:56
-STRDUP   OBJ     4k      3 Dir RW       None   05/09/25 12:56  05/09/25 12:56
-STRFTIME OBJ     4k     31 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRICMP  OBJ     4k      1 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRISTR  OBJ     4k      3 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRLEN   OBJ     4k      1 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRNCAT  OBJ     4k      2 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRNCMP  OBJ     4k      2 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRNCPY  OBJ     4k      2 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRNICMP OBJ     4k      3 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRNISTR OBJ     4k      4 Dir RW       None   05/09/25 12:57  05/09/25 12:57
-STRNSTR  OBJ     4k      4 Dir RW       None   05/09/25 12:58  05/09/25 12:58
-STRRCHR  OBJ     4k      1 Dir RW       None   05/09/25 12:58  05/09/25 12:58
-STRSTR   OBJ     4k      3 Dir RW       None   05/09/25 12:58  05/09/25 12:58
-STRTOK   OBJ     4k      4 Dir RW       None   05/09/25 12:58  05/09/25 12:58
-SWAP     OBJ     4k      2 Dir RW       None   05/09/25 12:58  05/09/25 12:58
-SYS_ERR  OBJ     4k      6 Dir RW       None   05/09/25 12:58  05/09/25 12:58
-TIME     OBJ     4k      3 Dir RW       None   05/09/25 12:59  05/09/25 12:59
-TIMEZONE OBJ     4k      1 Dir RW       None   05/09/25 12:59  05/09/25 12:59
-TOLOWER  OBJ     4k      1 Dir RW       None   05/09/25 12:59  05/09/25 12:59
-TOUPPER  OBJ     4k      1 Dir RW       None   05/09/25 12:59  05/09/25 12:59
-UNGETC   OBJ     4k      3 Dir RW       None   05/09/25 12:59  05/09/25 12:59
-UNLINK   OBJ     4k      4 Dir RW       None   05/09/25 12:59  05/09/25 12:59
-WRELOP   OBJ     4k      1 Dir RW       None   05/09/25 12:59  05/09/25 12:59
-WRITE    OBJ     4k     14 Dir RW       None   05/09/25 13:00  05/09/25 13:00
-XTOI     OBJ     4k      2 Dir RW       None   05/09/25 13:00  05/09/25 13:00
-ZC280CPM OBJ     4k      9 Dir RW       None   05/09/25 13:00  05/09/25 13:00
-ZD280CPM OBJ     4k      3 Dir RW       None   05/09/25 13:00  05/09/25 13:00
-ZN280CPM OBJ     4k     10 Dir RW       None   05/09/25 13:00  05/09/25 13:00
-ZR280CPM OBJ     4k     11 Dir RW       None   05/09/25 13:00  05/09/25 13:00
-_EXIT    OBJ     4k      2 Dir RW       None   05/09/25 12:40  05/09/25 12:40
+ABORT    OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ABS      OBJ     4k      1 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ALLSH    OBJ     4k      1 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ALRSH    OBJ     4k      1 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASALLSH  OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASALRSH  OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASAR     OBJ     4k      1 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASDIV    OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLADD   OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLAND   OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLL     OBJ     4k      1 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLLRSH  OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLMUL   OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLOR    OBJ     4k      2 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLR     OBJ     4k      1 Dir RW       None   02/06/26 08:48  02/06/26 08:48
+ASLSUB   OBJ     4k      2 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+ASLXOR   OBJ     4k      2 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+ASMOD    OBJ     4k      2 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+ASMUL    OBJ     4k      1 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+ASSERT   OBJ     4k      3 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+ATOI     OBJ     4k      2 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+ATOL     OBJ     4k      4 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+BDOS     OBJ     4k      4 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+BIOS     OBJ     4k      5 Dir RW       None   02/06/26 08:49  02/06/26 08:49
+BITFIELD OBJ     4k      2 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+BLKCLR   OBJ     4k      1 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+BLKCPY   OBJ     4k      2 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+BMOVE    OBJ     4k      1 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+BRELOP   OBJ     4k      1 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+BUF      OBJ     4k      3 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+CALLOC   OBJ     4k      4 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+CGETS    OBJ     4k      3 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+CHMOD    OBJ     4k      4 Dir RW       None   02/06/26 08:50  02/06/26 08:50
+CLEANUP  OBJ     4k      7 Dir RW       None   02/06/26 08:51  02/06/26 08:51
+CLOSE    OBJ     4k      5 Dir RW       None   02/06/26 08:51  02/06/26 08:51
+CONVTIME OBJ     4k      5 Dir RW       None   02/06/26 08:51  02/06/26 08:51
+CPUTS    OBJ     4k      2 Dir RW       None   02/06/26 08:51  02/06/26 08:51
+CREAT    OBJ     4k      6 Dir RW       None   02/06/26 08:51  02/06/26 08:51
+CSV      OBJ     4k      2 Dir RW       None   02/06/26 08:52  02/06/26 08:52
+CTIME    OBJ     4k     17 Dir RW       None   02/06/26 08:52  02/06/26 08:52
+CTYPE    OBJ     4k      2 Dir RW       None   02/06/26 08:52  02/06/26 08:52
+CTYPE_   OBJ     4k      2 Dir RW       None   02/06/26 08:52  02/06/26 08:52
+DOPRNT   OBJ     4k     17 Dir RW       None   02/06/26 08:53  02/06/26 08:53
+DOSCAN   OBJ     4k     23 Dir RW       None   02/06/26 08:53  02/06/26 08:53
+DUP      OBJ     4k      3 Dir RW       None   02/06/26 08:54  02/06/26 08:54
+EXEC     OBJ     4k     22 Dir RW       None   02/06/26 08:54  02/06/26 08:54
+EXECL    OBJ     4k      9 Dir RW       None   02/06/26 08:54  02/06/26 08:54
+EXIT     OBJ     4k      2 Dir RW       None   02/06/26 08:54  02/06/26 08:54
+FAKECLEA OBJ     4k      1 Dir RW       None   02/06/26 08:54  02/06/26 08:54
+FAKECPCL OBJ     4k      1 Dir RW       None   02/06/26 08:54  02/06/26 08:54
+FCBNAME  OBJ     4k     12 Dir RW       None   02/06/26 08:55  02/06/26 08:55
+FCLOSE   OBJ     4k      3 Dir RW       None   02/06/26 08:55  02/06/26 08:55
+FFLUSH   OBJ     4k      4 Dir RW       None   02/06/26 08:55  02/06/26 08:55
+FGETC    OBJ     4k      4 Dir RW       None   02/06/26 08:55  02/06/26 08:55
+FILBUF   OBJ     4k      6 Dir RW       None   02/06/26 08:56  02/06/26 08:56
+FLSBUF   OBJ     4k      5 Dir RW       None   02/06/26 08:56  02/06/26 08:56
+FOPEN    OBJ     4k      3 Dir RW       None   02/06/26 08:56  02/06/26 08:56
+FPRINTF  OBJ     4k      2 Dir RW       None   02/06/26 08:56  02/06/26 08:56
+FPUTC    OBJ     4k      5 Dir RW       None   02/06/26 08:56  02/06/26 08:56
+FREAD    OBJ     4k      6 Dir RW       None   02/06/26 08:57  02/06/26 08:57
+FRELOP   OBJ     4k      2 Dir RW       None   02/06/26 08:57  02/06/26 08:57
+FREOPEN  OBJ     4k      9 Dir RW       None   02/06/26 08:57  02/06/26 08:57
+FSCANF   OBJ     4k      2 Dir RW       None   02/06/26 08:57  02/06/26 08:57
+FSEEK    OBJ     4k     11 Dir RW       None   02/06/26 08:58  02/06/26 08:58
+FWRITE   OBJ     4k      7 Dir RW       None   02/06/26 08:58  02/06/26 08:58
+GETARGS  OBJ     8k     37 Dir RW       None   02/06/26 08:59  02/06/26 08:59
+GETCH    OBJ     4k      5 Dir RW       None   02/06/26 08:59  02/06/26 08:59
+GETENV   OBJ     4k     14 Dir RW       None   02/06/26 09:00  02/06/26 09:00
+GETFCB   OBJ     4k     16 Dir RW       None   02/06/26 09:00  02/06/26 09:00
+GETS     OBJ     4k      4 Dir RW       None   02/06/26 09:00  02/06/26 09:00
+GETSP    OBJ     4k      1 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+GETUID   OBJ     4k      2 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+GETW     OBJ     4k      3 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+IDIV     OBJ     4k      4 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+IMUL     OBJ     4k      2 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+INDEX    OBJ     4k      2 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+INOUT    OBJ     4k      2 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+IREGSET  OBJ     4k      1 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+ISALPHA  OBJ     4k      2 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+ISATTY   OBJ     4k      3 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+ISDIGIT  OBJ     4k      1 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+ISLOWER  OBJ     4k      1 Dir RW       None   02/06/26 09:01  02/06/26 09:01
+ISSPACE  OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+ISUPPER  OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LADD     OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LAND     OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LDIV     OBJ     4k      7 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LIBCVER  OBJ     4k      1 Dir RW       None   02/06/26 09:15  02/06/26 09:15
+LINC     OBJ     4k      2 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LLRSH    OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LMUL     OBJ     4k      2 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LONGJMP  OBJ     4k      2 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LOR      OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LRELOP   OBJ     4k      2 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LSUB     OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+LXOR     OBJ     4k      1 Dir RW       None   02/06/26 09:02  02/06/26 09:02
+MALLOC   OBJ     4k     14 Dir RW       None   02/06/26 09:03  02/06/26 09:03
+MAX      OBJ     4k      1 Dir RW       None   02/06/26 09:03  02/06/26 09:03
+MEMCMP   OBJ     4k      2 Dir RW       None   02/06/26 09:03  02/06/26 09:03
+MEMCPY   OBJ     4k      2 Dir RW       None   02/06/26 09:03  02/06/26 09:03
+MEMSET   OBJ     4k      2 Dir RW       None   02/06/26 09:03  02/06/26 09:03
+MKTIME   OBJ     4k     10 Dir RW       None   02/06/26 09:04  02/06/26 09:04
+OPEN     OBJ     4k     11 Dir RW       None   02/06/26 09:04  02/06/26 09:04
+PERROR   OBJ     4k      5 Dir RW       None   02/06/26 09:04  02/06/26 09:04
+PNUM     OBJ     4k      7 Dir RW       None   02/06/26 09:04  02/06/26 09:04
+PRINTF   OBJ     4k      2 Dir RW       None   02/06/26 09:05  02/06/26 09:05
+PUTCHAR  OBJ     4k      3 Dir RW       None   02/06/26 09:05  02/06/26 09:05
+PUTS     OBJ     4k      3 Dir RW       None   02/06/26 09:05  02/06/26 09:05
+PUTW     OBJ     4k      3 Dir RW       None   02/06/26 09:05  02/06/26 09:05
+QSORT    OBJ     4k     10 Dir RW       None   02/06/26 09:06  02/06/26 09:06
+RAND     OBJ     4k      3 Dir RW       None   02/06/26 09:06  02/06/26 09:06
+RCSV     OBJ     4k      1 Dir RW       None   02/06/26 09:06  02/06/26 09:06
+READ     OBJ     4k     15 Dir RW       None   02/06/26 09:06  02/06/26 09:06
+REMOVE   OBJ     4k      2 Dir RW       None   02/06/26 09:06  02/06/26 09:06
+RENAME   OBJ     4k      3 Dir RW       None   02/06/26 09:07  02/06/26 09:07
+REWIND   OBJ     4k      2 Dir RW       None   02/06/26 09:07  02/06/26 09:07
+RINDEX   OBJ     4k      2 Dir RW       None   02/06/26 09:07  02/06/26 09:07
+SBRK     OBJ     4k      3 Dir RW       None   02/06/26 09:07  02/06/26 09:07
+SCANF    OBJ     4k      2 Dir RW       None   02/06/26 09:07  02/06/26 09:07
+SEEK     OBJ     4k      5 Dir RW       None   02/06/26 09:07  02/06/26 09:07
+SETBUF   OBJ     4k      6 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SHAR     OBJ     4k      1 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SHLL     OBJ     4k      1 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SHLR     OBJ     4k      1 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SIGNAL   OBJ     4k      4 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SPRINTF  OBJ     4k      3 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SRAND    OBJ     4k      1 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SRAND1   OBJ     4k      3 Dir RW       None   02/06/26 09:08  02/06/26 09:08
+SSCANF   OBJ     4k      2 Dir RW       None   02/06/26 09:09  02/06/26 09:09
+START1   OBJ     4k      2 Dir RW       None   02/06/26 09:09  02/06/26 09:09
+START2   OBJ     4k      2 Dir RW       None   02/06/26 09:09  02/06/26 09:09
+STAT     OBJ     4k     10 Dir RW       None   02/06/26 09:09  02/06/26 09:09
+STDCLEAN OBJ     4k      4 Dir RW       None   02/06/26 09:09  02/06/26 09:09
+STRCAT   OBJ     4k      1 Dir RW       None   02/06/26 09:09  02/06/26 09:09
+STRCHR   OBJ     4k      1 Dir RW       None   02/06/26 09:09  02/06/26 09:09
+STRCMP   OBJ     4k      1 Dir RW       None   02/06/26 09:10  02/06/26 09:10
+STRCPY   OBJ     4k      1 Dir RW       None   02/06/26 09:10  02/06/26 09:10
+STRDUP   OBJ     4k      3 Dir RW       None   02/06/26 09:10  02/06/26 09:10
+STRFTIME OBJ     4k     31 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRICMP  OBJ     4k      1 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRISTR  OBJ     4k      3 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRLEN   OBJ     4k      1 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRNCAT  OBJ     4k      2 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRNCMP  OBJ     4k      2 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRNCPY  OBJ     4k      2 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRNICMP OBJ     4k      3 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRNISTR OBJ     4k      4 Dir RW       None   02/06/26 09:11  02/06/26 09:11
+STRNSTR  OBJ     4k      4 Dir RW       None   02/06/26 09:12  02/06/26 09:12
+STRRCHR  OBJ     4k      1 Dir RW       None   02/06/26 09:12  02/06/26 09:12
+STRSTR   OBJ     4k      3 Dir RW       None   02/06/26 09:12  02/06/26 09:12
+STRTOK   OBJ     4k      4 Dir RW       None   02/06/26 09:12  02/06/26 09:12
+SWAP     OBJ     4k      2 Dir RW       None   02/06/26 09:12  02/06/26 09:12
+SYS_ERR  OBJ     4k      6 Dir RW       None   02/06/26 09:12  02/06/26 09:12
+TIME     OBJ     4k      3 Dir RW       None   02/06/26 09:13  02/06/26 09:13
+TIMEZONE OBJ     4k      1 Dir RW       None   02/06/26 09:13  02/06/26 09:13
+TOLOWER  OBJ     4k      1 Dir RW       None   02/06/26 09:13  02/06/26 09:13
+TOUPPER  OBJ     4k      1 Dir RW       None   02/06/26 09:13  02/06/26 09:13
+UNGETC   OBJ     4k      3 Dir RW       None   02/06/26 09:13  02/06/26 09:13
+UNLINK   OBJ     4k      4 Dir RW       None   02/06/26 09:13  02/06/26 09:13
+WRELOP   OBJ     4k      1 Dir RW       None   02/06/26 09:13  02/06/26 09:13
+WRITE    OBJ     4k     14 Dir RW       None   02/06/26 09:14  02/06/26 09:14
+XTOI     OBJ     4k      2 Dir RW       None   02/06/26 09:14  02/06/26 09:14
+ZC280CPM OBJ     4k      9 Dir RW       None   02/06/26 09:14  02/06/26 09:14
+ZD280CPM OBJ     4k      3 Dir RW       None   02/06/26 09:14  02/06/26 09:14
+ZN280CPM OBJ     4k     10 Dir RW       None   02/06/26 09:14  02/06/26 09:14
+ZR280CPM OBJ     4k     11 Dir RW       None   02/06/26 09:14  02/06/26 09:14
+_EXIT    OBJ     4k      2 Dir RW       None   02/06/26 08:54  02/06/26 08:54
 
 Total Bytes     =    672k  Total Records =     695  Files Found =  167
-Total 1k Blocks =    198   Used/Max Dir Entries For Drive M:  233/ 512
+Total 1k Blocks =    198   Used/Max Dir Entries For Drive M:  266/ 512
 
 10E>era e:lib280c.lbr
 10E>; Enter the number of files from above DIR command when prompted
@@ -691,7 +691,7 @@ ALLSH   .OBJ | EXIT    .C   | FAKECLEA.AS  | FAKECLEA.C   | FAKECPCL.AS
 FCBNAME .C   | FCLOSE  .C   | C280Z80 .COM | ALRSH   .OBJ | FILBUF  .C  
 FILESIZE.C   | ASALLSH .OBJ | FLSBUF  .C   | FOPEN   .C   | FPRINTF .C  
 FPUTC   .AS  | FREAD   .C   | FRELOP  .AS  | FREOPEN .C   | FSCANF  .C  
-ASALRSH .OBJ | ZAS-SRC .LBR | GETARGS .C   | GETCH   .C   | GETENV  .C  
+ASALRSH .OBJ | ZAS-SRC .LBR | GETARGS .C   | GETCH   .C   | GETENV-O.C  
 GETFCB  .C   | GETS    .C   | GETSP   .AS  | GETUID  .AS  | GETW    .C  
 HELLO   .C   | HELLOS  .C   | HUFF    .H   | IDIV    .AS  | IMUL    .AS 
 INDEX   .AS  | INOUT   .AS  | IREGSET .AS  | ISALPHA .AS  | ISATTY  .C  
@@ -756,19 +756,19 @@ STRISTR .OBJ | STRLEN  .OBJ | STRNCAT .OBJ | STRNCMP .OBJ | STRNCPY .OBJ
 STRNICMP.OBJ | STRNISTR.OBJ | STRNSTR .OBJ | STRRCHR .OBJ | STRSTR  .OBJ
 STRTOK  .OBJ | SWAP    .OBJ | SYS_ERR .OBJ | TIME    .OBJ | TIMEZONE.OBJ
 TOLOWER .OBJ | TOUPPER .OBJ | UNGETC  .OBJ | UNLINK  .OBJ | WRELOP  .OBJ
-WRITE   .OBJ | FILESIZE.COM | @LIBC309.-20 | XTOI    .OBJ | ZCRTCPM .OBJ
+WRITE   .OBJ | FILESIZE.COM | @LIBC309.-21 | XTOI    .OBJ | ZCRTCPM .OBJ
 LIBOVR  .LIB | C280LIBC.LOG | ZDRTCPM .OBJ | EXEC-BLD.SUB | FGETC   .C  
 FGETC-O .AS  | TESTVER .COM | FPUTC   .C   | FPUTC-O .AS  | FSHOW   .C  
 ZNRTCPM .OBJ | ZRRTCPM .OBJ | LIBCVER .OBJ | MAKELIBC.LOG | TEST    .DAT
 TESTBIOS.COM | TESTFILE.COM | TESTFTIM.COM | TESTHELL.COM | TESTIO  .COM
 TESTOVR .COM | TESTOVR1.OVR | TESTOVR2.OVR | TESTOVRX.SYM | TESTPR  .COM
 TESTRC  .COM | TESTSTR .COM | TESTTRIG.COM | TESTUID .COM | TESTVIEW.COM
-TESTWILD.COM | LIBC20  .LIB | LIB280C .LIB | BUILD-C .SUB | ZC280CPM.OBJ
-ZD280CPM.OBJ | ZN280CPM.OBJ | ZR280CPM.OBJ | SIGNAL  .C   | C309-20 .COM
-C280-20 .COM | M280LIBC.SUB | TEST280 .LOG | TEST-OPT.AS2 | TEST    .SUB
-TEST280 .SUB | TEST-OPT.AS3 | OPTIMH80.COM | FSEEK   .C   | FWRITE  .C  
-MKLIBC  .SUB | C309-20 .C   | MAKELIBC.SUB | 
-Drive E: Total 8000k, Used 7456k, Free 544k
+TESTWILD.COM | LIB280C .LIB | MAKELIBC.SUB | ZC280CPM.OBJ | ZD280CPM.OBJ
+BUILD-C .SUB | ZN280CPM.OBJ | ZR280CPM.OBJ | GETENV  .C   | C309-20 .COM
+SIGNAL  .C   | C280-20 .COM | OPTIMH80.COM | M280LIBC.SUB | TEST280 .LOG
+TEST-OPT.AS2 | TEST    .SUB | TEST280 .SUB | TEST-OPT.AS3 | LIBC21  .LIB
+FSEEK   .C   | FWRITE  .C   | MKLIBC  .SUB | C309-20 .C   | MAKELIBC.BAK
+Drive E: Total 8000k, Used 7464k, Free 536k
 
 Library E10:LIB280C.LBR^G not found.
   To make it, enter the number of entries to allow.
@@ -962,4 +962,3 @@ ZR280CPM.OBJ
 10E>;
 10E>put console to console
 A:PUT      COM  (User 0)
-

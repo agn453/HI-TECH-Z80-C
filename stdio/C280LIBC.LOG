@@ -1,7 +1,7 @@
 
 10E>date
 A:DATE     COM  (User 0)
-Fri 05/09/2025 12:33:27
+Tue 02/06/2026 08:47:58
 10E>; Compile all LIB280C.LIB modules from sources for Z280
 10E>;
 10E>; Sources are on drive E:
@@ -592,8 +592,8 @@ E:GETENV.C
 0:A:CGEN $CTMP2.$$$ $CTMP1.$$$
 0:A:OPTIM $CTMP1.$$$ $CTMP2.$$$
 0:A:OPTIMH $CTMP2.$$$ $CTMP5.$$$
- 115 bytes size optimised away
- 242 bytes replaced
+ 117 bytes size optimised away
+ 246 bytes replaced
 0:A:ZAS -J -N -OGETENV.OBJ $CTMP5.$$$
 E:GETFCB.C
 0:A:CPP -DCPM -DHI_TECH_C -Dz80 -DZ280 -I0:A: E:GETFCB.C $CTMP1.$$$

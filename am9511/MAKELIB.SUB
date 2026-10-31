@@ -1,0 +1,19 @@
+h:zas -n -oam9511.obj am9511.as
+h:zas -n -oftol.obj ftol.as
+h:zas -n -oltof.obj ltof.as
+h:zas -n -omodf.obj modf.as
+h:zas -n -osqrt.obj sqrt.as
+h:zas -n -osin.obj sin.as
+h:zas -n -ocos.obj cos.as
+h:zas -n -otan.obj tan.as
+h:zas -n -oasin.obj asin.as
+h:zas -n -oacos.obj acos.as
+h:zas -n -oatan.obj atan.as
+h:zas -n -olog.obj log.as
+h:zas -n -oexp.obj exp.as
+h:zas -n -oamath.obj amath.as
+h:zas -n -ofloor.obj floor.as
+era lib9511.lib
+h:libr r lib9511.lib am9511.obj ftol.obj ltof.obj modf.obj
+h:libr r lib9511.lib sqrt.obj sin.obj cos.obj tan.obj asin.obj
+h:libr r lib9511.lib acos.obj atan.obj log.obj exp.obj amath.obj floor.obj

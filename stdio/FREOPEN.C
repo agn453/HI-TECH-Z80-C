@@ -1,25 +1,21 @@
 /*
- *	freopen.c - stdio freopen 
+ *	freopen.c - HI-TECH C stdio freopen 
  */
 
 #include	<stdio.h>
+#include	<unixio.h>
 
-extern int	open(char *, int), creat(char *, int);
-extern int errno;
 
 FILE *
 freopen(name, mode, iob)
 char *	name, * mode;
 register FILE *	iob;
 {
-	uchar		c,pls;
+	uchar		c, rw;
 
 	fclose(iob);
-	pls = c = 0;
-	iob->_flag &= _IONBF;
-
-	if (mode[1]=='+' || (mode[1] && mode[2]=='+')) pls=2;
-
+	c = rw = 0;
+	iob->_flag &= _IOMYBUF;
 	switch(*mode) {
 
 	case 'w':
@@ -27,33 +23,44 @@ register FILE *	iob;
 	case 'a':
 		c++;
 	case 'r':
-		if(mode[1]=='b' || (mode[1] && mode[2]=='b'))
-			iob->_flag = _IOBINARY;
 		break;
-
+	default:
+		return NULL;
 	}
+	rw = 0;
+	while(*++mode)
+		if(*mode == 'b')
+			iob->_flag |= _IOBINARY;
+		else if(*mode == '+') {
+			iob->_flag |= _IORW;
+			rw = 2;
+		} else 
+			break;
+	
 	switch(c) {
 
-	case 0:		/* "r" or "r+" */
-		iob->_file = open(name, pls); /* pls is 0 if R/O, 2 if R/W */
- 		break;
+	case 0:
+		iob->_file = open(name, rw);
+		break;
 
 	case 1:
-		if((iob->_file = open(name, (1 | pls) )) >= 0) /* "a" or "a+" */
+		if((iob->_file = open(name, rw ? 2 : 1)) >= 0)
 			break;
 		/* else fall through */
 	case 2:
-		iob->_file = creat(name, 0666);		/* "w" */
-                if (!pls) break;
-                close(iob->_file);
-                iob->_file = open(name, 3);             /* "w+" */
-                if (errno == 7) errno = 5;
+		iob->_file = creat(name, 0666);
+		if(iob->_file >= 0 && rw) {
+			close(iob->_file);
+			iob->_file = open(name, rw);
+		}
 		break;
 	}
 	if(iob->_file < 0)
 		return (FILE *)NULL;
-	if(!(iob->_flag & (_IONBF|_IOMYBUF)))
+	if(!(iob->_flag & (_IONBF|_IOMYBUF))) {
 		iob->_base = _bufallo();
+		iob->_size = BUFSIZ;
+	}
 	if(iob->_base == (char *)-1) {
 		iob->_base = (char *)0;
 		close(iob->_file);
@@ -63,20 +70,10 @@ register FILE *	iob;
 	iob->_ptr = iob->_base;
 	iob->_cnt = 0;
 	if(c)
-		iob->_flag |= _IOWRT;	/* w a  only allow writing */
+		iob->_flag |= _IOWRT;
 	else
-		iob->_flag |= _IOREAD;	/* r only allows reading */
-	if(pls) iob->_flag |= _IOWRT | _IOREAD;	/* r+ a+ w+ all allow R/W */
-
-	if(iob->_base && c)
-	{
-		iob->_cnt   = BUFSIZ;     /* Buffer empty */
-		iob->_flag |= _IODIRN;	  /* Defaults to write */
-
-		if (c==1) iob->_flag |= _IOAPPEND; /* Append mode on? */
-	}
-
-	if(c == 1)			/* a or a+ */
+		iob->_flag |= _IOREAD;
+	if(c == 1)
 		fseek(iob, 0L, 2);
 	return iob;
 }

@@ -24,8 +24,8 @@ function must be called ovmain() instead of main().
 	The main function must be linked first. Ensure that the modules
 ovloader.c and ovbgn.as (in that order) are linked as well, and request the
 compiler to produce a symbol table (-F option).
-	Once this has been completed, run the SYMTOAS program on the .SYM
-file (e.g. SYMTOAS TEST.SYM), and this will produce a file named MAIN.AS,
+	Once this has been completed, run the SYM2AS program on the .SYM
+file (e.g. SYM2AS TEST.SYM), and this will produce a file named MAIN.AS,
 containing the addresses from the main portion in assembler-source form.
 Then run ZAS on this (ZAS MAIN.AS), and this will produce a file named
 MAIN.OBJ. You will need this to link the overlays.
@@ -49,7 +49,7 @@ with the actual value of _ovbgn as obtained from the MAIN.AS file.
 	Assume this file is named TEST.LNK. You are now ready to link the
 overlay. Use the command
 
-LINQ <TEST.LNK
+LINK <TEST.LNK
 
 	and it should rumble away to itself and complete. Note that you do
 not have to repeat the linking and loading of the main segment if you only
@@ -57,7 +57,7 @@ change the overlay source: the same main.obj file may be used each time the
 overlay is re-linked. The TEST.LNK file should remain the same as well, but
 remember to alter it as necessary if you change the main program file.
 
-	The OVRBGN.AS file contains an equate to set the maximum overlay
+	The OVBGN.AS file contains an equate to set the maximum overlay
 size: it is currently set to 5000h (20k). This should be sufficient for
 most purposes, but it may be lowered if your overlays are small. If you link
 the overlays with the -Mxxxx.MAP option in the .LNK file, a map of the

@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 extern char _exact;	/* exact file size mode */
+extern char *_libcver;	/* LIBC version string */
 
 int main(int argc, char ** argv)
 {
@@ -52,6 +53,7 @@ int main(int argc, char ** argv)
     tpa=((*bdosaddr-6)-0x100);
     fprintf(stdout,"TPA Size (%u.%uK)\n",tpa/1024,(tpa % 1024)/100);
 
+    fprintf(stdout,"C library version %s\n",_libcver);
     switch(_exact) {
     case 'C':
         printf("Exact file size not used (CP/M 2 mode)\n");

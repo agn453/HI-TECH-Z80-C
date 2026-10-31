@@ -34,7 +34,7 @@ time_t *	tp;
 {
 	time_t	t;
 
-	t = *tp - time_zone*60;
+	t = *tp - time_zone*60L;
 	return gmtime(&t);
 }
 

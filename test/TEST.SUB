@@ -2,6 +2,7 @@ era test.log
 put console output to file test.log [system]
 date
 ; Compile all tests
+c -v -o filesize.c
 c -v -o testver.c
 c -v -o testio.c
 c -v -o testuid.c
@@ -39,5 +40,6 @@ testview testh*.c testver.c
 testwild test*.c test*.com
 testhell
 testpr
+filesize test*.*
 ; All tests completed
 put console to console

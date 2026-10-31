@@ -1,11 +1,12 @@
 
-10E>; Use librarian to place all modules in LIBC15.LIB
+10E>; Use librarian to place all modules in LIBC21.LIB
 10E>; NB: the ordering is important for resolving dependencies at link time
-10E>era LIBC15.lib
+10E>era LIBC21.lib
 No File
 10E>libr
 A:LIBR     COM  (User 0)
-libr> r LIBC15.lib	\
+libr> r LIBC21.lib	\
+libr> libcver.obj	\
 libr> start1.obj	\
 libr> getargs.obj	\
 libr> assert.obj	\
@@ -13,12 +14,12 @@ libr> printf.obj	\
 libr> fprintf.obj	\
 libr> sprintf.obj	\
 libr> doprnt.obj	\
+libr> getenv.obj	\
 libr> gets.obj	\
 libr> puts.obj	\
 libr> fwrite.obj	\
 libr> getw.obj	\
 libr> putw.obj	\
-libr> getenv.obj	\
 libr> putchar.obj	\
 libr> perror.obj	\
 libr> fputc.obj	\
@@ -165,9 +166,10 @@ libr> tolower.obj	\
 libr> toupper.obj	\
 libr> xtoi.obj
 
-10E>; Library LIBC15.LIB created
-10E>libr s LIBC15.lib
+10E>; Library LIBC21.LIB created
+10E>libr s LIBC21.lib
 A:LIBR     COM  (User 0)
+libcver.obj     D __libcver     
 start1.obj      D __argc_       U __getargs     D startup       
 getargs.obj     U __argc_       D __getargs     U __iob         U _bdos       
 		U _bmove        U _exit         U _fprintf      U _freopen    
@@ -187,54 +189,58 @@ sprintf.obj     U __doprnt      D _sprintf      U cret          U csv
 doprnt.obj      U __ctype_      D __doprnt      U __pnum        U _atoi       
 		U _fputc        U _strlen       U brelop        U cret        
 		U csv           U indir         U ncsv          U wrelop      
+getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
+		U _fopen        D _getenv       U _memcpy       U _sbrk       
+		U _strcpy       U _strlen       U _strncmp      U cret        
+		U csv           U indir         U ncsv          U wrelop      
 gets.obj        U __iob         U _fgetc        D _fgets        D _gets       
 		U _strlen       U cret          U csv           U indir       
 		U ncsv          
 puts.obj        U __iob         U _fputc        D _fputs        D _puts       
 		U cret          U csv           U indir         U ncsv        
-fwrite.obj      U _fputc        D _fwrite       U cret          U csv         
-		U indir         U ldiv          U lmul          U ncsv        
+fwrite.obj      U _fflush       U _fputc        U _fseek        D _fwrite     
+		U _memcpy       U cret          U indir         U ldiv        
+		U lmul          U ncsv          U wrelop        
 getw.obj        U _fgetc        D _getw         U cret          U csv         
 		U indir         U ncsv          U shal          
 putw.obj        U _fputc        D _putw         U cret          U csv         
 		U indir         U ncsv          U shar          
-getenv.obj      U _bdos         D _environ      U _fclose       U _fgets      
-		U _fopen        D _getenv       U _memcpy       U _sbrk       
-		U _strcpy       U _strlen       U _strncmp      U cret        
-		U csv           U indir         U ncsv          U wrelop      
 putchar.obj     U __iob         U _fgetc        U _fputc        D _getchar    
 		D _putchar      U cret          U csv           U indir       
 		U ncsv          
 perror.obj      U __iob         U _errno        U _fputc        D _perror     
 		U _sys_err      U _sys_ner      U cret          U csv         
 		U indir         U ncsv          U wrelop        
-fputc.obj       U __flsbuf      D _fputc        
-flsbuf.obj      D __flsbuf      U _write        U cret          U csv         
-		U indir         U ncsv          
+fputc.obj       U __flsbuf      U _fflush       D _fputc        U _fseek      
+		U cret          U csv           U indir         U ncsv        
+flsbuf.obj      U __bufallo     D __flsbuf      U _isatty       U _write      
+		U cret          U csv           U indir         U ncsv        
 fopen.obj       U __iob         D _fopen        U _freopen      U cret        
 		U csv           U indir         U ncsv          
-freopen.obj     U __bufallo     U _close        U _creat        U _errno      
-		U _fclose       D _freopen      U _fseek        U _open       
-		U cret          U csv           U indir         U ncsv        
+freopen.obj     U __bufallo     U _close        U _creat        U _fclose     
+		D _freopen      U _fseek        U _open         U cret        
+		U csv           U indir         U ncsv          
 fseek.obj       U __fcb         U _fflush       U _fread        D _fseek      
-		D _ftell        U _lseek        U alsub         U amul        
-		U arelop        U asaladd       U cret          U csv         
-		U indir         U ncsv          
-fread.obj       U _fgetc        D _fread        U cret          U indir       
-		U ldiv          U lmul          U ncsv          
+		D _ftell        U _lseek        U aladd         U alsub       
+		U amul          U arelop        U asaladd       U cret        
+		U csv           U indir         U ncsv          
+fread.obj       U _fgetc        D _fread        U _memcpy       U cret        
+		U indir         U ldiv          U lmul          U ncsv        
+		U wrelop        
 rewind.obj      U _fseek        D _rewind       U cret          U csv         
 		U indir         U ncsv          
 remove.obj      D _remove       U _unlink       U cret          U csv         
 		U indir         U ncsv          
-setbuf.obj      U __buffree     D _setbuf       U cret          U csv         
-		U indir         U ncsv          
+setbuf.obj      U __bufallo     U __buffree     D _setbuf       D _setvbuf    
+		U cret          U csv           U indir         U ncsv        
 fscanf.obj      U __doscan      D _fscanf       U cret          U csv         
 		U indir         U ncsv          
 ctime.obj       D _asctime      D _ctime        D _gmtime       D _localtime  
 		D _monlen       U _time_zone    U adiv          U aldiv       
-		U almod         U alsub         U amod          U amul        
-		U asaldiv       U asldiv        U cret          U csv         
-		U indir         U lmod          U ncsv          U wrelop      
+		U almod         U almul         U alsub         U amod        
+		U amul          U asaldiv       U asldiv        U cret        
+		U csv           U indir         U lmod          U ncsv        
+		U wrelop        
 cgets.obj       D _cgets        U _getche       U cret          U csv         
 		U indir         U ncsv          
 cputs.obj       D _cputs        U _putch        U cret          U csv         
@@ -249,9 +255,11 @@ doscan.obj      U __ctype_      D __doscan      U _atoi         U _fgetc
 		U wrelop        
 ungetc.obj      D _ungetc       U cret          U csv           U indir       
 		U ncsv          
-fgetc.obj       U __filbuf      D _fgetc        
-filbuf.obj      D __filbuf      U _read         U cret          U csv         
+fgetc.obj       U __filbuf      D _fgetc        U cret          U csv         
 		U indir         U ncsv          U wrelop        
+filbuf.obj      D __filbuf      U __iob         U _fflush       U _read       
+		U cret          U csv           U indir         U ncsv        
+		U wrelop        
 stdclean.obj    D __cleanup     D __iob         D __sibuf       U _fclose     
 		U cret          U csv           U indir         U ncsv        
 fclose.obj      U __buffree     U _close        D _fclose       U _fflush     
@@ -262,12 +270,12 @@ buf.obj         D __bufallo     D __buffree     U _sbrk         U cret
 		U csv           U indir         U ncsv          
 exit.obj        U __cleanup     U __exit        D _exit         U cret        
 		U csv           U indir         U ncsv          
-open.obj        U __fcb         D __fsize       U _bdos         U _errno      
-		U _getfcb       U _getuid       D _open         U _putfcb     
-		U _setfcb       U _setuid       U adiv          U aland       
-		U aldiv         U amul          U asalsub       U brelop      
-		U cret          U csv           U indir         U ncsv        
-		U shll          U wrelop        
+open.obj        U __exact       U __fcb         D __fsize       U _bdos       
+		U _errno        U _getfcb       U _getuid       D _open       
+		U _putfcb       U _setfcb       U _setuid       U adiv        
+		U aland         U aldiv         U amul          U asalsub     
+		U brelop        U cret          U csv           U indir       
+		U ncsv          U shll          U wrelop        
 read.obj        U __fcb         U __piped       U __putrno      U __sigchk    
 		U _bdos         U _bmove        U _getuid       D _read       
 		U _setuid       U aldiv         U alsub         U amul        
@@ -281,10 +289,10 @@ write.obj       U __fcb         U __piped       U __putrno      U __sigchk
 seek.obj        U __fcb         D _lseek        U aladd         U amul        
 		U arelop        U brelop        U cret          U csv         
 		U indir         U ncsv          
-stat.obj        U _bdos         U _convtime     U _getuid       U _setfcb     
-		U _setuid       D _stat         U asallsh       U asalsub     
-		U cret          U indir         U lladd         U lllsh       
-		U ncsv          U shal          U wrelop        
+stat.obj        U __exact       U _bdos         U _convtime     U _getuid     
+		U _setfcb       U _setuid       D _stat         U asallsh     
+		U asalsub       U cret          U indir         U lladd       
+		U lllsh         U ncsv          U shal          U wrelop      
 chmod.obj       U _bdos         D _chmod        U _getuid       U _setfcb     
 		U _setuid       U cret          U indir         U ncsv        
 fcbname.obj     U __fcb         U _bdos         D _fcbname      U _sprintf    

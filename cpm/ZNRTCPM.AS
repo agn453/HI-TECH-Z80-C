@@ -96,8 +96,11 @@ yesz3:	ld	(__z3env),hl
 memok:	
 	ld	c,12
 	call	5		;Check CP/M version
+	ld	a,h
+	dec	a		; MP/M (H == 1) has no RSX
+	jr	z,norsx
 	ld	a,l
-	cp	30h
+	cp	30h		; CP/M Plus (L >= 30h)?
 	jr	nc,iscpm3
 	xor	a		; CP/M 2.2 has no RSX
 	jr	norsx

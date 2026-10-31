@@ -1,9 +1,7 @@
-#include    "cpm.h"
+#include    <cpm.h>
+#include    <unixio.h>
 
-extern int unlink(char *name);
-extern int errno;
-
-int creat(char *name)
+int creat(char *name, int mode)
 {
     register struct fcb *   fc;
     uchar           luid;

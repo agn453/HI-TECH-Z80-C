@@ -9,8 +9,6 @@
  *  processor is prohibited.
  */
 
-#define	VERSION	"V3.09-15"
-
 /*----------------------------------------------------------------------*\
  | Note by Jon Saxton, 3 May 2014.					|
  |									|
@@ -170,7 +168,7 @@ static char *tempm[] =
 {
     "-Ptext=0%xh,data",
     "-Ptext=0,data,bss",
-    "-Ptext=0%xh,data,bss",
+    "-Pcpm=0,text,data,bss,stack",
 };
 
 #define tmpf1       temps[0]
@@ -245,9 +243,9 @@ int main(int argc, char **argv)
     prev_sig=signal(SIGINT,SIG_IGN);
 
 #ifdef Z280
-    fprintf(stderr, "Hi-Tech Z280 C Compiler (CP/M-80) %s",VERSION);
+    fprintf(stderr, "Hi-Tech Z280 C Compiler (CP/M-80) V%s",_HTC_VERSION);
 #else
-    fprintf(stderr, "Hi-Tech Z80 C Compiler (CP/M-80) %s",VERSION);
+    fprintf(stderr, "Hi-Tech Z80 C Compiler (CP/M-80) V%s",_HTC_VERSION);
 #endif
     fprintf(stderr, "\nCopyright (C) 1984-87 HI-TECH SOFTWARE\n");
     fprintf(stderr, "Updated from https://github.com/agn453/HI-TECH-Z80-C\n");
@@ -398,16 +396,21 @@ int main(int argc, char **argv)
         }
         else if (cp && (strcmp(cp, ".SYM")==0 ))
             {
-                c_as[c_as_idx++] = argv[0];
-                if (xp = rindex(argv[0], ':'))
-                    xp++;
+                if (overlay)
+                    {
+                        c_as[c_as_idx++] = argv[0];
+                        if (xp = rindex(argv[0], ':'))
+                            xp++;
+                        else
+                            xp = argv[0];
+                        *cp = 0;
+                        strcat(strcpy(tmpbuf, xp), ".OBJ");
+                        addobj(tmpbuf, 1);
+                        strcpy(single, tmpbuf);
+                        *cp = '.';
+                    }
                 else
-                    xp = argv[0];
-                *cp = 0;
-                strcat(strcpy(tmpbuf, xp), ".OBJ");
-                addobj(tmpbuf, 1);
-                strcpy(single, tmpbuf);
-                *cp = '.';
+                    fprintf(stderr,"%s ignored as -Y option missing\n",argv[0]);
             }
         else
             addobj(argv[0], 0);
@@ -500,20 +503,16 @@ void doit()
         else
         {
             if (reloc)
-            {
-                segopt = xalloc(strlen(rsegs)+10);
-                sprintf(segopt, rsegs, cbase);
-            }
+                segopt = rsegs;
             else
-            {
-                segopt = xalloc(strlen(nsegs)+1);
-                sprintf(segopt, nsegs);
-            }
+                segopt = nsegs;
         }
         flgs[flg_idx++] = segopt;
         if (!outfile)
         {
             fprintf(stderr,"No output file specified\n");
+            fclose(cmdfile); /* remove the $$EXEC.$$$ file */
+            remove(execmd);
             exit(-1);
         }
         if (reloc)
@@ -764,8 +763,10 @@ void assemble_sym(char *s)
     if (c_as_idx > 1)
         print(s);
     i = 0;
+  /* Commented out - for symbols there's no code to optimize
     if (optimize && !speed)
         vec[i++] = "-J";
+  */
     if (nolocal)
         vec[i++] = "-X";
     if (cp = rindex(s, ':'))

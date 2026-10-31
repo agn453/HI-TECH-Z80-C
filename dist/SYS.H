@@ -34,5 +34,6 @@ extern char   **_getargs(char *, char *);
 extern int	_argc_;
 extern int	inp(int);
 extern void	outp(int, int);
+extern void *	sbrk(size_t);
 
 #endif

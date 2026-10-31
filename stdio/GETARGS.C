@@ -62,7 +62,6 @@
 #define look()      (*str)
 
 extern int   _argc_;
-extern char *sbrk();
 extern int   isatty(int);
 static char *name, *str, *bp;
 static char  interactive;

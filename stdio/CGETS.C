@@ -1,4 +1,4 @@
-extern int	getche();
+#include	<conio.h>
 
 char *
 cgets(s)

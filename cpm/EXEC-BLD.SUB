@@ -1,0 +1,8 @@
+; Build $$EXEC.COM from source
+era exec.com
+zas -j exec.as
+linq
+<-l -ptext=0,bss exec.obj
+objtohex -R -b100h l.obj exec.com
+era l.obj
+era exec.obj

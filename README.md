@@ -2,14 +2,16 @@
 
 ## Introduction
 
-In this repository I intend to supply updates and enhancements to
-the HI-TECH C Compiler for Z80 v3.09 running natively under CP/M or under
-emulation using RunZ80, SIMH or ZXCC.
+This repository contains the HI-TECH C Compiler for Z80 v3.09 along with
+updates and enhancements.  It runs natively on a Zilog Z80/Z180/Z280
+processor under the CP/M operating system or under emulation on your
+Windows/Linux/macOS system using RunCPM[^1], SIMH AltairZ80[^2] or
+ZXCC[^3].
 
 Each release is a consolidated milestone with various updates and
-patches applied.
+patches applied.  You should read this README.md file for details.
 
-The latest release is V3.09-15 (see Modification History below).
+The latest release is V3.09-21 (see Modification History below).
 
 If you only wish to download the latest binary distribution, download
 it from
@@ -23,10 +25,9 @@ https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 I welcome bug reports/fixes and additional commentry and discussion.
 
 You can raise an issue here on GitHub or contact me directly via e-mail
-at <agn453@gmail.com> or by posting to the USENET newsgroup
+at <tony.nicholson@computer.org> or by posting to the USENET newsgroup
 forum at comp.os.cpm in the "Consolidating Updates for HI-TECH C for
-Z80 CP/M v3.09" discussion thread - (accessible via Google Groups at
-https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak ).
+Z80 CP/M v3.09" discussion thread[^4].
 
 The first release is a slightly modified (see below) v3.09.
 
@@ -56,7 +57,8 @@ The *doc* folder contains the documentation in ASCII text as HTCZ80.TXT.
 In chronological order - so be sure to check the latest updates at the
 end of this README file.
 
-### Release v3.09
+## Release v3.09
+<!-- Mar 3, 2020 -->
 
 The original HI-TECH C linker (LINK.COM) has been renamed as LINQ.COM
 and the main compiler front-end (C.COM) has been patched to reflect
@@ -68,7 +70,8 @@ I've edited the documentation to remove the underlining and bolding of
 text by over-printing and fixed some layout issues and typos.
 
 
-### Release v3.09-1
+## Release v3.09-1
+<!-- Mar 4, 2020 -->
 
 As supplied in v3.09, the LIBF.LIB produces inaccurate floating point
 trigonometry results - as reported by "Ed" in his posting to the
@@ -92,7 +95,8 @@ A *test* folder has been created.  In it is a TESTTRIG.C program for testing
 this release.
 
 
-### Release v3.09-2
+## Release v3.09-2
+<!-- Mar 3, 2020 -->
 
 The late Jon Saxton (former SYSOP of the Australian Tesseract RCPM)
 collected together a number of patches and updates - See Tesseract
@@ -188,7 +192,8 @@ bdos()
 ```
 
 
-### Release v3.09-3
+## Release v3.09-3
+<!-- Mar 4, 2020 -->
 
 These are the Jon Saxton modified versions of John Elliott's patches.
 
@@ -416,7 +421,8 @@ Extended getenv()
 ```
 
 
-### Release v3.09-3b
+## Release v3.09-3b
+<!-- Mar 5, 2020 -->
 
 Updated the previous release to adjust the ordering of modules in LIBC.LIB -
 programs should now link correctly.  Also added the missing documentation for
@@ -425,7 +431,8 @@ now defunct hitech.com.au web site) and scanned PDFs of the 1989
 vintage documentation.
 
 
-### Release v3.09-4
+## Release v3.09-4
+<!-- Mar 8, 2020 -->
 
 Some of the string related function prototypes in STRING.H are missing from
 the LIBC.LIB library.  Most of these are from an update to the MSX flavour
@@ -529,7 +536,8 @@ strftime()
     than maxs characters were produced.
 ```
 
-### Release v3.09-4-Z280
+## Release v3.09-4-Z280
+<!-- Mar 8, 2020 -->
 
 This is the first experimental release of the libraries that have been
 built for a Zilog Z280 MPU.  Most of this work was retrieved from a
@@ -550,12 +558,13 @@ C280.COM
     The compiler front-end for driving the HI-TECH Z80 C compiler
     for CP/M to produce code to run on a Zilog Z280 MPU.  It accepts
     command lines similar to the C.COM front-end from the *dist*
-    folder - with one extra command-line switch to perform optimisation
+    folder - with a modified command-line switch to perform optimisation
     of generated assembly language to use the enhanced Z280 instructions.
+    You can optimise for size (-O2) or speed (-OF2). For example,
 
         c280 -of2 ...
 
-    will cause the OPTIMH.COM pass to perform this optimisation.
+    will cause the OPTIMH.COM pass to perform speed optimisation.
 
 OPTIMH.COM and OPTIMH.C
     This is the Z280 assembly language optimiser (with source-code).
@@ -594,14 +603,14 @@ OPTIMH.COM and OPTIMH.C
         ld  l,(ix+n)     or iy
         ld  h,(ix+n+1)   -> ldw hl,(ix+n)    (2 byte)
 
-        ld  (ix+n),b     or iy
-        ld  (ix+n+1),c   -> ldw (ix+n),bc    (2 byte)
+        ld  (ix+n),c     or iy
+        ld  (ix+n+1),b   -> ldw (ix+n),bc    (2 byte)
 
         ld  (ix+n),e     or iy
         ld  (ix+n+1),d   -> ldw (ix+n),de    (2 byte)
 
-        ld  (ix+n),h     or iy
-        ld  (ix+n+1),l   -> ldw (ix+n),hl    (2 byte)
+        ld  (ix+n),l     or iy
+        ld  (ix+n+1),h   -> ldw (ix+n),hl    (2 byte)
 
         or  a
         sbc hl,bc        -> subw hl,bc       (1 byte)
@@ -640,7 +649,8 @@ LIB280C.LIB and LIB280F.LIB
 
 ```
 
-### Not actually a release - but including MSX-DOS 2 distribution
+## Not actually a release - but including MSX-DOS 2 distribution
+<!-- Apr 17, 2020 -->
 
 I'm making available the raw updates for MSX-DOS 2 for those interested in
 the last known updates to run HI-TECH C for Z80 under MSX2.  You'll
@@ -667,7 +677,8 @@ Windows Win32 environment.  This is available on GitHub at
 https://github.com/sharksym/CPMEMU_HI-TECH_C
 
 
-### Fix to getenv()
+## Fix to getenv()
+<!-- May 24, 2020 -->
 
 The getenv() function was not correctly looking up the location of
 the environment file under CP/M 3 for the "default" entry in the drive
@@ -684,7 +695,8 @@ in your CP/M 3 PROFILE.SUB file (or manually entered on the command line).
 Updated dist/LIBC.LIB and z280dist/LIBC280.LIB too.
 
 
-### General tidy-up and Overlay capability
+## General tidy-up and Overlay capability
+<!-- Jun 3, 2020 -->
 
 Updates merged from @tsupplis
 
@@ -694,13 +706,15 @@ and to fix an incompatibility with conflicting _TIME macros in both
 TIME.H and CPM.H
 
 
-### Release V3.09-5
+## Release V3.09-5
+<!-- Jun 3, 2020 -->
 
 Rebuilt libraries LIBC.LIB and LIBF.LIB (as well as LIB280C.LIB and
 LIB280F.LIB for the Z280).  New snapshot as Release V3.09-5.
 
 
-### Fix CRTCPM.OBJ start-up module
+## Fix CRTCPM.OBJ start-up module
+<!-- Jun 12, 2020 -->
 
 The CP/M start-up module CRTCPM.OBJ was not checking the CP/M version
 prior to checking for the existence of the PIPEMGR RSX.  This caused
@@ -710,7 +724,8 @@ A new version of CRTCPM.OBJ is available (and the source-code in
 ZCRTCPM.AS has been updated to correct this).
 
 
-### Add source for DEHUFF and ENHUFF
+## Add source for DEHUFF and ENHUFF
+<!-- Dec 13, 2020 -->
 
 Andrey Nikitin has contributed the sources for the DEHUFF and ENHUFF
 programs that were used by HI-TECH Software to distribute the library
@@ -732,7 +747,8 @@ c -O -v dehuff.c decode.c misc.c
 (If you're using a Z280 use 'c280 -of2 -v ...')
 
 
-### Change supported string length in printf() routine
+## Change supported string length in printf() routine
+<!-- Jan 5, 2021 -->
 
 Merged a minor change into stdio/DOPRNT.C from @tupplis so that various
 printf() routines can now output strings greater than 255 characters.
@@ -741,7 +757,8 @@ Updated the dist/LIBC.LIB and z280dist/LIB280C.LIB libraries too
 and created a new v3.09-6 release to consolidate the recent updates.
 
 
-### Release V3.09-6
+## Release V3.09-6
+<!-- Jan 6, 2021 -->
 
 Updated the cpm/C.C source to include the V3.09-6 identifier and
 supply a pre-compiled version in dist/C309-6.COM that can be copied
@@ -753,7 +770,8 @@ as z280dist/CRTCPM.OBJ
 the compiled binary is running on a Z280 MPU.
 
 
-### PIPEMGR sources
+## PIPEMGR sources
+<!-- Jan 8, 2021 -->
 
 I've included Jon Saxton's version of the PIPEMGR RSX for handling
 pipes under CP/M 3.
@@ -777,7 +795,8 @@ original PIPEMGR page at
 http://www.seasip.info/Cpm/software/Pipemgr/index.html
 
 
-### Self-relocating .COM program PIPEMGR integration
+## Self-relocating .COM program PIPEMGR integration
+<!-- Jan 8, 2021 -->
 
 @tsupplis provided updates to the self-relocating image start-up module
 to support the improvements from the standard CP/M start-up (in CRTCPM.OBJ).
@@ -787,7 +806,8 @@ dist/RRTCPM.OBJ
 To build a self-relocating image, use the -A compile option.
 
 
-### Minor issues
+## Minor issues
+<!-- Jan 10, 2021 -->
 
 * Declaration for rename() missing from dist/UNIXIO.H
 
@@ -821,6 +841,7 @@ by the overlay support routine).
 
 
 ## MS-DOS cross-compiler available
+<!-- Jan 13, 2021 -->
 
 Recently Microchip Technology Inc. (the current owners of the HI-TECH
 intellectual property) also released the MS-DOS version of the HI-TECH
@@ -832,6 +853,7 @@ https://github.com/agn453/HI-TECH-Z80-C-Cross-Compiler
 
 
 ## Release v3.09-7
+<!-- Jan 14, 2021 -->
 
 Thanks to @tsupplis, the following enhancements are now available
 in the latest release v3.09-7.
@@ -933,7 +955,8 @@ copied from the dist folder to the system directory (usually drive A:
 in user area 0, and marked with the SYS and RO attributes).
 
 
-### Minor updates
+## Minor Updates
+<!-- Jan 15, 2021 -->
 
 Addressing some minor changes from issue #18 -
 
@@ -948,7 +971,8 @@ been adjusted to be consistently in uppercase.
 I've re-issued this as a revised v3.09-7b release too.
 
 
-### Release v3.09-8 (support for Z280 MPU)
+## Release v3.09-8 (support for Z280 MPU)
+<!-- Jan 15, 2021 -->
 
 The compiler front-end source in cpm/C.C has been updated so that it
 can be compiled to produce a Z280 MPU version.  Co-existence with the Z80
@@ -969,12 +993,14 @@ the z280dist/LIB280*.LIB libraries to the system drive too.
 This is also a new release milestone at v3.09-8.
 
 
-### Minor fixes
+## Minor fixes
+<!-- Jan 15, 2021 -->
 
 * Minor change to allow size optimization (-O2 switch) for Z280.
 
 
-### Easy binary download
+## Easy binary download
+<!-- Jan 17, 2021 -->
 
 Include an easy-download CP/M library file containing the binary
 distribution (all the files you need from the *dist* folder to get it
@@ -985,17 +1011,19 @@ Download this from
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
 
 and extract the files using one of the CP/M .LBR extraction tools, e.g.
-[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM),
+[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM).
 
 
-### Minor update
+## Minor update
+<!-- Jan 17, 2021 -->
 
 * Revert change defining "Z80" symbol back to the lowercase form "z80"
 in the main driver.  There are some inconsistencies with how this is used
 in the other compiler modules - and in the library sourcefiles.
 
 
-### Z280 optimizer speed/size
+## Z280 optimizer speed/size
+<!-- Jan 18, 2021 -->
 
 * Modify z280/OPTIMH.C and the front-end driver to select between size
 and speed optimisations.  Previously some additional code was added to
@@ -1005,7 +1033,8 @@ it omits them for reduced code-size.  This is selected by using the -OF2
 and -O2 option to the C280 front-end.
 
 
-### Old files removed
+## Old files removed
+<!-- Jan 19, 2021 -->
 
 Up until now, I've kept various replaced files in this repository
 by renaming them to include a hash (or octothorpe) "#" character
@@ -1015,7 +1044,8 @@ will show them from now on!  If you need to refer to them you can
 download one of the previous releases.
 
 
-### Decompilation of CGEN.COM
+## Decompilation of CGEN.COM
+<!-- Feb 5, 2021 -->
 
 Andrey Nikitin has made available a decompilation of the HI-TECH C V3.09
 code generation program CGEN.COM based on work by himself and
@@ -1026,7 +1056,8 @@ You'll find this at
 https://github.com/nikitinprior/dcgen
 
 
-### bios() routine restrictions
+## bios() routine restrictions
+<!-- Mar 18, 2021 -->
 
 Issue #24 raised a limitation with calling the bios() function to perform
 inter-bank memory moves using the CP/M 3 BIOS XMOVE and MOVE routines
@@ -1034,14 +1065,16 @@ inter-bank memory moves using the CP/M 3 BIOS XMOVE and MOVE routines
 document this and the SELMEM (function 27) restriction.
 
 
-### Incomplete prototype definitions in TIME.H
+## Incomplete prototype definitions in TIME.H
+<!-- Mar 20, 2021 -->
 
 As per issue #25 - corrected the function prototype definitions in
 dist/TIME.H for ctime(), gmtime() and localtime().  Updated the
 htc-bin.lbr binary distribution library archive file too.
 
 
-### More work on decompiling CPP.COM
+## More work on decompiling CPP.COM
+<!-- Mar 29, 2021 -->
 
 Andrea Nikitin has posted some more decompiled source-code for the
 C pre-processor (CPP.COM) and a revised pre-processor for the compiler
@@ -1051,7 +1084,8 @@ repository at
 https://github.com/nikitinprior/dcpp
 
 
-### Historical version 1.3 added
+## Historical version 1.3 added
+<!-- Jun 7, 2021 -->
 
 I've added a CP/M library format file containing the HI-TECH C COMPILER V1.3
 for Z80 CP/M in the *historical* folder.  The files in
@@ -1069,7 +1103,8 @@ repository at
 https://github.com/nikitinprior/ddump
 
 
-### Object librarian source-code reconstructed
+## Object librarian source-code reconstructed
+<!-- Aug 4, 2021 -->
 
 Andrey Nikitin has managed to reconstruct the C language source for the
 object-code librarian program LIBR.COM by disassembling the program.  You'll
@@ -1078,7 +1113,8 @@ find this in his repository at
 https://github.com/nikitinprior/dlibr
 
 
-### v3.09-9 update release
+## v3.09-9 update release
+<!-- Aug 16, 2021 -->
 
 I've added a mktime() routine to the C library (LIBC.LIB and LIB280C.LIB)
 and consolidated the recent updates as a release v3.09-9.
@@ -1115,7 +1151,8 @@ mktime()
 ```
 
 
-### CPM.H header file update
+## CPM.H header file update
+<!-- Aug 16, 2021 -->
 
 * Added a few missing bdos() function constants for CP/M 3, MP/M, ZSDOS
 and ZPM3.
@@ -1125,7 +1162,8 @@ and ZPM3.
 * Add -Y description to dist/OPTIONS file.
 
 
-### Reconstructed source for OPTIM.COM
+## Reconstructed source for OPTIM.COM
+<!-- Nov 12, 2021 -->
 
 Andrey Nikitin and Mark Ogden have been busy.  They've reconstructed the
 C source-code for the Z80 code optimiser.  You'll find it at
@@ -1133,7 +1171,8 @@ C source-code for the Z80 code optimiser.  You'll find it at
 https://github.com/nikitinprior/doptim
 
 
-### Fix to fgets routine
+## Fix to fgets routine
+<!-- Dec 19, 2021 -->
 
 Reported by Mark Ogden, the fgets() library routine (in LIBC.LIB and
 LIB280C.LIB) has been updated to prevent a character string
@@ -1145,7 +1184,8 @@ files from the updated binary distribution from
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
 
 
-### Bundle up the Z280 distribution
+## Bundle up the Z280 distribution
+<!-- Dec 28, 2021 -->
 
 I've added a binary Z280 distribution library file too.  Get it from
 
@@ -1157,6 +1197,7 @@ areas and via the CP/M 3 search path).
 
 
 ## C front-end fixes and new V3.09-10 update release
+<!-- Dec 30, 2021 -->
 
 Mark Ogden has supplied some fixes to the C front-end so that it can process
 long command lines (particularly when wildcard expanded filename are
@@ -1168,6 +1209,7 @@ usual, updated binary distribution libraries are available too.
 
 
 ## Fix to pre-processor assembly language output
+<!-- Jan 3, 2022 -->
 
 A long-standing bug with the generation of Z80 assembly
 language output containing the C source-code as comments
@@ -1178,6 +1220,7 @@ updated.  Thanks to Andrey Nikitin for reporting this.
 
 
 ## Inclusion of object-code and symbol-table documentation
+<!-- Jan 4, 2022 -->
 
 On the Internet archive WayBackMachine, I found some documentation
 describing the HI-TECH object-code (.OBJ) and symbol-table (.SYM) file
@@ -1193,6 +1236,7 @@ files.
 
 
 ## Work-around compiler bug
+<!-- Jan 5, 2022 -->
 
 Passing a pointer to a function parameter can give rise to a warning
 or compilation failure (with both ```operation: arguments redeclared```
@@ -1206,6 +1250,7 @@ Thanks to Andrey Nikitin for the heads up on this bug.
 
 
 ## Redirection of error message output work-around
+<!-- Jan 6, 2022 -->
 
 NB: This issue has been resolved with the V3.09-11 release (see below).
 
@@ -1218,6 +1263,7 @@ and ZXCC emulation until I find a fix.
 
 
 ## Sourcecode reconstruction for the HI-TECH C linker
+<!-- Jan 8, 2022 -->
 
 Both Andrey Nikitin and Mark Ogden have reconstructed the source
 code to the HI-TECH object code linker.  You'll find it at
@@ -1230,6 +1276,7 @@ cross-compilation.
 
 
 ## Code-generation issue with casting char to long
+<!-- Jan 8, 2022 -->
 
 Mark Ogden supplied the following detail regarding an issue with
 code generation when casting a ```char```/```unsigned char``` to a
@@ -1286,6 +1333,7 @@ whereas the correct optimised code should be
 
 
 ## Fix I/O redirection start-up and V3.09-11 release
+<!-- Jan 11, 2022 -->
 
 When the PIPEMGR I/O redirection is not detected, the standard files
 for stdin, stdout and stderr now default to use the console ```CON:```
@@ -1303,6 +1351,7 @@ and updated the binary distribution library files.
 
 
 ## Re-order library file modules and V3.09-12 release
+<!-- Jan 11, 2022 -->
 
 Fixed the order of modules in the C library (LIBC.LIB and LIB280C.LIB)
 to prevent an ```undefined symbol:``` error during linking.
@@ -1318,6 +1367,7 @@ stdout and stdin (using the ```>file```, ```>>file``` and ```<file```
 modifiers).
 
 ## Backport more-accurate floating point library routines
+<!-- Feb 2, 2022 -->
 
 Phillip Stevens has submited updates to the floating point library
 routines for ```acos()```, ```asin()```, ```atan()```, ```atan2()```,
@@ -1328,14 +1378,14 @@ routines from the HI-TECH Z80 cross compiler V7.80pl2.
 These fix -
 
 * some typos in the ```atan()``` coefficients - affecting ```acos()```
-and ```asin()```,
+and ```asin()```;
 
 * improved accuracy of the polynomial estimation for ```asin()``` and
-```acos()``` by restricting the range of the polynomial in use,
+```acos()``` by restricting the range of the polynomial in use;
 
-* correct the sign of ```atan2()``` to reflect the standard usage,
+* correct the sign of ```atan2()``` to reflect the standard usage;
 
-* allow integer powers of negative bases, and
+* allow integer powers of negative bases; and
 
 * fixes to the intrinsic ```float.as``` floating point arithmetic
 functions.
@@ -1348,6 +1398,7 @@ Please let me know if you notice any issues.
 
 
 ## More back-porting of library source-code
+<!-- Feb 3, 2022 -->
 
 Phillip Stevens has back-ported some more of the V7.80pl2 library source.
 
@@ -1376,6 +1427,7 @@ in the dist folder and the binary distribution libraries.
 
 
 ## Z280 assembly language optimisation
+<!-- Feb 7, 2022 -->
 
 The Z280 front-end ```C280.COM``` has been modified to allow optimisation
 of Z80 assembly language input files when either the ```-O2``` or ```-OF2```
@@ -1422,11 +1474,12 @@ Z80 release files).
 
 
 ## Interpretation of exact file sizes reverted
+<!-- Mar 17, 2022 -->
 
 Following on from Mark Ogden's consultations with John Elliott (the author
 of the ZXCC emulator and PIPEMGR),  I have accepted a proposal from Mark
 Ogden to revert the interpretation of exact file sizes back to John
-Elliot's original DOS Plus interpretation.
+Elliott's original DOS Plus interpretation.
 
 As mentioned in the release v3.09-3 notes (above), there are two common
 conventions that can be used to record exact file sizes in CP/M 3 and
@@ -1478,7 +1531,7 @@ to the directory entry.
 Note: You need to take extra care if you're using an emulator like ZXCC
 which has been updated to only support the DOS Plus
 convention or the CP/M 2.2 interpretation (as per the original version
-by John Elliott).  Using the wrong mode will cause the file will be
+by John Elliott).  Using the wrong mode will cause the file to be
 extended or truncated in the last sector.  The CP/M 2.2 mode causes
 ```Ctrl-Z``` to be written at the end of text files (as per the CP/M
 convention).
@@ -1492,6 +1545,7 @@ exact file size convention.
 
 
 ## Fixes to longjmp() and detect underflow in floating point division
+<!-- May 24, 2022 -->
 
 Mark Ogden has supplied a couple of fixes.
 
@@ -1509,5 +1563,318 @@ versions LIB280C.LIB and LIB280F.LIB), and I've bumped the release
 to V3.09-15.
 
 
+## Fixes to the compiler driver
+<!-- Aug 9, 2022 -->
+
+As reported by Mark Ogden, there are a couple of bugs in the compiler
+driver program.
+
+* The first is regarding the use of the self-relocating (-A) option,
+where the code compiled for the linker should use the ```cpm``` psect 
+segment (as per the relocatable start-up module RRTCPM.OBJ); and
+
+* If you specify a .SYM file on the command line without specifying
+the overlay (-Y) option, the compiler driver tries to assemble a
+non-existing temporary file.
+
+The latest compiler driver (in cpm/C309-16.C) addresses both by passing
+the ```cpm``` psect to the linker and ignores .SYM files unless the
+overlay (-Y) option is specified.
+
+The binaries for the compiler driver (in dist//C309-16.COM and
+z280dist/C280-16.COM) have been updated as well as the binary distribution
+library files to be release V3.09-16 (download link at the top of
+this README file).
+
+## Minor LIBC ordering fix
+<!-- Feb 6, 2023 -->
+
+The C library has had the ordering of modules adjusted to resolve
+an undefined symbol error (thanks to Mark Ogden for bringing this 
+to my attention).
+
+## Remove temporary file
+<!-- Mar 22, 2023 -->
+
+When the compiler driver was executed without producing an output file, it
+left behind a stray ```$$EXEC.$$$``` file on the current drive (or on the
+temporary drive if you specified a TMP environment variable in your
+```0:A:ENVIRON.``` file).  This now fixed.
+
+I've also bumped the version number to be release V3.09-17.
+
+
+## Library containing distribution files for unmodified V3.09 release
+<!-- Mar 24, 2023 -->
+
+I've added a CP/M library format (.LBR) file containing the unmodified
+HI-TECH C COMPILER V3.09 for Z80 CP/M to the *historical* folder.
+The files in
+[historical/Z80V309.LBR](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/historical/Z80V309.LBR)
+can be extracted using one of the CP/M library utilities like
+[NULU.COM](https://raw.githubusercontent.com/agn453/Z280RC/master/utilities/NULU.COM),
+or a Unix tool like lar,
+
+
+## Z280 optimiser (OPTIMH) fixes/enhancements
+<!-- Nov 1, 2023 -->
+
+The following updates have been made to the Z280 assembly language
+optimiser (OPTIMH.COM) -
+
+* Comments in the OPTIMH.C source file have been translated from German
+into English;
+
+* The counters for the additional byte and replaced counts are now more
+accurate;
+
+* The processing summary output now includes "speed" or "size";
+
+* The default filetype for the output file has been changed from .ASO to .AS2
+to be consistent with the compiler behaviour when it optimises and saves
+the output assembler source (i.e compilation using the ```-O2``` or
+```-OF2``` with the ```-S``` option);
+
+* Some ```call csv``` and ```jp cret``` speed optimisations were not being
+detected; and
+
+* Assembly language statement labels on optimised code were being omitted
+in the output file.  Processing now detects them and outputs them
+on a separate line prior to performing optimisation.
+
+I've rebuilt the Z280 optimised libraries (LIB280C.LIB, LIB280F.LIB) and
+compiler frontend C280-17.COM using the updated optimiser - and these files
+are now available in both the *z280dist* folder and updated Z280 binary
+distribution at
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
+Please raise an issue if you have any problems with them.
+
+## Update missing exact file length code in the C Library for stat() and open() routines, and fix fseek() bug.
+<!-- May 6, 2025 -->
+
+When the exact file length code was reverted back in V3.09-13 I missed
+updating a couple of the C library routines to use the ```_exact```
+global variable to correctly handle the selected mode for handing
+DOS Plus mode (the DEFAULT).  The ```stat()``` and ```open()``` library
+routines have now been updated.   These were found when looking for the
+resolution to issue #49. The ```fseek()``` routine was returning with an
+offset of the buffer size (512 bytes) for files opened in read and write ("r+b")
+mode.  The ```ftell()``` routine was the culprit in the FSEEK.C library
+module and the offset is no longer added for a file opened in this mode.
+(This bug appears to be a long standing one that is in the C library
+at least as far back as HI-TECH C V1.3).
+
+The C libraries (LIBC.LIB and LIB280C.LIB) have been updated and the
+compiler front-end processor have been updated to include the corrected
+modules.  I've also bumped the version to V3.09-18 so you
+know you're using the corrected modules.
+
+## OCR version of scanned manual added
+<!-- May 29, 2025 -->
+
+Thanks to Martin Homuth-Rosemann for contributing an OCR enhanced copy of
+the scanned October 1989 "HI-TECH SOFTWARE C COMPILER (Z80) User's Manual".
+You'll find this in the
+[doc/Hi-Tech-Z80-1989-october_ocr.pdf](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/doc/Hi-Tech-Z80-1989-october_ocr.pdf)
+file.  This allows you to search the document for content using your PDF
+reader/web browser.
+
+## Backported V4.11 STDIO routines
+<!-- June 3, 2025 -->
+
+In order to resolve issue #50 concerning incorrect handling of file position
+and failure to flush buffers when a file is accessed for updating (in
+```r+b``` mode),  I have backported the stdio routines from the HI-TECH
+C Z80 Cross-compiler V4.11 into the C Library (LIBC.LIB and LIB280C.LIB).
+The original V3.09 routines had convoluted code that was not properly
+handling a file read followed by a seek and write.
+
+When examining the HI-TECH stdio routines from the V4.11 cross-compiler
+it became obvious that the problem was known and corrected using a
+different combination of file flag status bytes.  The update adds a
+word to the ```FILE``` structure that permits a different file buffer size
+to be selected (using a newly added ```setvbuf()``` routine) whilst
+maintaining the old default of 512 bytes; and replaces the old
+```_IOWROTE``` flag status bit with an ```_IOSEEKED``` flag to indicate
+that a file seek has occurred since the last file write.
+
+```
+setvbuf() and setbuf()
+
+     The setvbuf() function allows the buffering behaviour of a STDIO
+     stream to be altered. It supersedes the function setbuf() which is
+     retained for backwards compatibility.
+
+     #include <stdio.h>
+
+     int setvbuf(FILE * stream, char * buf, int mode, size_t size);
+
+     void setbuf(FILE * stream, char * buf)
+
+     The arguments to setvbuf() are as follows:
+
+     stream designates the STDIO stream to be affected; buf is a pointer
+     to a buffer which will be used for all subsequent I/O operations on
+     this stream. If buf is null, then the routine will allocate a buffer
+     from the heap if necessary, of size BUFSIZ as defined in ```<stdio.h>```.
+     mode may take the values _IONBF, to turn buffering off completely,
+     _IOFBF, for full buffering, or _IOLBF for line buffering. Full
+     buffering means that the associated buffer will only be flushed when
+     full, while line buffering means that the buffer will be flushed at
+     the end of each line or when input is requested from another STDIO
+     stream. size is the size of the buffer supplied. For example -
+
+     setvbuf(stdout, my_buf, _IOLBF, sizeof my_buf);
+
+     If a buffer is supplied by the caller, that buffer will remain
+     associated with that stream even over fclose(), fopen() calls until
+     another setvbuf() changes it.
+```
+
+The updated binaries, libraries and header files have been included in
+the *dist* and *z280dist* folders, along with source-code and build files
+in the *stdio*, *float* and *cpm* folders.
+
+I've also bumped the version to V3.09-19 so you know you're using the
+latest library modules.  Library version information is also now included
+in the ```STDIO.H``` file as
+
+```
+#define _HTC_VERSION    "3.09-19"
+#define _HTC_MAJOR      3
+#define _HTC_MINOR      9
+#define _HTC_REV        19
+```
+
+and a global string can be accessed from the C libraries. This can be
+referenced and printed using
+
+```
+extern char * _libcver; /* or _libfver for LIBF.LIB */
+..
+fprintf(stdout,"C library version %s\n",_libcver);
+```
+
+Grab the updated V3.09-19 distribution binary .LBR file for Z80 CP/M from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
+
+and optionally the Z280 binary distribution (if you need it) from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
+
+## Z280 assembly optimiser minor update
+<!-- June 5, 2025 -->
+
+A minor issue has been corrected with the Z280 optimiser ```OPTIMH.COM```
+where it was failing to process assembly language source files where a
+statement label has no white-space (a space or tab) between the colon
+and the opcode.  e.g.
+
+```
+label1:ld hl,0
+```
+
+was incorrectly output as
+
+```
+label1:
+        d hl,0
+```
+
+to the Z280 assembler ```.AS2``` output file.
+
+This did not trigger with the normal compiler processing of assembler
+intermediate files - since all labels that the compiler produces have
+a space after them.
+
+The updated source ```OPTIMH.C``` and binary ```OPTIMH.COM``` are in the
+*z280dist* folder and the 
+[z280bin.lbr](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr)
+Z280 binary distribution library.
+
+
+## Update to support binaries running under Digital Research MP/M-II
+<!-- September 5, 2025 -->
+
+NB:  There is insufficient memory to run the compiler modules under
+MP/M due to the reduced transient program area.
+
+The binaries produced by the compiler now run under MP/M-II following
+a correction to the
+various start-up modules (CRTCPM.OBJ C280CPM.OBJ etc) to check for MP/M
+after doing a BDOS function 12 Get Version call.  Previously it was
+following the CP/M 3 path and trying un-implemented BDOS calls to check
+for the presence of the PIPEMGR RSX and making all the wrong configuration
+choices.  (As an aside -- one of the main differences
+between MP/M and CP/M is that it returns a HL=0xFFFF error code for
+unimplemented BDOS calls whereas CP/M returns HL=0).  Hopefully I have
+reviewed all the places the C Library routines do a BDOS Check Version call.
+
+Also, I have modified the code in the ```signal()``` library routine that
+detects a SIGINT to use a Direct Console I/O (BDOS function 6) call to check
+for a CTRL-C while processing a stdio call.  Previously it was checking
+if a character had been struck using the Console Status (BDOS function 11)
+and fetching it using the Console Input with Echo (BDOS function 1) call.
+The old way did not work correctly under MP/M since it was already
+intercepting the CTRL-C internally and prompting to abort the running
+program.  A side-effect of this is that now when you SIGINT a HI-TECH C
+program using CTRL-C via ```signal()```, the ```^C``` will no longer be
+echoed back to the console.  MP/M does not intercept characters using
+the Direct Console I/O call.  HI-TECH C produced binaries will recognise
+and act on it though.
+
+The version number for HI-TECH C has been bumped to V3.09-20 to reflect
+these changes (in the libraries and main driver).  I've done all my testing
+under MP/M V2.1 and it should work with older versions.  If not, please
+raise an issue on GitHub.
+
+## Fix to getenv() and release 3.09-21
+<!-- June 2, 2026 -->
+
+Issue #54 reported by Jamie Lokier @jlokier fixes a bug in the C library
+```getenv()``` routine (array bounds could be exceeded, and missing NULL
+terminator pointer could read past the end of the ```environ``` array).
+
+This has been incorporated into a new release V3.09-21 (updated ```LIBC.LIB```,
+```LIB280C.LIB``` as well as rebuilt compiler driver ```C309-21.COM```,
+```C280-21.COM```, ```OPTIMH.COM``` and ```STDIO.H``` with version constants
+bumped).  New binary distributions are at
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr
+
+and the Z280 binary distribution (if you need it) from
+
+https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
+
+
+[^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
+actively maintained and available from https://github.com/MockbaTheBorg/RunCPM
+
+[^2]: SIMH AltairZ80 is one of many computer system simulators from the
+Open SIMH Project (https://opensimh.org).  It emulates 8080/Z80/8085 and
+MC68000 S-100 bus computers (like the MITS Altair with various interface
+cards and peripherals).  You can obtain source-code for over 70 different
+systems from https://github.com/open-simh/simh or just the AltairZ80
+specific simulator and various prebuilt CP/M operating system kits from
+Peter Schorn's site at https://schorn.ch/altair.html
+
+[^3]: ZXCC is a CP/M 2/3 emulator for cross compiling and running most
+CP/M binary command files under Linux/Unix/macOS and Microsoft Windows.
+It was authored by John Elliott and with various updates may be obtained
+from https://github.com/agn453/ZXCC
+
+[^4]: The newsgroup comp.os.cpm can be accessed via a USENET
+provider like www.eternal-september.org using newsreader software like
+Mozilla Thunderbird.  An archived copy of the original thread can be
+read via Google Groups at
+https://groups.google.com/forum/#!topic/comp.os.cpm/V9Qwoc3--Ak - but
+since February 2024 you will need to access comp.os.cpm via a USENET
+provider to be able to post messages. 
+
 --
-Tony Nicholson, Tuesday 24-May-2022
+
+Tony Nicholson, Tuesday 02-Jun-2026

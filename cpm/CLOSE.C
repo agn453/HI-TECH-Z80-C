@@ -1,4 +1,6 @@
 #include    <cpm.h>
+#include    <stdlib.h>
+#include    <ctype.h>
 /*
     This is a modified version of close.c to support exact file sizes.
 
@@ -37,12 +39,11 @@
     For the ZXCC emulator, using _exact as 'D' is safe.
 */
 
-extern char _exact;  /* 'C' = not used (old CP/M),
-                        'D' = DOSPLUS mode,  'I' = ISX mode
+extern char _exact;  /* Exact file size hint for last sector
+			'C' = not used (old CP/M),
+                        'D' = DOSPLUS mode (count is USED bytes),
+			'I' = ISX mode (count is UNUSED bytes)
                       */
-
-char *getenv(char *);
-int toupper(int );
 
 int close(uchar fd)
 {
@@ -59,7 +60,7 @@ int close(uchar fd)
         bdos(CPMCLS, fc);
     if (_exact != 'C') { /* skip if old CP/M mode */
         fc->nr = (_exact == 'D' ? fc->fsize : -fc->fsize) & 0x7f; /* Set exact file size */
-        fc->name[5] |= 0x80;
+        fc->name[5] |= (char) 0x80;
         if (fc->use == U_WRITE || fc->use == U_RDWR)
             bdos(CPMSATT, fc);
     }

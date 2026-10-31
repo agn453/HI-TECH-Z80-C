@@ -3,9 +3,8 @@
  */
 
 #include	<stdio.h>
+#include	<stdlib.h>
 #include 	<ctype.h>
-
-extern int	atoi();
 
 static FILE *	fp;
 
@@ -18,8 +17,7 @@ uchar	base;
 		c -= '0';
 	else
 		{
-		if (isupper(c))
-			c = tolower(c) ;
+		c = tolower(c) ;
 		if (isalpha(c))
 			c = c - 'a' + 10 ;
 		else

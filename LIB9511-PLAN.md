@@ -365,15 +365,13 @@ Stage 1 does not replace the `printf` or `scanf` modules.
 
 `fabs`, `floor`, `ceil`, `modf`, `sqrt`, `atof`, `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `atan2`, `frexp`, `ldexp`, `log`, `log10`, `pow`, `exp`, `sinh`, `cosh`, `tanh`
 
-`modf` has no source file and no library module.
-A call to `modf` fails to link today.
-Leave `modf` out of scope.
+`modf` is `am9511/MODF.AS`.
+The split uses the Hi-Tech exponent field.
+`FIXD` is not used. A magnitude at or above 2^31 must still split.
 
 `sin` in `float/SIN.C` divides by `TWO_PI` before the polynomial.
-The C function expects radians.
-Read the Am9511 manual before a stage 3 sine replacement.
-Confirm the chip argument unit there.
-Do not take the unit from the z88dk IEEE wrappers.
+The Am9511A sine, cosine, and tangent take radians.
+Pass the argument through unchanged.
 
 ## Stages
 
@@ -507,14 +505,48 @@ The scaled values are 3750000, 500000, 3000000, 2500000, and -1500000.
 `modf` on the chip matches the plan values.
 
 The console was left at `H>`.
-Nothing is committed.
+The kernel commit is on `upstream/master`.
+
+## Work procedure
+
+Follow these steps in order.
+
+1. Commit the current kernel and push it to the local checkout and to `upstream`.
+2. Review the existing Am9511A code against the z88dk APU interface.
+   Use Z80 timings. `OUT (C),r` and `IN r,(C)` move a register in 12 states.
+   `LD A,r` plus `OUT (n),A` takes 15 states.
+   An idle busy test is `IN A,(n)`, `RLCA`, and `RET NC`. That is 26 states.
+   `BIT 7,A` is slower when the status byte is discarded.
+   Wait once, after the command. Data writes do not set `BUSY`.
+   Keep one tight poll. A delay loop returns later.
+3. Prove each timing change on the RC2014.
+   The arithmetic results must match the measured kernel run.
+   Time a fixed add and subtract loop before the change and after it.
+4. Add the Am9511A float opcodes that `MATH.H` already names.
+   Those names are `sqrt`, `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `log`, `log10`, `exp`, and `pow`.
+   The chip sine, cosine, and tangent use radians.
+   Link `LIB9511` before `LIBF`.
+5. Put chip functions that are not in `MATH.H` in `am9511/AM9511.H`.
+   That file includes `MATH.H`.
+   Do not add those names to `MATH.H`.
+   The added names are `pi`, `log2`, `exp2`, and `exp10`.
+6. Assemble on I:, build `LIB9511.LIB`, and run the benchmark.
+   Use `OBJTOHEX` when the image passes 128 records.
+7. Commit and push the tested library to the local checkout and to `upstream`.
+8. Review the new C and assembly for speed, accuracy, and faults.
+   Test any repair on the RC2014.
+   Commit and push that repair.
+9. When the RC2014 console is wrong, type `exit` at the CP/M prompt.
+   Start CP/M again from the shell.
+10. Record a console fault in `SD-SILENT.md` in the CPM-IDE tree.
+    Leave that note until this library work is finished.
 
 ## Out of scope
 
 - Do not change `C.COM`, `LIBC.LIB`, `FLOAT.H`, or `MATH.H`.
 - Do not change the bytes that `DEFF` and the code generator store.
 - Do not copy the z88dk IEEE push path.
-- Do not implement `modf`.
+- `modf` stays the field split in `MODF.AS`.
 - UX Module firmware is a different tree.
 
 ## Evidence used for this plan
@@ -529,3 +561,22 @@ Nothing is committed.
 - z88dk `libsrc/math/float/am9511/readme.md`.
 - z88dk `config_am9511_private.inc` opcodes and `config_rc2014_private.inc` port `0x42`.
 - A live software compile already printed `float=3` from `I:FLOAT.C` linked with `H:LIBF.LIB`.
+
+## Review repairs
+
+`ftol` returns 0 when a magnitude does not fit in a signed long.
+`floor` and `ceil` in LIBF call `__frndint`, and that routine calls `ftol`.
+A value at or above 2^31 would then become 0.
+`FLOOR.AS` exports `_floor` and `_ceil`.
+The split uses the exponent field, as `modf` does.
+`FIXD` is not used.
+
+`exp2` and `exp10` multiply by a constant and then call `EXP`.
+A product that overflows is a zero from `popf`.
+`EXP` of that zero would return 1.
+The routine returns 0 when the input magnitude is at or above 1 and the product is 0.
+A smaller input that underflows still returns 1, because `exp(0)` is 1.
+
+`pow` of a base whose magnitude is 1 does not call `PWR`.
+A positive 1 returns 1.
+A negative 1 uses the integer test and returns 1, -1, or 0.

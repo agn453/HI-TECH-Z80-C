@@ -18,6 +18,7 @@
 ;	Overflow, underflow, and divide by zero return a clean zero.
 
 	global	fpnorm, fladd, flsub, flmul, fldiv, negmant
+	global	pushf, popf, pushl, popl, cunary, apwait
 
 	psect	text
 
@@ -80,24 +81,35 @@ negmant:
 	ld	l,a
 	ret
 
-;	HLDE minus the stack operand. A-B == A+(-B).
+;	HLDE minus the stack operand.
+;	FSUB is NOS minus TOS. Push HLDE first and the operand second.
+;	A zero right operand returns HLDE. A zero left operand returns
+;	the negated right operand. The negate is a sign flip, not a chip trip.
 
 flsub:
-	pop	bc
+	ld	a,l
+	or	d
+	or	e
 	exx
+	pop	bc
 	pop	de
 	pop	hl
+	push	bc
+	jr	z,fneg
+	ld	a,l
+	or	d
+	or	e
+	exx
+	ret	z
+	ld	a,FSUB
+	jp	fboth
+fneg:
 	ld	a,h
 	or	a
-	jr	z,flsub1
+	jr	z,flzero
 	xor	80h
 	ld	h,a
-flsub1:
-	push	hl
-	push	de
-	exx
-	push	bc
-	jp	fladd
+	ret
 
 ;	Add HLDE to the stack operand. Remove the operand.
 ;	A zero mantissa returns the other operand unchanged.
@@ -117,43 +129,21 @@ fladd:
 	or	e
 	exx
 	ret	z
-	call	pushf
-	exx
-	call	pushf
-	exx
 	ld	a,FADD
-	call	apcmd
-	jp	popf
+	jp	fboth
 
 ;	Multiply HLDE by the stack operand. A zero mantissa returns 0.
 
 flmul:
-	ld	a,l
-	or	d
-	or	e
-	exx
-	pop	bc
-	pop	de
-	pop	hl
-	push	bc
-	jr	z,flzero
-	ld	a,l
-	or	d
-	or	e
-	exx
-	jr	z,flzero
-	call	pushf
-	exx
-	call	pushf
-	exx
-	ld	a,FMUL
-	call	apcmd
-	jp	popf
+	ld	c,FMUL
+	jr	fzero
 
 ;	Divide HLDE by the stack operand.
 ;	A zero dividend or a zero divisor returns 0.
 
 fldiv:
+	ld	c,FDIV
+fzero:
 	ld	a,l
 	or	d
 	or	e
@@ -168,13 +158,8 @@ fldiv:
 	or	e
 	exx
 	jr	z,flzero
-	call	pushf
-	exx
-	call	pushf
-	exx
-	ld	a,FDIV
-	call	apcmd
-	jp	popf
+	ld	a,c
+	jr	fboth
 
 flzero:
 	ld	hl,0
@@ -182,74 +167,112 @@ flzero:
 	ld	d,h
 	ret
 
-;	Wait until BUSY is clear. Return the status in A.
-;	A missing chip returns FFh so the caller can give up.
+;	Both operands are nonzero. A holds the opcode.
+;	Main HLDE is the left value. Alternate HLDE is the right value.
+
+fboth:
+	push	af
+	call	pushf
+	exx
+	call	pushf
+	exx
+	pop	af
+	out	(APUCMD),a
+	jp	popf
+
+;	C double in the first stack argument. A holds the opcode.
+;	The caller stack stays intact.
+
+cunary:
+	pop	bc
+	pop	de
+	pop	hl
+	push	hl
+	push	de
+	push	bc
+	push	af
+	call	pushf
+	pop	af
+	out	(APUCMD),a
+	jp	popf
+
+;	Idle test. Carry is clear when BUSY is clear.
+;	IN A,(n) is 11 states, RLCA is 4, RET NC taken is 11. Total 26.
+;	The fast path pushes no registers. A is rotated. Do not use A.
+;	A missing chip sets carry and returns A = FFh.
 
 apwait:
+	in	a,(APUCMD)
+	rlca
+	ret	nc
 	push	bc
 	ld	bc,0
 apw1:
 	in	a,(APUCMD)
-	bit	7,a
-	jr	z,apwdn
+	rlca
+	jr	nc,apw0
 	dec	bc
 	ld	a,b
 	or	c
 	jr	nz,apw1
-	ld	a,0ffh
-apwdn:
 	pop	bc
+	scf
+	ld	a,0ffh
 	ret
-
-;	Start the command in A. Bit 7 stays clear.
-
-apcmd:
-	push	af
-	call	apwait
-	pop	af
-	out	(APUCMD),a
+apw0:
+	pop	bc
+	or	a
 	ret
 
 ;	Push HLDE. Low byte first. XOR 40h on the exponent byte.
+;	OUT (C),r is 12 states. LD A,r plus OUT (n),A is 15 states.
+;	Data writes do not set BUSY. The caller waits on the command.
 
 pushf:
-	call	apwait
 	ld	a,l
 	or	d
 	or	e
 	jr	z,push0
-	ld	a,e
-	out	(APUDAT),a
-	ld	a,d
-	out	(APUDAT),a
-	ld	a,l
-	out	(APUDAT),a
+	ld	bc,APUDAT
+	out	(c),e
+	out	(c),d
+	out	(c),l
 	ld	a,h
 	xor	40h
-	out	(APUDAT),a
+	out	(c),a
 	ret
 push0:
+	ld	bc,APUDAT
 	xor	a
-	out	(APUDAT),a
-	out	(APUDAT),a
-	out	(APUDAT),a
-	out	(APUDAT),a
+	out	(c),a
+	out	(c),a
+	out	(c),a
+	out	(c),a
+	ret
+
+;	Push a 32-bit integer. No exponent XOR.
+
+pushl:
+	ld	bc,APUDAT
+	out	(c),e
+	out	(c),d
+	out	(c),l
+	out	(c),h
 	ret
 
 ;	Pop a float into HLDE. High byte first.
-;	ZERO or an error code returns a clean zero.
+;	IN r,(C) is 12 states. An error code or a timeout returns 0.
 
 popf:
 	call	apwait
-	in	a,(APUDAT)
-	ld	h,a
-	in	a,(APUDAT)
-	ld	l,a
-	in	a,(APUDAT)
-	ld	d,a
-	in	a,(APUDAT)
-	ld	e,a
-	in	a,(APUCMD)
+	jp	c,fpzero
+	ld	bc,APUDAT
+	in	h,(c)
+	in	l,(c)
+	in	d,(c)
+	in	e,(c)
+	inc	c
+	in	a,(c)
 	ld	c,a
 	and	1eh
 	jp	nz,fpovrflw
@@ -264,6 +287,22 @@ popf:
 	or	e
 	ret	nz
 	jp	fpzero
+
+;	Pop a 32-bit integer. An error code or a timeout returns 0.
+
+popl:
+	call	apwait
+	jp	c,fpzero
+	ld	bc,APUDAT
+	in	h,(c)
+	in	l,(c)
+	in	d,(c)
+	in	e,(c)
+	inc	c
+	in	a,(c)
+	and	1eh
+	ret	z
+	jp	fpovrflw
 
 	psect	bss
 fperr:

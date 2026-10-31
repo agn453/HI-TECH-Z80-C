@@ -1,0 +1,19 @@
+.SUFFIXES:	.as .obj
+BIN	= /usr/hitech/bin
+AS	= $(BIN)/zas
+AR	= $(BIN)/libr r
+ASFLAGS	= -n
+
+.as.obj:
+	$(AS) $(ASFLAGS) -o$*.obj $*.as
+
+OBJS	= am9511.obj ftol.obj ltof.obj modf.obj sqrt.obj sin.obj cos.obj \
+	  tan.obj asin.obj acos.obj atan.obj log.obj exp.obj amath.obj \
+	  floor.obj
+
+lib9511.lib:	$(OBJS)
+	-rm -f lib9511.lib
+	$(AR) lib9511.lib $(OBJS)
+
+clean:
+	-rm -f lib9511.lib *.obj

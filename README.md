@@ -1850,6 +1850,51 @@ and the Z280 binary distribution (if you need it) from
 
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 
+## RC2014 APU Module math library - Am9511 support
+<!-- June 2, 2026 -->
+
+Phillip Stevens has contributed LIB9511.LIB - an Am9511A math library
+for Hi-Tech Z80 C on the RC2014 APU Module.
+
+The library implements floating point functions to make use of the Am9511A
+arithmetic processing unit (APU) for systems with a RC2014 APU module
+(and can possibly be adapter for other systems using this chip).
+
+To use this include am9511.h in your source file (instead of math.h), then
+link LIB9511.LIB before LIBF.LIB (using -L9511 -LF to the preprocessori
+driver).
+
+LINQ then takes the Am9511A module functions and leaves the rest of
+LIBF in the program.
+
+For example, to build the test program (in test/TIME9511.C) -
+
+``` 
+10E>c -o -v -l9511 -lf time9511.c                                               
+A:C        COM  (User 0)                                                        
+Hi-Tech Z80 C Compiler (CP/M-80) V3.09-21                                       
+Copyright (C) 1984-87 HI-TECH SOFTWARE                                          
+Updated from https://github.com/agn453/HI-TECH-Z80-C                            
+0:A:CPP -DCPM -DHI_TECH_C -Dz80 -I0:A: TIME9511.C M:$CTMP1.$$$                  
+0:A:P1 M:$CTMP1.$$$ M:$CTMP2.$$$ M:$CTMP3.$$$                                   
+0:A:CGEN M:$CTMP2.$$$ M:$CTMP1.$$$                                              
+0:A:OPTIM M:$CTMP1.$$$ M:$CTMP2.$$$                                             
+0:A:ZAS -J -N -OTIME9511.OBJ M:$CTMP2.$$$                                       
+ERA M:$CTMP1.$$$                                                                
+ERA M:$CTMP2.$$$                                                                
+ERA M:$CTMP3.$$$                                                                
+ERA M:$CTMP5.$$$                                                                
+0:A:LINQ -Z -Ptext=0,data,bss -C100H -OTIME9511.COM 0:A:CRTCPM.OBJ TIME9511.OBJ 
+0:A:LIB9511.LIB 0:A:LIBF.LIB 0:A:LIBC.LIB                                       
+ERA TIME9511.OBJ                                                                
+ERA M:$$EXEC.$$$   
+```
+
+The Am9511 library also includes new functions for pi, log2, exp2, and exp10.
+See the 
+[am9511/README.TXT](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/am9511/README.TXT)
+file for more details.
+
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
 actively maintained and available from https://github.com/MockbaTheBorg/RunCPM
@@ -1877,4 +1922,4 @@ provider to be able to post messages.
 
 --
 
-Tony Nicholson, Tuesday 02-Jun-2026
+Tony Nicholson, Sunday 01-Nov-2026

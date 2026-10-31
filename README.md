@@ -1858,11 +1858,11 @@ for Hi-Tech Z80 C on the RC2014 APU Module.
 
 The library implements floating point functions to make use of the Am9511A
 arithmetic processing unit (APU) for systems with a RC2014 APU module
-(and can possibly be adapter for other systems using this chip).
+(and can possibly be adapted for other systems using this chip).
 
-To use this include am9511.h in your source file (instead of math.h), then
-link LIB9511.LIB before LIBF.LIB (using -L9511 -LF to the preprocessori
-driver).
+To use this ```#include <am9511.h>``` in your source file (instead
+of math.h), then link LIB9511.LIB before LIBF.LIB (using -L9511 -LF
+to the compiler preprocessor driver).
 
 LINQ then takes the Am9511A module functions and leaves the rest of
 LIBF in the program.
@@ -1888,6 +1888,7 @@ ERA M:$CTMP5.$$$
 0:A:LIB9511.LIB 0:A:LIBF.LIB 0:A:LIBC.LIB                                       
 ERA TIME9511.OBJ                                                                
 ERA M:$$EXEC.$$$   
+10E>
 ```
 
 The Am9511 library also includes new functions for pi, log2, exp2, and exp10.

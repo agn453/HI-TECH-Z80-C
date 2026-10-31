@@ -1,10 +1,11 @@
 LIB9511 is the Am9511A math library for Hi-Tech Z80 C on the RC2014 APU Module.
 
-The library replaces the float kernel and the functions that the Am9511A calculates.
-Link LIB9511.LIB before LIBF.LIB.
-LINQ then takes the Am9511A module and leaves the rest of LIBF in the program.
+The library replaces the float kernel and functions that the Am9511A APU calculates.
 
-Build
+Link LIB9511.LIB before LIBF.LIB.
+LINQ then takes the Am9511A module functions and leaves the rest of LIBF in the program.
+
+## Build
 
 Log on to the drive that holds these sources.
 Submit MAKELIB.SUB.
@@ -13,7 +14,7 @@ The submit file runs ZAS on each .AS file and then builds LIB9511.LIB with LIBR.
 A host with the Hi-Tech cross tools can run make in this directory.
 The MAKEFILE calls zas and libr.
 
-Use
+## Use
 
 Include math.h for the standard names.
 Include am9511.h for pi, log2, exp2, and exp10.

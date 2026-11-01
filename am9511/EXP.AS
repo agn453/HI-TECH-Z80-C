@@ -14,9 +14,12 @@
 ;	y == 0 returns 1.
 ;	A negative base with a non-integer exponent returns 0.
 ;	An odd integer exponent restores the sign.
+;	An integer exponent below 2^24 uses FMUL.
+;	The product is exact when it fits in the mantissa.
+;	Any other exponent uses the chip PWR opcode.
 ;	The chip PWR opcode sees a positive base only.
 
-	global	_exp, _pow, cunary, pushf, popf
+	global	_exp, _pow, cunary, pushf, popf, flmul, fldiv
 
 	psect	text
 
@@ -119,10 +122,24 @@ pone:
 	ld	de,0
 	ret
 
-;	x and y are already in the two register banks.
-;	Push x, then y. PWR is NOS to the power TOS.
+;	x is in the main bank. y is in the alternate bank.
+;	An integer y below 2^24 uses FMUL.
+;	Any other y uses chip PWR. Push x, then y.
 
 ppwr:
+	exx
+	push	hl
+	push	de
+	call	yival
+	jr	c,ppchip
+	pop	bc
+	pop	bc
+	jp	pint
+
+ppchip:
+	pop	de
+	pop	hl
+	exx
 	call	pushf
 	exx
 	call	pushf
@@ -130,6 +147,80 @@ ppwr:
 	ld	a,OP_PWR
 	out	(APUCMD),a
 	jp	popf
+
+;	Main bank holds the sign in H and the absolute exponent in LDE.
+;	Alternate bank holds x. A set sign returns the reciprocal.
+;	IX+0 is the saved IX. x is at IX+2. The exponent is at IX+6.
+
+pint:
+	push	de
+	ld	e,l
+	ld	d,h
+	push	de
+	exx
+	push	hl
+	push	de
+	push	ix
+	ld	ix,0
+	add	ix,sp
+	ld	hl,4180h
+	ld	de,0
+pbit:
+	ld	a,(ix+6)
+	or	(ix+8)
+	or	(ix+9)
+	jr	z,pinv
+	srl	(ix+6)
+	rr	(ix+9)
+	rr	(ix+8)
+	jr	nc,psq
+	ld	b,(ix+5)
+	ld	c,(ix+4)
+	push	bc
+	ld	b,(ix+3)
+	ld	c,(ix+2)
+	push	bc
+	call	flmul
+psq:
+	ld	a,(ix+6)
+	or	(ix+8)
+	or	(ix+9)
+	jr	z,pinv
+	push	hl
+	push	de
+	ld	l,(ix+4)
+	ld	h,(ix+5)
+	ld	e,(ix+2)
+	ld	d,(ix+3)
+	ld	b,h
+	ld	c,l
+	push	bc
+	ld	b,d
+	ld	c,e
+	push	bc
+	call	flmul
+	ld	(ix+2),e
+	ld	(ix+3),d
+	ld	(ix+4),l
+	ld	(ix+5),h
+	pop	de
+	pop	hl
+	jr	pbit
+pinv:
+	bit	7,(ix+7)
+	jr	z,pdone
+	push	hl
+	push	de
+	ld	hl,4180h
+	ld	de,0
+	call	fldiv
+pdone:
+	pop	ix
+	pop	bc
+	pop	bc
+	pop	bc
+	pop	bc
+	ret
 
 ;	HLDE is y. Carry set means not an integer.
 ;	Carry clear and Z set means an even integer.
@@ -173,4 +264,36 @@ yeven:
 
 ynot:
 	scf
+	ret
+
+;	HLDE is y. Carry set means y is not an integer below 2^24.
+;	Carry clear returns the absolute value in LDE.
+;	H is 00h or 80h. The old HLDE value is destroyed.
+
+yival:
+	ld	b,h
+	ld	a,h
+	and	7fh
+	sub	64
+	jr	c,ynot
+	jr	z,ynot
+	cp	25
+	jr	nc,ynot
+	ld	c,a
+	ld	a,24
+	sub	c
+	ld	c,a
+	jr	z,yisgn
+yish:
+	srl	l
+	rr	d
+	rr	e
+	jr	c,ynot
+	dec	c
+	jr	nz,yish
+yisgn:
+	ld	a,b
+	and	80h
+	ld	h,a
+	or	a
 	ret

@@ -1903,6 +1903,21 @@ Some further testing by Phillip Stevens (issue #56) has added a fix
 to the LIB9511.LIB ```pow()``` routine to improve precision.  Rebuilt the
 binary distribution to include it.
 
+## Include CP/M-Plus submit file for installing the compiler
+
+I've added the CP/M-Plus submit file that I use to install (or
+re-install) the compiler binaries from the
+[htc-bin.lbr](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/htc-bin.lbr)
+file onto the A: drive in user area 0.  It sets the files with the
+SYS attribute - so that they may be found from any drive/user
+at the command prompt (providing drive A: is in your search path -
+where a command like is ```SETDEF F: * A: [ORDER=(COM,SUB) DISPLAY UK]``` is
+in your start-up PROFILE.SUB file).
+
+You can download it directly from
+[HTC-INS.SUB](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/dist/HTC-INS.SUB).
+
+
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
 actively maintained and available from https://github.com/MockbaTheBorg/RunCPM
@@ -1930,4 +1945,4 @@ provider to be able to post messages.
 
 --
 
-Tony Nicholson, Sunday 01-Nov-2026
+Tony Nicholson, Monday 02-Nov-2026

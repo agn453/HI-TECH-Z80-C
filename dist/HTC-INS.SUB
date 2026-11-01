@@ -1,0 +1,43 @@
+; *** For use under CP/M-Plus only ***
+;
+; Installs the binary distribution kit of HI-TECH Z80 C from
+; the current directory (containing HTC-BIN.LBR and this file)
+; to drive A: in user area 0 as read-write system files.
+; To make them read-only, edit this file and change the rw
+; to ro in each of the SET commands.
+;
+; Make sure the library extract program NULU.COM is in your
+; search path - along with the CP/M-Plus programs SET.COM,
+; SUBMIT.COM, PIP.COM and ERASE.COM (in case a read-only
+; destination file already exists).  If prompted to replace
+; a file - answer with a Y.
+;
+nulu htc-bin.lbr -e A0: -x
+era a:c309.com
+era a:c.com
+ren a:c.com=a:c309-21.com
+set a:$$exec.com [sys rw]
+set a:c.com [sys rw]
+set a:cgen.com [sys rw]
+set a:cpp.com [sys rw]
+set a:cref.com [sys rw]
+set a:debug.com [sys rw]
+set a:libr.com [sys rw]
+set a:linq.com [sys rw]
+set a:objtohex.com [sys rw]
+set a:optim.com [sys rw]
+set a:p1.com [sys rw]
+set a:symtoas.com [sys rw]
+set a:zas.com [sys rw]
+set a:*.h [sys rw]
+set a:?rtcpm.obj [sys rw]
+set a:lib?????.lib [sys rw]
+set a:options. [sys rw]
+pip a:environ.=con:
+<HITECH=0:A:
+<^J
+<TMP=A:
+<^J
+<^Z
+set a:environ. [sys rw]
+; Done

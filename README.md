@@ -1851,7 +1851,7 @@ and the Z280 binary distribution (if you need it) from
 https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/z280bin.lbr
 
 ## RC2014 APU Module math library - Am9511 support
-<!-- June 2, 2026 -->
+<!-- November 1, 2026 -->
 
 Phillip Stevens has contributed LIB9511.LIB - an Am9511A math library
 for Hi-Tech Z80 C on the RC2014 APU Module.
@@ -1895,6 +1895,13 @@ The Am9511 library also includes new functions for pi, log2, exp2, and exp10.
 See the 
 [am9511/README.TXT](https://raw.githubusercontent.com/agn453/HI-TECH-Z80-C/master/am9511/README.TXT)
 file for more details.
+
+## Math library - Am9511 update pow() function for better precision
+<!-- November 1, 2026 -->
+
+Some further testing by Phillip Stevens (issue #56) has added a fix
+to the LIB9511.LIB ```pow()``` routine to improve precision.  Rebuilt the
+binary distribution to include it.
 
 
 [^1]: RunCPM is a multi-platform, portable, Z80 CP/M 2.2 emulator.  It is
